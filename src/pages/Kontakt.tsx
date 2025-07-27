@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, Send } from "lucide-react";
+import { Mail, MapPin, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Kontakt = () => {
@@ -159,18 +159,6 @@ const Kontakt = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <Phone className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-rock font-bold mb-1">Telefon</h3>
-                      <p className="text-muted-foreground">+49 123 456 7890</p>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Mo-Fr 18:00-20:00 Uhr
-                      </p>
-                    </div>
-                  </div>
 
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">

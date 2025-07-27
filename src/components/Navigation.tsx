@@ -28,6 +28,11 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = () => {
+    window.scrollTo(0, 0);
+    setIsOpen(false);
+  };
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-rock ${
@@ -53,6 +58,7 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={handleNavClick}
                 className={`font-rock font-semibold transition-rock hover:text-primary hover:text-glow relative ${
                   location.pathname === item.path
                     ? "text-primary text-glow"
@@ -101,7 +107,7 @@ const Navigation = () => {
                         ? "text-primary text-glow"
                         : "text-foreground"
                     }`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={handleNavClick}
                   >
                     {item.label}
                   </Link>
