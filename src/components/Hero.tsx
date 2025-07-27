@@ -23,15 +23,25 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
         >
-          {/* Main Heading */}
+          {/* Band Name */}
           <motion.h1 
-            className="font-rock text-4xl md:text-6xl lg:text-7xl font-black text-white text-glow"
+            className="font-rock text-5xl md:text-7xl lg:text-8xl font-black text-primary text-glow mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            THE END
+          </motion.h1>
+
+          {/* Genre Subtitle */}
+          <motion.h2 
+            className="font-rock text-3xl md:text-5xl lg:text-6xl font-black text-white text-glow"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
             PUNK. ROCK. METAL.
-          </motion.h1>
+          </motion.h2>
 
           {/* Slogan */}
           <motion.p 
