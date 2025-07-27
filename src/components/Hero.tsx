@@ -3,6 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
+import logo from "@/assets/logo.png";
+
+
+
 
 const Hero = () => {
   return (
@@ -23,15 +27,14 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
         >
-          {/* Band Name */}
-          <motion.h1 
-            className="font-rock text-5xl md:text-7xl lg:text-8xl font-black text-primary text-glow mb-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            THE END
-          </motion.h1>
+<motion.img
+  src={logo}
+  alt="The End Logo"
+  className="mx-auto mb-4 w-72 md:w-96 lg:w-[400px]"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1, delay: 0.2 }}
+/>
 
           {/* Genre Subtitle */}
           <motion.h2 
@@ -50,7 +53,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Covers – Live und laut.
+            Live und laut.
           </motion.p>
 
           {/* Subtitle */}
@@ -60,7 +63,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Von Metallica bis Green Day, von Die Ärzte bis Nirvana – 
+            Von  Die Ärzte bis Nirvana, von Green Day bis Metallica – 
             wir bringen die größten Rock-Hits live auf die Bühne!
           </motion.p>
 
@@ -85,7 +88,7 @@ const Hero = () => {
                 className="btn-outline-rock w-full sm:w-auto"
               >
                 <Mail className="mr-2 h-5 w-5" />
-                Buchen
+                Anfrage senden
               </Button>
             </Link>
           </motion.div>

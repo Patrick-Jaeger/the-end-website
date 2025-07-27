@@ -8,28 +8,40 @@ import { Download, Guitar, Mic, Music } from "lucide-react";
 const Band = () => {
   const bandMembers = [
     {
-      name: "Max Thunder",
-      instrument: "Lead Gitarre & Vocals",
-      description: "Mit über 15 Jahren Bühnenerfahrung bringt Max die Energie und die Riffs, die jeder Rock-Song braucht.",
+      name: "Sebastian Delling",
+      instrument: "Vocals",
+      description: "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
+      icon: Mic
+    },
+    {
+      name: "Lukas Ried",
+      instrument: "Lead Gitarre",
+      description: "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
       icon: Guitar
     },
     {
-      name: "Sarah Storm",
-      instrument: "Bass & Backing Vocals", 
-      description: "Das rhythmische Fundament der Band. Sarah sorgt für den treibenden Groove in jedem Song.",
+      name: "David Wood",
+      instrument: "Bass", 
+      description: "Das rhythmische Fundament der Band. David sorgt für den treibenden Groove in jedem Song.",
       icon: Music
     },
     {
-      name: "Mike Hammer",
+      name: "Patrick Jäger",
       instrument: "Schlagzeug",
-      description: "Der kraftvolle Heartbeat der Band. Mike hält den Takt und sorgt für explosive Drum-Fills.",
+      description: "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
       icon: Music
     },
     {
-      name: "Lisa Lightning",
-      instrument: "Keyboards & Vocals",
-      description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Lisa vervollständigt unseren Sound.",
-      icon: Mic
+      name: "Thomas Gründemann",
+      instrument: "Gitarre & Backing Vocals",
+      description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
+      icon: Guitar
+    },
+    {
+      name: "Martin Delling",
+      instrument: "Techniker",
+      description: "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
+      icon: Music
     }
   ];
 
@@ -50,7 +62,7 @@ const Band = () => {
               Die Band
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Vier Musiker, eine Leidenschaft: Rock-Musik in ihrer reinsten Form. 
+              Sechs Freunde, eine Leidenschaft: Rock-Musik in ihrer reinsten Form. 
               Wir leben für die Energie der Bühne und die Verbindung zu unserem Publikum.
             </p>
           </motion.div>
@@ -69,7 +81,7 @@ const Band = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Gegründet aus der gemeinsamen Leidenschaft für zeitlosen Rock, Metal und Punk, 
+                  Gegründet aus der gemeinsamen Leidenschaft für zeitlosen Punk, Rock und Metal, 
                   haben wir uns zum Ziel gesetzt, die größten Hits der Rockgeschichte 
                   authentisch und energiegeladen zu interpretieren.
                 </p>
@@ -107,7 +119,7 @@ const Band = () => {
             The Crew
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {bandMembers.map((member, index) => (
               <motion.div
                 key={member.name}

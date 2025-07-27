@@ -189,7 +189,7 @@ const Media = () => {
             </p>
             <div className="flex justify-center space-x-4">
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/Die_Band_The_End" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock"
@@ -205,7 +205,7 @@ const Media = () => {
                 YouTube
               </a>
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/profile.php?id=100063827957058" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock"

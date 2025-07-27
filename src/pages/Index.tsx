@@ -53,7 +53,7 @@ const Index = () => {
                 </p>
                 <p className="mb-6">
                   Freut euch auf einen Abend voller Rock-Klassiker! 
-                  Von Metallica über Green Day bis hin zu den Ärzten - 
+                  Von Green Day bis hin zu Metallica - 
                   wir bringen die größten Hits live auf die Bühne.
                 </p>
                 <Link to="/gigs">

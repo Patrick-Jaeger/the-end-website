@@ -166,9 +166,9 @@ const Kontakt = () => {
                     </div>
                     <div>
                       <h3 className="font-rock font-bold mb-1">Region</h3>
-                      <p className="text-muted-foreground">Bayern & Umgebung</p>
+                      <p className="text-muted-foreground">92277 Hohenburg & Umgebung</p>
                       <p className="text-sm text-muted-foreground mt-1">
-                        Hauptsächlich Süddeutschland
+                        Hauptsächlich Landkreis Amberg-Sulzbach
                       </p>
                     </div>
                   </div>
@@ -186,7 +186,7 @@ const Kontakt = () => {
                 
                 <div className="flex space-x-4">
                   <a 
-                    href="https://instagram.com" 
+                    href="https://www.instagram.com/Die_Band_The_End" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="group"
@@ -196,7 +196,7 @@ const Kontakt = () => {
                     </div>
                   </a>
                   <a 
-                    href="https://facebook.com" 
+                    href="https://www.facebook.com/profile.php?id=100063827957058" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="group"
@@ -225,14 +225,15 @@ const Kontakt = () => {
                     Booking-Informationen
                   </h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Mindestbühnengröße: 4x3 Meter</li>
-                    <li>• Stromanschluss: 16A CEE erforderlich</li>
-                    <li>• Aufbauzeit: ca. 2 Stunden</li>
-                    <li>• Set-Dauer: 45-90 Minuten (flexibel)</li>
-                    <li>• Umkreis: 100km kostenfrei</li>
+                    <li>• Bühnengröße optimal: 6x6 Meter und 3 Meter hoch</li>
+                    <li>• Überdachung</li>
+                    <li>• Stromanschluss: 16A oder 9 KW Aggregat</li>
+                    <li>• Aufbauzeit: ca. 3 Stunden</li>
+                    <li>• Set-Dauer: 3 Stunden (flexibel)</li>
+                    <li>• Umkreis: 20km kostenfrei</li>
                   </ul>
                   <Button className="btn-outline-rock mt-4 w-full">
-                    Technical Rider anfordern
+                    Technical Rider
                   </Button>
                 </CardContent>
               </Card>
@@ -262,8 +263,7 @@ const Kontakt = () => {
                     Wie lange spielt ihr?
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    Standard sind 45-60 Minuten, aber wir können flexibel zwischen 
-                    30 und 90 Minuten spielen, je nach euren Wünschen.
+                    Standard sind 3 Stunden, aber wir können flexibel je nach euren Wünschen variieren.
                   </p>
                 </CardContent>
               </Card>
@@ -275,7 +275,7 @@ const Kontakt = () => {
                   </h3>
                   <p className="text-muted-foreground text-sm">
                     Wir bringen unsere komplette Anlage mit. Ihr braucht nur 
-                    Strom (16A CEE) und eine Bühne von mindestens 4x3 Metern.
+                    Strom (16A) und eine Bühne von mindestens 4x3 Metern, besser sind 6x6 Meter.
                   </p>
                 </CardContent>
               </Card>
@@ -286,7 +286,7 @@ const Kontakt = () => {
                     Wie weit fahrt ihr?
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    Hauptsächlich Bayern und Umgebung. Bis 100km kostenfrei, 
+                    Hauptsächlich 92277 Hohenburg und Umgebung. Bis 20km kostenfrei, 
                     weitere Entfernungen nach Absprache.
                   </p>
                 </CardContent>

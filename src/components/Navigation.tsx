@@ -50,9 +50,9 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 hover-rock">
-            <img src={logo} alt="Rock Band Logo" className="h-12 w-auto" />
+            <img src={logo} alt="Rock Band Logo" className="h-16 w-auto" />
             <span className="hidden sm:block font-rock text-xl font-bold text-glow">
-              ROCK BAND
+               
             </span>
           </Link>
 

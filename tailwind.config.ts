@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+
+
 export default {
 	darkMode: ["class"],
 	content: [
@@ -71,10 +73,12 @@ export default {
 					lighter: 'hsl(var(--grunge-lighter))'
 				}
 			},
-			fontFamily: {
+			fontFamily: { //Schriftarten
 				'rock': ['Exo 2', 'system-ui', 'sans-serif'],
-				'body': ['Inter', 'system-ui', 'sans-serif']
+				'body': ['Inter', 'system-ui', 'sans-serif'],
+				'theend': ['TheEndFont', 'sans-serif'],
 			},
+
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

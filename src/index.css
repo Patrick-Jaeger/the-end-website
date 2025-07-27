@@ -5,6 +5,15 @@
 /* Rock Band Design System - Grungy Blue/Black Theme 
 All colors MUST be HSL.
 */
+@font-face {
+  font-family: "TheEndFont";
+  src: url("/fonts/The-End-Schrift-LOAD.woff2") format("woff2"),
+       url("/fonts/The-End-Schrift-LOAD.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 @layer base {
   :root {

@@ -26,19 +26,19 @@ const Gigs = () => {
 
   const pastShows = [
     {
-      date: "15. Oktober 2024",
-      title: "Herbstrock Festival",
-      venue: "Kulturzentrum Stadtmitte"
+      date: "05. Juli 2025",
+      title: "Pink-Panther Fest - Accoustic",
+      venue: "Hiatberg, Mendorferbuch"
     },
     {
-      date: "23. August 2024",
-      title: "Sommernachtstraum",
-      venue: "Open-Air Bühne Parkplatz"
+      date: "07. Juni 2025",
+      title: "Das Event",
+      venue: "Open Air Bühne, Lauterhofen"
     },
     {
-      date: "12. Juni 2024",
-      title: "Feuerwehrfest Altdorf",
-      venue: "Festzelt Feuerwehrhaus"
+      date: "26. April 2025",
+      title: "Rock im Stodl",
+      venue: "Gasthaus Reis, Mendorferbuch"
     }
   ];
 
@@ -80,7 +80,7 @@ const Gigs = () => {
               Kommende Auftritte
             </h2>
             <p className="text-lg text-muted-foreground">
-              Markiert euch die Termine - wir freuen uns auf euch!
+              Speichert euch die Termine - wir freuen uns auf euch!
             </p>
           </motion.div>
 
@@ -155,7 +155,7 @@ const Gigs = () => {
               Vergangene Shows
             </h2>
             <p className="text-lg text-muted-foreground">
-              Ein Rückblick auf unsere bisherigen Auftritte
+              Ein Rückblick auf unsere letzten Auftritte
             </p>
           </motion.div>
 
@@ -201,14 +201,14 @@ const Gigs = () => {
               Bucht uns für eure Veranstaltung!
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Wir spielen gerne auf Geburtstagen, Feuerwehrfesten, Firmenfeiern & Festivals!
+              Wir spielen gerne auf Geburtstagen, Feuerwehrfesten & Festivals!
             </p>
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
                 <Users className="h-12 w-12 text-primary mx-auto mb-3" />
                 <h3 className="font-rock font-bold mb-2">Private Feiern</h3>
                 <p className="text-sm text-muted-foreground">
-                  Geburtstage, Hochzeiten, Jubiläen
+                  Geburtstage, Jubiläen
                 </p>
               </div>
               <div className="text-center">
@@ -222,7 +222,7 @@ const Gigs = () => {
                 <Music className="h-12 w-12 text-primary mx-auto mb-3" />
                 <h3 className="font-rock font-bold mb-2">Festivals</h3>
                 <p className="text-sm text-muted-foreground">
-                  Open-Air Events, Stadtfeste, Festivals
+                  Open-Air Events, Bars, Festivals
                 </p>
               </div>
             </div>

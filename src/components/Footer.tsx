@@ -12,19 +12,19 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <img src={logo} alt="Rock Band Logo" className="h-12 w-auto" />
               <span className="font-rock text-2xl font-bold text-glow">
-                ROCK BAND
+                
               </span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
               Punk, Rock & Metal Cover Band aus der Region. 
               Wir bringen die größten Hits live auf die Bühne – 
-              von klassischem Rock bis modernem Metal.
+              von Rock bis klassischem Metal.
             </p>
             
             {/* Social Media */}
             <div className="flex space-x-4">
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/Die_Band_The_End" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock"
@@ -32,7 +32,7 @@ const Footer = () => {
                 <Instagram className="h-5 w-5" />
               </a>
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/profile.php?id=100063827957058" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock"
@@ -120,7 +120,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 Rock Band. Alle Rechte vorbehalten.
+            © 2025 THE-END. Alle Rechte vorbehalten.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link 

@@ -71,7 +71,7 @@ const Repertoire = () => {
               Repertoire
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Unsere komplette Setlist - von klassischem Rock über Metal bis Punk. 
+              Unsere Setlist - von Punk über klassischem Rock bis Metal. 
               Über {songs.length} Songs für jeden Geschmack!
             </p>
           </motion.div>
