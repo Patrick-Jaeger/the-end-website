@@ -28,6 +28,10 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const handleNavClick = () => {
     window.scrollTo(0, 0);
     setIsOpen(false);
