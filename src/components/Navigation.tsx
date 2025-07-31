@@ -16,6 +16,7 @@ const Navigation = () => {
     { path: "/gigs", label: "Gigs" },
     { path: "/media", label: "Media" },
     { path: "/repertoire", label: "Repertoire" },
+    { path: "/pa-lichtverleih", label: "PA- & Lichtverleih" },
     { path: "/mearch", label: "Mearch" },
     { path: "/kontakt", label: "Kontakt" },
   ];
@@ -95,26 +96,32 @@ const Navigation = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border shadow-dark"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              className="lg:hidden fixed top-full left-0 right-0 bg-background/98 backdrop-blur-md border-t border-border shadow-dark z-40"
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
-              <div className="container mx-auto px-4 py-4 space-y-4">
-                {navItems.map((item) => (
-                  <Link
+              <div className="container mx-auto px-4 py-6">
+                {navItems.map((item, index) => (
+                  <motion.div
                     key={item.path}
-                    to={item.path}
-                    className={`block font-rock font-semibold py-2 transition-rock hover:text-primary ${
-                      location.pathname === item.path
-                        ? "text-primary text-glow"
-                        : "text-foreground"
-                    }`}
-                    onClick={handleNavClick}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    {item.label}
-                  </Link>
+                    <Link
+                      to={item.path}
+                      className={`block font-rock font-semibold py-3 px-4 rounded-lg mb-2 transition-rock hover:bg-primary/10 hover:text-primary ${
+                        location.pathname === item.path
+                          ? "text-primary text-glow bg-primary/5"
+                          : "text-foreground"
+                      }`}
+                      onClick={handleNavClick}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>

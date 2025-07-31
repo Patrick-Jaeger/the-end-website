@@ -8,9 +8,11 @@ import Band from "./pages/Band";
 import Gigs from "./pages/Gigs";
 import Media from "./pages/Media";
 import Repertoire from "./pages/Repertoire";
+import PALichtverleih from "./pages/PALichtverleih";
 import Mearch from "./pages/Mearch";
 import Kontakt from "./pages/Kontakt";
 import NotFound from "./pages/NotFound";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CustomCursor />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -26,6 +29,7 @@ const App = () => (
           <Route path="/gigs" element={<Gigs />} />
           <Route path="/media" element={<Media />} />
           <Route path="/repertoire" element={<Repertoire />} />
+          <Route path="/pa-lichtverleih" element={<PALichtverleih />} />
           <Route path="/mearch" element={<Mearch />} />
           <Route path="/kontakt" element={<Kontakt />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

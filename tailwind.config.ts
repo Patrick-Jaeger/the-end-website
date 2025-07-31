@@ -73,10 +73,10 @@ export default {
 					lighter: 'hsl(var(--grunge-lighter))'
 				}
 			},
-			fontFamily: { //Schriftarten
-				'rock': ['Exo 2', 'system-ui', 'sans-serif'],
-				'body': ['Inter', 'system-ui', 'sans-serif'],
-				'theend': ['TheEndFont', 'sans-serif'],
+			fontFamily: { //Schriftarten - lokale Fonts
+				'rock': ['RockFont', 'TheEndFont', 'Impact', 'Arial Black', 'system-ui', 'sans-serif'],
+				'body': ['BodyFont', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+				'theend': ['TheEndFont', 'TheEndFont1', 'Impact', 'Arial Black', 'sans-serif'],
 			},
 
 			borderRadius: {

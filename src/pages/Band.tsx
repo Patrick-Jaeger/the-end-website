@@ -177,11 +177,6 @@ const Band = () => {
               </div>
             </div>
 
-            {/* Technical Rider Download */}
-            <Button className="btn-rock">
-              <Download className="mr-2 h-5 w-5" />
-              Technical Rider (PDF)
-            </Button>
           </motion.div>
         </div>
       </section>

@@ -187,12 +187,12 @@ const Media = () => {
             <p className="text-muted-foreground mb-6">
               Verpasst keine Updates, Behind-the-Scenes Momente und neuen Videos.
             </p>
-            <div className="flex justify-center space-x-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a 
                 href="https://www.instagram.com/Die_Band_The_End" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock text-center"
               >
                 Instagram
               </a>
@@ -200,7 +200,7 @@ const Media = () => {
                 href="https://youtube.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock"
+                className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock text-center"
               >
                 YouTube
               </a>
@@ -208,7 +208,7 @@ const Media = () => {
                 href="https://www.facebook.com/profile.php?id=100063827957058" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock text-center"
               >
                 Facebook
               </a>
