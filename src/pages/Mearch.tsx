@@ -27,7 +27,6 @@ const Mearch = () => {
       id: 1,
       name: "Band T-Shirt",
       description: "100% Baumwolle mit hochwertigem Logo-Print",
-      price: "25€",
       sizes: ["S", "M", "L", "XL", "XXL"],
       image: "shirt"
     },
@@ -35,7 +34,6 @@ const Mearch = () => {
       id: 2,
       name: "Hoodie",
       description: "Warmer Kapuzenpullover mit Bandlogo auf der Rückseite",
-      price: "45€",
       sizes: ["S", "M", "L", "XL", "XXL"],
       image: "hoodie"
     },
@@ -43,7 +41,6 @@ const Mearch = () => {
       id: 3,
       name: "Stoffpatch",
       description: "Aufnäher mit Bandlogo - perfekt für Jacken und Rucksäcke",
-      price: "8€",
       sizes: ["One Size"],
       image: "patch"
     },
@@ -51,7 +48,6 @@ const Mearch = () => {
       id: 4,
       name: "Sticker Pack",
       description: "Set aus 5 verschiedenen Stickern",
-      price: "5€",
       sizes: ["One Size"],
       image: "stickers"
     },
@@ -59,7 +55,6 @@ const Mearch = () => {
       id: 5,
       name: "Tasse",
       description: "Keramiktasse mit Logo - perfekt für den Morgenkaffee",
-      price: "15€",
       sizes: ["One Size"],
       image: "mug"
     },
@@ -67,7 +62,6 @@ const Mearch = () => {
       id: 6,
       name: "Vinyl-Sticker",
       description: "Wasserfester Sticker für Auto, Laptop oder Gitarrenkoffer",
-      price: "3€",
       sizes: ["One Size"],
       image: "vinyl-sticker"
     }
@@ -147,9 +141,6 @@ const Mearch = () => {
                         <ShoppingBag className="h-20 w-20 text-muted-foreground group-hover:text-primary transition-rock mb-4" />
                         <p className="text-muted-foreground font-semibold">{item.name}</p>
                       </div>
-                    </div>
-                    <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full font-bold">
-                      {item.price}
                     </div>
                   </div>
                   
@@ -234,7 +225,7 @@ const Mearch = () => {
                       <SelectContent>
                         {merchandise.map((item) => (
                           <SelectItem key={item.id} value={item.name}>
-                            {item.name} - {item.price}
+                            {item.name}
                           </SelectItem>
                         ))}
                       </SelectContent>

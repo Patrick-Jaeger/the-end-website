@@ -5,8 +5,15 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Calendar, Music, Users } from "lucide-react";
+import { useTextSplit, useParallax, useCardWiggle, useFlyInEffect } from "@/hooks/useGSAP";
 
 const Index = () => {
+  // GSAP Animations
+  useTextSplit('.text-split-home', 0.3);
+  useParallax('.parallax-home', 0.2);
+  useCardWiggle('.wiggle-card');
+  useFlyInEffect('.fly-in-home', 'bottom');
+
   return (
     <div className="min-h-screen bg-rock-gradient">
       <Navigation />
@@ -24,7 +31,7 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
+            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4 text-split-home">
               Nächstes Highlight
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -37,7 +44,7 @@ const Index = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-4xl mx-auto bg-card border border-border rounded-lg p-8 shadow-rock"
+            className="max-w-4xl mx-auto bg-card border border-border rounded-lg p-8 shadow-rock wiggle-card"
           >
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
@@ -88,7 +95,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-center group"
             >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock wiggle-card">
                 <Users className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
                 <p className="text-muted-foreground mb-4">
@@ -109,7 +116,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center group"
             >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock wiggle-card">
                 <Music className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
                 <p className="text-muted-foreground mb-4">
@@ -130,7 +137,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center group"
             >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock wiggle-card">
                 <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
                 <p className="text-muted-foreground mb-4">

@@ -168,3 +168,118 @@ export const useHoverEffect = (selector: string, hoverAnimation: object, leaveAn
     });
   }, [selector, hoverAnimation, leaveAnimation, gsap]);
 };
+
+// Custom hook for card wiggle effect
+export const useCardWiggle = (selector: string) => {
+  const { gsap } = useGSAP();
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(selector);
+    
+    elements.forEach(element => {
+      // Create wiggle animation on scroll into view
+      gsap.fromTo(element, 
+        { 
+          opacity: 0, 
+          y: 50,
+          rotation: -3
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotation: 0,
+          duration: 1,
+          ease: "elastic.out(1, 0.3)",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Add hover wiggle
+      const handleMouseEnter = () => {
+        gsap.to(element, {
+          duration: 0.3,
+          rotation: 2,
+          scale: 1.05,
+          ease: "power2.out"
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(element, {
+          duration: 0.3,
+          rotation: 0,
+          scale: 1,
+          ease: "power2.out"
+        });
+      };
+
+      element.addEventListener('mouseenter', handleMouseEnter);
+      element.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        element.removeEventListener('mouseenter', handleMouseEnter);
+        element.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [selector, gsap]);
+};
+
+// Custom hook for fly-in effects
+export const useFlyInEffect = (selector: string, direction: 'left' | 'right' | 'bottom' = 'bottom') => {
+  const { gsap } = useGSAP();
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(selector);
+    
+    const getInitialValues = () => {
+      switch (direction) {
+        case 'left':
+          return { x: -100, y: 0, rotation: -5 };
+        case 'right':
+          return { x: 100, y: 0, rotation: 5 };
+        case 'bottom':
+        default:
+          return { x: 0, y: 100, rotation: 3 };
+      }
+    };
+    
+    elements.forEach((element, index) => {
+      const initialValues = getInitialValues();
+      
+      gsap.fromTo(element, 
+        { 
+          opacity: 0,
+          filter: 'blur(5px)',
+          ...initialValues
+        },
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          rotation: 0,
+          filter: 'blur(0px)',
+          duration: 1.2,
+          delay: index * 0.1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [selector, direction, gsap]);
+};

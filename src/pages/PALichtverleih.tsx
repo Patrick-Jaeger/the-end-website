@@ -6,44 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Volume2, Lightbulb, Music, Mic2, Settings, Send } from "lucide-react";
+import { Volume2, Lightbulb, Music, Mic, Settings, Send, Zap, Cable } from "lucide-react";
 
 const PALichtverleih = () => {
-  const equipment = [
-    {
-      category: "PA-Technik",
-      icon: Volume2,
-      items: [
-        { name: "JBL EON615 Aktivboxen", description: "2x 1000W Peak, Bluetooth, DSP" },
-        { name: "Yamaha MG16XU Mischpult", description: "16-Kanal Mixer mit USB/FX" },
-        { name: "Shure SM58 Mikrofone", description: "Professionelle Gesangsmikrofone" },
-        { name: "DI-Boxen", description: "Passive/Aktive Direct Injection" },
-        { name: "Monitore", description: "Aktive Bühnenmonitore" }
-      ]
-    },
-    {
-      category: "Lichttechnik",
-      icon: Lightbulb,
-      items: [
-        { name: "LED Moving Heads", description: "6x RGBW Moving Head Spots" },
-        { name: "LED Pars", description: "12x RGB LED Par Strahler" },
-        { name: "Lichteffekte", description: "Strobe, Laser, Nebelmaschine" },
-        { name: "DMX Controller", description: "Professionelle Lichtsteuerung" },
-        { name: "Truss System", description: "Aluminum Traversen-System" }
-      ]
-    },
-    {
-      category: "Zusätzliches Equipment",
-      icon: Settings,
-      items: [
-        { name: "Verkabelung", description: "XLR, Klinke, DMX, Strom" },
-        { name: "Mikrofonständer", description: "Gerade & Galgen-Ständer" },
-        { name: "Boxenständer", description: "Stabile Lautsprecher-Stative" },
-        { name: "Power Distribution", description: "CEE/Schuko Stromverteilung" },
-        { name: "Transport & Aufbau", description: "Inklusive An-/Abbau Service" }
-      ]
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-rock-gradient">
@@ -69,60 +34,78 @@ const PALichtverleih = () => {
         </div>
       </section>
 
-      {/* Equipment Overview */}
+      {/* PA Equipment */}
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-rock text-3xl md:text-4xl font-bold text-center text-glow mb-16"
+            className="text-center mb-16"
           >
-            Unser Equipment
-          </motion.h2>
+            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
+              PA für
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Professionelle Beschallung für jede Veranstaltungsgröße
+            </p>
+          </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {equipment.map((category, categoryIndex) => (
-              <motion.div
-                key={category.category}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
-              >
-                <Card className="bg-card border-border shadow-rock h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-6">
-                      <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                        <category.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <h3 className="font-rock text-xl font-bold">
-                        {category.category}
-                      </h3>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      {category.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="border-l-2 border-primary/30 pl-4">
-                          <h4 className="font-semibold text-foreground mb-1">
-                            {item.name}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {item.description}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <Card className="bg-card border-border shadow-rock">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Volume2 className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-rock text-xl font-bold mb-3">Kleine Feste</h3>
+                <p className="text-2xl font-bold text-primary mb-2">bis 20 Leute</p>
+                <p className="text-sm text-muted-foreground">
+                  Kompakte PA-Anlage für intime Veranstaltungen und kleine Feiern
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-border shadow-rock">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Music className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-rock text-xl font-bold mb-3">Mittlere Feste</h3>
+                <p className="text-2xl font-bold text-primary mb-2">bis 50 Leute</p>
+                <p className="text-sm text-muted-foreground">
+                  Erweiterte Beschallungsanlage für Dorffeste und mittelgroße Events
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-border shadow-rock">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-rock text-xl font-bold mb-3">Große Feste</h3>
+                <p className="text-2xl font-bold text-primary mb-2">bis 150 Leute</p>
+                <p className="text-sm text-muted-foreground">
+                  Professionelle PA-Anlage für große Veranstaltungen und Festivals
+                </p>
+              </CardContent>
+            </Card>
           </div>
+
+          <Card className="bg-card border-border shadow-rock">
+            <CardContent className="p-6 text-center">
+              <h3 className="font-rock text-xl font-bold mb-4">Alternative mit Tablet und Spotify Premium</h3>
+              <p className="text-muted-foreground">
+                Für Veranstaltungen ohne Live-Musik bieten wir auch Beschallung mit 
+                Tablet und Spotify Premium - perfekt für Hintergrundmusik bei Feiern.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Lichttechnik */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div
@@ -130,44 +113,86 @@ const PALichtverleih = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
+            className="text-center mb-16"
           >
-            <h2 className="font-rock text-3xl font-bold text-center text-glow mb-12">
-              Unsere Services
+            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
+              Lichttechnik
             </h2>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <Card className="bg-card border-border shadow-rock">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <Music className="h-8 w-8 text-primary mr-3" />
-                    <h3 className="font-rock text-xl font-bold">Full-Service</h3>
-                  </div>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>• Komplette Planung & Beratung</li>
-                    <li>• Anlieferung & Aufbau</li>
-                    <li>• Technische Betreuung vor Ort</li>
-                    <li>• Abbau & Abtransport</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card border-border shadow-rock">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <Mic2 className="h-8 w-8 text-primary mr-3" />
-                    <h3 className="font-rock text-xl font-bold">Dry Hire</h3>
-                  </div>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>• Equipment-Verleih ohne Personal</li>
-                    <li>• Flexible Abhol-/Bringservice</li>
-                    <li>• Technische Einweisung</li>
-                    <li>• 24/7 Support Hotline</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Unsere Lichter sind energiesparsam und können per DMX und automatisch über die Musik gesteuert werden
+            </p>
           </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-card border-border shadow-rock">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Lightbulb className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-rock text-xl font-bold mb-3">LED Scheinwerfer einzeln</h3>
+                <p className="text-sm text-muted-foreground">
+                  Perfekt für indirekte Beleuchtung und Akzentlicht
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-border shadow-rock">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Settings className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-rock text-xl font-bold mb-3">LED Scheinwerferleiste auf Ständer</h3>
+                <p className="text-sm text-muted-foreground">
+                  Je 4 Spots pro Leiste für flächige Beleuchtung
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-border shadow-rock">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-rock text-xl font-bold mb-3">LED Moving Heads</h3>
+                <p className="text-sm text-muted-foreground">
+                  Bewegliche Scheinwerfer für dynamische Lichteffekte
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Zusätzliches Equipment */}
+      <section className="py-20 bg-rock-lighter">
+        <div className="container mx-auto px-4">
+          <Card className="bg-card border-border shadow-rock max-w-4xl mx-auto">
+            <CardContent className="p-8 text-center">
+              <h2 className="font-rock text-2xl font-bold text-glow mb-6">
+                Zusätzliches Equipment
+              </h2>
+              <p className="text-lg mb-6">
+                Du willst eine Rede bei dem nächsten Fest halten, oder brauchst ein Mikrofon für die Gstanzeln bei der nächsten Kirwa?
+              </p>
+              <p className="text-primary font-semibold mb-4">
+                → Wir liefern auch zusätzliches Equipment wie Kabel, Mikros, Nebelmaschinen.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4 mt-8">
+                <div className="flex items-center justify-center space-x-2">
+                  <Mic className="h-5 w-5 text-primary" />
+                  <span className="text-sm">Mikrofone</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2">
+                  <Cable className="h-5 w-5 text-primary" />
+                  <span className="text-sm">Kabel</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2">
+                  <Settings className="h-5 w-5 text-primary" />
+                  <span className="text-sm">Nebelmaschinen</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 

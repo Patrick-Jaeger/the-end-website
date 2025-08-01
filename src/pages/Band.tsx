@@ -4,8 +4,15 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, Guitar, Mic, Music } from "lucide-react";
+import { useTextSplit, useParallax, useFlyInEffect, useCardWiggle } from "@/hooks/useGSAP";
 
 const Band = () => {
+  // GSAP Animations
+  useTextSplit('.text-split-band', 0.4);
+  useParallax('.parallax-band', 0.25);
+  useFlyInEffect('.fly-in-band', 'bottom');
+  useCardWiggle('.wiggle-band-card');
+
   const bandMembers = [
     {
       name: "Sebastian Delling",
@@ -58,7 +65,7 @@ const Band = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6">
+            <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6 text-split-band">
               Die Band
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -128,7 +135,7 @@ const Band = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock h-full">
+                <Card className="bg-card border-border shadow-rock transition-rock hover-rock h-full wiggle-band-card fly-in-band">
                   <CardContent className="p-6 text-center">
                     <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                       <member.icon className="h-10 w-10 text-primary" />
