@@ -6,9 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Volume2, Lightbulb, Music, Mic, Settings, Send, Zap, Cable } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { CalendarIcon, Volume2, Lightbulb, Music, Mic, Settings, Send, Zap, Cable } from "lucide-react";
+import { format } from "date-fns";
+import { de } from "date-fns/locale";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 const PALichtverleih = () => {
+  const [date, setDate] = useState<Date>();
 
   return (
     <div className="min-h-screen bg-rock-gradient">
@@ -141,7 +148,7 @@ const PALichtverleih = () => {
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Settings className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-rock text-xl font-bold mb-3">LED Scheinwerferleiste auf Ständer</h3>
+                <h3 className="font-rock text-base md:text-xl font-bold mb-3 leading-tight">LED Scheinwerferleiste auf Ständer</h3>
                 <p className="text-sm text-muted-foreground">
                   Je 4 Spots pro Leiste für flächige Beleuchtung
                 </p>
@@ -230,7 +237,31 @@ const PALichtverleih = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="event-date">Event-Datum</Label>
-                      <Input id="event-date" type="date" className="mt-1" />
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full justify-start text-left font-normal mt-1",
+                              !date && "text-muted-foreground"
+                            )}
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {date ? format(date, "PPP", { locale: de }) : <span>Datum auswählen</span>}
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={date}
+                            onSelect={setDate}
+                            initialFocus
+                            className="p-3 pointer-events-auto"
+                            locale={de}
+                            disabled={(date) => date < new Date()}
+                          />
+                        </PopoverContent>
+                      </Popover>
                     </div>
                     <div>
                       <Label htmlFor="location">Veranstaltungsort</Label>

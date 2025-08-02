@@ -12,7 +12,7 @@ import PALichtverleih from "./pages/PALichtverleih";
 import Mearch from "./pages/Mearch";
 import Kontakt from "./pages/Kontakt";
 import NotFound from "./pages/NotFound";
-import CustomCursor from "./components/CustomCursor";
+
 
 const queryClient = new QueryClient();
 
@@ -21,7 +21,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <CustomCursor />
+      
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

@@ -11,7 +11,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Mail, MapPin, Instagram, Facebook, Youtube, Send, CalendarIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useTextSplit, useParallax, useFlyInEffect } from "@/hooks/useGSAP";
+import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +29,6 @@ const Kontakt = () => {
   // GSAP Animations
   useTextSplit('.text-split', 0.5);
   useParallax('.parallax-bg', 0.3);
-  useFlyInEffect('.fly-in-contact', 'bottom');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,7 +80,7 @@ const Kontakt = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="fly-in-contact"
+              
             >
               <Card className="bg-card border-border shadow-rock">
                 <CardContent className="p-8">
@@ -184,7 +183,7 @@ const Kontakt = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="space-y-8 fly-in-contact"
+              className="space-y-8"
             >
               <div>
                 <h2 className="font-rock text-2xl font-bold text-glow mb-6">

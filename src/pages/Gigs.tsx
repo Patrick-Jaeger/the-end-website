@@ -5,14 +5,22 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin, Clock, Users, Music } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useTextSplit, useParallax, useFlyInEffect, useCardWiggle } from "@/hooks/useGSAP";
+import { useTextSplit, useParallax } from "@/hooks/useGSAP";
+import { useState } from "react";
+import EventModal from "@/components/EventModal";
 
 const Gigs = () => {
+  const [isEventModalOpen, setIsEventModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  
   // GSAP Animations
   useTextSplit('.text-split-gigs', 0.3);
   useParallax('.parallax-gigs', 0.3);
-  useFlyInEffect('.fly-in-gigs', 'left');
-  useCardWiggle('.wiggle-gigs-card');
+
+  const handleEventClick = (event: any) => {
+    setSelectedEvent(event);
+    setIsEventModalOpen(true);
+  };
 
   const upcomingGigs = [
     {
@@ -100,7 +108,8 @@ const Gigs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock fly-in-gigs">
+                <Card className="bg-card border-border shadow-rock transition-rock hover-rock cursor-pointer"
+                onClick={() => handleEventClick(gig)}>
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-3 gap-6 items-center">
                       <div className="md:col-span-2">
@@ -175,7 +184,7 @@ const Gigs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock wiggle-gigs-card">
+                <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
                   <CardContent className="p-6 text-center">
                     <div className="text-sm text-primary font-semibold mb-2">
                       {show.date}
@@ -243,6 +252,18 @@ const Gigs = () => {
       </section>
 
       <Footer />
+      
+      {selectedEvent && (
+        <EventModal
+          isOpen={isEventModalOpen}
+          onClose={() => setIsEventModalOpen(false)}
+          title={selectedEvent.title}
+          date={selectedEvent.date}
+          location={selectedEvent.location}
+          description={selectedEvent.description || "Freut euch auf einen unvergesslichen Abend voller Rock-Musik!"}
+          flyerImage={selectedEvent.flyerImage}
+        />
+      )}
     </div>
   );
 };

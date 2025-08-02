@@ -4,14 +4,13 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, Guitar, Mic, Music } from "lucide-react";
-import { useTextSplit, useParallax, useFlyInEffect, useCardWiggle } from "@/hooks/useGSAP";
+import { useTextSplit, useParallax } from "@/hooks/useGSAP";
+import BandCarousel from "@/components/BandCarousel";
 
 const Band = () => {
   // GSAP Animations
   useTextSplit('.text-split-band', 0.4);
   useParallax('.parallax-band', 0.25);
-  useFlyInEffect('.fly-in-band', 'bottom');
-  useCardWiggle('.wiggle-band-card');
 
   const bandMembers = [
     {
@@ -126,34 +125,11 @@ const Band = () => {
             The Crew
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {bandMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock h-full wiggle-band-card fly-in-band">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <member.icon className="h-10 w-10 text-primary" />
-                    </div>
-                    <h3 className="font-rock text-xl font-bold mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary font-semibold mb-4">
-                      {member.instrument}
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      {member.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <BandCarousel members={bandMembers.map(member => ({
+            name: member.name,
+            role: member.instrument,
+            image: "/placeholder.svg"
+          }))} />
         </div>
       </section>
 
