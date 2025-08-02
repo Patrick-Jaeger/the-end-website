@@ -16,9 +16,9 @@ const Navigation = () => {
     { path: "/gigs", label: "Gigs" },
     { path: "/media", label: "Media" },
     { path: "/repertoire", label: "Repertoire" },
-    { path: "/pa-lichtverleih", label: "PA- & Lichtverleih" },
     { path: "/mearch", label: "Mearch" },
     { path: "/kontakt", label: "Kontakt" },
+    { path: "/pa-lichtverleih", label: "PA- & Lichtverleih" },
   ];
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Navigation = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 hover-rock">
+          <Link to="/" className="flex items-center space-x-2">
             <img src={logo} alt="Rock Band Logo" className="h-16 w-auto" />
             <span className="hidden sm:block font-rock text-xl font-bold text-glow">
                
@@ -96,7 +96,7 @@ const Navigation = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="lg:hidden fixed top-full left-0 right-0 bg-background/98 backdrop-blur-md border-t border-border shadow-dark z-40"
+              className="lg:hidden fixed top-full left-0 right-0 bg-background/50 backdrop-blur-md border-t border-border shadow-dark z-40"
               initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}

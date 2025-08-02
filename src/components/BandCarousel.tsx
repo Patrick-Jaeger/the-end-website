@@ -65,9 +65,19 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
     
+    e.preventDefault(); // Prevent scrolling
     const currentX = e.touches[0].clientX;
     const diff = currentX - startX;
     setDragOffset(diff);
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    if (e.deltaY > 0) {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
   };
 
   const handleTouchEnd = () => {
@@ -128,7 +138,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
     <div className="relative w-full h-96 overflow-hidden perspective-1000">
       <div
         ref={containerRef}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-x"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -136,6 +146,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onWheel={handleWheel}
         style={{ perspective: '1000px' }}
       >
         {members.map((member, index) => {

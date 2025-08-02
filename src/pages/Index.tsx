@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Calendar, Music, Users } from "lucide-react";
-import { useTextSplit, useParallax } from "@/hooks/useGSAP";
+import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { useState } from "react";
 import EventModal from "@/components/EventModal";
 
@@ -15,6 +15,7 @@ const Index = () => {
   // GSAP Animations
   useTextSplit('.text-split-home', 0.3);
   useParallax('.parallax-home', 0.2);
+  useCardWiggle('.card-wiggle');
 
   const handleEventCardClick = (e: React.MouseEvent) => {
     // Don't open modal if button was clicked
@@ -106,7 +107,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-center group"
             >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock card-wiggle">
                 <Users className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
                 <p className="text-muted-foreground mb-4">
@@ -127,7 +128,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center group"
             >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock card-wiggle">
                 <Music className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
                 <p className="text-muted-foreground mb-4">
@@ -148,7 +149,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center group"
             >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock card-wiggle">
                 <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
                 <p className="text-muted-foreground mb-4">
