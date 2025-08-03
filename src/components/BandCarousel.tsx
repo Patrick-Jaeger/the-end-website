@@ -145,10 +145,10 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
   };
 
   return (
-    <div className="relative w-full h-96 overflow-hidden perspective-1000">
+    <div className="relative w-full h-96 overflow-x-auto scrollbar-hide">
       <div
         ref={containerRef}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-x"
+        className="flex items-center justify-start gap-6 px-4 w-max cursor-grab active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -157,57 +157,30 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onWheel={handleWheel}
-        style={{ perspective: '1000px' }}
+        style={{ 
+          minWidth: 'calc(100vw + 200px)',
+          padding: '0 calc(50vw - 128px)'
+        }}
       >
-        {members.map((member, index) => {
-          const style = getCardStyle(index);
-          
-          return (
-            <motion.div
-              key={index}
-              className="absolute w-64 h-80 bg-card border border-border rounded-lg p-6 shadow-rock transform-gpu"
-              style={{
-                transform: style.transform,
-                zIndex: style.zIndex,
-                opacity: style.opacity,
-              }}
-              animate={{
-                transform: style.transform,
-                opacity: style.opacity,
-              }}
-              transition={{
-                duration: isDragging ? 0 : 0.3,
-                ease: "easeOut"
-              }}
-            >
-              <div className="text-center h-full flex flex-col justify-center">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-secondary">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="px-2">
-                  <h3 className="font-rock text-lg font-bold mb-2 text-foreground">{member.name}</h3>
-                  <p className="text-primary font-medium text-sm">{member.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-      
-      {/* Indicators */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {members.map((_, index) => (
-          <button
+        {members.map((member, index) => (
+          <div
             key={index}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentIndex ? 'bg-primary' : 'bg-muted'
-            }`}
-            onClick={() => setCurrentIndex(index)}
-          />
+            className="flex-shrink-0 w-64 h-80 bg-card border border-border rounded-lg p-6 shadow-rock"
+          >
+            <div className="text-center h-full flex flex-col justify-center">
+              <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-secondary">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="px-2">
+                <h3 className="font-rock text-lg font-bold mb-2 text-foreground">{member.name}</h3>
+                <p className="text-primary font-medium text-sm">{member.role}</p>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>

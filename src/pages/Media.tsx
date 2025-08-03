@@ -85,14 +85,8 @@ const Media = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {photos.map((photo, index) => (
-              <motion.div
-                key={photo.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock overflow-hidden group cursor-pointer parallax-media card-wiggle-media">
+              <div key={photo.id}>
+                <Card className="bg-card border-border shadow-rock transition-rock overflow-hidden group cursor-pointer parallax-media card-wiggle-media">
                   <div className="aspect-video bg-secondary relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Camera className="h-16 w-16 text-muted-foreground group-hover:text-primary transition-rock" />
@@ -106,7 +100,7 @@ const Media = () => {
                     <h3 className="font-rock text-lg font-bold">{photo.title}</h3>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

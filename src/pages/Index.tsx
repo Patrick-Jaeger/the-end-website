@@ -100,14 +100,8 @@ const Index = () => {
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-center group"
-            >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock card-wiggle">
+            <div className="text-center group">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
                 <Users className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
                 <p className="text-muted-foreground mb-4">
@@ -119,16 +113,10 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center group"
-            >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock card-wiggle">
+            <div className="text-center group">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
                 <Music className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
                 <p className="text-muted-foreground mb-4">
@@ -140,16 +128,10 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center group"
-            >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock hover-rock card-wiggle">
+            <div className="text-center group">
+              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
                 <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
                 <p className="text-muted-foreground mb-4">
@@ -161,7 +143,7 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
