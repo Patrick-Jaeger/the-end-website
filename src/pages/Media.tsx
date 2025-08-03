@@ -3,12 +3,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Camera, Video } from "lucide-react";
-import { useTextSplit, useParallax } from "@/hooks/useGSAP";
+import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 
 const Media = () => {
   // GSAP Animations
   useTextSplit('.text-split-media', 0.2);
   useParallax('.parallax-media', 0.4);
+  useCardWiggle('.card-wiggle-media');
 
   const photos = [
     { id: 1, title: "Live on Stage", category: "Live" },
@@ -91,7 +92,7 @@ const Media = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock overflow-hidden group cursor-pointer parallax-media">
+                <Card className="bg-card border-border shadow-rock transition-rock hover-rock overflow-hidden group cursor-pointer parallax-media card-wiggle-media">
                   <div className="aspect-video bg-secondary relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Camera className="h-16 w-16 text-muted-foreground group-hover:text-primary transition-rock" />

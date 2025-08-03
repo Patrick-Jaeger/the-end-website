@@ -104,25 +104,35 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
     let scale = 0.8;
 
     if (diff === 0) {
-      // Center card
-      transform = `translateX(${dragOffset}px) translateZ(0px) scale(1)`;
-      zIndex = 3;
+      // Center card (front)
+      transform = `translateX(${dragOffset}px) translateZ(100px) scale(1)`;
+      zIndex = 5;
       opacity = 1;
       scale = 1;
     } else if (diff === 1 || diff === -(members.length - 1)) {
-      // Right card
-      transform = `translateX(${150 + dragOffset}px) translateZ(-100px) scale(0.8)`;
-      zIndex = 2;
-      opacity = 0.6;
+      // Right card (middle right)
+      transform = `translateX(${120 + dragOffset}px) translateZ(0px) scale(0.85)`;
+      zIndex = 3;
+      opacity = 0.7;
     } else if (diff === members.length - 1 || diff === -1) {
-      // Left card
-      transform = `translateX(${-150 + dragOffset}px) translateZ(-100px) scale(0.8)`;
-      zIndex = 2;
-      opacity = 0.6;
+      // Left card (middle left)
+      transform = `translateX(${-120 + dragOffset}px) translateZ(0px) scale(0.85)`;
+      zIndex = 3;
+      opacity = 0.7;
+    } else if (diff === 2 || diff === -(members.length - 2)) {
+      // Far right card (back right)
+      transform = `translateX(${200 + dragOffset}px) translateZ(-100px) scale(0.7)`;
+      zIndex = 1;
+      opacity = 0.5;
+    } else if (diff === members.length - 2 || diff === -2) {
+      // Far left card (back left)
+      transform = `translateX(${-200 + dragOffset}px) translateZ(-100px) scale(0.7)`;
+      zIndex = 1;
+      opacity = 0.5;
     } else {
       // Hidden cards
-      transform = `translateX(${diff > members.length / 2 ? -300 : 300}px) translateZ(-200px) scale(0.6)`;
-      zIndex = 1;
+      transform = `translateX(${diff > members.length / 2 ? -400 : 400}px) translateZ(-200px) scale(0.6)`;
+      zIndex = 0;
       opacity = 0;
     }
 
@@ -170,7 +180,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                 ease: "easeOut"
               }}
             >
-              <div className="text-center h-full flex flex-col">
+              <div className="text-center h-full flex flex-col justify-center">
                 <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-secondary">
                   <img 
                     src={member.image} 
@@ -178,8 +188,10 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="font-rock text-xl font-bold mb-2">{member.name}</h3>
-                <p className="text-primary font-medium mb-2">{member.role}</p>
+                <div className="px-2">
+                  <h3 className="font-rock text-lg font-bold mb-2 text-foreground">{member.name}</h3>
+                  <p className="text-primary font-medium text-sm">{member.role}</p>
+                </div>
               </div>
             </motion.div>
           );

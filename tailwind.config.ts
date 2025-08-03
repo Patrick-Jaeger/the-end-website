@@ -74,9 +74,10 @@ export default {
 				}
 			},
 			fontFamily: { //Schriftarten - lokale Fonts
-				'rock': ['RockFont', 'TheEndFont', 'Impact', 'Arial Black', 'system-ui', 'sans-serif'],
-				'body': ['BodyFont', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+				'rock': ['Orbitron', 'RockFont', 'TheEndFont', 'Impact', 'Arial Black', 'system-ui', 'sans-serif'],
+				'body': ['Orbitron', 'BodyFont', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
 				'theend': ['TheEndFont', 'TheEndFont1', 'Impact', 'Arial Black', 'sans-serif'],
+				'sans': ['Orbitron', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
 			},
 
 			borderRadius: {
