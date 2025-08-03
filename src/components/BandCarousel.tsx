@@ -5,6 +5,7 @@ interface BandMember {
   name: string;
   role: string;
   image: string;
+  description?: string;
 }
 
 interface BandCarouselProps {
@@ -145,10 +146,14 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
   };
 
   return (
-    <div className="relative w-full h-96 overflow-x-auto scrollbar-hide">
+    <div className="relative w-full overflow-hidden">
       <div
         ref={containerRef}
-        className="flex items-center justify-start gap-6 px-4 w-max cursor-grab active:cursor-grabbing"
+        className="flex transition-transform duration-300 ease-out cursor-grab active:cursor-grabbing"
+        style={{
+          transform: `translateX(calc(-${currentIndex * 280}px + 50vw - 140px))`,
+          width: `${members.length * 280}px`
+        }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -157,17 +162,23 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onWheel={handleWheel}
-        style={{ 
-          minWidth: 'calc(100vw + 200px)',
-          padding: '0 calc(50vw - 128px)'
-        }}
       >
         {members.map((member, index) => (
-          <div
+          <motion.div
             key={index}
-            className="flex-shrink-0 w-64 h-80 bg-card border border-border rounded-lg p-6 shadow-rock"
+            className="flex-shrink-0 w-64 h-96 mx-2 bg-card border border-border rounded-lg shadow-rock"
+            style={{
+              transform: index === currentIndex ? 'scale(1.05)' : 'scale(0.95)',
+              opacity: index === currentIndex ? 1 : 0.8,
+              zIndex: index === currentIndex ? 10 : 1
+            }}
+            animate={{
+              transform: index === currentIndex ? 'scale(1.05)' : 'scale(0.95)',
+              opacity: index === currentIndex ? 1 : 0.8
+            }}
+            transition={{ duration: 0.3 }}
           >
-            <div className="text-center h-full flex flex-col justify-center">
+            <div className="h-full flex flex-col p-6">
               <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-secondary">
                 <img 
                   src={member.image} 
@@ -175,12 +186,26 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="px-2">
-                <h3 className="font-rock text-lg font-bold mb-2 text-foreground">{member.name}</h3>
-                <p className="text-primary font-medium text-sm">{member.role}</p>
+              <div className="text-center flex-1 flex flex-col justify-center">
+                <h3 className="font-rock text-xl font-bold mb-2 text-foreground">{member.name}</h3>
+                <p className="text-primary font-medium text-base mb-3">{member.role}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{member.description}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
+        ))}
+      </div>
+      
+      {/* Indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {members.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-all ${
+              index === currentIndex ? 'bg-primary' : 'bg-muted'
+            }`}
+            onClick={() => setCurrentIndex(index)}
+          />
         ))}
       </div>
     </div>

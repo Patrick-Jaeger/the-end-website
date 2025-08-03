@@ -183,4 +183,24 @@ All colors MUST be HSL.
   .btn-outline-rock:hover {
     @apply bg-primary text-primary-foreground shadow-glow;
   }
+
+  /* Custom cursor */
+  * {
+    cursor: url('@/assets/Curser.svg'), auto !important;
+  }
+
+  /* Hover wiggle effect for cards */
+  .card-wiggle:hover {
+    animation: card-wiggle 0.4s ease-in-out;
+  }
+
+  @keyframes card-wiggle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-1deg) scale(1.02); }
+    75% { transform: rotate(1deg) scale(1.02); }
+  }
+
+  .card-wiggle-media:hover {
+    animation: card-wiggle 0.4s ease-in-out;
+  }
 }

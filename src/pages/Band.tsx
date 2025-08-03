@@ -128,7 +128,8 @@ const Band = () => {
           <BandCarousel members={bandMembers.map(member => ({
             name: member.name,
             role: member.instrument,
-            image: "/placeholder.svg"
+            image: "/placeholder.svg",
+            description: member.description
           }))} />
         </div>
       </section>
