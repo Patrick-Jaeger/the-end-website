@@ -148,7 +148,7 @@ const PALichtverleih = () => {
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Settings className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-rock text-base md:text-xl font-bold mb-3 leading-tight">LED Scheinwerferleiste auf Ständer</h3>
+                <h3 className="font-rock text-base md:text-lg lg:text-xl font-bold mb-3 leading-tight break-words">LED Scheinwerferleiste auf Ständer</h3>
                 <p className="text-sm text-muted-foreground">
                   Je 4 Spots pro Leiste für flächige Beleuchtung
                 </p>

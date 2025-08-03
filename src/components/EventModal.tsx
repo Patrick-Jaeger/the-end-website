@@ -19,14 +19,6 @@ const EventModal = ({ isOpen, onClose, title, date, location, description, flyer
       <DialogOverlay className="bg-black/50 backdrop-blur-sm" />
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-auto bg-card border border-border">
         <div className="relative">
-          <Button
-            onClick={onClose}
-            variant="ghost"
-            size="icon"
-            className="absolute top-2 right-2 z-10"
-          >
-            <X className="h-4 w-4" />
-          </Button>
           
           <div className="p-6">
             {flyerImage && (
