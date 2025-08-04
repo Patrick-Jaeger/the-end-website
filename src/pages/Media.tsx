@@ -68,20 +68,14 @@ const Media = () => {
       {/* Photo Gallery */}
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
               Photo Gallery
             </h2>
             <p className="text-lg text-muted-foreground">
               Impressionen von der Bühne und hinter den Kulissen
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {photos.map((photo, index) => (
@@ -109,30 +103,18 @@ const Media = () => {
       {/* Video Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
               Live Videos
             </h2>
             <p className="text-lg text-muted-foreground">
               Unsere besten Live-Performances auf YouTube
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
             {videos.map((video, index) => (
-              <motion.div
-                key={video.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
+              <div key={video.id}>
                 <Card className="bg-card border-border shadow-rock transition-rock hover-rock overflow-hidden">
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="md:col-span-1">
@@ -165,7 +147,7 @@ const Media = () => {
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
