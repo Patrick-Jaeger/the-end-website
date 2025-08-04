@@ -177,28 +177,9 @@ export const useCardWiggle = (selector: string) => {
     const elements = document.querySelectorAll(selector);
     
     elements.forEach(element => {
-      // Create wiggle animation on scroll into view
-      gsap.fromTo(element, 
-        { 
-          opacity: 0, 
-          y: 50,
-          rotation: -3
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotation: 0,
-          duration: 1,
-          ease: "elastic.out(1, 0.3)",
-          scrollTrigger: {
-            trigger: element,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          }
-        }
-      );
+      // Entfernt: Scroll-Animation beim Sichtbarwerden
 
-      // Add hover wiggle
+      // Hover-Effekt
       const handleMouseEnter = () => {
         gsap.to(element, {
           duration: 0.3,
@@ -226,8 +207,6 @@ export const useCardWiggle = (selector: string) => {
       };
     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    // Kein ScrollTrigger-Cleanup mehr notwendig
   }, [selector, gsap]);
 };
