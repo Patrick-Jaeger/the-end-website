@@ -63,8 +63,10 @@ const Kontakt = () => {
               Kontakt
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Ihr wollt uns buchen oder habt Fragen? Schreibt uns! 
-              Wir freuen uns auf eure Nachrichten und Booking-Anfragen.
+              Ihr wollt uns buchen oder habt Fragen?
+            </p>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Schreibt uns! Wir freuen uns auf eure Nachrichten und Booking-Anfragen.
             </p>
           </motion.div>
         </div>
