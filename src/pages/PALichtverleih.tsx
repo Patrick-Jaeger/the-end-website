@@ -54,7 +54,7 @@ const PALichtverleih = () => {
             className="text-center mb-16"
           >
             <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
-              Musikanlage für
+              Musikanlage
             </h2>
             <p className="text-lg text-muted-foreground">
               Professionelle Beschallung für jede Veranstaltungsgröße
