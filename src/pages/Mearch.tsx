@@ -100,8 +100,10 @@ const Mearch = () => {
               Mearch
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Zeigt eure Liebe zur Band! Unser Merchandise ist handverlesen 
-              und in bester Qualität - perfekt für echte Rock-Fans.
+              Zeigt eure Liebe zur Band!
+            </p>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Unser Merchandise ist handverlesen und in bester Qualität - perfekt für echte Rock-Fans.
             </p>
           </motion.div>
         </div>
