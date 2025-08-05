@@ -180,10 +180,10 @@ const PALichtverleih = () => {
               <h2 className="font-rock text-2xl font-bold text-glow mb-6">
                 Zusätzliches Equipment
               </h2>
-              <p className="text-lg mb-6">
+              <p className="text-lg">
                 Du willst eine Rede bei dem nächsten Fest halten? 
               </p>
-              <p className="text-lg mb-6">
+              <p className="text-lg">
                 Ihr brauchst eine Nebelmaschine für die nächste Feuerwehr Atemschutzübung?
               </p>
               <p className="text-lg mb-6">
