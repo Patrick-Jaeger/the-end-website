@@ -18,7 +18,7 @@ const Footer = () => {
             <p className="text-muted-foreground max-w-md">
               Punk, Rock & Metal Cover Band aus der Region.
             </p>
-            <p className="text-muted-foreground max-w-md">
+            <p className="text-muted-foreground max-w-md mb-6">
               Wir bringen die größten Hits live auf die Bühne – 
               von Rock bis klassischem Metal.
             </p>
