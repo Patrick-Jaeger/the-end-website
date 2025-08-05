@@ -294,7 +294,7 @@ const Mearch = () => {
             className="max-w-4xl mx-auto text-center bg-card border border-border rounded-lg p-8 shadow-rock"
           >
             <h2 className="font-rock text-2xl font-bold text-glow mb-6">
-              Bestellinformationen
+              Informationen
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div>
