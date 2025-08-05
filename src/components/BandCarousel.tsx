@@ -113,40 +113,35 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
     let opacity = 0.4;
 
     if (diff === 0) {
-      // Center front card (left position)
-      transform = `translateX(${-80 + dragOffset}px) translateZ(100px) scale(1.05)`;
+      // 1. Ebene (Front/Center) 
+      transform = `translateX(${dragOffset}px) translateZ(100px) scale(1.05)`;
       zIndex = 10;
       opacity = 1;
-    } else if (diff === 1 || diff === -(members.length - 1)) {
-      // Center front card (right position) 
-      transform = `translateX(${80 + dragOffset}px) translateZ(100px) scale(1.05)`;
-      zIndex = 10;
-      opacity = 1;
-    } else if (diff === members.length - 1 || diff === -1) {
-      // Left side card (half visible)
-      transform = `translateX(${-240 + dragOffset}px) translateZ(50px) scale(0.9) rotateY(15deg)`;
-      zIndex = 5;
+    } else if (diff === 1) {
+      // 2. Ebene (links)
+      transform = `translateX(${-160 + dragOffset}px) translateZ(80px) scale(0.95) rotateY(10deg)`;
+      zIndex = 8;
+      opacity = 0.9;
+    } else if (diff === 2) {
+      // 3. Ebene (links)
+      transform = `translateX(${-280 + dragOffset}px) translateZ(60px) scale(0.85) rotateY(20deg)`;
+      zIndex = 6;
       opacity = 0.7;
-    } else if (diff === 2 || diff === -(members.length - 2)) {
-      // Right side card (half visible)
-      transform = `translateX(${240 + dragOffset}px) translateZ(50px) scale(0.9) rotateY(-15deg)`;
-      zIndex = 5;
+    } else if (diff === 3) {
+      // 4. Ebene (links)
+      transform = `translateX(${-380 + dragOffset}px) translateZ(40px) scale(0.75) rotateY(30deg)`;
+      zIndex = 4;
+      opacity = 0.5;
+    } else if (diff === 4) {
+      // 4. Ebene (rechts) 
+      transform = `translateX(${380 + dragOffset}px) translateZ(40px) scale(0.75) rotateY(-30deg)`;
+      zIndex = 4;
+      opacity = 0.5;
+    } else if (diff === 5) {
+      // 3. Ebene (rechts)
+      transform = `translateX(${280 + dragOffset}px) translateZ(60px) scale(0.85) rotateY(-20deg)`;
+      zIndex = 6;
       opacity = 0.7;
-    } else if (diff === members.length - 2 || diff === -2) {
-      // Far left back card (slightly visible)
-      transform = `translateX(${-360 + dragOffset}px) translateZ(-20px) scale(0.8) rotateY(25deg)`;
-      zIndex = 2;
-      opacity = 0.5;
-    } else if (diff === 3 || diff === -(members.length - 3)) {
-      // Far right back card (slightly visible)
-      transform = `translateX(${360 + dragOffset}px) translateZ(-20px) scale(0.8) rotateY(-25deg)`;
-      zIndex = 2;
-      opacity = 0.5;
-    } else {
-      // Hidden cards
-      transform = `translateX(${diff > members.length / 2 ? -500 : 500}px) translateZ(-200px) scale(0.6)`;
-      zIndex = 0;
-      opacity = 0;
     }
 
     return {

@@ -14,12 +14,6 @@ const Band = () => {
 
   const bandMembers = [
     {
-      name: "Sebastian Delling",
-      instrument: "Vocals",
-      description: "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
-      icon: Mic
-    },
-    {
       name: "Lukas Ried",
       instrument: "Lead Gitarre",
       description: "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
@@ -48,6 +42,12 @@ const Band = () => {
       instrument: "Techniker",
       description: "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
       icon: Music
+    },
+    {
+      name: "Sebastian Delling",
+      instrument: "Vocals",
+      description: "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
+      icon: Mic
     }
   ];
 
