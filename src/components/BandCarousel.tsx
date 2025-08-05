@@ -91,6 +91,21 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
     setDragOffset(0);
   };
 
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    
+    // Only respond to horizontal scroll or significant vertical scroll
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || Math.abs(e.deltaY) > 30) {
+      const direction = e.deltaX !== 0 ? e.deltaX : e.deltaY;
+      
+      if (direction > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  };
+
   const getCardStyle = (index: number) => {
     const diff = (index - currentIndex + members.length) % members.length;
     let transform = '';
@@ -159,6 +174,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+            onWheel={handleWheel}
           >
             {members.map((member, index) => {
               const style = getCardStyle(index);

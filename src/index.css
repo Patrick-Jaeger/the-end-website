@@ -189,6 +189,15 @@ All colors MUST be HSL.
     cursor: url('@/assets/Curser.svg'), auto !important;
   }
 
+  /* Link cursor improvements */
+  a {
+    cursor: url('@/assets/Curser.svg'), pointer !important;
+  }
+  
+  a:hover {
+    cursor: url('@/assets/Curser.svg'), pointer !important;
+  }
+
   /* Hover wiggle effect for cards */
   .card-wiggle:hover {
     animation: card-wiggle 0.4s ease-in-out;
