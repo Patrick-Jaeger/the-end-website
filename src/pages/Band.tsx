@@ -92,20 +92,34 @@ const Band = () => {
                   authentisch und energiegeladen zu interpretieren.
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Von den rebellischen Klängen der Punk-Ära über die epischen Balladen 
-                  des Classic Rock bis hin zu den härtesten Metal-Anthems - 
-                  wir decken das gesamte Spektrum ab.
+                  Von den rebellischen Klängen der Punk-Ära über epische
+                  Rock Hymnen bis hin zu den härtesten Metal-Anthems -
+                  wir decken das gesamte Spektrum ab und spielen, was das Publikum zum Feiern bringt.
                 </p>
               </div>
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Unser Stil ist geprägt von Authentizität und Respekt vor den Originalen, 
+                  Authentisch und immer mit vollem Einsatz. Unser Stil ist geprägt von Respekt vor den Originalen,
                   während wir gleichzeitig unsere eigene Energie und Interpretation einbringen.
                 </p>
                 <p className="text-muted-foreground">
-                  Jeder Auftritt ist für uns eine Celebration der Rockmusik - 
-                  laut, ehrlich und mit vollem Herzen.
+                  Jeder Auftritt ist für uns eine Celebration der Rockmusik -
+                  laut, ehrlich und mit ganzem Herzen.
                 </p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">6</div>
+                <div className="text-muted-foreground">Band-Mitglieder</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">70+</div>
+                <div className="text-muted-foreground">Songs im Repertoire</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">10+</div>
+                <div className="text-muted-foreground">Jahre Banderfahrung</div>
               </div>
             </div>
           </motion.div>
