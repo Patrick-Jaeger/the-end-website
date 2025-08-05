@@ -128,7 +128,7 @@ const PALichtverleih = () => {
               Lichttechnik
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Unsere Lichter sind energiesparsam und können per DMX und automatisch über die Musik gesteuert werden
+              Unsere Lichter sind energiesparsam und können automatisch über die Musik oder per DMX gesteuert gewerden.
             </p>
           </motion.div>
 
@@ -140,7 +140,7 @@ const PALichtverleih = () => {
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">LED Scheinwerfer einzeln</h3>
                 <p className="text-sm text-muted-foreground">
-                  Perfekt für indirekte Beleuchtung und Akzentlicht
+                  Perfekt für indirekte Beleuchtung und Akzentlicht.
                 </p>
               </CardContent>
             </Card>
@@ -152,7 +152,7 @@ const PALichtverleih = () => {
                 </div>
                 <h3 className="font-rock text-base md:text-lg lg:text-xl font-bold mb-3 leading-tight break-words">LED Scheinwerferleiste auf Ständer</h3>
                 <p className="text-sm text-muted-foreground">
-                  Je 4 Spots pro Leiste für flächige Beleuchtung
+                  Je 4 Spots pro Leiste für flächige Beleuchtung.
                 </p>
               </CardContent>
             </Card>
@@ -164,7 +164,7 @@ const PALichtverleih = () => {
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">LED Moving Heads</h3>
                 <p className="text-sm text-muted-foreground">
-                  Bewegliche Scheinwerfer für dynamische Lichteffekte
+                  Bewegliche Scheinwerfer für dynamische Lichteffekte.
                 </p>
               </CardContent>
             </Card>
@@ -227,7 +227,7 @@ const PALichtverleih = () => {
                   Anfrage stellen
                 </h2>
                 <p className="text-center text-muted-foreground mb-8">
-                  Schildert uns euer Event und wir erstellen euch ein individuelles Angebot.
+                  Schildert uns euer Event und wir stellen euch zusammen, was ihr braucht.
                 </p>
                 
                 <form className="space-y-6">
