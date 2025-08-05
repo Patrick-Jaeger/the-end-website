@@ -9,6 +9,7 @@ const Media = () => {
   // GSAP Animations
   useTextSplit('.text-split-media', 0.2);
   useParallax('.parallax-media', 0.4);
+  useCardWiggle('.card-wiggle');
   
 
   const photos = [
@@ -80,7 +81,7 @@ const Media = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {photos.map((photo, index) => (
               <div key={photo.id}>
-                <Card className="bg-card border-border shadow-rock transition-rock overflow-hidden group cursor-pointer parallax-media">
+                <Card className="bg-card border-border shadow-rock transition-rock overflow-hidden group cursor-pointer parallax-media card-wiggle">
                   <div className="aspect-video bg-secondary relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Camera className="h-16 w-16 text-muted-foreground group-hover:text-primary transition-rock" />
