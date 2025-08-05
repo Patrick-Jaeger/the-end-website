@@ -182,7 +182,7 @@ const Mearch = () => {
           >
             <div className="text-center mb-12">
               <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
-                Bestellung aufgeben
+                Informationen zum Mearch
               </h2>
               <p className="text-lg text-muted-foreground">
                 Füllt das Formular aus und wir melden uns mit den Details bei euch
@@ -274,7 +274,7 @@ const Mearch = () => {
 
                   <Button type="submit" size="lg" className="btn-rock w-full">
                     <Mail className="mr-2 h-5 w-5" />
-                    Bestellung senden
+                    Anfrage senden
                   </Button>
                 </form>
               </CardContent>
