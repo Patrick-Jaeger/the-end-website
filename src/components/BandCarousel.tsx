@@ -122,26 +122,26 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
       transform = `translateX(${-160 + dragOffset}px) translateZ(80px) scale(0.95) rotateY(10deg)`;
       zIndex = 8;
       opacity = 0.9;
+    } else if (diff === 5) {
+      // 2. Ebene (rechts)
+      transform = `translateX(${160 + dragOffset}px) translateZ(80px) scale(0.95) rotateY(-10deg)`;
+      zIndex = 8;
+      opacity = 0.9;
     } else if (diff === 2) {
       // 3. Ebene (links)
       transform = `translateX(${-280 + dragOffset}px) translateZ(60px) scale(0.85) rotateY(20deg)`;
       zIndex = 6;
       opacity = 0.7;
-    } else if (diff === 3) {
-      // 4. Ebene (links)
-      transform = `translateX(${-380 + dragOffset}px) translateZ(40px) scale(0.75) rotateY(30deg)`;
-      zIndex = 4;
-      opacity = 0.5;
     } else if (diff === 4) {
-      // 4. Ebene (rechts) 
-      transform = `translateX(${380 + dragOffset}px) translateZ(40px) scale(0.75) rotateY(-30deg)`;
-      zIndex = 4;
-      opacity = 0.5;
-    } else if (diff === 5) {
       // 3. Ebene (rechts)
       transform = `translateX(${280 + dragOffset}px) translateZ(60px) scale(0.85) rotateY(-20deg)`;
       zIndex = 6;
       opacity = 0.7;
+    } else if (diff === 3) {
+      // 4. Ebene (nur links)
+      transform = `translateX(${-380 + dragOffset}px) translateZ(40px) scale(0.75) rotateY(30deg)`;
+      zIndex = 4;
+      opacity = 0.5;
     }
 
     return {
