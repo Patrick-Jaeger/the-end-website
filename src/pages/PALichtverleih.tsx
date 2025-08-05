@@ -52,7 +52,7 @@ const PALichtverleih = () => {
             className="text-center mb-16"
           >
             <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
-              PA für
+              Musikanlage für
             </h2>
             <p className="text-lg text-muted-foreground">
               Professionelle Beschallung für jede Veranstaltungsgröße
@@ -68,7 +68,7 @@ const PALichtverleih = () => {
                 <h3 className="font-rock text-xl font-bold mb-3">Kleine Feste</h3>
                 <p className="text-2xl font-bold text-primary mb-2">bis 20 Leute</p>
                 <p className="text-sm text-muted-foreground">
-                  Kompakte PA-Anlage für intime Veranstaltungen und kleine Feiern
+                  Kompakte Musikanlage für kuschelige Veranstaltungen und kleine Feiern
                 </p>
               </CardContent>
             </Card>
@@ -179,7 +179,13 @@ const PALichtverleih = () => {
                 Zusätzliches Equipment
               </h2>
               <p className="text-lg mb-6">
-                Du willst eine Rede bei dem nächsten Fest halten, oder brauchst ein Mikrofon für die Gstanzeln bei der nächsten Kirwa?
+                Du willst eine Rede bei dem nächsten Fest halten? 
+              </p>
+              <p className="text-lg mb-6">
+                Du brauchst eine Nebelmaschine für die nächste Feuerwehr Atemschutzübung?
+              </p>
+              <p className="text-lg mb-6">
+                Du brauchst ein Mikrofon für die Gstanzeln bei der nächsten Kirwa?
               </p>
               <p className="text-primary font-semibold mb-4">
                 → Wir liefern auch zusätzliches Equipment wie Kabel, Mikros, Nebelmaschinen.
