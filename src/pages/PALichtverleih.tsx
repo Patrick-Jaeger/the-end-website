@@ -35,7 +35,7 @@ const PALichtverleih = () => {
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Professionelle PA- und Lichttechnik für Events aller Größenordnungen. 
-              Von kleinen Acoustic-Sets bis zu großen Festival-Bühnen.
+              Von kleinen Acoustic-Sets bis zu großen Bühnen.
             </p>
           </motion.div>
         </div>
