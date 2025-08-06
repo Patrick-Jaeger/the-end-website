@@ -28,7 +28,7 @@ const Gigs = () => {
       title: "Rock in Bouch",
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "20:00 Uhr",
-      description: "Ein Abend voller Rock-Klassiker in gemütlicher Atmosphäre."
+      description: "Ein Abend voller Rock-Klassiker in uriger Atmosphäre."
     },
     {
       date: "25. April 2026", 
