@@ -193,7 +193,7 @@ const Kontakt = () => {
               </Card>
 
               {/* Social Media */}
-              <div className="mt-8">
+              <div className="mt-8 ml-4">
                 <h3 className="font-rock text-xl font-bold text-glow mb-4">
                   Social Media
                 </h3>
