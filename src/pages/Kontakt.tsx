@@ -203,37 +203,27 @@ const Kontakt = () => {
             >
               <div>
                 <h2 className="font-rock text-2xl font-bold text-glow mb-6">
-                  Kontakt-Info
+                  Booking-Informationen
                 </h2>
                 
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-rock font-bold mb-1">E-Mail</h3>
-                      <p className="text-muted-foreground">booking@rockband.de</p>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Für Booking-Anfragen und allgemeine Fragen
-                      </p>
-                    </div>
-                  </div>
-
-
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-rock font-bold mb-1">Region</h3>
-                      <p className="text-muted-foreground">92277 Hohenburg & Umgebung</p>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Hauptsächlich Landkreis Amberg-Sulzbach
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <Card className="bg-card border-border shadow-rock mb-8">
+                  <CardContent className="p-6">
+                    <h3 className="font-rock text-lg font-bold text-primary mb-4">
+                      Technical Requirements
+                    </h3>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li>• Bühnengröße optimal: 6x6 Meter und 3 Meter hoch</li>
+                      <li>• Überdachung</li>
+                      <li>• Stromanschluss: 16A oder 9 KW Aggregat</li>
+                      <li>• Aufbauzeit: ca. 3 Stunden</li>
+                      <li>• Set-Dauer: 3 Stunden (flexibel)</li>
+                      <li>• Umkreis: 20km kostenfrei</li>
+                    </ul>
+                    <Button className="btn-outline-rock mt-4 w-full">
+                      Technical Rider
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
 
               {/* Social Media */}
@@ -245,7 +235,7 @@ const Kontakt = () => {
                   Folgt uns für Updates, Behind-the-Scenes Content und neue Videos!
                 </p>
                 
-                <div className="flex space-x-4">
+                <div className="flex space-x-4 mb-8">
                   <a 
                     href="https://www.instagram.com/Die_Band_The_End" 
                     target="_blank" 
@@ -279,25 +269,40 @@ const Kontakt = () => {
                 </div>
               </div>
 
-              {/* Booking Info */}
-              <Card className="bg-card border-border shadow-rock">
-                <CardContent className="p-6">
-                  <h3 className="font-rock text-lg font-bold text-primary mb-4">
-                    Booking-Informationen
-                  </h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Bühnengröße optimal: 6x6 Meter und 3 Meter hoch</li>
-                    <li>• Überdachung</li>
-                    <li>• Stromanschluss: 16A oder 9 KW Aggregat</li>
-                    <li>• Aufbauzeit: ca. 3 Stunden</li>
-                    <li>• Set-Dauer: 3 Stunden (flexibel)</li>
-                    <li>• Umkreis: 20km kostenfrei</li>
-                  </ul>
-                  <Button className="btn-outline-rock mt-4 w-full">
-                    Technical Rider
-                  </Button>
-                </CardContent>
-              </Card>
+              {/* Contact Info */}
+              <div>
+                <h2 className="font-rock text-2xl font-bold text-glow mb-6">
+                  Kontakt-Info
+                </h2>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                      <Mail className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-rock font-bold mb-1">E-Mail</h3>
+                      <p className="text-muted-foreground">booking@rockband.de</p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Für Booking-Anfragen und allgemeine Fragen
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-rock font-bold mb-1">Region</h3>
+                      <p className="text-muted-foreground">92277 Hohenburg & Umgebung</p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Hauptsächlich Landkreis Amberg-Sulzbach
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
