@@ -148,19 +148,18 @@ const Band = () => {
         </div>
       </section>
 
-
       {/* Group Photo Section with 3D Background */}
       <section className="relative bg-background overflow-hidden py-32 sm:py-32 md:py-36 lg:py-48 xl:py-56">
         {/* Spline 3D Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden w-full h-full touch-auto">
+        <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
           <iframe
             src="https://my.spline.design/embers-fCGRBIZ9ogqKK1loVROqoit7/"
             frameBorder="0"
             width="100%"
             height="100%"
             loading="lazy"
-            className="w-full h-full transform scale-[1.5] md:scale-[1.7] xl:scale-[1.9] translate-x-10 -translate-y-12 md:translate-x-16 md:-translate-y-16 xl:translate-x-20 xl:-translate-y-20"
-          />
+            className="w-full h-[150%] transform scale-[1.7] translate-x-16 -translate-y-32 pointer-events-auto"
+             />
         </div>
 
         {/* Foreground Content */}
