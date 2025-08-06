@@ -242,6 +242,11 @@ const PALichtverleih = () => {
                     </div>
                   </div>
                   
+                  <div>
+                    <Label htmlFor="phone">Telefonnummer</Label>
+                    <Input id="phone" type="tel" placeholder="z.B. 0123 456789" className="mt-1" />
+                  </div>
+                  
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="event-date">Event-Datum</Label>

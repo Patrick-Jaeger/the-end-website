@@ -21,6 +21,7 @@ const Kontakt = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
     date: ""
@@ -39,6 +40,7 @@ const Kontakt = () => {
     setFormData({
       name: "",
       email: "",
+      phone: "",
       subject: "",
       message: "",
       date: ""
@@ -113,6 +115,18 @@ const Kontakt = () => {
                           required
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="phone">Telefonnummer</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        placeholder="z.B. 0123 456789"
+                        className="bg-background border-border"
+                      />
                     </div>
 
                     <div>

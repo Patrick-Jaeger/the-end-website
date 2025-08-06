@@ -16,6 +16,7 @@ const Mearch = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     product: "",
     size: "",
     quantity: "1",
@@ -76,6 +77,7 @@ const Mearch = () => {
     setFormData({
       name: "",
       email: "",
+      phone: "",
       product: "",
       size: "",
       quantity: "1",
@@ -216,6 +218,18 @@ const Mearch = () => {
                         required
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="phone">Telefonnummer</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      placeholder="z.B. 0123 456789"
+                      className="bg-background border-border"
+                    />
                   </div>
 
                   <div>
