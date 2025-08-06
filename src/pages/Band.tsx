@@ -148,33 +148,44 @@ const Band = () => {
         </div>
       </section>
 
-      {/* Group Photo Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+
+      {/* Group Photo Section with 3D Background */}
+      <section className="relative bg-background overflow-hidden py-32 sm:py-32 md:py-36 lg:py-48 xl:py-56">
+        {/* Spline 3D Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden w-full h-full touch-auto">
+          <iframe
+            src="https://my.spline.design/embers-fCGRBIZ9ogqKK1loVROqoit7/"
+            frameBorder="0"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            className="w-full h-full transform scale-[1.5] md:scale-[1.7] xl:scale-[1.9] translate-x-10 -translate-y-12 md:translate-x-16 md:-translate-y-16 xl:translate-x-20 xl:-translate-y-20"
+          />
+        </div>
+
+        {/* Foreground Content */}
+        <div className="relative z-10 container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl mx-auto text-center bg-background/80 backdrop-blur-md rounded-lg p-8"
           >
             <h2 className="font-rock text-3xl font-bold text-glow mb-8">
               Die Band im Bild
             </h2>
-            
+
             {/* Placeholder for group photo */}
-            <div className="bg-secondary rounded-lg p-16 mb-8 border border-border">
+            <div className="bg-secondary rounded-lg p-16 border border-border">
               <div className="text-center">
                 <Music className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground text-lg">
-                  Gruppenfoto der Band
-                </p>
+                <p className="text-muted-foreground text-lg">Gruppenfoto der Band</p>
                 <p className="text-sm text-muted-foreground mt-2">
                   Live-Aufnahme vom letzten Konzert
                 </p>
               </div>
             </div>
-
           </motion.div>
         </div>
       </section>
