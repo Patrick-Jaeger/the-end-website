@@ -14,6 +14,12 @@ const Band = () => {
 
   const bandMembers = [
     {
+      name: "Thomas Gründemann",
+      instrument: "Gitarre & Backing Vocals",
+      description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
+      icon: Guitar
+    },
+    {
       name: "Lukas Ried",
       instrument: "Lead Gitarre",
       description: "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
@@ -30,12 +36,6 @@ const Band = () => {
       instrument: "Schlagzeug",
       description: "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
       icon: Music
-    },
-    {
-      name: "Thomas Gründemann",
-      instrument: "Gitarre & Backing Vocals",
-      description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
-      icon: Guitar
     },
     {
       name: "Martin Delling",
