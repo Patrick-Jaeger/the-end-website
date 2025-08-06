@@ -184,10 +184,10 @@ const PALichtverleih = () => {
                - Du willst eine Rede bei dem nächsten Fest halten? 
               </p>
               <p className="text-lg">
-               - Ihr brauchst eine Nebelmaschine für die nächste Feuerwehr Atemschutzübung?
+               - Ihr brauchst eine Nebelmaschine für eure Feuerwehr Atemschutzübung?
               </p>
               <p className="text-lg mb-6">
-               - Ihr wollte eure Gstanzeln bei der nächsten Kirwa durch ein Microfon schmettern?
+               - Ihr wollt eure Gstanzeln beim austanzen durch ein Microfon schmettern?
               </p>
               <p className="text-primary font-semibold mb-4">
                 → Wir liefern auch zusätzliches Equipment wie Kabel, Mikros, Nebelmaschinen.
