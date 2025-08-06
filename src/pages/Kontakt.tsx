@@ -362,7 +362,7 @@ const Kontakt = () => {
                     Könnt ihr auch akustisch spielen?
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    Ja! Wir haben auch einige Songs in acoustic Versionen 
+                    Ja! Wir haben auch Songs in acoustic Versionen 
                     für ruhigere Veranstaltungen im Repertoire.
                   </p>
                 </CardContent>
