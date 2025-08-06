@@ -153,7 +153,7 @@ const Band = () => {
         {/* Spline 3D Background */}
         <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
           <iframe
-            src="https://my.spline.design/embers-fCGRBIZ9ogqKK1loVROqoit7/"
+            src="https://my.spline.design/embers-qRRVF9jO002fkB1KZvsr2ozN/"            
             frameBorder="0"
             width="100%"
             height="100%"
