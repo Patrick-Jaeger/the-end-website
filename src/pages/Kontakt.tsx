@@ -245,10 +245,7 @@ const Kontakt = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="font-rock text-2xl font-bold text-glow mb-6">
-                  Booking-Informationen
-                </h2>
-                
+               
                 <Card className="bg-card border-border shadow-rock mb-8">
                   <CardContent className="p-6">
                     <h3 className="font-rock text-lg font-bold text-primary mb-4">
