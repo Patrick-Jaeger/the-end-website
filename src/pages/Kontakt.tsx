@@ -186,7 +186,7 @@ const Kontakt = () => {
 
                     <Button type="submit" size="lg" className="btn-rock w-full">
                       <Send className="mr-2 h-5 w-5" />
-                      Nachricht senden
+                      Rock On!
                     </Button>
                   </form>
                 </CardContent>
