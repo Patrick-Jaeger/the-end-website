@@ -158,7 +158,7 @@ const Band = () => {
             width="100%"
             height="100%"
             loading="lazy"
-            className="w-full h-[120%] transform scale-[1.4] translate-x-16 -translate-y-32 pointer-events-auto"
+            className="w-full h-[120%] transform scale-[1.5] translate-x-16 -translate-y-28 pointer-events-auto will-change-transform"
              />
         </div> 
 
