@@ -147,7 +147,7 @@ const Band = () => {
           }))} />
         </div>
       </section>
-
+  
       {/* Group Photo Section with 3D Background */}
       <section className="relative bg-background overflow-hidden py-32 sm:py-32 md:py-36 lg:py-48 xl:py-56">
         {/* Spline 3D Background */}
@@ -158,7 +158,7 @@ const Band = () => {
             width="100%"
             height="100%"
             loading="lazy"
-            className="w-full h-[150%] transform scale-[1.7] translate-x-16 -translate-y-32 pointer-events-auto"
+            className="w-full h-[150%] transform scale-[1.4] translate-x-16 -translate-y-32 pointer-events-auto"
              />
         </div>
 
