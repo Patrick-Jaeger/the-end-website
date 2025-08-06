@@ -129,7 +129,7 @@ const Repertoire = () => {
     "Indie Rock": "bg-sky-500/20 text-sky-400 border-sky-500/30",
   };
 
-  const roundedSongsCount = Math.floor(filteredSongs.length / 10) * 10;
+  const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
   return (
     <div className="min-h-screen bg-rock-gradient">
