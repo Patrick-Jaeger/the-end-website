@@ -292,7 +292,7 @@ const Mearch = () => {
                     <Mail className="mr-2 h-5 w-5" />
                     Anfrage senden
                   </Button>
-                  <p>Wollt ihr mehr Artikel -> einfach öfter absenden, oder in dem Nachrichtenfeld vermerken.</p>
+                 
                 </form>
               </CardContent>
             </Card>
