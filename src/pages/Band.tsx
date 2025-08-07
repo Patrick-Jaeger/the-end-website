@@ -175,13 +175,17 @@ const Band = () => {
               Die Band im Bild
             </h2>
 
-            {/* Placeholder for group photo */}
-            <div className="bg-secondary rounded-lg p-16 border border-border">
-              <div className="text-center">
-                <Music className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground text-lg">Gruppenfoto der Band</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Live-Aufnahme vom letzten Konzert
+            {/* Group photo */}
+            <div className="rounded-lg overflow-hidden border border-border shadow-rock">
+              <img 
+                src="/lovable-uploads/e824b7f5-d6ef-4497-96c3-7b5f4c8a0871.png" 
+                alt="The End Band - Gruppenfoto der Band auf der Bühne" 
+                className="w-full h-auto object-cover"
+              />
+              <div className="bg-secondary/80 backdrop-blur-sm p-4 text-center">
+                <p className="text-muted-foreground text-lg font-medium">The End - Live on Stage</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Das komplette Team in Aktion
                 </p>
               </div>
             </div>
