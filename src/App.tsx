@@ -11,6 +11,8 @@ import Repertoire from "./pages/Repertoire";
 import PALichtverleih from "./pages/PALichtverleih";
 import Mearch from "./pages/Mearch";
 import Kontakt from "./pages/Kontakt";
+import Impressum from "./pages/Impressum";
+import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
 
 
@@ -32,6 +34,8 @@ const App = () => (
           <Route path="/pa-lichtverleih" element={<PALichtverleih />} />
           <Route path="/mearch" element={<Mearch />} />
           <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
