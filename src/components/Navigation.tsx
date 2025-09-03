@@ -48,8 +48,8 @@ const Navigation = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img src={logo} alt="Rock Band Logo" className="h-16 w-auto" />
+          <Link to="/" className="flex items-center space-x-2 cursor-pointer">
+            <img src={logo} alt="Rock Band Logo" className="h-16 w-auto cursor-pointer" />
             <span className="hidden sm:block font-rock text-xl font-bold text-glow">
                
             </span>
