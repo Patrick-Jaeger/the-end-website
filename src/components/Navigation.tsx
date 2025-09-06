@@ -38,6 +38,11 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 transition-rock bg-background/95 backdrop-blur-sm shadow-dark"
@@ -48,7 +53,7 @@ const Navigation = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 cursor-pointer">
+          <Link to="/" className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-rock" onClick={handleLogoClick}>
             <img src={logo} alt="Rock Band Logo" className="h-16 w-auto cursor-pointer" />
             <span className="hidden sm:block font-rock text-xl font-bold text-glow">
                

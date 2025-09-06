@@ -55,7 +55,7 @@ const Index = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-4xl mx-auto bg-card border border-border rounded-lg p-8 shadow-rock cursor-pointer hover:shadow-lg transition-all duration-300"
+            className="max-w-4xl mx-auto bg-card border border-border rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300"
             onClick={handleEventCardClick}
           >
             <div className="grid md:grid-cols-2 gap-8 items-center">
