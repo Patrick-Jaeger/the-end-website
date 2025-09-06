@@ -21,31 +21,36 @@ const queryClient = new QueryClient();
 const App = () => {
   console.log("App component rendering...");
   
-  return (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/band" element={<Band />} />
-          <Route path="/gigs" element={<Gigs />} />
-          <Route path="/media" element={<Media />} />
-          <Route path="/repertoire" element={<Repertoire />} />
-          <Route path="/pa-lichtverleih" element={<PALichtverleih />} />
-          <Route path="/mearch" element={<Mearch />} />
-          <Route path="/kontakt" element={<Kontakt />} />
-          <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  try {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          
+          <BrowserRouter>
+            <div>Test - App is loading</div>
+            <Routes>
+              <Route path="/" element={<div>Home Page Working</div>} />
+              <Route path="/band" element={<div>Band Page Working</div>} />
+              <Route path="/gigs" element={<div>Gigs Page Working</div>} />
+              <Route path="/media" element={<div>Media Page Working</div>} />
+              <Route path="/repertoire" element={<div>Repertoire Page Working</div>} />
+              <Route path="/pa-lichtverleih" element={<div>PA-Lichtverleih Page Working</div>} />
+              <Route path="/mearch" element={<div>Mearch Page Working</div>} />
+              <Route path="/kontakt" element={<div>Kontakt Page Working</div>} />
+              <Route path="/impressum" element={<div>Impressum Page Working</div>} />
+              <Route path="/datenschutz" element={<div>Datenschutz Page Working</div>} />
+              <Route path="*" element={<div>404 - Page Not Found</div>} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    );
+  } catch (error) {
+    console.error("Error in App component:", error);
+    return <div>Error loading app: {error.message}</div>;
+  }
 };
 
 export default App;
