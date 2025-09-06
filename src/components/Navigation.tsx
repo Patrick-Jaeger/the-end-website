@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import logo from "@/assets/logo.png";
 
 const Navigation = () => {
@@ -44,12 +44,7 @@ const Navigation = () => {
   };
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 z-50 transition-rock bg-background/95 backdrop-blur-sm shadow-dark"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 transition-rock bg-background/95 backdrop-blur-sm shadow-dark">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -96,42 +91,31 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              className="lg:hidden fixed top-full left-0 right-0 bg-background/50 backdrop-blur-md border-t border-border shadow-dark z-40"
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            >
-              <div className="container mx-auto px-4 py-6">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.path}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+        {isOpen && (
+          <div className="lg:hidden fixed top-full left-0 right-0 bg-background/95 backdrop-blur-md border-t border-border shadow-dark z-40">
+            <div className="container mx-auto px-4 py-6">
+              {navItems.map((item, index) => (
+                <div
+                  key={item.path}
+                >
+                  <Link
+                    to={item.path}
+                    className={`block font-rock font-semibold py-3 px-4 rounded-lg mb-2 transition-rock hover:bg-primary/10 hover:text-primary ${
+                      location.pathname === item.path
+                        ? "text-primary text-glow bg-primary/5"
+                        : "text-foreground"
+                    }`}
+                    onClick={handleNavClick}
                   >
-                    <Link
-                      to={item.path}
-                      className={`block font-rock font-semibold py-3 px-4 rounded-lg mb-2 transition-rock hover:bg-primary/10 hover:text-primary ${
-                        location.pathname === item.path
-                          ? "text-primary text-glow bg-primary/5"
-                          : "text-foreground"
-                      }`}
-                      onClick={handleNavClick}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                    {item.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
-    </motion.header>
+    </header>
   );
 };
 
