@@ -10,12 +10,13 @@ import { useState } from "react";
 import EventModal from "@/components/EventModal";
 
 const Index = () => {
+  console.log("Index component rendering...");
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   
-  // GSAP Animations
-  useTextSplit('.text-split-home', 0.3);
-  useParallax('.parallax-home', 0.2);
-  useCardWiggle('.card-wiggle');
+  // Temporarily disable GSAP to test if it's causing the issue
+  // useTextSplit('.text-split-home', 0.3);
+  // useParallax('.parallax-home', 0.2);
+  // useCardWiggle('.card-wiggle');
 
   const handleEventCardClick = (e: React.MouseEvent) => {
     // Don't open modal if button was clicked
