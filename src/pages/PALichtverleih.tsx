@@ -13,9 +13,13 @@ import { format } from "date-fns";
 import { de } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useTextSplit } from "@/hooks/useGSAP";
 
 const PALichtverleih = () => {
   const [date, setDate] = useState<Date>();
+  
+  // GSAP Animation
+  useTextSplit('.text-split-pa', 0.2);
 
   return (
     <div className="min-h-screen bg-rock-gradient">
@@ -30,7 +34,7 @@ const PALichtverleih = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6">
+            <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6 text-split-pa">
               PA- & Lichtverleih
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

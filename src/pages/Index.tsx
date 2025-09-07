@@ -13,10 +13,10 @@ const Index = () => {
   console.log("Index component rendering...");
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   
-  // Temporarily disable GSAP to test if it's causing the issue
-  // useTextSplit('.text-split-home', 0.3);
-  // useParallax('.parallax-home', 0.2);
-  // useCardWiggle('.card-wiggle');
+  // Re-enable GSAP animations for consistent experience
+  useTextSplit('.text-split-home', 0.3);
+  useParallax('.parallax-home', 0.2);
+  useCardWiggle('.card-wiggle');
 
   const handleEventCardClick = (e: React.MouseEvent) => {
     // Don't open modal if button was clicked
@@ -101,7 +101,13 @@ const Index = () => {
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center group">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0 * 0.1 }}
+              className="text-center group"
+            >
               <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
                 <Users className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
@@ -114,9 +120,15 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="text-center group">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1 * 0.1 }}
+              className="text-center group"
+            >
               <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
                 <Music className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
@@ -129,9 +141,15 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="text-center group">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 2 * 0.1 }}
+              className="text-center group"
+            >
               <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
                 <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
@@ -144,7 +162,7 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -10,9 +10,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ShoppingBag, Shirt, Star, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useTextSplit } from "@/hooks/useGSAP";
 
 const Mearch = () => {
   const { toast } = useToast();
+  
+  // GSAP Animation
+  useTextSplit('.text-split-mearch', 0.2);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -98,7 +103,7 @@ const Mearch = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6">
+            <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6 text-split-mearch">
               Mearch
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

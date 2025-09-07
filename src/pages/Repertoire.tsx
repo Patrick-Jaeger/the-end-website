@@ -6,10 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, Music, Filter } from "lucide-react";
+import { useTextSplit } from "@/hooks/useGSAP";
 
 const Repertoire = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("Alle");
+  
+  // GSAP Animation
+  useTextSplit('.text-split-repertoire', 0.2);
 
   const songs = [
     {
@@ -144,7 +148,7 @@ const Repertoire = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h1 className="font-rock text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-glow mb-6 leading-tight">
+            <h1 className="font-rock text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-glow mb-6 leading-tight text-split-repertoire">
               Repertoire
             </h1>
 
