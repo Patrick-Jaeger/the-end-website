@@ -7,7 +7,7 @@ import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 
 const Media = () => {
   // GSAP Animations
-  useTextSplit('.text-split-media', 0.2);
+  useTextSplit('.text-split-media', 0.3);
   useParallax('.parallax-media', 0.4);
   useCardWiggle('.card-wiggle');
   

@@ -13,7 +13,7 @@ const Repertoire = () => {
   const [selectedGenre, setSelectedGenre] = useState("Alle");
   
   // GSAP Animation
-  useTextSplit('.text-split-repertoire', 0.2);
+  useTextSplit('.text-split-repertoire', 0.3);
 
   const songs = [
     {

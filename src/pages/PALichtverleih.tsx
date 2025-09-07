@@ -19,7 +19,7 @@ const PALichtverleih = () => {
   const [date, setDate] = useState<Date>();
   
   // GSAP Animation
-  useTextSplit('.text-split-pa', 0.2);
+  useTextSplit('.text-split-pa', 0.3);
 
   return (
     <div className="min-h-screen bg-rock-gradient">

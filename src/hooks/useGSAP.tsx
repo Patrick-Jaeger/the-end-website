@@ -84,18 +84,18 @@ export const useTextSplit = (selector: string, delay: number = 0) => {
       const charElements = element.querySelectorAll('.char');
       
       gsap.fromTo(charElements, 
-        { opacity: 0, y: 50, rotationX: 90 },
+        { opacity: 0, y: 30, rotationX: 45 },
         {
           opacity: 1,
           y: 0,
           rotationX: 0,
-          duration: 0.8,
-          stagger: 0.02,
+          duration: 1,
+          stagger: 0.03,
           delay,
-          ease: "back.out(1.7)",
+          ease: "power3.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 80%",
+            start: "top 85%",
             toggleActions: "play none none none"
           }
         }

@@ -16,7 +16,7 @@ const Mearch = () => {
   const { toast } = useToast();
   
   // GSAP Animation
-  useTextSplit('.text-split-mearch', 0.2);
+  useTextSplit('.text-split-mearch', 0.3);
   
   const [formData, setFormData] = useState({
     name: "",
