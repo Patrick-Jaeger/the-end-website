@@ -4,14 +4,13 @@ import { Calendar, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
 import logo from "@/assets/logo.png";
-import BeamsBackground from "./BeamsBackground";
 
 
 
 
 const Hero = () => {
   return (
-    <BeamsBackground className="min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -118,7 +117,7 @@ const Hero = () => {
 
       {/* Decorative Elements */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
-    </BeamsBackground>
+    </section>
   );
 };
 
