@@ -3,12 +3,14 @@ import React, { useRef, useEffect } from "react";
 interface Beam {
   x: number;
   y: number;
+  width: number;
   length: number;
   angle: number;
   speed: number;
-  width: number;
   opacity: number;
-  color: string;
+  hue: number;
+  pulse: number;
+  pulseSpeed: number;
 }
 
 const BeamsBackground: React.FC = () => {
@@ -16,26 +18,53 @@ const BeamsBackground: React.FC = () => {
   const beams: Beam[] = [];
   const animationRef = useRef<number>();
 
-  const NUM_BEAMS = 12; // Weniger Strahlen, aber breiter
-  const COLORS = ["#e7029a", "#f472b6", "#bd5fff", "#ec4899"];
+  const NUM_BEAMS = 12;
 
-  // Generate beams starting from left-top and right-top
+  function createBeam(width: number, height: number): Beam {
+    const angle = -35 + Math.random() * 10;
+    return {
+      x: Math.random() * width * 1.5 - width * 0.25,
+      y: Math.random() * height * 1.5 - height * 0.25,
+      width: 80 + Math.random() * 120, // breiter
+      length: height * 2.5,
+      angle,
+      speed: 0.8 + Math.random() * 0.8,
+      opacity: 0.15 + Math.random() * 0.2,
+      // Mischung aus Weiß (0) und Blau (~210–240)
+      hue: Math.random() > 0.3 ? 210 + Math.random() * 30 : 0,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.02 + Math.random() * 0.03,
+    };
+  }
+
+  function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam, intensity: number) {
+    ctx.save();
+    ctx.translate(beam.x, beam.y);
+    ctx.rotate((beam.angle * Math.PI) / 180);
+
+    const pulsingOpacity =
+      beam.opacity *
+      (0.8 + Math.sin(beam.pulse) * 0.2) *
+      intensity;
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
+
+    gradient.addColorStop(0, `hsla(${beam.hue}, 100%, 80%, 0)`);
+    gradient.addColorStop(0.2, `hsla(${beam.hue}, 100%, 85%, ${pulsingOpacity * 0.5})`);
+    gradient.addColorStop(0.5, `hsla(${beam.hue}, 100%, 90%, ${pulsingOpacity})`);
+    gradient.addColorStop(0.8, `hsla(${beam.hue}, 100%, 85%, ${pulsingOpacity * 0.5})`);
+    gradient.addColorStop(1, `hsla(${beam.hue}, 100%, 80%, 0)`);
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
+    ctx.restore();
+  }
+
+  // Generate beams
   const generateBeams = (width: number, height: number) => {
     beams.length = 0;
     for (let i = 0; i < NUM_BEAMS; i++) {
-      const fromLeft = i % 2 === 0;
-      beams.push({
-        x: fromLeft ? 0 : width, // Start links oder rechts
-        y: 0, // von oben
-        length: height * 1.5, // länger, damit es nach unten reicht
-        angle: fromLeft
-          ? Math.PI / 3 + Math.random() * 0.2 // leicht nach innen geneigt
-          : (2 * Math.PI) / 3 - Math.random() * 0.2,
-        speed: (Math.random() - 0.5) * 0.003, // stärkere Bewegung
-        width: 100 + Math.random() * 100, // viel breiter!
-        opacity: 0.2 + Math.random() * 0.2,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      });
+      beams.push(createBeam(width, height));
     }
   };
 
@@ -62,38 +91,21 @@ const BeamsBackground: React.FC = () => {
       ctx.fillStyle = "#1a1a1a";
       ctx.fillRect(0, 0, width, height);
 
+      // Set blur filter
+      ctx.filter = "blur(50px)";
+
       beams.forEach((beam) => {
-        ctx.save();
-        ctx.translate(beam.x, beam.y);
-        ctx.rotate(beam.angle);
+        drawBeam(ctx, beam, 1.0);
 
-        // Weicher Glow
-        ctx.shadowColor = beam.color;
-        ctx.shadowBlur = 100;
+        // Update pulse
+        beam.pulse += beam.pulseSpeed;
 
-        // Gradient für Lichtkegel
-        const gradient = ctx.createLinearGradient(0, 0, beam.length, 0);
-        gradient.addColorStop(0, `${beam.color}00`);
-        gradient.addColorStop(
-          0.3,
-          `${beam.color}${Math.floor(beam.opacity * 255)
-            .toString(16)
-            .padStart(2, "0")}`
-        );
-        gradient.addColorStop(1, `${beam.color}00`);
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = beam.width;
-        ctx.lineCap = "round";
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(beam.length, 0);
-        ctx.stroke();
-        ctx.restore();
-
-        // Kleiner "Wabereffekt"
-        beam.angle += beam.speed;
+        // Slight movement
+        beam.angle += beam.speed * 0.01;
       });
+
+      // Reset filter
+      ctx.filter = "none";
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -130,7 +142,7 @@ const BeamsBackground: React.FC = () => {
         left: 0,
         width: "100%",
         height: "100%",
-        zIndex: 0,
+        zIndex: 1,
         pointerEvents: "none",
       }}
     />
