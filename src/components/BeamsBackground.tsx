@@ -31,9 +31,9 @@ const BeamsBackground: React.FC = () => {
         angle: fromLeft
           ? Math.PI / 3 + Math.random() * 0.2 // leicht nach innen geneigt
           : (2 * Math.PI) / 3 - Math.random() * 0.2,
-        speed: (Math.random() - 0.5) * 0.0005, // nur minimaler „wabernder" Effekt
-        width: 80 + Math.random() * 100, // viel breiter!
-        opacity: 0.15 + Math.random() * 0.1,
+        speed: (Math.random() - 0.5) * 0.003, // stärkere Bewegung
+        width: 100 + Math.random() * 100, // viel breiter!
+        opacity: 0.2 + Math.random() * 0.2,
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
       });
     }
@@ -130,7 +130,7 @@ const BeamsBackground: React.FC = () => {
         left: 0,
         width: "100%",
         height: "100%",
-        zIndex: -1,
+        zIndex: 0,
         pointerEvents: "none",
       }}
     />
