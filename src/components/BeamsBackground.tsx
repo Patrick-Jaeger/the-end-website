@@ -16,21 +16,24 @@ const BeamsBackground: React.FC = () => {
   const beams: Beam[] = [];
   const animationRef = useRef<number>();
 
-  const NUM_BEAMS = 35;
+  const NUM_BEAMS = 12; // Weniger Strahlen, aber breiter
   const COLORS = ["#e7029a", "#f472b6", "#bd5fff", "#ec4899"];
 
-  // Generate random beams
+  // Generate beams starting from left-top and right-top
   const generateBeams = (width: number, height: number) => {
     beams.length = 0;
     for (let i = 0; i < NUM_BEAMS; i++) {
+      const fromLeft = i % 2 === 0;
       beams.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        length: 150 + Math.random() * 350,
-        angle: Math.random() * Math.PI * 2,
-        speed: 0.001 + Math.random() * 0.002,
-        width: 0.5 + Math.random() * 1.5,
-        opacity: 0.3 + Math.random() * 0.4,
+        x: fromLeft ? 0 : width, // Start links oder rechts
+        y: 0, // von oben
+        length: height * 1.5, // länger, damit es nach unten reicht
+        angle: fromLeft
+          ? Math.PI / 3 + Math.random() * 0.2 // leicht nach innen geneigt
+          : (2 * Math.PI) / 3 - Math.random() * 0.2,
+        speed: (Math.random() - 0.5) * 0.0005, // nur minimaler „wabernder" Effekt
+        width: 80 + Math.random() * 100, // viel breiter!
+        opacity: 0.15 + Math.random() * 0.1,
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
       });
     }
@@ -54,23 +57,31 @@ const BeamsBackground: React.FC = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
-      
-      // Set background
+
+      // Hintergrund dunkel
       ctx.fillStyle = "#1a1a1a";
       ctx.fillRect(0, 0, width, height);
 
-      // Draw beams
       beams.forEach((beam) => {
         ctx.save();
         ctx.translate(beam.x, beam.y);
         ctx.rotate(beam.angle);
-        
-        // Create gradient for beam
+
+        // Weicher Glow
+        ctx.shadowColor = beam.color;
+        ctx.shadowBlur = 100;
+
+        // Gradient für Lichtkegel
         const gradient = ctx.createLinearGradient(0, 0, beam.length, 0);
         gradient.addColorStop(0, `${beam.color}00`);
-        gradient.addColorStop(0.5, `${beam.color}${Math.floor(beam.opacity * 255).toString(16).padStart(2, '0')}`);
+        gradient.addColorStop(
+          0.3,
+          `${beam.color}${Math.floor(beam.opacity * 255)
+            .toString(16)
+            .padStart(2, "0")}`
+        );
         gradient.addColorStop(1, `${beam.color}00`);
-        
+
         ctx.strokeStyle = gradient;
         ctx.lineWidth = beam.width;
         ctx.lineCap = "round";
@@ -80,13 +91,8 @@ const BeamsBackground: React.FC = () => {
         ctx.stroke();
         ctx.restore();
 
-        // Update beam rotation
+        // Kleiner "Wabereffekt"
         beam.angle += beam.speed;
-        
-        // Occasionally change direction slightly
-        if (Math.random() < 0.001) {
-          beam.speed *= -1;
-        }
       });
 
       animationRef.current = requestAnimationFrame(animate);
