@@ -25,13 +25,13 @@ function createBeam(width: number, height: number): Beam {
   return {
     x: fromLeft
       ? Math.random() * width * 0.3
-      : width * 0.7 + Math.random() * width * 0.3,
+      : width * 0.7 + Math.random() * 0.3 * width,
     y: -200,
-    width: 60 + Math.random() * 80,
+    width: 80 + Math.random() * 120,
     length: height * 2,
     angle,
     speed: 1 + Math.random() * 1.5,
-    opacity: 0.3 + Math.random() * 0.2,
+    opacity: 0.25 + Math.random() * 0.25,
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
@@ -50,12 +50,16 @@ const BeamsBackground: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Canvas-Größe direkt in CSS-Pixeln
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    ctx.scale(dpr, dpr);
 
-    beamsRef.current = Array.from({ length: 20 }, () =>
-      createBeam(canvas.width, canvas.height)
+    const beamCount = 25;
+    beamsRef.current = Array.from({ length: beamCount }, () =>
+      createBeam(window.innerWidth, window.innerHeight)
     );
 
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
@@ -63,42 +67,63 @@ const BeamsBackground: React.FC = () => {
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity =
-        beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
-      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
-      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
+      gradient.addColorStop(
+        0.3,
+        `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`
+      );
+      gradient.addColorStop(
+        0.7,
+        `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`
+      );
       gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(40px)";
+      ctx.filter = "blur(30px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
 
-      ctx.filter = "none"; // Reset, damit nicht alles unscharf bleibt
+      ctx.filter = "none"; // Reset filter
     }
 
-function animate() {
-  // Hintergrund zeichnen (statt alles transparent zu machen)
-  ctx.fillStyle = "rgba(10, 10, 20, 1)"; // dunkles Blau-Schwarz
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function animate() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-  // Test: zeichne ein rotes Rechteck
-  ctx.fillStyle = "red";
-  ctx.fillRect(50, 50, 200, 200);
+      beamsRef.current.forEach((beam, i) => {
+        beam.y += beam.speed;
+        beam.pulse += beam.pulseSpeed;
 
-  // Hier später deine Beams/Strahlen zeichnen...
+        if (beam.y > window.innerHeight + 200) {
+          beamsRef.current[i] = createBeam(window.innerWidth, window.innerHeight);
+        }
 
-  animationFrameRef.current = requestAnimationFrame(animate);
-}
+        drawBeam(ctx, beam);
+      });
 
+      animationFrameRef.current = requestAnimationFrame(animate);
+    }
 
     animate();
 
+    const handleResize = () => {
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.scale(dpr, dpr);
+      beamsRef.current = Array.from({ length: beamCount }, () =>
+        createBeam(window.innerWidth, window.innerHeight)
+      );
+    };
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -106,8 +131,6 @@ function animate() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 z-0 w-full h-full"
-
-
       style={{ pointerEvents: "none" }}
     />
   );
