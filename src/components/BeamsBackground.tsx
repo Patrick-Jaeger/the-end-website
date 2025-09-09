@@ -12,7 +12,7 @@ interface Beam {
   saturation: number;
   pulse: number;
   pulseSpeed: number;
-  direction: 1 | -1; // für wieder nach oben wandern
+  direction: 1 | -1; // 1 = nach unten, -1 = nach oben
 }
 
 function createBeam(width: number, height: number): Beam {
@@ -24,25 +24,27 @@ function createBeam(width: number, height: number): Beam {
   const saturation = isBlue ? 100 : 0;
 
   return {
-    x: fromLeft ? Math.random() * width * 0.3 : width * 0.7 + Math.random() * width * 0.3,
-    y: Math.random() * height, // zufällige Startposition
-    width: 60 + Math.random() * 80,
-    length: height * 1.5,
+    x: fromLeft
+      ? Math.random() * width * 0.3
+      : width * 0.7 + Math.random() * width * 0.3,
+    y: Math.random() * height, // start zufällig im sichtbaren Bereich
+    width: 80 + Math.random() * 100,
+    length: height * 2,
     angle,
-    speed: 0.3 + Math.random() * 0.7,
-    opacity: 0.3 + Math.random() * 0.3,
+    speed: 0.5 + Math.random() * 0.8, // langsamere Bewegung
+    opacity: 0.6 + Math.random() * 0.3, // stärker sichtbar
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.005 + Math.random() * 0.01,
-    direction: 1,
+    pulseSpeed: 0.01 + Math.random() * 0.02,
+    direction: 1, // startet nach unten
   };
 }
 
 const BeamsBackground: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const beamsRef = useRef<Beam[]>([]);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -53,49 +55,51 @@ const BeamsBackground: React.FC = () => {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      beamsRef.current = Array.from({ length: 15 }, () =>
-        createBeam(canvas.width, canvas.height)
-      );
     };
-
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
 
-    const drawBeam = (beam: Beam) => {
-      if (!ctx) return;
+    beamsRef.current = Array.from({ length: 30 }, () =>
+      createBeam(canvas.width, canvas.height)
+    );
+
+    function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
       ctx.save();
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+      const pulsingOpacity = beam.opacity * (0.7 + Math.sin(beam.pulse) * 0.3);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
-      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`);
-      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`);
+      gradient.addColorStop(
+        0.3,
+        `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`
+      );
+      gradient.addColorStop(
+        0.7,
+        `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`
+      );
       gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(30px)";
+      ctx.filter = "blur(25px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
-    };
+    }
 
     const animate = () => {
-      if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam) => {
         beam.y += beam.speed * beam.direction;
         beam.pulse += beam.pulseSpeed;
 
-        // wenn Strahl zu weit nach unten oder oben, Richtung umkehren
-        if (beam.y > canvas.height || beam.y < 0) {
-          beam.direction *= -1;
-        }
+        // Umkehr an Bildschirmgrenzen → „hin und zurück“ Bewegung
+        if (beam.y > canvas.height) beam.direction = -1;
+        if (beam.y < -beam.length) beam.direction = 1;
 
-        drawBeam(beam);
+        drawBeam(ctx, beam);
       });
 
       animationFrameRef.current = requestAnimationFrame(animate);
@@ -103,8 +107,10 @@ const BeamsBackground: React.FC = () => {
 
     animate();
 
+    window.addEventListener("resize", resizeCanvas);
     return () => {
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      if (animationFrameRef.current)
+        cancelAnimationFrame(animationFrameRef.current);
       window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
@@ -112,7 +118,8 @@ const BeamsBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 w-full h-full pointer-events-none"
+      className="fixed inset-0 z-0 w-full h-full"
+      style={{ pointerEvents: "none", background: "transparent" }}
     />
   );
 };
