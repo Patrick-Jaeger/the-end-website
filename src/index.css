@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Rock Band Design System - Grungy Blue/Black Theme */
-/* All colors MUST be HSL. */
-
-/* Local font faces */
+/* Fonts */
 @font-face {
   font-family: "TheEndFont";
   src: url("/fonts/The-End-Schrift-LOAD.woff2") format("woff2"),
@@ -45,80 +42,22 @@
   :root {
     --background: 220 15% 8%;
     --foreground: 0 0% 95%;
-
-    --card: 220 15% 12%;
-    --card-foreground: 0 0% 90%;
-
-    --popover: 220 15% 12%;
-    --popover-foreground: 0 0% 90%;
-
-    --primary: 215 85% 45%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 215 85% 65%;
-
-    --secondary: 220 15% 20%;
-    --secondary-foreground: 0 0% 85%;
-
-    --muted: 220 10% 25%;
-    --muted-foreground: 220 5% 60%;
-
-    --accent: 215 85% 55%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 85% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 15% 25%;
-    --input: 220 15% 18%;
-    --ring: 215 85% 45%;
-
     --rock-blue: 215 85% 45%;
     --rock-blue-glow: 215 85% 65%;
-    --grunge-dark: 220 15% 8%;
-    --grunge-lighter: 220 15% 15%;
-
-    --gradient-hero: linear-gradient(135deg, hsl(var(--grunge-dark)), hsl(var(--rock-blue-glow)/0.1));
-    --gradient-accent: linear-gradient(90deg, hsl(var(--rock-blue)), hsl(var(--rock-blue-glow)));
-    --gradient-dark: linear-gradient(180deg, hsl(var(--grunge-dark)), hsl(var(--grunge-lighter)));
-
-    --shadow-rock: 0 10px 30px -10px hsl(var(--rock-blue)/0.3);
-    --shadow-glow: 0 0 40px hsl(var(--rock-blue-glow)/0.4);
-    --shadow-dark: 0 4px 20px hsl(0 0% 0% / 0.5);
-
-    --transition-rock: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --radius: 0.5rem;
   }
 
-  /* Light mode fallback */
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 220 15% 8%;
-    --primary: 215 85% 35%;
-    --card: 0 0% 98%;
-    --border: 220 15% 85%;
+  html, body {
+    @apply m-0 p-0 min-h-screen w-full;
+    background-color: hsl(var(--background)); /* Ganz leicht dunkler Hintergrund */
+    color: hsl(var(--foreground));
+    font-family: 'BodyFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
-
-  /* Apply fonts and background */
-  * {
-    box-sizing: border-box;
-  }
-
-html, body {
-  @apply m-0 p-0 min-h-screen w-full;
-  background: linear-gradient(180deg, hsl(220,15%,8%), hsl(215,85%,45%) / 0.15);
-  color: hsl(var(--foreground));
-  font-family: 'BodyFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  overflow-x: hidden; /* verhindert horizontales Scrollen */
-}
-
-
 
   h1,h2,h3,h4,h5,h6 {
     font-family: 'RockFont', 'TheEndFont', Impact, Arial Black, sans-serif;
     font-weight: 700;
-    letter-spacing: -0.025em;
   }
 
   a {
@@ -127,62 +66,28 @@ html, body {
   }
 }
 
-/* Components and utilities */
+/* Components */
 @layer components {
   .text-glow {
     text-shadow: 0 0 20px hsl(var(--rock-blue-glow)/0.5);
   }
 
-  .bg-grunge {
-    background: var(--gradient-dark);
-  }
-
-  .bg-rock-gradient {
-    background: var(--gradient-hero);
-  }
-
-  .shadow-rock {
-    box-shadow: var(--shadow-rock);
-  }
-
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
-
-  .transition-rock {
-    transition: var(--transition-rock);
-  }
-
-  .hover-rock:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
-  }
-
   .btn-rock {
-    @apply px-6 py-3 rounded-lg font-semibold transition-rock;
-    background: var(--gradient-accent);
-    color: hsl(var(--primary-foreground));
+    @apply px-6 py-3 rounded-lg font-semibold;
+    background: hsl(var(--rock-blue));
+    color: hsl(var(--foreground));
   }
 
   .btn-outline-rock {
     @apply px-6 py-3 rounded-lg font-semibold border-2;
-    border-color: hsl(var(--primary));
-    color: hsl(var(--primary));
+    border-color: hsl(var(--rock-blue));
+    color: hsl(var(--rock-blue));
   }
 
   .btn-outline-rock:hover {
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-    box-shadow: var(--shadow-glow);
-  }
-
-  /* Custom cursor */
-  * {
-    cursor: url('@/assets/Curser.svg'), auto !important;
-  }
-
-  a:hover {
-    cursor: url('@/assets/Curser.svg'), pointer !important;
+    background: hsl(var(--rock-blue));
+    color: hsl(var(--foreground));
+    box-shadow: 0 0 40px hsl(var(--rock-blue-glow)/0.4);
   }
 
   /* Card wiggle effect */
@@ -197,13 +102,13 @@ html, body {
   }
 }
 
-/* Scrollbar styling optional */
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--grunge-dark));
+  background: hsl(var(--background));
 }
 
 ::-webkit-scrollbar-thumb {
