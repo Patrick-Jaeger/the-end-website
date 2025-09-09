@@ -17,6 +17,7 @@ interface Beam {
 function createBeam(width: number, height: number): Beam {
   const fromLeft = Math.random() > 0.5;
   const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
+
   const isBlue = Math.random() > 0.3;
   const hue = isBlue ? 210 + Math.random() * 40 : 0;
   const saturation = isBlue ? 100 : 0;
@@ -52,7 +53,7 @@ const BeamsBackground: React.FC = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    beamsRef.current = Array.from({ length: 20 }, () =>
+    beamsRef.current = Array.from({ length: 25 }, () =>
       createBeam(canvas.width, canvas.height)
     );
 
@@ -66,20 +67,15 @@ const BeamsBackground: React.FC = () => {
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
-      gradient.addColorStop(
-        0.3,
-        `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`
-      );
-      gradient.addColorStop(
-        0.7,
-        `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`
-      );
+      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
+      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
       gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(50px)";
+      ctx.filter = "blur(25px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
+
       ctx.filter = "none";
     }
 
@@ -102,15 +98,23 @@ const BeamsBackground: React.FC = () => {
 
     animate();
 
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
+
     return () => {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-10 w-full h-full pointer-events-none"
+      className="fixed inset-0 z-0 w-full h-full"
+      style={{ pointerEvents: "none", background: "transparent" }}
     />
   );
 };
