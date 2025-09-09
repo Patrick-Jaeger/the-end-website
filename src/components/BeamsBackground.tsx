@@ -10,20 +10,32 @@ interface Beam {
   opacity: number;
   hue: number;
   saturation: number;
+  pulse: number;
+  pulseSpeed: number;
+  direction: 1 | -1; // für wieder nach oben wandern
 }
 
 function createBeam(width: number, height: number): Beam {
+  const fromLeft = Math.random() > 0.5;
+  const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
+
   const isBlue = Math.random() > 0.3;
+  const hue = isBlue ? 210 + Math.random() * 40 : 0;
+  const saturation = isBlue ? 100 : 0;
+
   return {
-    x: Math.random() * width,
-    y: Math.random() * height,
-    width: 60 + Math.random() * 40,
+    x: fromLeft ? Math.random() * width * 0.3 : width * 0.7 + Math.random() * width * 0.3,
+    y: Math.random() * height, // zufällige Startposition
+    width: 60 + Math.random() * 80,
     length: height * 1.5,
-    angle: Math.random() * 30 - 15,
-    speed: 0.2 + Math.random() * 0.3,
-    opacity: 0.5 + Math.random() * 0.3,
-    hue: isBlue ? 210 + Math.random() * 40 : 0,
-    saturation: isBlue ? 100 : 0,
+    angle,
+    speed: 0.3 + Math.random() * 0.7,
+    opacity: 0.3 + Math.random() * 0.3,
+    hue,
+    saturation,
+    pulse: Math.random() * Math.PI * 2,
+    pulseSpeed: 0.005 + Math.random() * 0.01,
+    direction: 1,
   };
 }
 
@@ -39,46 +51,55 @@ const BeamsBackground: React.FC = () => {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      beamsRef.current = Array.from({ length: 15 }, () =>
+        createBeam(canvas.width, canvas.height)
+      );
     };
+
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    beamsRef.current = Array.from({ length: 10 }, () =>
-      createBeam(canvas.width, canvas.height)
-    );
-
-    function drawBeam(beam: Beam) {
+    const drawBeam = (beam: Beam) => {
+      if (!ctx) return;
       ctx.save();
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
+      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `hsla(${beam.hue},${beam.saturation}%,90%,0)`);
-      gradient.addColorStop(0.3, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
-      gradient.addColorStop(0.7, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
-      gradient.addColorStop(1, `hsla(${beam.hue},${beam.saturation}%,90%,0)`);
+      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
+      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`);
+      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`);
+      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(40px)";
+      ctx.filter = "blur(30px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
-    }
+    };
 
-    function animate() {
+    const animate = () => {
+      if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam) => {
-        beam.y += beam.speed;
-        if (beam.y > canvas.height) beam.y = -beam.length;
+        beam.y += beam.speed * beam.direction;
+        beam.pulse += beam.pulseSpeed;
+
+        // wenn Strahl zu weit nach unten oder oben, Richtung umkehren
+        if (beam.y > canvas.height || beam.y < 0) {
+          beam.direction *= -1;
+        }
+
         drawBeam(beam);
       });
 
       animationFrameRef.current = requestAnimationFrame(animate);
-    }
+    };
 
     animate();
 
@@ -91,15 +112,7 @@ const BeamsBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: 0,
-        pointerEvents: "none",
-      }}
+      className="fixed inset-0 -z-10 w-full h-full pointer-events-none"
     />
   );
 };
