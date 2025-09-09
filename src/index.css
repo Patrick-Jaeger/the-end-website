@@ -100,26 +100,22 @@
     --border: 220 15% 85%;
   }
 
-  /* Global reset and base styles */
+  /* Fonts and background */
   * {
     box-sizing: border-box;
   }
 
   html, body {
     @apply m-0 p-0 min-h-screen w-full;
-    background: hsl(var(--background));
+    background: hsl(var(--grunge-dark));
     color: hsl(var(--foreground));
     font-family: 'BodyFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    overflow-x: hidden;
-    position: relative;
-    z-index: 0;
   }
 
   h1,h2,h3,h4,h5,h6 {
     font-family: 'RockFont', 'TheEndFont', Impact, Arial Black, sans-serif;
     font-weight: 700;
     letter-spacing: -0.025em;
-    color: hsl(var(--foreground));
   }
 
   a {
@@ -160,13 +156,13 @@
   }
 
   .btn-rock {
-    @apply px-6 py-3 rounded-lg font-semibold transition-rock relative z-10;
+    @apply px-6 py-3 rounded-lg font-semibold transition-rock;
     background: var(--gradient-accent);
     color: hsl(var(--primary-foreground));
   }
 
   .btn-outline-rock {
-    @apply px-6 py-3 rounded-lg font-semibold border-2 relative z-10;
+    @apply px-6 py-3 rounded-lg font-semibold border-2;
     border-color: hsl(var(--primary));
     color: hsl(var(--primary));
   }
@@ -195,17 +191,6 @@
 
   .card-wiggle-media:hover {
     animation: card-wiggle 0.4s ease-in-out;
-  }
-
-  /* Make cards and main components visible over canvas */
-  .card, .navbar, .header, .main, .footer {
-    position: relative;
-    z-index: 10;
-  }
-
-  /* Optional: smooth scrolling */
-  html {
-    scroll-behavior: smooth;
   }
 }
 
