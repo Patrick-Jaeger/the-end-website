@@ -27,15 +27,15 @@ function createBeam(width: number, height: number): Beam {
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
     y: -200,
-    width: 60 + Math.random() * 80,
+    width: 80 + Math.random() * 100,
     length: height * 2,
     angle,
-    speed: 1 + Math.random() * 1.5,
-    opacity: 0.3 + Math.random() * 0.2,
+    speed: 1.5 + Math.random() * 1.5,
+    opacity: 0.5 + Math.random() * 0.3, // Heller machen
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.01 + Math.random() * 0.02,
+    pulseSpeed: 0.01 + Math.random() * 0.03,
   };
 }
 
@@ -53,7 +53,7 @@ const BeamsBackground: React.FC = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    beamsRef.current = Array.from({ length: 25 }, () =>
+    beamsRef.current = Array.from({ length: 30 }, () =>
       createBeam(canvas.width, canvas.height)
     );
 
@@ -66,13 +66,13 @@ const BeamsBackground: React.FC = () => {
         beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
-      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
-      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
-      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
+      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
+      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`);
+      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`);
+      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(25px)";
+      ctx.filter = "blur(15px)"; // weniger blur → sichtbarer
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
 
