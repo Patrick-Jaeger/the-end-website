@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fonts */
+/* Rock Band Design System - Grungy Blue/Black Theme */
 @font-face {
   font-family: "TheEndFont";
   src: url("/fonts/The-End-Schrift-LOAD.woff2") format("woff2"),
        url("/fonts/The-End-Schrift-LOAD.woff") format("woff"),
        url("/fonts/The-End-Schrift-LOAD.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TheEndFont1";
+  src: url("/fonts/The-End-Schrift-LOAD1.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -29,20 +37,22 @@
   font-display: swap;
 }
 
-/* Root variables */
 @layer base {
   :root {
     --background: 220 15% 8%;
     --foreground: 0 0% 95%;
+    --primary: 215 85% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 215 85% 65%;
+    --secondary: 220 15% 20%;
+    --accent: 215 85% 55%;
     --rock-blue: 215 85% 45%;
     --rock-blue-glow: 215 85% 65%;
-    --grunge-dark: 220 15% 8%;
-    --grunge-lighter: 220 15% 15%;
   }
 
   html, body {
     @apply m-0 p-0 min-h-screen w-full;
-    background-color: hsl(var(--grunge-dark));
+    background: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: 'BodyFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
@@ -58,37 +68,39 @@
   }
 }
 
-/* Components and utilities */
 @layer components {
-  .card {
-    background-color: hsl(var(--grunge-lighter));
-    color: hsl(var(--foreground));
-    @apply rounded-lg p-4;
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--rock-blue-glow)/0.5);
   }
 
   .btn-rock {
-    @apply px-6 py-3 rounded-lg font-semibold transition-all;
-    background-color: hsl(var(--rock-blue));
-    color: hsl(var(--foreground));
-  }
-
-  .btn-rock:hover {
-    @apply shadow-lg;
+    @apply px-6 py-3 rounded-lg font-semibold;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
   }
 
   .btn-outline-rock {
     @apply px-6 py-3 rounded-lg font-semibold border-2;
-    border-color: hsl(var(--rock-blue));
-    color: hsl(var(--rock-blue));
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
   }
 
   .btn-outline-rock:hover {
-    background-color: hsl(var(--rock-blue));
-    color: hsl(var(--foreground));
-    @apply shadow-lg;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 0 40px hsl(var(--rock-blue-glow)/0.4);
   }
 
-  /* Card hover animation */
+  /* Cursor */
+  * {
+    cursor: url('@/assets/Curser.svg'), auto !important;
+  }
+
+  a:hover {
+    cursor: url('@/assets/Curser.svg'), pointer !important;
+  }
+
+  /* Card hover wiggle */
   @keyframes card-wiggle {
     0%,100% { transform: rotate(0deg) scale(1); }
     25% { transform: rotate(-1deg) scale(1.02); }
