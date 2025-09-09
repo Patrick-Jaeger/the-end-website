@@ -80,22 +80,16 @@ const BeamsBackground: React.FC = () => {
       ctx.filter = "none"; // Reset, damit nicht alles unscharf bleibt
     }
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      beamsRef.current.forEach((beam, i) => {
-        beam.y += beam.speed;
-        beam.pulse += beam.pulseSpeed;
+  // Test: zeichne ein rotes Rechteck
+  ctx.fillStyle = "red";
+  ctx.fillRect(50, 50, 200, 200);
 
-        if (beam.y > canvas.height + 200) {
-          beamsRef.current[i] = createBeam(canvas.width, canvas.height);
-        }
+  animationFrameRef.current = requestAnimationFrame(animate);
+}
 
-        drawBeam(ctx, beam);
-      });
-
-      animationFrameRef.current = requestAnimationFrame(animate);
-    }
 
     animate();
 
