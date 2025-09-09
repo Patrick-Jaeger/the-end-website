@@ -81,11 +81,15 @@ const BeamsBackground: React.FC = () => {
     }
 
 function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Hintergrund zeichnen (statt alles transparent zu machen)
+  ctx.fillStyle = "rgba(10, 10, 20, 1)"; // dunkles Blau-Schwarz
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   // Test: zeichne ein rotes Rechteck
   ctx.fillStyle = "red";
   ctx.fillRect(50, 50, 200, 200);
+
+  // Hier später deine Beams/Strahlen zeichnen...
 
   animationFrameRef.current = requestAnimationFrame(animate);
 }
