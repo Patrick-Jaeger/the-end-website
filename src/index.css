@@ -77,12 +77,15 @@
   }
 
   /* Cards */
-  .card {
-    background-color: hsl(var(--card-bg));
-    color: hsl(var(--card-text));
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-  }
+.card {
+  @apply relative z-10;
+  background-color: hsl(var(--card-bg)) !important; /* zwingend Hintergrundfarbe */
+  color: hsl(var(--card-text)) !important;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px hsl(var(--rock-blue-glow)/0.3);
+}
+
 
   /* Buttons */
   .btn-rock {
