@@ -18,7 +18,6 @@ function createBeam(width: number, height: number): Beam {
   const fromLeft = Math.random() > 0.5;
   const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
 
-  // 70% blau, 30% weiß
   const isBlue = Math.random() > 0.3;
   const hue = isBlue ? 210 + Math.random() * 40 : 0;
   const saturation = isBlue ? 100 : 0;
@@ -27,16 +26,16 @@ function createBeam(width: number, height: number): Beam {
     x: fromLeft
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
-    y: Math.random() * height, // Start random innerhalb der Höhe
+    y: -Math.random() * height, // start etwas über dem sichtbaren Bereich
     width: 60 + Math.random() * 80,
     length: height * 2,
     angle,
-    speed: 0.5 + Math.random() * 0.7, // langsamer → sanfte Bewegung
-    opacity: 0.4 + Math.random() * 0.4, // stärker sichtbar
+    speed: 0.3 + Math.random() * 0.5, // langsame, sanfte Bewegung
+    opacity: 0.5 + Math.random() * 0.3, // sichtbar, aber nicht überstrahlend
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.005 + Math.random() * 0.01, // langsames Pulsieren
+    pulseSpeed: 0.005 + Math.random() * 0.01,
   };
 }
 
@@ -58,7 +57,7 @@ const BeamsBackground: React.FC = () => {
     canvas.style.height = `${window.innerHeight}px`;
     ctx.scale(dpr, dpr);
 
-    const beamCount = 50; // mehr Strahlen
+    const beamCount = 25; // moderat, nicht zu viele
     beamsRef.current = Array.from({ length: beamCount }, () =>
       createBeam(window.innerWidth, window.innerHeight)
     );
@@ -72,29 +71,29 @@ const BeamsBackground: React.FC = () => {
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 100%, 0)`);
-      gradient.addColorStop(0.2, `hsla(${beam.hue}, ${beam.saturation}%, 100%, ${pulsingOpacity * 0.6})`);
+      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 100%, ${pulsingOpacity * 0.6})`);
       gradient.addColorStop(0.5, `hsla(${beam.hue}, ${beam.saturation}%, 100%, ${pulsingOpacity})`);
       gradient.addColorStop(0.8, `hsla(${beam.hue}, ${beam.saturation}%, 100%, ${pulsingOpacity * 0.6})`);
       gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 100%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(40px)";
+      ctx.filter = "blur(35px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
     }
 
     function animate() {
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      // dunkler Hintergrund, leicht transparent für Strahlen sichtbar
+      ctx.fillStyle = "rgba(10,10,20,0.35)";
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
       beamsRef.current.forEach((beam) => {
         beam.y += beam.speed;
         beam.pulse += beam.pulseSpeed;
 
-        // Wenn unten → wieder oben starten
         if (beam.y > window.innerHeight + 200) {
-          beam.y = -200;
-          beam.x = Math.random() * window.innerWidth;
+          beam.y = -200; // wieder oben starten, kein Ploppen
         }
 
         drawBeam(ctx, beam);
