@@ -47,7 +47,6 @@ const BeamsBackground: React.FC = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // 12 Strahlen
     beamsRef.current = Array.from({ length: 12 }, () =>
       createBeam(canvas.width, canvas.height)
     );
@@ -64,7 +63,7 @@ const BeamsBackground: React.FC = () => {
       gradient.addColorStop(1, `hsla(${beam.hue},${beam.saturation}%,90%,0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(35px)";
+      ctx.filter = "blur(40px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
@@ -93,7 +92,15 @@ const BeamsBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 w-full h-full pointer-events-none"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: 0,
+        pointerEvents: "none",
+      }}
     />
   );
 };
