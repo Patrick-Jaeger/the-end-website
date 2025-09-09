@@ -10,30 +10,20 @@ interface Beam {
   opacity: number;
   hue: number;
   saturation: number;
-  pulse: number;
-  pulseSpeed: number;
 }
 
 function createBeam(width: number, height: number): Beam {
-  const fromLeft = Math.random() > 0.5;
-  const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
-
-  const isBlue = Math.random() > 0.3; // 70% blau, 30% weiß
-  const hue = isBlue ? 210 + Math.random() * 40 : 0;
-  const saturation = isBlue ? 100 : 0;
-
+  const isBlue = Math.random() > 0.3;
   return {
-    x: fromLeft ? Math.random() * width * 0.3 : width * 0.7 + Math.random() * width * 0.3,
-    y: Math.random() * height, // Start irgendwo oben, nicht ploppen
-    width: 60 + Math.random() * 80,
-    length: height * 2,
-    angle,
-    speed: 0.5 + Math.random() * 0.5, // langsam
-    opacity: 0.3 + Math.random() * 0.2,
-    hue,
-    saturation,
-    pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.005 + Math.random() * 0.01,
+    x: Math.random() * width,
+    y: Math.random() * height,
+    width: 50 + Math.random() * 50,
+    length: height * 1.5,
+    angle: Math.random() * 30 - 15,
+    speed: 0.2 + Math.random() * 0.3,
+    opacity: 0.4 + Math.random() * 0.4,
+    hue: isBlue ? 210 + Math.random() * 40 : 0,
+    saturation: isBlue ? 100 : 0,
   };
 }
 
@@ -48,31 +38,35 @@ const BeamsBackground: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const resizeCanvas = () => {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
 
-    beamsRef.current = Array.from({ length: 15 }, () =>
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // 12 Strahlen
+    beamsRef.current = Array.from({ length: 12 }, () =>
       createBeam(canvas.width, canvas.height)
     );
 
-    function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
+    function drawBeam(beam: Beam) {
       ctx.save();
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity = beam.opacity * (0.7 + Math.sin(beam.pulse) * 0.3);
-
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
-      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
-      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity})`);
-      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
+      gradient.addColorStop(0, `hsla(${beam.hue},${beam.saturation}%,90%,0)`);
+      gradient.addColorStop(0.2, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
+      gradient.addColorStop(0.8, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
+      gradient.addColorStop(1, `hsla(${beam.hue},${beam.saturation}%,90%,0)`);
 
       ctx.fillStyle = gradient;
       ctx.filter = "blur(35px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
-
       ctx.filter = "none";
     }
 
@@ -81,13 +75,8 @@ const BeamsBackground: React.FC = () => {
 
       beamsRef.current.forEach((beam) => {
         beam.y += beam.speed;
-        beam.pulse += beam.pulseSpeed;
-
-        if (beam.y > canvas.height) {
-          beam.y = -beam.length; // nach oben zurück
-        }
-
-        drawBeam(ctx, beam);
+        if (beam.y > canvas.height) beam.y = -beam.length;
+        drawBeam(beam);
       });
 
       animationFrameRef.current = requestAnimationFrame(animate);
@@ -95,13 +84,9 @@ const BeamsBackground: React.FC = () => {
 
     animate();
 
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
     return () => {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
 
