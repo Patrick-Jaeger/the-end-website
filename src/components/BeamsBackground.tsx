@@ -90,21 +90,22 @@ const BeamsBackground: React.FC = () => {
     }
 
     function animate() {
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  // Nicht mehr füllen, nur clearRect
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-      beamsRef.current.forEach((beam, i) => {
-        beam.y += beam.speed;
-        beam.pulse += beam.pulseSpeed;
+  beamsRef.current.forEach((beam, i) => {
+    beam.y += beam.speed;
+    beam.pulse += beam.pulseSpeed;
 
-        if (beam.y > window.innerHeight + 200) {
-          beamsRef.current[i] = createBeam(window.innerWidth, window.innerHeight);
-        }
-
-        drawBeam(ctx, beam);
-      });
-
-      animationFrameRef.current = requestAnimationFrame(animate);
+    if (beam.y > window.innerHeight + 200) {
+      beamsRef.current[i] = createBeam(window.innerWidth, window.innerHeight);
     }
+
+    drawBeam(ctx, beam);
+  });
+
+  animationFrameRef.current = requestAnimationFrame(animate);
+}
 
     animate();
 
