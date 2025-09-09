@@ -37,19 +37,22 @@
   font-display: swap;
 }
 
-/* Base root variables */
+/* Root variables */
 @layer base {
   :root {
     --background: 220 15% 8%;
     --foreground: 0 0% 95%;
+    --primary: 215 85% 45%;
+    --primary-foreground: 0 0% 100%;
     --rock-blue: 215 85% 45%;
     --rock-blue-glow: 215 85% 65%;
+    --card-bg: 220 15% 12%;
+    --card-text: 0 0% 90%;
   }
 
   html, body {
     @apply m-0 p-0 min-h-screen w-full;
-    background-color: hsl(var(--background)); /* Ganz leicht dunkler Hintergrund */
-    color: hsl(var(--foreground));
+    background-color: hsl(var(--background)); /* neutraler dunkler Hintergrund */
     font-family: 'BodyFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
@@ -68,14 +71,24 @@
 
 /* Components */
 @layer components {
+  /* Text Glow */
   .text-glow {
     text-shadow: 0 0 20px hsl(var(--rock-blue-glow)/0.5);
   }
 
+  /* Cards */
+  .card {
+    background-color: hsl(var(--card-bg));
+    color: hsl(var(--card-text));
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  /* Buttons */
   .btn-rock {
-    @apply px-6 py-3 rounded-lg font-semibold;
+    @apply px-6 py-3 rounded-lg font-semibold transition-all;
     background: hsl(var(--rock-blue));
-    color: hsl(var(--foreground));
+    color: hsl(var(--primary-foreground));
   }
 
   .btn-outline-rock {
@@ -86,7 +99,7 @@
 
   .btn-outline-rock:hover {
     background: hsl(var(--rock-blue));
-    color: hsl(var(--foreground));
+    color: hsl(var(--primary-foreground));
     box-shadow: 0 0 40px hsl(var(--rock-blue-glow)/0.4);
   }
 
@@ -100,9 +113,18 @@
   .card-wiggle-media:hover {
     animation: card-wiggle 0.4s ease-in-out;
   }
+
+  /* Custom cursor */
+  * {
+    cursor: url('@/assets/Curser.svg'), auto !important;
+  }
+
+  a:hover {
+    cursor: url('@/assets/Curser.svg'), pointer !important;
+  }
 }
 
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
