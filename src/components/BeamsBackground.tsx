@@ -9,6 +9,7 @@ interface Beam {
   speed: number;
   opacity: number;
   hue: number;
+  saturation: number;
   pulse: number;
   pulseSpeed: number;
 }
@@ -17,15 +18,23 @@ function createBeam(width: number, height: number): Beam {
   const fromLeft = Math.random() > 0.5;
   const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
 
+  // 70% blaue Beams, 30% weiße Beams
+  const isBlue = Math.random() > 0.3;
+  const hue = isBlue ? 210 + Math.random() * 40 : 0;
+  const saturation = isBlue ? 100 : 0;
+
   return {
-    x: fromLeft ? Math.random() * width * 0.3 : width * 0.7 + Math.random() * width * 0.3,
+    x: fromLeft
+      ? Math.random() * width * 0.3
+      : width * 0.7 + Math.random() * width * 0.3,
     y: -200,
     width: 80 + Math.random() * 100,
     length: height * 2,
     angle,
     speed: 1 + Math.random() * 1.5,
     opacity: 0.25 + Math.random() * 0.25,
-    hue: Math.random() > 0.3 ? 210 + Math.random() * 40 : 0, // Blau oder Weiß
+    hue,
+    saturation,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.01 + Math.random() * 0.02,
   };
@@ -58,24 +67,34 @@ const BeamsBackground: React.FC = () => {
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+      const pulsingOpacity =
+        beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `hsla(${beam.hue}, 100%, 85%, 0)`);
-      gradient.addColorStop(0.2, `hsla(${beam.hue}, 100%, 85%, ${pulsingOpacity * 0.5})`);
-      gradient.addColorStop(0.5, `hsla(${beam.hue}, 100%, 90%, ${pulsingOpacity})`);
-      gradient.addColorStop(0.8, `hsla(${beam.hue}, 100%, 85%, ${pulsingOpacity * 0.5})`);
-      gradient.addColorStop(1, `hsla(${beam.hue}, 100%, 85%, 0)`);
+      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
+      gradient.addColorStop(
+        0.2,
+        `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity * 0.5})`
+      );
+      gradient.addColorStop(
+        0.5,
+        `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`
+      );
+      gradient.addColorStop(
+        0.8,
+        `hsla(${beam.hue}, ${beam.saturation}%, 90%, ${pulsingOpacity * 0.5})`
+      );
+      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(60px)";
+      ctx.filter = "blur(25px)"; // etwas softer, nicht zu stark
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
     }
 
     function animate() {
-      ctx.fillStyle = "rgba(10, 10, 20, 0.3)"; // sehr leichter Hintergrund → Beams bleiben sichtbar
-      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      // Canvas löschen statt überlagern
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
       beamsRef.current.forEach((beam, i) => {
         beam.y += beam.speed;
@@ -101,7 +120,7 @@ const BeamsBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 -z-10 w-full h-full"
+      className="absolute inset-0 z-0 w-full h-full"
       style={{ pointerEvents: "none" }}
     />
   );
