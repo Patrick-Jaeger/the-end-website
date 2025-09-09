@@ -17,11 +17,11 @@ function createBeam(width: number, height: number): Beam {
   return {
     x: Math.random() * width,
     y: Math.random() * height,
-    width: 50 + Math.random() * 50,
+    width: 60 + Math.random() * 40,
     length: height * 1.5,
     angle: Math.random() * 30 - 15,
     speed: 0.2 + Math.random() * 0.3,
-    opacity: 0.4 + Math.random() * 0.4,
+    opacity: 0.5 + Math.random() * 0.3,
     hue: isBlue ? 210 + Math.random() * 40 : 0,
     saturation: isBlue ? 100 : 0,
   };
@@ -43,11 +43,10 @@ const BeamsBackground: React.FC = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    beamsRef.current = Array.from({ length: 12 }, () =>
+    beamsRef.current = Array.from({ length: 10 }, () =>
       createBeam(canvas.width, canvas.height)
     );
 
@@ -58,8 +57,8 @@ const BeamsBackground: React.FC = () => {
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `hsla(${beam.hue},${beam.saturation}%,90%,0)`);
-      gradient.addColorStop(0.2, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
-      gradient.addColorStop(0.8, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
+      gradient.addColorStop(0.3, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
+      gradient.addColorStop(0.7, `hsla(${beam.hue},${beam.saturation}%,95%,${beam.opacity})`);
       gradient.addColorStop(1, `hsla(${beam.hue},${beam.saturation}%,90%,0)`);
 
       ctx.fillStyle = gradient;
