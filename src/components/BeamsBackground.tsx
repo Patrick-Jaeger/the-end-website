@@ -77,14 +77,13 @@ const BeamsBackground: React.FC = () => {
       gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 90%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(50px)"; // etwas stärker für bessere Sichtbarkeit
+      ctx.filter = "blur(50px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
     }
 
     function animate() {
-      // ❌ Keine Hintergrundfarbe hier! Canvas bleibt transparent
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam, i) => {
@@ -111,7 +110,7 @@ const BeamsBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 w-full h-full pointer-events-none"
+      className="fixed inset-0 z-10 w-full h-full pointer-events-none"
     />
   );
 };
