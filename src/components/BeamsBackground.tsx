@@ -12,7 +12,6 @@ interface Beam {
   saturation: number;
   pulse: number;
   pulseSpeed: number;
-  direction: 1 | -1; // 1 = nach unten, -1 = nach oben
 }
 
 function createBeam(width: number, height: number): Beam {
@@ -27,17 +26,16 @@ function createBeam(width: number, height: number): Beam {
     x: fromLeft
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
-    y: Math.random() * height, // start zufällig im sichtbaren Bereich
+    y: -200,
     width: 80 + Math.random() * 100,
     length: height * 2,
     angle,
-    speed: 0.5 + Math.random() * 0.8, // langsamere Bewegung
-    opacity: 0.6 + Math.random() * 0.3, // stärker sichtbar
+    speed: 1.5 + Math.random() * 1.5,
+    opacity: 0.5 + Math.random() * 0.3,
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.01 + Math.random() * 0.02,
-    direction: 1, // startet nach unten
+    pulseSpeed: 0.01 + Math.random() * 0.03,
   };
 }
 
@@ -67,7 +65,7 @@ const BeamsBackground: React.FC = () => {
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity = beam.opacity * (0.7 + Math.sin(beam.pulse) * 0.3);
+      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
@@ -82,22 +80,23 @@ const BeamsBackground: React.FC = () => {
       gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(25px)";
+      ctx.filter = "blur(15px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
     }
 
     const animate = () => {
+      if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      beamsRef.current.forEach((beam) => {
-        beam.y += beam.speed * beam.direction;
+      beamsRef.current.forEach((beam, i) => {
+        beam.y += beam.speed;
         beam.pulse += beam.pulseSpeed;
 
-        // Umkehr an Bildschirmgrenzen → „hin und zurück“ Bewegung
-        if (beam.y > canvas.height) beam.direction = -1;
-        if (beam.y < -beam.length) beam.direction = 1;
+        if (beam.y > canvas.height + 200) {
+          beamsRef.current[i] = createBeam(canvas.width, canvas.height);
+        }
 
         drawBeam(ctx, beam);
       });
