@@ -26,7 +26,7 @@ const App = () => {
         <Sonner />
 
         {/* Canvas Strahlen über Hero-Background, aber unter UI */}
-        <BeamsBackground />
+        <BeamsBackground className="fixed inset-0 z-50 w-full h-full pointer-events-none" />
 
         {/* Haupt-App-Inhalt */}
         <div className="relative z-30">
