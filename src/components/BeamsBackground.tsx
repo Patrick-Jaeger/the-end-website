@@ -67,10 +67,11 @@ const BeamsBackground: React.FC = () => {
       const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `rgba(255,255,255,0)`);
-      gradient.addColorStop(0.3, `rgba(255,255,255,${pulsingOpacity})`);
-      gradient.addColorStop(0.7, `rgba(255,255,255,${pulsingOpacity})`);
-      gradient.addColorStop(1, `rgba(255,255,255,0)`);
+gradient.addColorStop(0, `rgba(255,255,255,0)`); // Spitze transparent
+gradient.addColorStop(0.2, `rgba(255,255,255,0.8)`); // heller Kern
+gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`); // weniger Licht am Rand
+gradient.addColorStop(1, `rgba(255,255,255,0)`); 
+
 
       ctx.fillStyle = gradient;
       ctx.filter = "blur(15px)";
