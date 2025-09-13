@@ -50,13 +50,16 @@ const BeamsBackground: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const resizeCanvas = () => {
-      const scale = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * scale;
-      canvas.height = window.innerHeight * scale;
-      ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
-      ctx.scale(scale, scale);
-    };
+const resizeCanvas = () => {
+  const scale = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * scale;
+  canvas.height = window.innerHeight * scale;
+  canvas.style.width = `${window.innerWidth}px`;
+  canvas.style.height = `${window.innerHeight}px`;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset
+  ctx.scale(scale, scale); // skaliert alles automatisch
+};
+
     resizeCanvas();
 
     beamsRef.current = Array.from({ length: 30 }, () =>
