@@ -24,12 +24,12 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        
-        {/* Gradient & Beams liegen als Hintergrund */}
+
+        {/* Canvas Strahlen über Hero-Background, aber unter UI */}
         <BeamsBackground />
 
-        {/* Dein normaler App-Inhalt */}
-        <div className="relative z-20">
+        {/* Haupt-App-Inhalt */}
+        <div className="relative z-30">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
