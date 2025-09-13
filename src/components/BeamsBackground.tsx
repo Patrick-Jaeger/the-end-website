@@ -26,11 +26,11 @@ function createBeam(width: number, height: number): Beam {
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
     y: -200,
-    width: 150 + Math.random() * 100, // breiter
+    width: 150 + Math.random() * 100,
     length: height * 2,
     angle,
     speed: 1.5 + Math.random() * 1.5,
-    opacity: 0.8 + Math.random() * 0.2, // deutlich sichtbar
+    opacity: 0.8 + Math.random() * 0.2,
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
@@ -67,11 +67,10 @@ const BeamsBackground: React.FC = () => {
       const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-gradient.addColorStop(0, `rgba(255,255,255,0)`); // Spitze transparent
-gradient.addColorStop(0.2, `rgba(255,255,255,0.8)`); // heller Kern
-gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`); // weniger Licht am Rand
-gradient.addColorStop(1, `rgba(255,255,255,0)`); 
-
+      gradient.addColorStop(0, `rgba(255,255,255,0)`);
+      gradient.addColorStop(0.2, `rgba(255,255,255,0.8)`);
+      gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`);
+      gradient.addColorStop(1, `rgba(255,255,255,0)`);
 
       ctx.fillStyle = gradient;
       ctx.filter = "blur(15px)";
@@ -110,7 +109,7 @@ gradient.addColorStop(1, `rgba(255,255,255,0)`);
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-50 w-full h-full"
+      className="fixed inset-0 z-0 w-full h-full"
       style={{ pointerEvents: "none", background: "transparent" }}
     />
   );
