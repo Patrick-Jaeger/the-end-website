@@ -1,44 +1,3 @@
-import { useEffect, useRef } from "react";
-
-interface Beam {
-  x: number;
-  y: number;
-  width: number;
-  length: number;
-  angle: number;
-  speed: number;
-  opacity: number;
-  hue: number;
-  saturation: number;
-  pulse: number;
-  pulseSpeed: number;
-}
-
-function createBeam(width: number, height: number): Beam {
-  const fromLeft = Math.random() > 0.5;
-  const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
-
-  const isBlue = Math.random() > 0.3;
-  const hue = isBlue ? 210 + Math.random() * 40 : 0;
-  const saturation = isBlue ? 100 : 0;
-
-  return {
-    x: fromLeft
-      ? Math.random() * width * 0.3
-      : width * 0.7 + Math.random() * width * 0.3,
-    y: -200,
-    width: 80 + Math.random() * 100,
-    length: height * 2,
-    angle,
-    speed: 1.5 + Math.random() * 1.5,
-    opacity: 1.2 + Math.random() * 0.3,
-    hue,
-    saturation,
-    pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.01 + Math.random() * 0.03,
-  };
-}
-
 const BeamsBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const beamsRef = useRef<Beam[]>([]);
@@ -65,23 +24,28 @@ const BeamsBackground: React.FC = () => {
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+      const pulsingOpacity = beam.opacity * (0.6 + Math.sin(beam.pulse) * 0.4);
 
+      // heller Kern, dunklere Ränder
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
-gradient.addColorStop(
-  0.25,
-  `hsla(${beam.hue}, ${beam.saturation}%, 70%, ${pulsingOpacity})`
-);
-gradient.addColorStop(
-  0.75,
-  `hsla(${beam.hue}, ${beam.saturation}%, 70%, ${pulsingOpacity})`
-);
-
-      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
+      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 70%, 0)`);
+      gradient.addColorStop(
+        0.2,
+        `hsla(${beam.hue}, ${beam.saturation}%, 60%, ${pulsingOpacity})`
+      );
+      gradient.addColorStop(
+        0.5,
+        `hsla(${beam.hue}, ${beam.saturation}%, 75%, ${pulsingOpacity * 1.2})`
+      );
+      gradient.addColorStop(
+        0.8,
+        `hsla(${beam.hue}, ${beam.saturation}%, 60%, ${pulsingOpacity})`
+      );
+      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 70%, 0)`);
 
       ctx.fillStyle = gradient;
-      ctx.filter = "blur(15px)";
+      ctx.globalCompositeOperation = "lighter"; // Strahlen überlagern sich → Spotlight-Effekt
+      ctx.filter = "blur(12px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
@@ -123,5 +87,3 @@ gradient.addColorStop(
     />
   );
 };
-
-export default BeamsBackground;
