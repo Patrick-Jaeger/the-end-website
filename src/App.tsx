@@ -29,7 +29,7 @@ const App = () => {
         <BeamsBackground />
 
         {/* Dein normaler App-Inhalt */}
-        <div className="relative z-10">
+        <div className="relative z-20">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
