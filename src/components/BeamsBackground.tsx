@@ -122,11 +122,12 @@ const resizeCanvas = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 z-10 w-full h-full"
-      style={{ pointerEvents: "none", background: "transparent" }}
-    />
+<canvas
+  ref={canvasRef}
+  className="fixed inset-0 z-10 w-full h-full"
+  style={{ pointerEvents: "none", background: "black" }} // <--- Test
+/>
+
   );
 };
 
