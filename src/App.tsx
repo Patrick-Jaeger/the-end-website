@@ -25,10 +25,11 @@ const App = () => {
         <Toaster />
         <Sonner />
 
-        {/* Strahlen-Canvas über allem */}
+        {/* Hintergrund-Strahlen */}
         <BeamsBackground />
 
-        <div className="relative z-20">
+        {/* Hauptinhalt */}
+        <div className="relative z-10">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
