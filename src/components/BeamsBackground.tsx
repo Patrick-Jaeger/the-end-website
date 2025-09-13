@@ -69,14 +69,15 @@ const BeamsBackground: React.FC = () => {
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
-      gradient.addColorStop(
-        0.25,
-        `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`
-      );
-      gradient.addColorStop(
-        0.75,
-        `hsla(${beam.hue}, ${beam.saturation}%, 95%, ${pulsingOpacity})`
-      );
+gradient.addColorStop(
+  0.25,
+  `hsla(${beam.hue}, ${beam.saturation}%, 70%, ${pulsingOpacity})`
+);
+gradient.addColorStop(
+  0.75,
+  `hsla(${beam.hue}, ${beam.saturation}%, 70%, ${pulsingOpacity})`
+);
+
       gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 95%, 0)`);
 
       ctx.fillStyle = gradient;
