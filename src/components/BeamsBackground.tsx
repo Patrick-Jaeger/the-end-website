@@ -31,7 +31,7 @@ function createBeam(width: number, height: number): Beam {
     length: height * 2,
     angle,
     speed: 1.5 + Math.random() * 1.5,
-    opacity: 0.8 + Math.random() * 0.2, // kräftiger als vorher
+    opacity: 1.2 + Math.random() * 0.3,
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
