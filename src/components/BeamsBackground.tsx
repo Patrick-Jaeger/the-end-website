@@ -72,11 +72,12 @@ const BeamsBackground: React.FC = () => {
 
       const pulsingOpacity = beam.opacity * (0.6 + Math.sin(beam.pulse) * 0.4);
 
-      const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 100%, 0)`);
-      gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 100%, ${pulsingOpacity})`);
-      gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 100%, ${pulsingOpacity})`);
-      gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 100%, 0)`);
+const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
+gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 50%, 0.0)`);  // inneres Ende
+gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 35%, ${pulsingOpacity})`); // Kern
+gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 35%, ${pulsingOpacity})`);
+gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 50%, 0.0)`);  // äußeres Ende
+
 
       ctx.fillStyle = gradient;
       ctx.globalCompositeOperation = "lighter"; // additive Blending für Leuchtkraft
