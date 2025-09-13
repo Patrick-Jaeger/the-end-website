@@ -25,11 +25,10 @@ const App = () => {
         <Toaster />
         <Sonner />
 
-        {/* Canvas Strahlen über Hero-Background, aber unter UI */}
-        <BeamsBackground className="fixed inset-0 z-50 w-full h-full pointer-events-none" />
+        {/* Strahlen-Canvas über allem */}
+        <BeamsBackground />
 
-        {/* Haupt-App-Inhalt */}
-        <div className="relative z-30">
+        <div className="relative z-20">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
