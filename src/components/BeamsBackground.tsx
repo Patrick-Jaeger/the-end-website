@@ -26,11 +26,11 @@ function createBeam(width: number, height: number): Beam {
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
     y: -200,
-    width: 150 + Math.random() * 100,
+    width: 150 + Math.random() * 100, // breiter
     length: height * 2,
     angle,
     speed: 1.5 + Math.random() * 1.5,
-    opacity: 0.8 + Math.random() * 0.2,
+    opacity: 0.8 + Math.random() * 0.2, // sichtbar
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
@@ -68,7 +68,7 @@ const BeamsBackground: React.FC = () => {
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
       gradient.addColorStop(0, `rgba(255,255,255,0)`);
-      gradient.addColorStop(0.2, `rgba(255,255,255,0.8)`);
+      gradient.addColorStop(0.2, `rgba(255,255,255,${pulsingOpacity})`);
       gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`);
       gradient.addColorStop(1, `rgba(255,255,255,0)`);
 
