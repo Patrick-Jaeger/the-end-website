@@ -17,7 +17,6 @@ interface Beam {
 function createBeam(width: number, height: number): Beam {
   const fromLeft = Math.random() > 0.5;
   const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
-
   const isBlue = Math.random() > 0.3;
   const hue = isBlue ? 210 + Math.random() * 40 : 0;
   const saturation = isBlue ? 100 : 0;
@@ -27,11 +26,11 @@ function createBeam(width: number, height: number): Beam {
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
     y: -200,
-    width: 150 + Math.random() * 100, // breiter für bessere Sichtbarkeit
-    length: 600, // feste Länge für Scheinwerfer-Optik
+    width: 150 + Math.random() * 100, // breiter
+    length: height * 2,
     angle,
     speed: 1.5 + Math.random() * 1.5,
-    opacity: 0.8 + Math.random() * 0.2, // stark sichtbar
+    opacity: 0.8 + Math.random() * 0.2, // deutlich sichtbar
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
@@ -51,18 +50,13 @@ const BeamsBackground: React.FC = () => {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      const scale = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * scale;
-      canvas.height = window.innerHeight * scale;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.scale(scale, scale);
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
     resizeCanvas();
 
     beamsRef.current = Array.from({ length: 30 }, () =>
-      createBeam(window.innerWidth, window.innerHeight)
+      createBeam(canvas.width, canvas.height)
     );
 
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
@@ -70,18 +64,16 @@ const BeamsBackground: React.FC = () => {
       ctx.translate(beam.x, beam.y);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity = beam.opacity * (0.6 + Math.sin(beam.pulse) * 0.4);
+      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
-const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-gradient.addColorStop(0, `hsla(${beam.hue}, ${beam.saturation}%, 50%, 0.0)`);  // inneres Ende
-gradient.addColorStop(0.3, `hsla(${beam.hue}, ${beam.saturation}%, 35%, ${pulsingOpacity})`); // Kern
-gradient.addColorStop(0.7, `hsla(${beam.hue}, ${beam.saturation}%, 35%, ${pulsingOpacity})`);
-gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 50%, 0.0)`);  // äußeres Ende
-
+      const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
+      gradient.addColorStop(0, `rgba(255,255,255,0)`);
+      gradient.addColorStop(0.3, `rgba(255,255,255,${pulsingOpacity})`);
+      gradient.addColorStop(0.7, `rgba(255,255,255,${pulsingOpacity})`);
+      gradient.addColorStop(1, `rgba(255,255,255,0)`);
 
       ctx.fillStyle = gradient;
-      ctx.globalCompositeOperation = "lighter"; // additive Blending für Leuchtkraft
-      ctx.filter = "blur(10px)";
+      ctx.filter = "blur(15px)";
       ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
@@ -95,8 +87,8 @@ gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 50%, 0.0)`);  /
         beam.y += beam.speed;
         beam.pulse += beam.pulseSpeed;
 
-        if (beam.y > window.innerHeight + 200) {
-          beamsRef.current[i] = createBeam(window.innerWidth, window.innerHeight);
+        if (beam.y > canvas.height + 200) {
+          beamsRef.current[i] = createBeam(canvas.width, canvas.height);
         }
 
         drawBeam(ctx, beam);
@@ -109,8 +101,7 @@ gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 50%, 0.0)`);  /
 
     window.addEventListener("resize", resizeCanvas);
     return () => {
-      if (animationFrameRef.current)
-        cancelAnimationFrame(animationFrameRef.current);
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
       window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
@@ -118,8 +109,8 @@ gradient.addColorStop(1, `hsla(${beam.hue}, ${beam.saturation}%, 50%, 0.0)`);  /
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-20 w-full h-full pointer-events-none"
-      style={{ background: "transparent" }}
+      className="fixed inset-0 z-50 w-full h-full"
+      style={{ pointerEvents: "none", background: "transparent" }}
     />
   );
 };
