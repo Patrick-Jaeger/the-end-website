@@ -2,12 +2,9 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BandCarousel from "@/components/BandCarousel";
-// ⬇️ relativer Import statt "@/..."
-import BeamsBackground from "../components/BeamsBackground"; 
 import { Music, Guitar, Mic } from "lucide-react";
 
 const Band = () => {
-  // Beispiel Band-Mitglieder
   const bandMembers = [
     { name: "Thomas Gründemann", instrument: "Gitarre & Backing Vocals", description: "...", icon: Guitar },
     { name: "David Wood", instrument: "Bass", description: "...", icon: Music },
@@ -22,11 +19,8 @@ const Band = () => {
       {/* Navigation */}
       <Navigation />
 
-      {/* Beams Background */}
-      <BeamsBackground />
-
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-background relative z-10">
+      <section className="pt-32 pb-20 bg-background/80 relative z-10">
         <div className="container mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
@@ -56,7 +50,7 @@ const Band = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto bg-card border border-border rounded-lg p-8 shadow-rock relative z-10"
+            className="max-w-4xl mx-auto bg-card/90 border border-border rounded-lg p-8 shadow-rock relative z-10"
           >
             <h2 className="font-rock text-2xl font-bold text-primary mb-6">Our Journey</h2>
             <div className="grid md:grid-cols-2 gap-8">
@@ -98,7 +92,7 @@ const Band = () => {
       </section>
 
       {/* Band Members */}
-      <section className="relative z-10 py-20 bg-rock-lighter">
+      <section className="relative z-10 py-20 bg-rock-lighter/80">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -120,7 +114,7 @@ const Band = () => {
       </section>
 
       {/* Group Photo Section */}
-      <section className="relative z-10 py-32 bg-background overflow-hidden">
+      <section className="relative z-10 py-32 bg-background/80 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full z-0">
           <iframe
             src="https://my.spline.design/embers-qRRVF9jO002fkB1KZvsr2ozN/"
@@ -138,11 +132,11 @@ const Band = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center bg-background/80 backdrop-blur-md rounded-lg p-8"
+            className="max-w-4xl mx-auto text-center bg-background/90 backdrop-blur-md rounded-lg p-8"
           >
             <h2 className="font-rock text-3xl font-bold text-glow mb-8">Die Band im Bild</h2>
 
-            <div className="bg-secondary rounded-lg p-16 border border-border">
+            <div className="bg-secondary/90 rounded-lg p-16 border border-border">
               <div className="text-center">
                 <Music className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
                 <p className="text-muted-foreground text-lg">Gruppenfoto der Band</p>
