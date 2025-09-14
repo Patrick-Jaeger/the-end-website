@@ -24,18 +24,18 @@ function createBeam(width: number, height: number): Beam {
   const hue = isBlue ? 210 + Math.random() * 40 : 0;
   const saturation = isBlue ? 100 : 0;
 
-  const minY = Math.random() * height * 0.1;          // obere Grenze
-  const maxY = height - Math.random() * height * 0.1; // untere Grenze
+  const minY = 0;        // Strahlen starten ganz oben
+  const maxY = height;   // Strahlen wandern bis ganz unten
 
   return {
     x: fromLeft
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
-    y: minY + Math.random() * (maxY - minY), // Startposition zufällig zwischen minY und maxY
+    y: minY + Math.random() * 50,  // kleines zufälliges Offset, damit nicht alle exakt oben starten
     width: 150 + Math.random() * 100,
     length: height * 2.5,
     angle,
-    speed: 0.6 + Math.random() * 0.4, // mittlere Geschwindigkeit
+    speed: 0.6 + Math.random() * 0.4,
     opacity: 0.7 + Math.random() * 0.3,
     hue,
     saturation,
@@ -46,6 +46,7 @@ function createBeam(width: number, height: number): Beam {
     maxY,
   };
 }
+
 
 const BeamsBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
