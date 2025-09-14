@@ -12,41 +12,31 @@ interface Beam {
   saturation: number;
   pulse: number;
   pulseSpeed: number;
-  direction: 1 | -1; // 1 = nach unten, -1 = nach oben
-  minY: number; // obere Grenze
-  maxY: number; // untere Grenze
+  direction: number; // 1 = nach rechts, -1 = nach links
 }
 
-function createBeam(width: number, height: number): Beam {
+function createBeam(canvasWidth: number, canvasHeight: number): Beam {
   const fromLeft = Math.random() > 0.5;
   const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
   const isBlue = Math.random() > 0.3;
   const hue = isBlue ? 210 + Math.random() * 40 : 0;
   const saturation = isBlue ? 100 : 0;
 
-  const minY = 0;        // Strahlen starten ganz oben
-  const maxY = height;   // Strahlen wandern bis ganz unten
-
   return {
-    x: fromLeft
-      ? Math.random() * width * 0.3
-      : width * 0.7 + Math.random() * width * 0.3,
-    y: minY + Math.random() * 50,  // kleines zufälliges Offset, damit nicht alle exakt oben starten
+    x: fromLeft ? 0 : canvasWidth, // Start links oder rechts
+    y: canvasHeight * 0.7 + Math.random() * canvasHeight * 0.2, // Fixe vertikale Position (unten)
     width: 150 + Math.random() * 100,
-    length: height * 2.5,
+    length: 300 + Math.random() * 200,
     angle,
-    speed: 0.6 + Math.random() * 0.4,
-    opacity: 0.7 + Math.random() * 0.3,
+    speed: 1 + Math.random() * 1.5, // mittlere Geschwindigkeit
+    opacity: 0.8 + Math.random() * 0.2,
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.005 + Math.random() * 0.01,
-    direction: Math.random() > 0.5 ? 1 : -1,
-    minY,
-    maxY,
+    pulseSpeed: 0.01 + Math.random() * 0.03,
+    direction: fromLeft ? 1 : -1, // Startbewegungsrichtung
   };
 }
-
 
 const BeamsBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -65,8 +55,7 @@ const BeamsBackground: React.FC = () => {
     };
     resizeCanvas();
 
-    // Weniger Strahlen für ruhigen Effekt
-    beamsRef.current = Array.from({ length: 8 }, () =>
+    beamsRef.current = Array.from({ length: 10 }, () =>
       createBeam(canvas.width, canvas.height)
     );
 
@@ -78,11 +67,10 @@ const BeamsBackground: React.FC = () => {
       const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`);
-gradient.addColorStop(0.2, `rgba(255,255,255,${pulsingOpacity})`);
-gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`);
-gradient.addColorStop(1, `rgba(255,255,255,0)`);
-
+      gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`);
+      gradient.addColorStop(0.2, `rgba(255,255,255,${pulsingOpacity})`);
+      gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`);
+      gradient.addColorStop(1, `rgba(255,255,255,0)`);
 
       ctx.fillStyle = gradient;
       ctx.filter = "blur(15px)";
@@ -96,14 +84,14 @@ gradient.addColorStop(1, `rgba(255,255,255,0)`);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam) => {
-        // Bewegung nach oben oder unten
-        beam.y += beam.speed * beam.direction;
+        // horizontale Bewegung
+        beam.x += beam.speed * beam.direction;
+
+        // Richtung umkehren, wenn Rand erreicht
+        if (beam.x > canvas.width && beam.direction > 0) beam.direction = -1;
+        if (beam.x < 0 && beam.direction < 0) beam.direction = 1;
+
         beam.pulse += beam.pulseSpeed;
-
-        // Richtungswechsel an minY oder maxY
-        if (beam.y > beam.maxY) beam.direction = -1;
-        if (beam.y < beam.minY) beam.direction = 1;
-
         drawBeam(ctx, beam);
       });
 
