@@ -12,6 +12,7 @@ interface Beam {
   saturation: number;
   pulse: number;
   pulseSpeed: number;
+  direction: 1 | -1; // 1 = nach unten, -1 = nach oben
 }
 
 function createBeam(width: number, height: number): Beam {
@@ -25,16 +26,17 @@ function createBeam(width: number, height: number): Beam {
     x: fromLeft
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
-    y: -200,
-    width: 150 + Math.random() * 100, // breiter
-    length: height * 2,
+    y: Math.random() * height,           // Start zufällig zwischen 0 und Höhe
+    width: 150 + Math.random() * 100,
+    length: height * 2.5,                // längere Strahlen für sanften Effekt
     angle,
-    speed: 1.5 + Math.random() * 1.5,
-    opacity: 0.8 + Math.random() * 0.2, // sichtbar
+    speed: 0.3 + Math.random() * 0.5,   // langsameres Wandern
+    opacity: 0.7 + Math.random() * 0.3,
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.01 + Math.random() * 0.03,
+    pulseSpeed: 0.005 + Math.random() * 0.01,
+    direction: 1,                        // Start nach unten
   };
 }
 
@@ -55,10 +57,10 @@ const BeamsBackground: React.FC = () => {
     };
     resizeCanvas();
 
-beamsRef.current = Array.from({ length: 10 }, () =>  // weniger Strahlen
-  createBeam(canvas.width, canvas.height)
-);
-
+    // Weniger Strahlen für ruhigeren Effekt
+    beamsRef.current = Array.from({ length: 8 }, () =>
+      createBeam(canvas.width, canvas.height)
+    );
 
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
       ctx.save();
@@ -84,14 +86,14 @@ beamsRef.current = Array.from({ length: 10 }, () =>  // weniger Strahlen
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      beamsRef.current.forEach((beam, i) => {
-        beam.y += beam.speed;
+      beamsRef.current.forEach((beam) => {
+        // Bewegung nach oben oder unten
+        beam.y += beam.speed * beam.direction;
         beam.pulse += beam.pulseSpeed;
 
-if (beam.y > canvas.height + 200) {
-  beamsRef.current[i] = createBeam(canvas.width, canvas.height);
-}
-
+        // Richtungswechsel, wenn oben oder unten
+        if (beam.y > canvas.height + 50) beam.direction = -1;
+        if (beam.y < -beam.length) beam.direction = 1;
 
         drawBeam(ctx, beam);
       });
