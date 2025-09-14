@@ -78,7 +78,7 @@ const BeamsBackground: React.FC = () => {
       const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`); 
+gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`);
 gradient.addColorStop(0.2, `rgba(255,255,255,${pulsingOpacity})`);
 gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`);
 gradient.addColorStop(1, `rgba(255,255,255,0)`);
