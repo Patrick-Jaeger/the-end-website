@@ -2,10 +2,9 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BandCarousel from "@/components/BandCarousel";
-import BeamsBackground from "@/components/BeamsBackground"; 
+// ⬇️ relativer Import statt "@/..."
+import BeamsBackground from "../components/BeamsBackground"; 
 import { Music, Guitar, Mic } from "lucide-react";
-
-
 
 const Band = () => {
   // Beispiel Band-Mitglieder
