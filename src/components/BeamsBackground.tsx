@@ -13,6 +13,8 @@ interface Beam {
   pulse: number;
   pulseSpeed: number;
   direction: 1 | -1; // 1 = nach unten, -1 = nach oben
+  minY: number; // obere Grenze
+  maxY: number; // untere Grenze
 }
 
 function createBeam(width: number, height: number): Beam {
@@ -22,21 +24,26 @@ function createBeam(width: number, height: number): Beam {
   const hue = isBlue ? 210 + Math.random() * 40 : 0;
   const saturation = isBlue ? 100 : 0;
 
+  const minY = Math.random() * height * 0.1;          // obere Grenze
+  const maxY = height - Math.random() * height * 0.1; // untere Grenze
+
   return {
     x: fromLeft
       ? Math.random() * width * 0.3
       : width * 0.7 + Math.random() * width * 0.3,
-    y: Math.random() * height,           // Start zufällig zwischen 0 und Höhe
+    y: minY + Math.random() * (maxY - minY), // Startposition zufällig zwischen minY und maxY
     width: 150 + Math.random() * 100,
-    length: height * 2.5,                // längere Strahlen für sanften Effekt
+    length: height * 2.5,
     angle,
-    speed: 0.3 + Math.random() * 0.5,   // langsameres Wandern
+    speed: 0.6 + Math.random() * 0.4, // mittlere Geschwindigkeit
     opacity: 0.7 + Math.random() * 0.3,
     hue,
     saturation,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.005 + Math.random() * 0.01,
-    direction: 1,                        // Start nach unten
+    direction: Math.random() > 0.5 ? 1 : -1,
+    minY,
+    maxY,
   };
 }
 
@@ -57,7 +64,7 @@ const BeamsBackground: React.FC = () => {
     };
     resizeCanvas();
 
-    // Weniger Strahlen für ruhigeren Effekt
+    // Weniger Strahlen für ruhigen Effekt
     beamsRef.current = Array.from({ length: 8 }, () =>
       createBeam(canvas.width, canvas.height)
     );
@@ -91,9 +98,9 @@ const BeamsBackground: React.FC = () => {
         beam.y += beam.speed * beam.direction;
         beam.pulse += beam.pulseSpeed;
 
-        // Richtungswechsel, wenn oben oder unten
-        if (beam.y > canvas.height + 50) beam.direction = -1;
-        if (beam.y < -beam.length) beam.direction = 1;
+        // Richtungswechsel an minY oder maxY
+        if (beam.y > beam.maxY) beam.direction = -1;
+        if (beam.y < beam.minY) beam.direction = 1;
 
         drawBeam(ctx, beam);
       });
