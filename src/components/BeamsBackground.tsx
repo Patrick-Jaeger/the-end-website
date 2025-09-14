@@ -8,33 +8,27 @@ interface Beam {
   angle: number;
   speed: number;
   opacity: number;
-  hue: number;
-  saturation: number;
   pulse: number;
   pulseSpeed: number;
   direction: number; // 1 = nach rechts, -1 = nach links
 }
 
-function createBeam(canvasWidth: number, canvasHeight: number): Beam {
-  const fromLeft = Math.random() > 0.5;
+function createBeam(canvasWidth: number, canvasHeight: number, fromLeft: boolean): Beam {
   const angle = fromLeft ? -30 + Math.random() * 15 : 30 + Math.random() * 15;
-  const isBlue = Math.random() > 0.3;
-  const hue = isBlue ? 210 + Math.random() * 40 : 0;
-  const saturation = isBlue ? 100 : 0;
-
+  
   return {
-    x: fromLeft ? 0 : canvasWidth, // Start links oder rechts
-    y: canvasHeight * 0.7 + Math.random() * canvasHeight * 0.2, // Fixe vertikale Position (unten)
+    x: fromLeft 
+        ? Math.random() * 50 // leichtes zufälliges Start-X
+        : canvasWidth - Math.random() * 50,
+    y: canvasHeight * 0.7 + Math.random() * canvasHeight * 0.2, // fixe vertikale Position (unten)
     width: 150 + Math.random() * 100,
     length: 300 + Math.random() * 200,
     angle,
-    speed: 1 + Math.random() * 1.5, // mittlere Geschwindigkeit
+    speed: 1 + Math.random() * 1.5,
     opacity: 0.8 + Math.random() * 0.2,
-    hue,
-    saturation,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.01 + Math.random() * 0.03,
-    direction: fromLeft ? 1 : -1, // Startbewegungsrichtung
+    direction: fromLeft ? 1 : -1,
   };
 }
 
@@ -55,9 +49,11 @@ const BeamsBackground: React.FC = () => {
     };
     resizeCanvas();
 
-    beamsRef.current = Array.from({ length: 10 }, () =>
-      createBeam(canvas.width, canvas.height)
-    );
+    // 3 Strahlen links, 3 rechts
+    beamsRef.current = [
+      ...Array.from({ length: 3 }, () => createBeam(canvas.width, canvas.height, true)),
+      ...Array.from({ length: 3 }, () => createBeam(canvas.width, canvas.height, false)),
+    ];
 
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
       ctx.save();
@@ -84,12 +80,11 @@ const BeamsBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam) => {
-        // horizontale Bewegung
         beam.x += beam.speed * beam.direction;
 
-        // Richtung umkehren, wenn Rand erreicht
-        if (beam.x > canvas.width && beam.direction > 0) beam.direction = -1;
-        if (beam.x < 0 && beam.direction < 0) beam.direction = 1;
+        // horizontale Begrenzung und Rückrichtung
+        if (beam.direction > 0 && beam.x > canvas.width - 50) beam.direction = -1;
+        if (beam.direction < 0 && beam.x < 50) beam.direction = 1;
 
         beam.pulse += beam.pulseSpeed;
         drawBeam(ctx, beam);
