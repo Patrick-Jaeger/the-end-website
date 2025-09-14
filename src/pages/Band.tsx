@@ -93,7 +93,8 @@ const Band = () => {
       </section>
 
       {/* Band Members */}
-      <section className="relative z-10 py-20 bg-rock-lighter/80">
+{/* Band Members */}
+<section className="relative z-10 py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
