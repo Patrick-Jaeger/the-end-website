@@ -6,6 +6,7 @@ import BeamsBackground from "@/components/BeamsBackground";
 import { Music, Guitar, Mic } from "lucide-react";
 
 
+
 const Band = () => {
   // Beispiel Band-Mitglieder
   const bandMembers = [
