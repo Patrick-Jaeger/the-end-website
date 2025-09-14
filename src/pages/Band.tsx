@@ -5,6 +5,7 @@ import BandCarousel from "@/components/BandCarousel";
 import { Music, Guitar, Mic } from "lucide-react";
 
 const Band = () => {
+  // Beispiel Band-Mitglieder
   const bandMembers = [
     { name: "Thomas Gründemann", instrument: "Gitarre & Backing Vocals", description: "...", icon: Guitar },
     { name: "David Wood", instrument: "Bass", description: "...", icon: Music },
@@ -132,7 +133,7 @@ const Band = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center bg-background/90 backdrop-blur-md rounded-lg p-8"
+            className="max-w-4xl mx-auto text-center bg-background/80 backdrop-blur-md rounded-lg p-8"
           >
             <h2 className="font-rock text-3xl font-bold text-glow mb-8">Die Band im Bild</h2>
 
@@ -149,6 +150,7 @@ const Band = () => {
         </div>
       </section>
 
+      {/* Footer mit vollem Hintergrund, blockiert Strahlen */}
       <Footer />
     </div>
   );
