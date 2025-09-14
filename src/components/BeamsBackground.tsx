@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 interface Beam {
-  x: number;            // aktuelle horizontale Position (wird animiert)
+  x: number;            // aktuelle horizontale Position
   y: number;            // Startpunkt (oben)
   width: number;
   length: number;
@@ -16,20 +16,19 @@ interface Beam {
 
 function createBeams(canvasWidth: number, canvasHeight: number): Beam[] {
   const beams: Beam[] = [];
+  const topOffset = 0; // Start ganz oben
+  const length = canvasHeight * 1.5; // Strahllänge über Boden hinaus
 
-  const topOffset = 50; // etwas Abstand vom oberen Rand
-  const length = canvasHeight * 1.2; // Strahllänge über Boden hinaus
-
-  // 3 Strahlen links
+  // 3 Strahlen links oben
   for (let i = 0; i < 3; i++) {
     beams.push({
-      x: 50, // links oben fixiert
-      startX: 50,
+      x: 0, // links oben fixiert
+      startX: 0,
       y: topOffset,
-      width: 120 + Math.random() * 80,
+      width: 80 + Math.random() * 40,
       length,
-      angle: 45 + Math.random() * 10, // leicht variierende Diagonale nach rechts unten
-      speedX: 0.5 + Math.random() * 0.5,
+      angle: 25 + Math.random() * 10, // leicht diagonale nach rechts unten
+      speedX: 0.8 + Math.random() * 0.4,
       direction: 1,
       opacity: 0.7 + Math.random() * 0.2,
       pulse: Math.random() * Math.PI * 2,
@@ -37,16 +36,16 @@ function createBeams(canvasWidth: number, canvasHeight: number): Beam[] {
     });
   }
 
-  // 3 Strahlen rechts
+  // 3 Strahlen rechts oben
   for (let i = 0; i < 3; i++) {
     beams.push({
-      x: canvasWidth - 50, // rechts oben fixiert
-      startX: canvasWidth - 50,
+      x: canvasWidth, // rechts oben fixiert
+      startX: canvasWidth,
       y: topOffset,
-      width: 120 + Math.random() * 80,
+      width: 80 + Math.random() * 40,
       length,
-      angle: -45 - Math.random() * 10, // leicht variierende Diagonale nach links unten
-      speedX: 0.5 + Math.random() * 0.5,
+      angle: -25 - Math.random() * 10, // leicht diagonale nach links unten
+      speedX: 0.8 + Math.random() * 0.4,
       direction: -1,
       opacity: 0.7 + Math.random() * 0.2,
       pulse: Math.random() * Math.PI * 2,
@@ -103,11 +102,11 @@ const BeamsBackground: React.FC = () => {
         // horizontale Bewegung
         beam.x += beam.speedX * beam.direction;
 
-        // Rückwärtsrichtung, wenn bestimmter Bereich erreicht
+        // Rückwärtsrichtung nach +-150px vom Startpunkt
         if (beam.direction === 1 && beam.x > beam.startX + 150) beam.direction = -1;
         if (beam.direction === -1 && beam.x < beam.startX - 150) beam.direction = 1;
 
-        // leicht pulsieren
+        // Pulsieren
         beam.pulse += beam.pulseSpeed;
 
         drawBeam(ctx, beam);
