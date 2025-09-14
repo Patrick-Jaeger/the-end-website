@@ -1,32 +1,40 @@
 import { useEffect, useRef } from "react";
 
 interface Beam {
-  originX: number;   // Startpunkt oben
-  originY: number;   // Startpunkt oben, 0
+  originX: number;
+  originY: number;
   width: number;
   length: number;
-  angle: number;     // Schräg nach unten
+  angle: number;
+  speed: number;
+  opacity: number;
+  hue: number;
+  saturation: number;
   pulse: number;
   pulseSpeed: number;
-  offsetX: number;   // horizontale Bewegung
-  direction: number; // 1 = nach rechts, -1 = nach links
+  offsetX: number;
+  direction: number; // +1 oder -1 für horizontalen Pendel
 }
 
-function createBeam(canvasWidth: number, canvasHeight: number, fromLeft: boolean, index: number): Beam {
-  const originX = fromLeft
-    ? 80 + index * 60       // links oben, leicht verschoben
-    : canvasWidth - 80 - index * 60; // rechts oben, leicht verschoben
+function createBeam(isLeft: boolean, canvasWidth: number, canvasHeight: number): Beam {
+  const hue = isLeft ? 210 + Math.random() * 40 : 0;
+  const saturation = isLeft ? 100 : 0;
+  const angle = isLeft ? 45 + Math.random() * 10 : 135 + Math.random() * 10;
 
   return {
-    originX,
+    originX: isLeft ? 0 : canvasWidth,
     originY: 0,
-    width: 120 + Math.random() * 40,
+    width: 150 + Math.random() * 50,
     length: canvasHeight * 0.6,
-    angle: fromLeft ? 45 : -45,  // links->rechts unten, rechts->links unten
+    angle,
+    speed: 0.5 + Math.random() * 0.3,
+    opacity: 0.8 + Math.random() * 0.2,
+    hue,
+    saturation,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.01 + Math.random() * 0.02,
     offsetX: 0,
-    direction: fromLeft ? 1 : -1,
+    direction: 1,
   };
 }
 
@@ -47,23 +55,25 @@ const BeamsBackground: React.FC = () => {
     };
     resizeCanvas();
 
-    // 3 Strahlen links, 3 rechts
+    // 3 links, 3 rechts
     beamsRef.current = [
-      ...Array.from({ length: 3 }, (_, i) => createBeam(canvas.width, canvas.height, true, i)),
-      ...Array.from({ length: 3 }, (_, i) => createBeam(canvas.width, canvas.height, false, i)),
+      createBeam(true, canvas.width, canvas.height),
+      createBeam(true, canvas.width, canvas.height),
+      createBeam(true, canvas.width, canvas.height),
+      createBeam(false, canvas.width, canvas.height),
+      createBeam(false, canvas.width, canvas.height),
+      createBeam(false, canvas.width, canvas.height),
     ];
 
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
       ctx.save();
       ctx.translate(beam.originX + beam.offsetX, beam.originY);
-
-      // Richtung beibehalten
       ctx.rotate((beam.angle * Math.PI) / 180);
 
-      const pulsingOpacity = 0.8 + Math.sin(beam.pulse) * 0.2;
+      const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`); // Startpunkt sichtbar
+      gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`);
       gradient.addColorStop(0.2, `rgba(255,255,255,${pulsingOpacity})`);
       gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`);
       gradient.addColorStop(1, `rgba(255,255,255,0)`);
@@ -80,11 +90,13 @@ const BeamsBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam) => {
-        beam.offsetX += beam.direction * 0.6; // Geschwindigkeit
+        // horizontal pendeln
+        beam.offsetX += beam.direction * 0.5;
         if (beam.offsetX > 80) beam.direction = -1;
         if (beam.offsetX < -80) beam.direction = 1;
 
         beam.pulse += beam.pulseSpeed;
+
         drawBeam(ctx, beam);
       });
 
