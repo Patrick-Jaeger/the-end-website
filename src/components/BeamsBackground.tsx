@@ -55,9 +55,10 @@ const BeamsBackground: React.FC = () => {
     };
     resizeCanvas();
 
-    beamsRef.current = Array.from({ length: 30 }, () =>
-      createBeam(canvas.width, canvas.height)
-    );
+beamsRef.current = Array.from({ length: 10 }, () =>  // weniger Strahlen
+  createBeam(canvas.width, canvas.height)
+);
+
 
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
       ctx.save();
@@ -87,9 +88,10 @@ const BeamsBackground: React.FC = () => {
         beam.y += beam.speed;
         beam.pulse += beam.pulseSpeed;
 
-        if (beam.y > canvas.height + 200) {
-          beamsRef.current[i] = createBeam(canvas.width, canvas.height);
-        }
+if (beam.y > canvas.height + 200) {
+  beamsRef.current[i] = createBeam(canvas.width, canvas.height);
+}
+
 
         drawBeam(ctx, beam);
       });
