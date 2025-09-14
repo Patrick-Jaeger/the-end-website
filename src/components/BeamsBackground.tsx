@@ -1,34 +1,32 @@
 import { useEffect, useRef } from "react";
 
 interface Beam {
-  x: number;        // aktuelle horizontale Position des Lichtkegels
-  y: number;        // feste vertikale Position (Startpunkt oben)
-  width: number;    // Breite des Kegels
-  length: number;   // Länge des Kegels
-  angle: number;    // Rotationswinkel
-  speed: number;    // horizontale Geschwindigkeit
-  pulse: number;    // für leichte Helligkeitspulse
+  originX: number;  // feste Startposition oben
+  originY: number;  // y = 0
+  width: number;
+  length: number;
+  angle: number;
+  pulse: number;
   pulseSpeed: number;
-  direction: number; // horizontal: 1 = rechts, -1 = links
-  originX: number;  // feste X-Position der Lichtquelle
+  offsetX: number;  // horizontale Bewegung vom Ursprung
+  direction: number; // 1 = rechts, -1 = links
 }
 
 function createBeam(canvasWidth: number, canvasHeight: number, fromLeft: boolean, index: number): Beam {
   const originX = fromLeft
-    ? 50 + index * 20   // kleine Verschiebung pro Strahl
-    : canvasWidth - 50 - index * 20;
+    ? 100 + index * 60    // links, leicht verschoben
+    : canvasWidth - 100 - index * 60; // rechts
 
   return {
-    x: originX,
-    y: 0, // Startpunkt oben
+    originX,
+    originY: 0,
     width: 150 + Math.random() * 50,
-    length: canvasHeight * 0.7, // Lichtkegel reicht bis Boden
+    length: canvasHeight * 0.7,
     angle: fromLeft ? 30 : -30,
-    speed: 0.8 + Math.random() * 0.5,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.01 + Math.random() * 0.02,
+    offsetX: 0,
     direction: fromLeft ? 1 : -1,
-    originX,
   };
 }
 
@@ -49,7 +47,6 @@ const BeamsBackground: React.FC = () => {
     };
     resizeCanvas();
 
-    // 3 Strahlen links, 3 rechts
     beamsRef.current = [
       ...Array.from({ length: 3 }, (_, i) => createBeam(canvas.width, canvas.height, true, i)),
       ...Array.from({ length: 3 }, (_, i) => createBeam(canvas.width, canvas.height, false, i)),
@@ -57,7 +54,7 @@ const BeamsBackground: React.FC = () => {
 
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
       ctx.save();
-      ctx.translate(beam.originX, beam.y); // Startpunkt fix
+      ctx.translate(beam.originX + beam.offsetX, beam.originY);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
       const pulsingOpacity = 0.8 + Math.sin(beam.pulse) * 0.2;
@@ -70,7 +67,7 @@ const BeamsBackground: React.FC = () => {
 
       ctx.fillStyle = gradient;
       ctx.filter = "blur(15px)";
-      ctx.fillRect(-beam.width / 2 + beam.x, 0, beam.width, beam.length);
+      ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
       ctx.restore();
       ctx.filter = "none";
     }
@@ -80,10 +77,9 @@ const BeamsBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam) => {
-        // horizontale Bewegung innerhalb +/-50px vom Ursprung
-        beam.x += beam.speed * beam.direction;
-        if (beam.x > 50) beam.direction = -1;
-        if (beam.x < -50) beam.direction = 1;
+        beam.offsetX += beam.direction * 0.5; // Geschwindigkeit
+        if (beam.offsetX > 80) beam.direction = -1;
+        if (beam.offsetX < -80) beam.direction = 1;
 
         beam.pulse += beam.pulseSpeed;
         drawBeam(ctx, beam);
