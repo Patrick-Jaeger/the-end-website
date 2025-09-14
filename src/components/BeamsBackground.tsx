@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 
 interface Beam {
-  originX: number;
-  originY: number;
+  startX: number;
+  startY: number;
+  xOffset: number;
   width: number;
   length: number;
   angle: number;
@@ -12,30 +13,54 @@ interface Beam {
   saturation: number;
   pulse: number;
   pulseSpeed: number;
-  offsetX: number;
-  direction: number; // +1 oder -1 für horizontalen Pendel
+  direction: 1 | -1; // horizontal wander direction
+  range: number; // horizontal movement range
 }
 
-function createBeam(isLeft: boolean, canvasWidth: number, canvasHeight: number): Beam {
-  const hue = isLeft ? 210 + Math.random() * 40 : 0;
-  const saturation = isLeft ? 100 : 0;
-  const angle = isLeft ? 45 + Math.random() * 10 : 135 + Math.random() * 10;
+function createBeams(viewportWidth: number, viewportHeight: number): Beam[] {
+  const beams: Beam[] = [];
 
-  return {
-    originX: isLeft ? 0 : canvasWidth,
-    originY: 0,
-    width: 150 + Math.random() * 50,
-    length: canvasHeight * 0.6,
-    angle,
-    speed: 0.5 + Math.random() * 0.3,
-    opacity: 0.8 + Math.random() * 0.2,
-    hue,
-    saturation,
-    pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: 0.01 + Math.random() * 0.02,
-    offsetX: 0,
-    direction: 1,
-  };
+  // 3 links oben
+  for (let i = 0; i < 3; i++) {
+    beams.push({
+      startX: 0,
+      startY: 0,
+      xOffset: 0,
+      width: 100 + i * 20,
+      length: viewportHeight,
+      angle: 30, // nach rechts unten
+      speed: 0.5 + i * 0.2,
+      opacity: 0.8,
+      hue: 210,
+      saturation: 100,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.01 + Math.random() * 0.01,
+      direction: 1,
+      range: 200 + i * 50,
+    });
+  }
+
+  // 3 rechts oben
+  for (let i = 0; i < 3; i++) {
+    beams.push({
+      startX: viewportWidth,
+      startY: 0,
+      xOffset: 0,
+      width: 100 + i * 20,
+      length: viewportHeight,
+      angle: -30, // nach links unten
+      speed: 0.5 + i * 0.2,
+      opacity: 0.8,
+      hue: 0,
+      saturation: 100,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.01 + Math.random() * 0.01,
+      direction: -1,
+      range: 200 + i * 50,
+    });
+  }
+
+  return beams;
 }
 
 const BeamsBackground: React.FC = () => {
@@ -52,29 +77,19 @@ const BeamsBackground: React.FC = () => {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      beamsRef.current = createBeams(canvas.width, canvas.height);
     };
     resizeCanvas();
 
-    // 3 links, 3 rechts
-    beamsRef.current = [
-      createBeam(true, canvas.width, canvas.height),
-      createBeam(true, canvas.width, canvas.height),
-      createBeam(true, canvas.width, canvas.height),
-      createBeam(false, canvas.width, canvas.height),
-      createBeam(false, canvas.width, canvas.height),
-      createBeam(false, canvas.width, canvas.height),
-    ];
-
     function drawBeam(ctx: CanvasRenderingContext2D, beam: Beam) {
       ctx.save();
-      ctx.translate(beam.originX + beam.offsetX, beam.originY);
+      ctx.translate(beam.startX + beam.xOffset, beam.startY);
       ctx.rotate((beam.angle * Math.PI) / 180);
 
       const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
-      gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`);
-      gradient.addColorStop(0.2, `rgba(255,255,255,${pulsingOpacity})`);
+      gradient.addColorStop(0, `rgba(255,255,255,${pulsingOpacity})`); // sofort sichtbar
       gradient.addColorStop(0.8, `rgba(255,255,255,0.2)`);
       gradient.addColorStop(1, `rgba(255,255,255,0)`);
 
@@ -90,11 +105,11 @@ const BeamsBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       beamsRef.current.forEach((beam) => {
-        // horizontal pendeln
-        beam.offsetX += beam.direction * 0.5;
-        if (beam.offsetX > 80) beam.direction = -1;
-        if (beam.offsetX < -80) beam.direction = 1;
+        // horizontal wandern
+        beam.xOffset += beam.speed * beam.direction;
+        if (Math.abs(beam.xOffset) > beam.range) beam.direction *= -1;
 
+        // pulsen
         beam.pulse += beam.pulseSpeed;
 
         drawBeam(ctx, beam);
