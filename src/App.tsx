@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import BeamsBackground from "@/components/BeamsBackground";
+
 import Index from "./pages/Index";
 import Band from "./pages/Band";
 import Gigs from "./pages/Gigs";
@@ -25,9 +25,6 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-
-        {/* Hintergrund-Strahlen */}
-        <BeamsBackground />
 
         {/* Hauptinhalt */}
         <div className="relative z-10">
