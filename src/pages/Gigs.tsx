@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BeamsBackground from "@/components/BeamsBackground";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin, Clock, Users, Music } from "lucide-react";
@@ -58,7 +59,8 @@ const Gigs = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-rock-gradient">
+    <div className="min-h-screen bg-rock-gradient relative">
+      <BeamsBackground />
       <Navigation />
       
       {/* Hero Section */}
