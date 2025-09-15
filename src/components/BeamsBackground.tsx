@@ -131,8 +131,12 @@ const BeamsBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 w-full h-full"
-      style={{ pointerEvents: "none", background: "transparent" }}
+      className="absolute inset-0 w-full h-full"
+      style={{ 
+        pointerEvents: "none", 
+        background: "transparent",
+        zIndex: -1
+      }}
     />
   );
 };
