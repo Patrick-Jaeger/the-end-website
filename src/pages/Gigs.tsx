@@ -86,7 +86,7 @@ const Gigs = () => {
       </section>
 
       {/* Upcoming Gigs */}
-      <section className="relative z-10 py-20 bg-rock-lighter/60">
+      <section className="relative z-10 py-20 bg-gradient-to-b from-background/30 to-rock-lighter/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
