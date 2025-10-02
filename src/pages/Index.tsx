@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Calendar, Music, Users } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { useState } from "react";
 import EventModal from "@/components/EventModal";
+import { StarBorder } from "@/components/ui/star-border";
 
 const Index = () => {
   console.log("Index component rendering...");
@@ -77,9 +77,9 @@ const Index = () => {
                   wir bringen die größten Hits live auf die Bühne.
                 </p>
                 <Link to="/gigs">
-                  <Button className="btn-rock">
+                  <StarBorder as="div" color="hsl(var(--primary))">
                     Alle Termine anzeigen
-                  </Button>
+                  </StarBorder>
                 </Link>
               </div>
               
@@ -115,9 +115,9 @@ const Index = () => {
                   Lernt die Musiker hinter den Covers kennen
                 </p>
                 <Link to="/band">
-                  <Button variant="outline" className="btn-outline-rock">
+                  <StarBorder as="div" color="hsl(var(--primary))">
                     Mehr erfahren
-                  </Button>
+                  </StarBorder>
                 </Link>
               </div>
             </motion.div>
@@ -136,9 +136,9 @@ const Index = () => {
                   Entdeckt unsere komplette Setlist
                 </p>
                 <Link to="/repertoire">
-                  <Button variant="outline" className="btn-outline-rock">
+                  <StarBorder as="div" color="hsl(var(--primary))">
                     Songs ansehen
-                  </Button>
+                  </StarBorder>
                 </Link>
               </div>
             </motion.div>
@@ -157,9 +157,9 @@ const Index = () => {
                   Bucht uns für eure Veranstaltung
                 </p>
                 <Link to="/kontakt">
-                  <Button variant="outline" className="btn-outline-rock">
+                  <StarBorder as="div" color="hsl(var(--primary))">
                     Kontakt aufnehmen
-                  </Button>
+                  </StarBorder>
                 </Link>
               </div>
             </motion.div>
