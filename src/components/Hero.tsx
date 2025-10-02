@@ -74,13 +74,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <Link to="/gigs">
-              <StarBorder as="div" color="hsl(var(--primary))" className="w-full sm:w-auto">
-                <div className="flex items-center justify-center">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Nächste Gigs ansehen
-                </div>
-              </StarBorder>
+            <Link to="/gigs" className="w-full sm:w-auto">
+              <button className="btn-rock w-full sm:w-auto flex items-center justify-center">
+                <Calendar className="mr-2 h-5 w-5" />
+                Nächste Gigs ansehen
+              </button>
             </Link>
             
             <Link to="/kontakt">
