@@ -165,16 +165,24 @@
     color: hsl(var(--primary-foreground));
   }
 
+  .btn-rock:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    filter: brightness(1.1);
+  }
+
   .btn-outline-rock {
-    @apply px-6 py-3 rounded-lg font-semibold border-2 relative z-10;
+    @apply px-6 py-3 rounded-lg font-semibold border-2 transition-rock relative z-10;
     border-color: hsl(var(--primary));
     color: hsl(var(--primary));
+    background: transparent;
   }
 
   .btn-outline-rock:hover {
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
     box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
   }
 
   /* Custom cursor */
