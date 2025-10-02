@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import { Calendar, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
 import logo from "@/assets/logo.png";
-import AnimatedBorderButton from "@/components/ui/animated-border-button";
 
 
 
@@ -75,17 +75,21 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <Link to="/gigs">
-              <AnimatedBorderButton 
-                text="Nächste Gigs ansehen" 
-                icon={<Calendar className="h-4 w-4" />}
-              />
+              <Button size="lg" className="btn-rock w-full sm:w-auto">
+                <Calendar className="mr-2 h-5 w-5" />
+                Nächste Gigs ansehen
+              </Button>
             </Link>
             
             <Link to="/kontakt">
-              <AnimatedBorderButton 
-                text="Anfrage senden" 
-                icon={<Mail className="h-4 w-4" />}
-              />
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="btn-outline-rock w-full sm:w-auto"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Anfrage senden
+              </Button>
             </Link>
           </motion.div>
 
