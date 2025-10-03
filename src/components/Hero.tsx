@@ -7,7 +7,7 @@ import { StarBorder } from "@/components/ui/star-border";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -17,12 +17,12 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center">
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-8 max-w-4xl"
+          className="space-y-8"
         >
           {/* Logo */}
           <motion.img
@@ -61,44 +61,16 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Von Die Ärzte bis Nirvana, von Green Day bis Metallica – 
-            wir bringen die größten Rock-Hits live auf die Bühne!
+            Von Die Ärzte bis Nirvana, von Green Day bis Metallica – wir bringen
+            die größten Rock-Hits live auf die Bühne!
           </motion.p>
 
-          {/* Call-to-Action Buttons */}
+          {/* Scroll Indicator - jetzt zwischen Text und Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 md:mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <Link to="/gigs" className="w-full sm:w-auto">
-              <button className="btn-rock w-full sm:w-auto flex items-center justify-center">
-                <Calendar className="mr-2 h-5 w-5" />
-                Nächste Gigs ansehen
-              </button>
-            </Link>
-
-            <Link to="/kontakt" className="w-full sm:w-auto">
-              <StarBorder
-                as="div"
-                color="hsl(var(--primary))"
-                className="w-full sm:w-auto"
-              >
-                <div className="flex items-center justify-center">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Anfrage senden
-                </div>
-              </StarBorder>
-            </Link>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            className="mt-12 flex justify-center"
+            className="mt-8 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
+            transition={{ duration: 1, delay: 1.0 }}
           >
             <motion.div
               className="w-6 h-10 border-2 border-primary rounded-full flex justify-center"
@@ -111,6 +83,34 @@ const Hero = () => {
                 transition={{ duration: 2, repeat: Infinity }}
               />
             </motion.div>
+          </motion.div>
+
+          {/* Call-to-Action Buttons */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+          >
+            <Link to="/gigs" className="w-full sm:w-auto">
+              <button className="btn-rock w-full sm:w-auto flex items-center justify-center">
+                <Calendar className="mr-2 h-5 w-5" />
+                Nächste Gigs ansehen
+              </button>
+            </Link>
+
+            <Link to="/kontakt">
+              <StarBorder
+                as="div"
+                color="hsl(var(--primary))"
+                className="w-full sm:w-auto"
+              >
+                <div className="flex items-center justify-center">
+                  <Mail className="mr-2 h-5 w-5" />
+                  Anfrage senden
+                </div>
+              </StarBorder>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
