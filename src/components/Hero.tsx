@@ -5,14 +5,11 @@ import heroBackground from "@/assets/hero-background.jpg";
 import logo from "@/assets/logo.png";
 import { StarBorder } from "@/components/ui/star-border";
 
-
-
-
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
       >
@@ -20,24 +17,25 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-8"
+          className="space-y-8 max-w-4xl"
         >
-<motion.img
-  src={logo}
-  alt="The End Logo"
-  className="mx-auto mb-4 w-72 md:w-96 lg:w-[400px]"
-  initial={{ opacity: 0, scale: 0.8 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 1, delay: 0.2 }}
-/>
+          {/* Logo */}
+          <motion.img
+            src={logo}
+            alt="The End Logo"
+            className="mx-auto mb-4 w-72 md:w-96 lg:w-[400px]"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          />
 
           {/* Genre Subtitle */}
-          <motion.h2 
+          <motion.h2
             className="font-rock text-3xl md:text-5xl lg:text-6xl font-black text-white text-glow"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -47,7 +45,7 @@ const Hero = () => {
           </motion.h2>
 
           {/* Slogan */}
-          <motion.p 
+          <motion.p
             className="font-rock text-xl md:text-2xl lg:text-3xl font-bold text-primary-glow"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,19 +55,19 @@ const Hero = () => {
           </motion.p>
 
           {/* Subtitle */}
-          <motion.p 
-            className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
+          <motion.p
+            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Von  Die Ärzte bis Nirvana, von Green Day bis Metallica – 
+            Von Die Ärzte bis Nirvana, von Green Day bis Metallica – 
             wir bringen die größten Rock-Hits live auf die Bühne!
           </motion.p>
 
           {/* Call-to-Action Buttons */}
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-24 mb-8"
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 md:mt-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
@@ -80,9 +78,13 @@ const Hero = () => {
                 Nächste Gigs ansehen
               </button>
             </Link>
-            
-            <Link to="/kontakt">
-              <StarBorder as="div" color="hsl(var(--primary))" className="w-full sm:w-auto">
+
+            <Link to="/kontakt" className="w-full sm:w-auto">
+              <StarBorder
+                as="div"
+                color="hsl(var(--primary))"
+                className="w-full sm:w-auto"
+              >
                 <div className="flex items-center justify-center">
                   <Mail className="mr-2 h-5 w-5" />
                   Anfrage senden
@@ -92,18 +94,18 @@ const Hero = () => {
           </motion.div>
 
           {/* Scroll Indicator */}
-          <motion.div 
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          <motion.div
+            className="mt-12 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
-            <motion.div 
+            <motion.div
               className="w-6 h-10 border-2 border-primary rounded-full flex justify-center"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <motion.div 
+              <motion.div
                 className="w-1 h-3 bg-primary rounded-full mt-2"
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -113,7 +115,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Decorative Elements */}
+      {/* Decorative Gradient at Bottom */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
