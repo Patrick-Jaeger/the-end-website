@@ -75,7 +75,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <Link to="/gigs" className="w-full sm:w-auto">
-              <button className="btn-rock w-full sm:w-auto flex items-center justify-center">
+              <button className="btn-rock w-full sm:w-auto flex items-center justify-center rounded-[20px]">
                 <Calendar className="mr-2 h-5 w-5" />
                 Nächste Gigs ansehen
               </button>
