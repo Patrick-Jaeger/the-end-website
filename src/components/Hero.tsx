@@ -7,8 +7,8 @@ import { StarBorder } from "@/components/ui/star-border";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+      {/* Background Image mit Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
@@ -17,7 +17,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center justify-center">
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,16 +61,16 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Von Die Ärzte bis Nirvana, von Green Day bis Metallica –
+            Von Die Ärzte bis Nirvana, von Green Day bis Metallica – 
             wir bringen die größten Rock-Hits live auf die Bühne!
           </motion.p>
 
-          {/* Scroll Indicator (zwischen Text und Buttons) */}
+          {/* Scroll Indicator */}
           <motion.div
-            className="flex justify-center mt-12 mb-6 z-20"
+            className="flex justify-center mb-10 mt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
+            transition={{ duration: 1, delay: 1.0 }}
           >
             <motion.div
               className="w-6 h-10 border-2 border-primary rounded-full flex justify-center"
@@ -87,10 +87,10 @@ const Hero = () => {
 
           {/* Call-to-Action Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
           >
             <Link to="/gigs" className="w-full sm:w-auto">
               <button className="btn-rock w-full sm:w-auto flex items-center justify-center">
@@ -100,11 +100,7 @@ const Hero = () => {
             </Link>
 
             <Link to="/kontakt">
-              <StarBorder
-                as="div"
-                color="hsl(var(--primary))"
-                className="w-full sm:w-auto"
-              >
+              <StarBorder as="div" color="hsl(var(--primary))" className="w-full sm:w-auto">
                 <div className="flex items-center justify-center">
                   <Mail className="mr-2 h-5 w-5" />
                   Anfrage senden
@@ -115,7 +111,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Decorative Elements */}
+      {/* Decorative Gradient unten */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
