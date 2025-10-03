@@ -160,7 +160,7 @@
   }
 
   .btn-rock {
-    @apply px-6 py-3 rounded-lg font-semibold transition-rock relative z-10;
+    @apply px-6 py-3 rounded-[20px] font-semibold transition-rock relative z-10;
     background: var(--gradient-accent);
     color: hsl(var(--primary-foreground));
   }
