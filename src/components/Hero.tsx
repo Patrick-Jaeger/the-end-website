@@ -7,8 +7,8 @@ import { StarBorder } from "@/components/ui/star-border";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+      {/* Background Image mit Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
@@ -17,18 +17,18 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col items-center text-center space-y-8"
+          className="space-y-8"
         >
           {/* Logo */}
           <motion.img
             src={logo}
             alt="The End Logo"
-            className="mx-auto w-72 md:w-96 lg:w-[400px]"
+            className="mx-auto mb-4 w-72 md:w-96 lg:w-[400px]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -56,18 +56,18 @@ const Hero = () => {
 
           {/* Subtitle */}
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl"
+            className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Von Die Ärzte bis Nirvana, von Green Day bis Metallica – wir bringen
-            die größten Rock-Hits live auf die Bühne!
+            Von Die Ärzte bis Nirvana, von Green Day bis Metallica – 
+            wir bringen die größten Rock-Hits live auf die Bühne!
           </motion.p>
 
           {/* Scroll Indicator */}
           <motion.div
-            className="flex justify-center my-6"
+            className="flex justify-center mb-10 mt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.0 }}
@@ -87,7 +87,7 @@ const Hero = () => {
 
           {/* Call-to-Action Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
@@ -100,11 +100,7 @@ const Hero = () => {
             </Link>
 
             <Link to="/kontakt">
-              <StarBorder
-                as="div"
-                color="hsl(var(--primary))"
-                className="w-full sm:w-auto"
-              >
+              <StarBorder as="div" color="hsl(var(--primary))" className="w-full sm:w-auto">
                 <div className="flex items-center justify-center">
                   <Mail className="mr-2 h-5 w-5" />
                   Anfrage senden
@@ -115,7 +111,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Decorative Gradient at Bottom */}
+      {/* Decorative Gradient unten */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
