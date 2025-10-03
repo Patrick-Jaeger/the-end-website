@@ -7,7 +7,7 @@ import { StarBorder } from "@/components/ui/star-border";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -22,7 +22,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-8"
+          className="space-y-8 relative"
         >
           {/* Logo */}
           <motion.img
@@ -65,9 +65,10 @@ const Hero = () => {
             die größten Rock-Hits live auf die Bühne!
           </motion.p>
 
-          {/* Scroll Indicator - jetzt zwischen Text und Buttons */}
+          {/* Scroll Indicator (fixiert zwischen Text & Buttons) */}
           <motion.div
-            className="mt-8 flex justify-center"
+            className="absolute left-1/2 -translate-x-1/2 mt-4"
+            style={{ bottom: "110px" }} // Abstand über den Buttons
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.0 }}
@@ -87,7 +88,7 @@ const Hero = () => {
 
           {/* Call-to-Action Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12 mb-8"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-28 mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
