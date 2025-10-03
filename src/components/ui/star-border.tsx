@@ -50,12 +50,15 @@ export function StarBorder<T extends ElementType = "button">({
       />
       <div 
         className={cn(
-          "relative z-1 text-center text-base py-3 px-6 rounded-[20px] font-semibold",
+          "relative z-1 border text-center text-base py-3 px-6 rounded-[20px] font-semibold",
           "bg-gradient-to-b from-background/90 to-muted/90 transition-all duration-300",
           "dark:from-background dark:to-muted",
-          "hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] hover:bg-primary/10",
-          "border border-background/90"
+          "hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)]"
         )}
+        style={{
+          borderColor: defaultColor,
+          borderWidth: '1px'
+        }}
       >
         {children}
       </div>
