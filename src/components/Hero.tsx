@@ -17,18 +17,18 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-8 relative"
+          className="flex flex-col items-center text-center space-y-8"
         >
           {/* Logo */}
           <motion.img
             src={logo}
             alt="The End Logo"
-            className="mx-auto mb-4 w-72 md:w-96 lg:w-[400px]"
+            className="mx-auto w-72 md:w-96 lg:w-[400px]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -56,7 +56,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl mx-auto"
+            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -65,10 +65,9 @@ const Hero = () => {
             die größten Rock-Hits live auf die Bühne!
           </motion.p>
 
-          {/* Scroll Indicator (fixiert zwischen Text & Buttons) */}
+          {/* Scroll Indicator */}
           <motion.div
-            className="absolute left-1/2 -translate-x-1/2 mt-4"
-            style={{ bottom: "110px" }} // Abstand über den Buttons
+            className="flex justify-center my-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.0 }}
@@ -88,7 +87,7 @@ const Hero = () => {
 
           {/* Call-to-Action Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-28 mb-8"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
