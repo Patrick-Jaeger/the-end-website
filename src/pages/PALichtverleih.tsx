@@ -1,22 +1,29 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CalendarIcon, Volume2, Lightbulb, Music, Mic, Settings, Send, Zap, Cable } from "lucide-react";
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { useTextSplit } from "@/hooks/useGSAP";
 
 const PALichtverleih = () => {
   const [date, setDate] = useState<Date>();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    location: "",
+    eventType: "",
+    requirements: ""
+  });
   
   // GSAP Animation
   useTextSplit('.text-split-pa', 0.3);
@@ -236,24 +243,37 @@ const PALichtverleih = () => {
                 
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name">Name *</Label>
-                      <Input id="name" placeholder="Euer Name" className="mt-1" />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">E-Mail *</Label>
-                      <Input id="email" type="email" placeholder="kontakt@example.com" className="mt-1" />
-                    </div>
+                    <Input 
+                      label="Name *"
+                      id="name" 
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      placeholder="Euer Name" 
+                      className="mt-1" 
+                    />
+                    <Input 
+                      label="E-Mail *"
+                      id="email" 
+                      type="email" 
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      placeholder="kontakt@example.com" 
+                      className="mt-1" 
+                    />
                   </div>
                   
-                  <div>
-                    <Label htmlFor="phone">Telefonnummer</Label>
-                    <Input id="phone" type="tel" placeholder="z.B. 0123 456789" className="mt-1" />
-                  </div>
+                  <Input 
+                    label="Telefonnummer"
+                    id="phone" 
+                    type="tel" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    placeholder="z.B. 0123 456789" 
+                    className="mt-1" 
+                  />
                   
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="event-date">Event-Datum</Label>
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button
@@ -280,25 +300,33 @@ const PALichtverleih = () => {
                         </PopoverContent>
                       </Popover>
                     </div>
-                    <div>
-                      <Label htmlFor="location">Veranstaltungsort</Label>
-                      <Input id="location" placeholder="Ort der Veranstaltung" className="mt-1" />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="event-type">Art der Veranstaltung</Label>
-                    <Input id="event-type" placeholder="z.B. Konzert, Hochzeit, Firmenevent" className="mt-1" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="requirements">Anforderungen & Wünsche</Label>
-                    <Textarea 
-                      id="requirements" 
-                      placeholder="Beschreibt euer Event: Anzahl Gäste, Bühne, spezielle Anforderungen..."
-                      className="mt-1 min-h-[120px]"
+                    <Input 
+                      label="Veranstaltungsort"
+                      id="location" 
+                      value={formData.location}
+                      onChange={(e) => setFormData({...formData, location: e.target.value})}
+                      placeholder="Ort der Veranstaltung" 
+                      className="mt-1" 
                     />
                   </div>
+                  
+                  <Input 
+                    label="Art der Veranstaltung"
+                    id="event-type" 
+                    value={formData.eventType}
+                    onChange={(e) => setFormData({...formData, eventType: e.target.value})}
+                    placeholder="z.B. Konzert, Hochzeit, Firmenevent" 
+                    className="mt-1" 
+                  />
+                  
+                  <Textarea 
+                    label="Anforderungen & Wünsche"
+                    id="requirements" 
+                    value={formData.requirements}
+                    onChange={(e) => setFormData({...formData, requirements: e.target.value})}
+                    placeholder="Beschreibt euer Event: Anzahl Gäste, Bühne, spezielle Anforderungen..."
+                    className="mt-1 min-h-[120px]"
+                  />
                   
                   <Button type="submit" className="btn-rock w-full">
                     <Send className="mr-2 h-5 w-5" />

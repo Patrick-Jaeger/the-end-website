@@ -94,51 +94,43 @@ const Kontakt = () => {
                   
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="name">Name *</Label>
-                        <Input
-                          id="name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="bg-background border-border"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="email">E-Mail *</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="bg-background border-border"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="phone">Telefonnummer</Label>
                       <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                        placeholder="z.B. 0123 456789"
+                        label="Name *"
+                        id="name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
                         className="bg-background border-border"
+                        required
+                      />
+                      <Input
+                        label="E-Mail *"
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="bg-background border-border"
+                        required
                       />
                     </div>
 
-                    <div>
-                      <Label htmlFor="subject">Betreff</Label>
-                      <Input
-                        id="subject"
-                        value={formData.subject}
-                        onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                        placeholder="z.B. Booking-Anfrage, Allgemeine Frage..."
-                        className="bg-background border-border"
-                      />
-                    </div>
+                    <Input
+                      label="Telefonnummer"
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      placeholder="z.B. 0123 456789"
+                      className="bg-background border-border"
+                    />
+
+                    <Input
+                      label="Betreff"
+                      id="subject"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                      placeholder="z.B. Booking-Anfrage, Allgemeine Frage..."
+                      className="bg-background border-border"
+                    />
 
                     <div>
                       <Label htmlFor="date">Gewünschtes Datum (optional)</Label>
@@ -171,18 +163,16 @@ const Kontakt = () => {
                       </Popover>
                     </div>
 
-                    <div>
-                      <Label htmlFor="message">Nachricht *</Label>
-                      <Textarea
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        placeholder="Erzählt uns von eurer Veranstaltung, stellt eure Fragen oder sendet uns euer Feedback..."
-                        className="bg-background border-border"
-                        rows={6}
-                        required
-                      />
-                    </div>
+                    <Textarea
+                      label="Nachricht *"
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      placeholder="Erzählt uns von eurer Veranstaltung, stellt eure Fragen oder sendet uns euer Feedback..."
+                      className="bg-background border-border"
+                      rows={6}
+                      required
+                    />
 
                     <Button type="submit" size="lg" className="btn-rock w-full">
                       <Send className="mr-2 h-5 w-5" />

@@ -202,40 +202,34 @@ const Mearch = () => {
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="name">Name *</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="bg-background border-border"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">E-Mail *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="bg-background border-border"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="phone">Telefonnummer</Label>
                     <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      placeholder="z.B. 0123 456789"
+                      label="Name *"
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
                       className="bg-background border-border"
+                      required
+                    />
+                    <Input
+                      label="E-Mail *"
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="bg-background border-border"
+                      required
                     />
                   </div>
+
+                  <Input
+                    label="Telefonnummer"
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    placeholder="z.B. 0123 456789"
+                    className="bg-background border-border"
+                  />
 
                   <div>
                     <Label htmlFor="product">Produkt *</Label>
@@ -254,16 +248,14 @@ const Mearch = () => {
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="size">Größe</Label>
-                      <Input
-                        id="size"
-                        value={formData.size}
-                        onChange={(e) => setFormData({...formData, size: e.target.value})}
-                        placeholder="z.B. L, XL oder One Size"
-                        className="bg-background border-border"
-                      />
-                    </div>
+                    <Input
+                      label="Größe"
+                      id="size"
+                      value={formData.size}
+                      onChange={(e) => setFormData({...formData, size: e.target.value})}
+                      placeholder="z.B. L, XL oder One Size"
+                      className="bg-background border-border"
+                    />
                     <div>
                       <Label htmlFor="quantity">Anzahl</Label>
                       <Select onValueChange={(value) => setFormData({...formData, quantity: value})}>
@@ -281,17 +273,15 @@ const Mearch = () => {
                     </div>
                   </div>
 
-                  <div>
-                    <Label htmlFor="message">Nachricht</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      placeholder="Zusätzliche Wünsche oder Anmerkungen..."
-                      className="bg-background border-border"
-                      rows={4}
-                    />
-                  </div>
+                  <Textarea
+                    label="Nachricht"
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    placeholder="Zusätzliche Wünsche oder Anmerkungen..."
+                    className="bg-background border-border"
+                    rows={4}
+                  />
 
                   <Button type="submit" size="lg" className="btn-rock w-full">
                     <Mail className="mr-2 h-5 w-5" />
