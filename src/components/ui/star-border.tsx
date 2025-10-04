@@ -13,7 +13,7 @@ export function StarBorder<T extends ElementType = "button">({
   as,
   className,
   color,
-  speed = "2s",
+  speed = "3s",
   children,
   ...props
 }: StarBorderProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof StarBorderProps<T>>) {
