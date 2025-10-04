@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Camera, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
+import { TextScramble } from "@/components/ui/text-scramble";
 
 const Media = () => {
+  const [isTrigger, setIsTrigger] = useState(false);
+
   // GSAP Animations
   useTextSplit('.text-split-media', 0.3);
   useParallax('.parallax-media', 0.4);
@@ -165,7 +169,15 @@ const Media = () => {
             className="max-w-2xl mx-auto text-center bg-card border border-border rounded-lg p-8 shadow-rock"
           >
             <h2 className="font-rock text-2xl font-bold text-glow mb-4">
-              Folgt uns für mehr Content!
+              <TextScramble
+                as="span"
+                speed={0.03}
+                trigger={isTrigger}
+                onHoverStart={() => setIsTrigger(true)}
+                onScrambleComplete={() => setIsTrigger(false)}
+              >
+                Folgt uns für mehr Content!
+              </TextScramble>
             </h2>
             <p className="text-muted-foreground mb-6">
               Verpasst keine Updates, Behind-the-Scenes Momente und neuen Videos.
