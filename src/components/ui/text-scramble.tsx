@@ -17,8 +17,8 @@ const defaultChars =
 
 export function TextScramble({
   children,
-  duration = 0.8,
-  speed = 0.04,
+  duration = 1.2,
+  speed = 0.03,
   characterSet = defaultChars,
   className,
   as: Component = 'span',
