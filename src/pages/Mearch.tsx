@@ -257,7 +257,6 @@ const Mearch = () => {
                       className="bg-background border-border"
                     />
                     <div>
-                      <Label htmlFor="quantity">Anzahl</Label>
                       <Select onValueChange={(value) => setFormData({...formData, quantity: value})}>
                         <SelectTrigger className="bg-background border-border">
                           <SelectValue placeholder="Anzahl" />
