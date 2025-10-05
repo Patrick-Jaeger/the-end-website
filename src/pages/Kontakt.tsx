@@ -124,7 +124,7 @@ const Kontakt = () => {
                     />
 
                     <Input
-                      label="Betreff"
+                      label="Betreff (z.B. Booking-Anfrage, Allgemeine Frage, ...)"
                       id="subject"
                       value={formData.subject}
                       onChange={(e) => setFormData({...formData, subject: e.target.value})}
@@ -164,7 +164,7 @@ const Kontakt = () => {
                     </div>
 
                     <Textarea
-                      label="Nachricht *"
+                      label="Nachricht (Erzählt uns von eurer Veranstaltung, stellt eure Fragen oder sendet uns euer Feedback)"
                       id="message"
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
