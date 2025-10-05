@@ -203,7 +203,7 @@ const Mearch = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <Input
-                      label="Name *"
+                      label="Name:"
                       id="name"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -211,7 +211,7 @@ const Mearch = () => {
                       required
                     />
                     <Input
-                      label="E-Mail *"
+                      label="E-Mail:"
                       id="email"
                       type="email"
                       value={formData.email}
@@ -222,7 +222,7 @@ const Mearch = () => {
                   </div>
 
                   <Input
-                    label="Telefonnummer"
+                    label="Telefonnummer:"
                     id="phone"
                     type="tel"
                     value={formData.phone}
@@ -232,7 +232,7 @@ const Mearch = () => {
                   />
 
                   <div>
-                    <Label htmlFor="product">Produkt *</Label>
+                    <Label htmlFor="product">Produkt:</Label>
                     <Select onValueChange={(value) => setFormData({...formData, product: value})}>
                       <SelectTrigger className="bg-background border-border">
                         <SelectValue placeholder="Produkt auswählen" />
@@ -249,7 +249,7 @@ const Mearch = () => {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <Input
-                      label="Größe"
+                      label="Größe: (z.B. S, M, L, XL, usw.)"
                       id="size"
                       value={formData.size}
                       onChange={(e) => setFormData({...formData, size: e.target.value})}
@@ -274,7 +274,7 @@ const Mearch = () => {
                   </div>
 
                   <Textarea
-                    label="Nachricht"
+                    label="Nachricht: (zusätzliche Wünsche oder Anmerkungen)"
                     id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
