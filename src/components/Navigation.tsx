@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { LimelightNav, NavItem } from "@/components/ui/limelight-nav";
 import logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { path: "/", label: "Home" },
@@ -20,6 +21,19 @@ const Navigation = () => {
     { path: "/kontakt", label: "Kontakt" },
     { path: "/pa-lichtverleih", label: "PA- & Lichtverleih" },
   ];
+
+  const limelightNavItems: NavItem[] = navItems.map((item) => ({
+    id: item.path,
+    label: item.label,
+    onClick: () => {
+      navigate(item.path);
+      handleNavClick();
+    },
+    isActive: location.pathname === item.path,
+  }));
+
+  const activeIndex = navItems.findIndex(item => item.path === location.pathname);
+  const defaultActiveIndex = activeIndex >= 0 ? activeIndex : 0;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,27 +70,11 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={handleNavClick}
-                className={`font-rock font-semibold transition-rock hover:text-primary hover:text-glow relative ${
-                  location.pathname === item.path
-                    ? "text-primary text-glow"
-                    : "text-foreground"
-                }`}
-              >
-                {item.label}
-                {location.pathname === item.path && (
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    layoutId="underline"
-                  />
-                )}
-              </Link>
-            ))}
+          <div className="hidden lg:flex items-center">
+            <LimelightNav 
+              items={limelightNavItems}
+              defaultActiveIndex={defaultActiveIndex}
+            />
           </div>
 
           {/* Mobile Menu Button */}
