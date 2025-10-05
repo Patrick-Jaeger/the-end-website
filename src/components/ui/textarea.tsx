@@ -76,7 +76,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...props}
-          className="outline-none border-b-2 border-input py-3 w-full text-base font-medium text-foreground bg-transparent placeholder:text-muted-foreground focus:placeholder-transparent focus-visible:border-primary transition-colors min-h-[100px] resize-y"
+          className="outline-none border-b-2 border-input py-3 w-full text-base font-medium text-foreground bg-transparent placeholder-transparent focus-visible:border-primary transition-colors min-h-[100px] resize-y"
         />
       </div>
     );

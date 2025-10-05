@@ -97,7 +97,6 @@ const Kontakt = () => {
                       <Input
                         label="Name *"
                         id="name"
-                        placeholder="Dein Name"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                         className="bg-background border-border"
@@ -107,7 +106,6 @@ const Kontakt = () => {
                         label="E-Mail *"
                         id="email"
                         type="email"
-                        placeholder="deine@email.de"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         className="bg-background border-border"
@@ -128,9 +126,9 @@ const Kontakt = () => {
                     <Input
                       label="Betreff"
                       id="subject"
-                      placeholder="Worum geht es?"
                       value={formData.subject}
                       onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                      placeholder="z.B. Booking-Anfrage, Allgemeine Frage..."
                       className="bg-background border-border"
                     />
 
@@ -168,9 +166,9 @@ const Kontakt = () => {
                     <Textarea
                       label="Nachricht *"
                       id="message"
-                      placeholder="Deine Nachricht an uns..."
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      placeholder="Erzählt uns von eurer Veranstaltung, stellt eure Fragen oder sendet uns euer Feedback..."
                       className="bg-background border-border"
                       rows={6}
                       required

@@ -205,7 +205,6 @@ const Mearch = () => {
                     <Input
                       label="Name *"
                       id="name"
-                      placeholder="Dein Name"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       className="bg-background border-border"
@@ -215,7 +214,6 @@ const Mearch = () => {
                       label="E-Mail *"
                       id="email"
                       type="email"
-                      placeholder="deine@email.de"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       className="bg-background border-border"
@@ -253,9 +251,9 @@ const Mearch = () => {
                     <Input
                       label="Größe"
                       id="size"
-                      placeholder="S, M, L, XL..."
                       value={formData.size}
                       onChange={(e) => setFormData({...formData, size: e.target.value})}
+                      placeholder="z.B. L, XL oder One Size"
                       className="bg-background border-border"
                     />
                     <div>
@@ -278,9 +276,9 @@ const Mearch = () => {
                   <Textarea
                     label="Nachricht"
                     id="message"
-                    placeholder="Besondere Wünsche oder Anmerkungen..."
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    placeholder="Zusätzliche Wünsche oder Anmerkungen..."
                     className="bg-background border-border"
                     rows={4}
                   />

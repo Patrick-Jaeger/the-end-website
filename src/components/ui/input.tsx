@@ -75,7 +75,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...props}
-          className="outline-none border-b-2 border-input py-3 w-full text-base font-medium text-foreground bg-transparent placeholder:text-muted-foreground focus:placeholder-transparent focus-visible:border-primary transition-colors cursor-pointer"
+          className="outline-none border-b-2 border-input py-3 w-full text-base font-medium text-foreground bg-transparent placeholder-transparent focus-visible:border-primary transition-colors cursor-pointer"
         />
       </div>
     );
