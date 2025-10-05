@@ -164,7 +164,7 @@ const Kontakt = () => {
                     </div>
 
                     <Textarea
-                      label="Nachricht (Erzählt uns von eurer Veranstaltung, stellt eure Fragen oder sendet uns euer Feedback)"
+                      label="Nachricht (Erzählt uns von eurer Veranstaltung...)"
                       id="message"
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
