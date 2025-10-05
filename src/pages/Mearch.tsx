@@ -271,7 +271,7 @@ const Mearch = () => {
                       </Select>
                     </div>
                   </div>
-                  <p>Bei mehreren Produkten einfach alles in das Nachrichtenfeld schreiben.</p>
+                  <p>  Bei mehreren Produkten einfach alles in das Nachrichtenfeld schreiben.</p>
                   <Textarea
                     label="Nachricht (z.B. zusätzliche Wünsche oder Anmerkungen)"
                     id="message"
