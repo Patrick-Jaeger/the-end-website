@@ -320,7 +320,7 @@ const PALichtverleih = () => {
                   />
                   
                   <Textarea 
-                    label="Anforderungen & Wünsche (Beschreibt euer Event: Anzahl Gäste, Raum Größe, ...)"
+                    label="Anforderungen & Wünsche (Beschreibt euer Event: Anzahl Gäste, Raumgröße, ...)"
                     id="requirements" 
                     value={formData.requirements}
                     onChange={(e) => setFormData({...formData, requirements: e.target.value})}
