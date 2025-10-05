@@ -1,80 +1,126 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Download, Guitar, Mic, Music } from "lucide-react";
+import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import BandCarousel from "@/components/BandCarousel";
-import { Music, Guitar, Mic } from "lucide-react";
 
 const Band = () => {
-  // Beispiel Band-Mitglieder
+  // GSAP Animations
+  useTextSplit('.text-split-band', 0.4);
+  useParallax('.parallax-band', 0.25);
+
   const bandMembers = [
-    { name: "Thomas Gründemann", instrument: "Gitarre & Backing Vocals", description: "...", icon: Guitar },
-    { name: "David Wood", instrument: "Bass", description: "...", icon: Music },
-    { name: "Martin Delling", instrument: "Techniker", description: "...", icon: Music },
-    { name: "Lukas Ried", instrument: "Lead Gitarre", description: "...", icon: Guitar },
-    { name: "Patrick Jäger", instrument: "Schlagzeug", description: "...", icon: Music },
-    { name: "Sebastian Delling", instrument: "Vocals", description: "...", icon: Mic },
+    {
+      name: "Thomas Gründemann",
+      instrument: "Gitarre & Backing Vocals",
+      description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
+      icon: Guitar
+    },
+    {
+      name: "David Wood",
+      instrument: "Bass",
+      description: "Das rhythmische Fundament der Band. David sorgt für den treibenden Groove in jedem Song.",
+      icon: Music
+    },
+    {
+      name: "Martin Delling",
+      instrument: "Techniker",
+      description: "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
+      icon: Music
+    },
+    {
+      name: "Lukas Ried",
+      instrument: "Lead Gitarre",
+      description: "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
+      icon: Guitar
+    },
+    {
+      name: "Patrick Jäger",
+      instrument: "Schlagzeug",
+      description: "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
+      icon: Music
+    },
+    {
+      name: "Sebastian Delling",
+      instrument: "Vocals",
+      description: "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
+      icon: Mic
+    }
   ];
 
   return (
-    <div className="relative">
-      {/* Navigation */}
+    <div className="min-h-screen bg-rock-gradient">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-rock-lighter relative z-10">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h1
+      <section className="pt-32 pb-20 bg-gradient-to-b from-background/50 to-rock-lighter">
+        <div className="container mx-auto px-4">
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6"
+            className="text-center mb-16"
           >
-            Die Band
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-muted-foreground max-w-3xl mx-auto"
-          >
-            Sechs Freunde, eine Leidenschaft: Rock-Musik in ihrer reinsten Form.
-            Wir leben für die Energie der Bühne und die Verbindung zu unserem Publikum.
-          </motion.p>
-        </div>
-      </section>
+            <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6 text-split-band">
+              Die Band
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Sechs Freunde, eine Leidenschaft: Rock-Musik in ihrer reinsten Form.
+            </p>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Wir leben für die Energie der Bühne und die Verbindung zu unserem Publikum.
+            </p>
+          </motion.div>
 
-      {/* Our Journey */}
-      <section className="relative z-10 py-20 bg-rock-lighter">
-        <div className="container mx-auto px-4">
+          {/* Band Story */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto bg-card/90 border border-border rounded-lg p-8 shadow-rock relative z-10"
+            className="max-w-4xl mx-auto bg-card border border-border rounded-lg p-8 shadow-rock mb-16"
           >
-            <h2 className="font-rock text-2xl font-bold text-primary mb-6">Our Journey</h2>
+            <h2 className="font-rock text-2xl font-bold text-primary mb-6">
+              Our Journey
+            </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Gegründet aus der gemeinsamen Leidenschaft für zeitlosen Punk, Rock und Metal, 
-                  haben wir uns zum Ziel gesetzt, die größten Hits der Rockgeschichte authentisch und energiegeladen zu interpretieren.
+                  Alles begann in einem Keller in Mendorferbuch – dort haben wir die ersten Akkorde gespielt und die ersten Pläne geschmiedet.
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Von den rebellischen Klängen der Punk-Ära über epische Rock Hymnen bis hin zu den härtesten Metal-Anthems - wir decken das gesamte Spektrum ab und spielen, was das Publikum zum Feiern bringt.
+                  Seit 2008 proben wir in Allertshofen, unserem musikalischen Zuhause,
+                  wo wir unseren eigenen Sound erarbeitet haben, gemeinsam weiterwachsen und jede Menge unvergessliche Momente erleben.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  Von den rebellischen Klängen der Punk-Ära über epische Rock-Hymnen
+                  bis hin zu den härtesten Metal-Anthems – wir decken das ganze Spektrum ab,
+                  aber im Mittelpunkt steht für uns immer eins: 
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  Der Spaß am Spielen.
+                  Die Energie auf der Bühne und die Verbindung zum Publikum sind das, was uns antreibt.
                 </p>
               </div>
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Authentisch und immer mit vollem Einsatz. Unser Stil ist geprägt von Respekt vor den Originalen,
-                  während wir gleichzeitig unsere eigene Energie und Interpretation einbringen.
+                  Ein besonderer Dank gilt allen, die uns auf unserem Weg begleiten – unseren treuen Fans, Helfern und Unterstützern.
                 </p>
-                <p className="text-muted-foreground">
-                  Jeder Auftritt ist für uns eine Celebration der Rockmusik - laut, ehrlich und mit ganzem Herzen.
+                <p className="text-muted-foreground mb-4">
+                  Ganz besonders möchten wir die Mini Mäuse Mendorferbuch, unsere Freunde von B.U.T.T., mit deren Anlage wir damals immer spielen durften, sowie Rudi Jung hervorheben.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  Ebenso danken wir herzlich für die kostenlose Nutzung unseres Bandraums und den Lagerplatz für unser Equipment.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  Ohne euch wäre diese Reise nur halb so laut, wild und großartig!
                 </p>
               </div>
             </div>
-            <div className="grid md:grid-cols-3 gap-4 mt-8">
+            <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">6</div>
                 <div className="text-muted-foreground">Band-Mitglieder</div>
@@ -93,8 +139,7 @@ const Band = () => {
       </section>
 
       {/* Band Members */}
-{/* Band Members */}
-<section className="relative z-10 py-20 bg-rock-lighter">
+      <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -106,18 +151,24 @@ const Band = () => {
             The Crew
           </motion.h2>
 
-          <BandCarousel members={bandMembers.map(member => ({
-            name: member.name,
-            role: member.instrument,
-            image: "/placeholder.svg",
-            description: member.description
-          }))} />
+          <BandCarousel
+            members={bandMembers.map(member => ({
+              name: member.name,
+              role: member.instrument,
+              image: `/images/band/${member.name.split(' ')[0].toLowerCase()}.jpg`, // nur der Vorname
+              description: member.description
+            }))}
+          />
+
+
+
         </div>
       </section>
 
-      {/* Group Photo Section */}
-      <section className="relative z-10 py-32 bg-background/80 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full z-0">
+      {/* Group Photo Section with 3D Background */}
+      <section className="relative bg-background overflow-hidden py-32 sm:py-32 md:py-36 lg:py-48 xl:py-56">
+        {/* Spline 3D Background */}
+        <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
           <iframe
             src="https://my.spline.design/embers-qRRVF9jO002fkB1KZvsr2ozN/"
             frameBorder="0"
@@ -128,6 +179,7 @@ const Band = () => {
           />
         </div>
 
+        {/* Foreground Content */}
         <div className="relative z-10 container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -136,22 +188,25 @@ const Band = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center bg-background/80 backdrop-blur-md rounded-lg p-8"
           >
-            <h2 className="font-rock text-3xl font-bold text-glow mb-8">Die Band im Bild</h2>
+            <h2 className="font-rock text-3xl font-bold text-glow mb-8">
+              Die Band im Bild
+            </h2>
 
-            <div className="bg-secondary/90 rounded-lg p-16 border border-border">
-              <div className="text-center">
-                <Music className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground text-lg">Gruppenfoto der Band</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Live-Aufnahme vom letzten Konzert
-                </p>
-              </div>
+            {/* Group photo */}
+            <div className="flex justify-center">
+              <img
+                src="/images//band/Gruppenfoto.jpg"
+                alt="Gruppenfoto der Band"
+                className="max-w-full h-auto max-h-[90vh] mx-auto"
+              />
+
             </div>
+
+
           </motion.div>
         </div>
       </section>
 
-      {/* Footer mit vollem Hintergrund, blockiert Strahlen */}
       <Footer />
     </div>
   );
