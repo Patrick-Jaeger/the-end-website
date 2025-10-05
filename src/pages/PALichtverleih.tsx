@@ -245,19 +245,19 @@ const PALichtverleih = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <Input 
                       label="Name *"
-                      id="name" 
+                      id="name"
+                      placeholder="Dein Name"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="Euer Name" 
                       className="mt-1" 
                     />
                     <Input 
                       label="E-Mail *"
                       id="email" 
-                      type="email" 
+                      type="email"
+                      placeholder="deine@email.de"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="kontakt@example.com" 
                       className="mt-1" 
                     />
                   </div>
@@ -302,29 +302,29 @@ const PALichtverleih = () => {
                     </div>
                     <Input 
                       label="Veranstaltungsort"
-                      id="location" 
+                      id="location"
+                      placeholder="Ort der Veranstaltung"
                       value={formData.location}
                       onChange={(e) => setFormData({...formData, location: e.target.value})}
-                      placeholder="Ort der Veranstaltung" 
                       className="mt-1" 
                     />
                   </div>
                   
                   <Input 
                     label="Art der Veranstaltung"
-                    id="event-type" 
+                    id="event-type"
+                    placeholder="z.B. Konzert, Hochzeit, Firmenevent"
                     value={formData.eventType}
                     onChange={(e) => setFormData({...formData, eventType: e.target.value})}
-                    placeholder="z.B. Konzert, Hochzeit, Firmenevent" 
                     className="mt-1" 
                   />
                   
                   <Textarea 
                     label="Anforderungen & Wünsche"
-                    id="requirements" 
+                    id="requirements"
+                    placeholder="Beschreibt euer Event: Anzahl Gäste, Bühne, spezielle Anforderungen..."
                     value={formData.requirements}
                     onChange={(e) => setFormData({...formData, requirements: e.target.value})}
-                    placeholder="Beschreibt euer Event: Anzahl Gäste, Bühne, spezielle Anforderungen..."
                     className="mt-1 min-h-[120px]"
                   />
                   
