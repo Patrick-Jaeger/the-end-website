@@ -3,9 +3,10 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, Camera, Video } from "lucide-react";
+import { Play, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { TextScramble } from "@/components/ui/text-scramble";
+import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 
 const Media = () => {
   const [isTrigger, setIsTrigger] = useState(false);
@@ -17,12 +18,12 @@ const Media = () => {
   
 
   const photos = [
-    { id: 1, title: "Live on Stage", category: "Live" },
-    { id: 2, title: "Band Portrait", category: "Portrait" },
-    { id: 3, title: "Behind the Scenes", category: "BTS" },
-    { id: 4, title: "Crowd Interaction", category: "Live" },
-    { id: 5, title: "Sound Check", category: "BTS" },
-    { id: 6, title: "Group Shot", category: "Portrait" }
+    { id: 1, title: "Live on Stage", category: "Live", imageUrl: "/images/band/Gruppenfoto.jpg" },
+    { id: 2, title: "Band Portrait", category: "Portrait", imageUrl: "/images/band/david.jpg" },
+    { id: 3, title: "Behind the Scenes", category: "BTS", imageUrl: "/images/band/lukas.jpg" },
+    { id: 4, title: "Crowd Interaction", category: "Live", imageUrl: "/images/band/martin.jpg" },
+    { id: 5, title: "Sound Check", category: "BTS", imageUrl: "/images/band/patrick.jpg" },
+    { id: 6, title: "Group Shot", category: "Portrait", imageUrl: "/images/band/sebastian.jpg" }
   ];
 
   const videos = [
@@ -84,22 +85,23 @@ const Media = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {photos.map((photo, index) => (
-              <div key={photo.id}>
-                <Card className="bg-card border-border shadow-rock transition-rock overflow-hidden group cursor-pointer parallax-media card-wiggle">
-                  <div className="aspect-video bg-secondary relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Camera className="h-16 w-16 text-muted-foreground group-hover:text-primary transition-rock" />
-                    </div>
-                    <div className="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 rounded text-sm">
-                      {photo.category}
-                    </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-rock" />
+              <motion.div
+                key={photo.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <DirectionAwareHover
+                  imageUrl={photo.imageUrl}
+                  className="parallax-media card-wiggle"
+                >
+                  <div className="bg-black/50 px-3 py-1 rounded text-sm mb-2 inline-block">
+                    {photo.category}
                   </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-rock text-lg font-bold">{photo.title}</h3>
-                  </CardContent>
-                </Card>
-              </div>
+                  <h3 className="font-rock text-lg font-bold">{photo.title}</h3>
+                </DirectionAwareHover>
+              </motion.div>
             ))}
           </div>
         </div>
