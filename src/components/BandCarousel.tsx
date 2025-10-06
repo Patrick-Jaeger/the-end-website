@@ -25,11 +25,11 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % members.length);
+    setCurrentIndex((prev) => (prev - 1 + members.length) % members.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + members.length) % members.length);
+    setCurrentIndex((prev) => (prev + 1) % members.length);
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -178,7 +178,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
               return (
                 <motion.div
                   key={index}
-                  className="absolute left-1/2 top-1/2 w-64 h-80 bg-card border border-border rounded-lg shadow-rock"
+                  className="absolute left-1/2 top-1/2 w-64 h-80 bg-card border border-border rounded-lg shadow-rock cursor-pointer"
                   style={{
                     transform: `translate(-50%, -50%) ${style.transform}`,
                     zIndex: style.zIndex,
@@ -188,6 +188,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                     duration: isDragging ? 0 : 0.5,
                     ease: "easeOut"
                   }}
+                  onClick={() => setCurrentIndex(index)}
                 >
                   <div className="h-full flex flex-col p-6">
                     <div 
