@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X } from "lucide-react";
 
 export const DirectionAwareHover = ({
   imageUrl,
@@ -115,18 +114,12 @@ export const DirectionAwareHover = ({
       </motion.div>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-7xl w-[95vw] h-[95vh] p-0 bg-black/95 border-border">
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
-          >
-            <X className="h-6 w-6 text-white" />
-          </button>
-          <div className="w-full h-full flex items-center justify-center p-4">
+        <DialogContent className="max-w-[95vw] max-h-[95vh] w-auto h-auto p-2 bg-black/95 border-border flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center">
             <img
               src={imageUrl}
               alt="Enlarged view"
-              className="max-w-full max-h-full object-contain"
+              className="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg"
             />
           </div>
         </DialogContent>
