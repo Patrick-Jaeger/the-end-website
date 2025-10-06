@@ -54,7 +54,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     const glowStyles: React.CSSProperties = {
       ['--base' as any]: 220,
-      ['--spread' as any]: 200,
+      ['--spread' as any]: 20,
       ['--radius' as any]: '8',
       ['--border' as any]: '2',
       ['--backdrop' as any]: 'transparent',
