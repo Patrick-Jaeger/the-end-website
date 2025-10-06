@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 
 interface BandMember {
   name: string;
@@ -20,6 +21,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
@@ -188,7 +190,13 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                   }}
                 >
                   <div className="h-full flex flex-col p-6">
-                    <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden bg-secondary flex-shrink-0">
+                    <div 
+                      className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedImage(member.image);
+                      }}
+                    >
                       <img 
                         src={member.image} 
                         alt={member.name}
@@ -246,7 +254,10 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
           <Card key={index} className="bg-card border-border shadow-rock transition-rock hover-rock">
             <CardContent className="p-6">
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden bg-secondary flex-shrink-0">
+                <div 
+                  className="w-24 h-24 mb-4 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
+                  onClick={() => setSelectedImage(member.image)}
+                >
                   <img 
                     src={member.image} 
                     alt={member.name}
@@ -261,6 +272,19 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
           </Card>
         ))}
       </div>
+
+      {/* Image Modal */}
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] w-auto h-auto p-2 bg-black/95 border-border flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src={selectedImage || ''}
+              alt="Enlarged view"
+              className="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

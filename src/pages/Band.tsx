@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -6,8 +7,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Download, Guitar, Mic, Music } from "lucide-react";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import BandCarousel from "@/components/BandCarousel";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const Band = () => {
+  const [isGroupPhotoOpen, setIsGroupPhotoOpen] = useState(false);
+  
   // GSAP Animations
   useTextSplit('.text-split-band', 0.4);
   useParallax('.parallax-band', 0.25);
@@ -197,15 +201,28 @@ const Band = () => {
               <img
                 src="/images//band/Gruppenfoto.jpg"
                 alt="Gruppenfoto der Band"
-                className="max-w-full h-auto max-h-[90vh] mx-auto"
+                className="max-w-full h-auto max-h-[90vh] mx-auto cursor-pointer hover:ring-4 hover:ring-primary transition-all rounded-lg"
+                onClick={() => setIsGroupPhotoOpen(true)}
               />
-
             </div>
 
 
           </motion.div>
         </div>
       </section>
+
+      {/* Group Photo Modal */}
+      <Dialog open={isGroupPhotoOpen} onOpenChange={setIsGroupPhotoOpen}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] w-auto h-auto p-2 bg-black/95 border-border flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src="/images//band/Gruppenfoto.jpg"
+              alt="Gruppenfoto der Band vergrößert"
+              className="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
