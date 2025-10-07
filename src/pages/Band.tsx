@@ -201,7 +201,7 @@ const Band = () => {
               <img
                 src="/images//band/Gruppenfoto.jpg"
                 alt="Gruppenfoto der Band"
-                className="max-w-full h-auto max-h-[90vh] mx-auto cursor-pointer hover:ring-4 hover:ring-primary transition-all rounded-lg"
+                className="w-full h-auto mx-auto cursor-pointer hover:ring-4 hover:ring-primary transition-all rounded-lg"
                 onClick={() => setIsGroupPhotoOpen(true)}
               />
             </div>
