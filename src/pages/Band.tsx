@@ -213,14 +213,12 @@ const Band = () => {
 
       {/* Group Photo Modal */}
       <Dialog open={isGroupPhotoOpen} onOpenChange={setIsGroupPhotoOpen}>
-        <DialogContent className="max-w-[95vw] max-h-[95vh] w-auto h-auto p-2 bg-black/95 border-border flex items-center justify-center">
-          <div className="w-full h-full flex items-center justify-center">
-            <img
-              src="/images//band/Gruppenfoto.jpg"
-              alt="Gruppenfoto der Band vergrößert"
-              className="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg"
-            />
-          </div>
+        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 md:p-2 bg-black/95 border-0 md:border-border flex items-center justify-center">
+          <img
+            src="/images//band/Gruppenfoto.jpg"
+            alt="Gruppenfoto der Band vergrößert"
+            className="w-full h-full md:w-auto md:h-auto object-contain md:rounded-lg"
+          />
         </DialogContent>
       </Dialog>
 
