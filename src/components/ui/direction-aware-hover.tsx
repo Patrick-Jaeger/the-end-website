@@ -95,8 +95,7 @@ export const DirectionAwareHover = ({
               <img
                 alt="image"
                 className={cn(
-                  "h-full w-full object-cover scale-[1.15] transition-all duration-700",
-                  isInView ? "grayscale-0" : "grayscale",
+                  "h-full w-full object-cover scale-[1.15] grayscale group-hover/card:grayscale-0 transition-all duration-500",
                   imageClassName
                 )}
                 src={imageUrl}
@@ -109,8 +108,7 @@ export const DirectionAwareHover = ({
                 ease: "easeOut",
               }}
               className={cn(
-                "text-white absolute bottom-4 left-4 z-40 transition-opacity duration-500",
-                isInView ? "opacity-0" : "opacity-100",
+                "text-white absolute bottom-4 left-4 z-40",
                 childrenClassName
               )}
             >
@@ -121,7 +119,7 @@ export const DirectionAwareHover = ({
       </motion.div>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 md:p-2 bg-black/95 border-0 md:border-border flex items-center justify-center">
+        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 md:p-6 md:max-w-7xl md:max-h-[90vh] bg-black/95 border-0 md:border-border flex items-center justify-center">
           <img
             src={imageUrl}
             alt="Enlarged view"
