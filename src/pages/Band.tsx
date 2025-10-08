@@ -199,7 +199,7 @@ const Band = () => {
             {/* Group photo */}
             <div className="flex justify-center">
               <img
-                src="/images/band/Gruppenfoto.jpg"
+                src="/images//band/Gruppenfoto.jpg"
                 alt="Gruppenfoto der Band"
                 className="w-full h-auto mx-auto cursor-pointer hover:ring-4 hover:ring-primary transition-all rounded-lg"
                 onClick={() => setIsGroupPhotoOpen(true)}
@@ -213,9 +213,9 @@ const Band = () => {
 
       {/* Group Photo Modal */}
       <Dialog open={isGroupPhotoOpen} onOpenChange={setIsGroupPhotoOpen}>
-        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 md:p-6 md:max-w-7xl md:max-h-[90vh] bg-black/95 border-0 md:border-border flex items-center justify-center">
+        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 md:p-2 bg-black/95 border-0 md:border-border flex items-center justify-center">
           <img
-            src="/images/band/Gruppenfoto.jpg"
+            src="/images//band/Gruppenfoto.jpg"
             alt="Gruppenfoto der Band vergrößert"
             className="w-full h-full md:w-auto md:h-auto object-contain md:rounded-lg"
           />

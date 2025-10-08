@@ -178,7 +178,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
               return (
                 <motion.div
                   key={index}
-                  className="absolute left-1/2 top-1/2 w-64 h-80 md:w-72 md:h-96 lg:w-80 lg:h-[28rem] bg-card border border-border rounded-lg shadow-rock cursor-pointer"
+                  className="absolute left-1/2 top-1/2 w-72 h-96 sm:w-64 sm:h-80 md:w-72 md:h-96 lg:w-80 lg:h-[28rem] bg-card border border-border rounded-lg shadow-rock cursor-pointer"
                   style={{
                     transform: `translate(-50%, -50%) ${style.transform}`,
                     zIndex: style.zIndex,
@@ -276,7 +276,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
 
       {/* Image Modal */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 md:p-6 md:max-w-7xl md:max-h-[90vh] bg-black/95 border-0 md:border-border flex items-center justify-center">
+        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 md:p-2 bg-black/95 border-0 md:border-border flex items-center justify-center">
           <img
             src={selectedImage || ''}
             alt="Enlarged view"
