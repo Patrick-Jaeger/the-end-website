@@ -140,7 +140,7 @@ const Repertoire = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-background/50 to-rock-lighter w-full overflow-hidden">
+      <section className="pt-24 pb-16 bg-gradient-to-b from-background/50 to-rock-lighter w-full overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

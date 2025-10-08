@@ -23,7 +23,6 @@ export const DirectionAwareHover = ({
     "top" | "bottom" | "left" | "right" | string
   >("left");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isInView, setIsInView] = useState(false);
 
   const handleMouseEnter = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -67,10 +66,6 @@ export const DirectionAwareHover = ({
         onMouseEnter={handleMouseEnter}
         onClick={() => setIsModalOpen(true)}
         ref={ref}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        onViewportEnter={() => setIsInView(true)}
         className={cn(
           "md:h-96 w-full h-60 md:w-full bg-transparent rounded-lg overflow-hidden group/card relative cursor-pointer",
           className
@@ -95,8 +90,7 @@ export const DirectionAwareHover = ({
               <img
                 alt="image"
                 className={cn(
-                  "h-full w-full object-cover scale-[1.15] transition-all duration-700",
-                  isInView ? "grayscale-0" : "grayscale",
+                  "h-full w-full object-cover scale-[1.15] grayscale group-hover/card:grayscale-0 transition-all duration-500",
                   imageClassName
                 )}
                 src={imageUrl}
@@ -109,8 +103,7 @@ export const DirectionAwareHover = ({
                 ease: "easeOut",
               }}
               className={cn(
-                "text-white absolute bottom-4 left-4 z-40 transition-opacity duration-500",
-                isInView ? "opacity-0" : "opacity-100",
+                "text-white absolute bottom-4 left-4 z-40",
                 childrenClassName
               )}
             >
