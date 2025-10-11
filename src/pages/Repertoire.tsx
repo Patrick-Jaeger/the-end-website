@@ -1578,9 +1578,7 @@ const Repertoire = () => {
                 </motion.div>
               ))}
 
-            </div>
-
-            {filteredSongs.length === 0 && (
+              {filteredSongs.length === 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
