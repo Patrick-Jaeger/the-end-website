@@ -137,7 +137,7 @@ const Repertoire = () => {
 
   const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
-  return (
+ return (
     <div className="min-h-screen bg-rock-gradient">
       <Navigation />
 
@@ -153,71 +153,52 @@ const Repertoire = () => {
             <h1 className="font-rock text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-glow mb-6 leading-tight text-split-repertoire">
               Repertoire
             </h1>
-
-            <div className="space-y-2">
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                Willkommen zur Rock Library!
-              </p>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                Über {roundedSongsCount} Songs für jeden Geschmack.
-              </p>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                Entdecke Songs nach Genre, Künstler oder Titel.
-              </p>
-              
-            </div>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Willkommen zur Rock Library!
+            </p>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Über {roundedSongsCount} Songs für jeden Geschmack.
+            </p>
           </motion.div>
         </div>
       </section>
 
 
-      {/* Filter & Suche */}
+
+      {/* Filter */}
       <section className="py-12 bg-rock-lighter w-full">
         <div className="max-w-4xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex flex-col gap-6 mb-8">
-              {/* Genre Filter */}
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <Filter className="h-5 w-5 text-muted-foreground" />
-                  <span className="text-muted-foreground font-medium">Genre:</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {genres.map((genre) => (
-                    <Button
-                      key={genre}
-                      variant={selectedGenre === genre ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setSelectedGenre(genre)}
-                      className={selectedGenre === genre ? "btn-rock" : "btn-outline-rock"}
-                    >
-                      {genre}
-                    </Button>
-                  ))}
-                </div>
+          <div className="flex flex-col gap-6 mb-8">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <Filter className="h-5 w-5 text-muted-foreground" />
+                <span className="text-muted-foreground font-medium">Genre:</span>
               </div>
-
-              {/* Suche */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  placeholder="Song oder Interpret suchen..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-card border-border py-5"
-                />
+              <div className="flex flex-wrap gap-2">
+                {genres.map(genre => (
+                  <Button
+                    key={genre}
+                    variant={selectedGenre === genre ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedGenre(genre)}
+                    className={selectedGenre === genre ? "btn-rock" : "btn-outline-rock"}
+                  >
+                    {genre}
+                  </Button>
+                ))}
               </div>
-
-              <p className="text-muted-foreground text-sm">
-                {filteredSongs.length} Song{filteredSongs.length !== 1 ? "s" : ""} gefunden
-              </p>
             </div>
-          </motion.div>
+
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                placeholder="Song oder Interpret suchen..."
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                className="pl-10 bg-card border-border py-5"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -275,17 +256,8 @@ const Repertoire = () => {
                       {genreText}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-</section>
 
-
+                  
                       {/* Musik-Links */}
                       {/*
                             {song.links && (
