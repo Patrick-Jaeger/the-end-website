@@ -1593,7 +1593,10 @@ const Repertoire = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {genres.slice(1).map((genre, index) => {
-                const count = songs.filter(song => song.genre === genre).length;
+                const count = songs.filter(song =>
+  Array.isArray(song.genre) ? song.genre.includes(genre) : song.genre === genre
+).length;
+
                 return (
                   <motion.div
                     key={genre}
