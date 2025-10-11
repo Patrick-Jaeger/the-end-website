@@ -221,23 +221,25 @@ const Repertoire = () => {
         </div>
       </section>
 
-      
      {/* Song List */}
 <section className="py-20 bg-background">
   <div className="container mx-auto px-4">
     <div className="max-w-4xl mx-auto">
       <div className="grid gap-4">
         {filteredSongs.map((song, index) => {
-          // Prüfen, ob Genre ein Array ist
+          // Genre in Textform bringen
           const genreText = Array.isArray(song.genre)
             ? song.genre.join(", ")
             : song.genre;
 
-          // Farbe nach erstem Genre bestimmen (falls mehrere)
+          // Farbklasse abhängig vom ersten Genre
+          const genreKey = Array.isArray(song.genre)
+            ? song.genre[0]
+            : song.genre;
+
           const genreColor =
-            Array.isArray(song.genre) && song.genre.length > 0
-              ? genreColors[song.genre[0]] || "bg-gray-500/20 text-gray-400 border-gray-500/30"
-              : genreColors[song.genre] || "bg-gray-500/20 text-gray-400 border-gray-500/30";
+            genreColors[genreKey] ||
+            "bg-gray-500/20 text-gray-400 border-gray-500/30";
 
           return (
             <motion.div
@@ -251,21 +253,24 @@ const Repertoire = () => {
                 <CardContent className="p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     {/* Song Infos */}
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                    <div className="flex items-center space-x-4 min-w-0">
+                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <Music className="h-6 w-6 text-primary" />
                       </div>
                       <div className="min-w-0">
                         <h3 className="font-rock text-lg font-bold truncate">
                           {song.title}
                         </h3>
-                        <p className="text-muted-foreground truncate">{song.artist}</p>
+                        <p className="text-muted-foreground truncate">
+                          {song.artist}
+                        </p>
                       </div>
                     </div>
 
                     {/* Genre Badge */}
                     <div
-                      className={`px-3 py-1 rounded-full border text-sm font-semibold text-center break-words ${genreColor}`}
+                      className={`px-3 py-1 rounded-full border text-sm font-semibold text-center ${genreColor}`}
+                      style={{ wordBreak: "break-word", whiteSpace: "normal" }}
                     >
                       {genreText}
                     </div>
@@ -279,9 +284,6 @@ const Repertoire = () => {
     </div>
   </div>
 </section>
-
-
-
 
 
                       {/* Musik-Links */}
