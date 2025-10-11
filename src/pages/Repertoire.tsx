@@ -226,31 +226,53 @@ const Repertoire = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="grid gap-4">
-              {filteredSongs.map((song, index) => (
-                <motion.div
-                  key={`${song.artist}-${song.title}`}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                >
-                  <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div className="flex items-center space-x-4">
-                          <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                            <Music className="h-6 w-6 text-primary" />
-                          </div>
-                          <div>
-                            <h3 className="font-rock text-lg font-bold">{song.title}</h3>
-                            <p className="text-muted-foreground">{song.artist}</p>
-                          </div>
-                        </div>
+{filteredSongs.map((song, index) => {
+  // Genre Text und Key
+  const genreText = Array.isArray(song.genre)
+    ? song.genre.join(", ")
+    : song.genre;
 
-                        <div className={`px-3 py-1 rounded-full border text-sm font-semibold w-fit ${genreColors[song.genre]}`}>
-                          {song.genre}
-                        </div>
-                      </div>
+  const genreKey = Array.isArray(song.genre)
+    ? song.genre[0]
+    : song.genre;
+
+  const genreColor = genreColors[genreKey] || "bg-gray-500/20 text-gray-400 border-gray-500/30";
+
+  return (
+    <motion.div
+      key={`${song.artist}-${song.title}-${index}`}
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+    >
+      <Card className="w-full bg-card border-border shadow-rock transition-rock hover-rock">
+        <CardContent className="p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            {/* Song Infos */}
+            <div className="flex items-center space-x-4 min-w-0">
+              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <Music className="h-6 w-6 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-rock text-lg font-bold truncate">{song.title}</h3>
+                <p className="text-muted-foreground truncate">{song.artist}</p>
+              </div>
+            </div>
+
+            {/* Genre Badge */}
+            <div
+              className={`px-3 py-1 rounded-full border text-sm font-semibold ${genreColor}`}
+              style={{
+                wordBreak: "break-word",
+                whiteSpace: "normal",
+                maxWidth: "100%",
+                overflowWrap: "anywhere",
+              }}
+            >
+              {genreText}
+            </div>
+          </div>
 
 
 
