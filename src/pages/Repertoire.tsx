@@ -151,7 +151,7 @@ const Repertoire = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
+<Card className="w-full bg-card border-border shadow-rock transition-rock hover-rock">
                   <CardContent className="p-6">
                     {/* Song Infos */}
 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 flex-wrap">
@@ -227,21 +227,18 @@ const Repertoire = () => {
                             )}
                       */}
 
-<div className="mt-6 w-full max-w-full flex justify-center overflow-hidden rounded-xl">
+<div className="mt-6 w-full overflow-hidden rounded-xl" style={{ aspectRatio: '16/3.2' }}>
   <iframe
     src="https://open.spotify.com/embed/track/4e9eGQYsOiBcftrWXwsVco?utm_source=generator&theme=0"
     width="100%"
-    height="152"
+    height="100%"
     frameBorder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     loading="lazy"
-    title="Spotify Player – Aerials by System of a Down"
     className="rounded-xl"
+    title="Spotify Player – Aerials by System of a Down"
   ></iframe>
 </div>
-
-
-
 
                     {/*
                       {(song.artist === "System Of A Down" && song.title === "Aerials") && (
