@@ -256,17 +256,8 @@ const Repertoire = () => {
                       {genreText}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-</section>
 
-
+                  
                       {/* Musik-Links */}
                       {/*
                             {song.links && (
