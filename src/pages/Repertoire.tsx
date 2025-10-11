@@ -205,8 +205,8 @@ const Repertoire = () => {
      {/* Song List */}
 <section className="py-20 bg-background">
   <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto px-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+    <div className="max-w-4xl mx-auto">
+      <div className="grid gap-4">
         {filteredSongs.length > 0 ? (
           filteredSongs.map((song, index) => {
             const genreText = Array.isArray(song.genre)
@@ -230,8 +230,7 @@ const Repertoire = () => {
                 <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
                   <CardContent className="p-6">
                     {/* Song Infos */}
-<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 flex-wrap">
-
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                       <div className="flex items-center space-x-4 min-w-0">
                         <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
                           <Music className="h-6 w-6 text-primary" />
@@ -243,19 +242,12 @@ const Repertoire = () => {
                       </div>
 
                       {/* Genre Badge */}
-<div
-  className={`px-2 sm:px-3 py-1 rounded-full border text-xs sm:text-sm font-semibold text-center ${genreColor}`}
-  style={{
-    wordBreak: "break-word",
-    whiteSpace: "normal",
-    maxWidth: "100%",   // wichtig für mobile
-    overflowWrap: "break-word",
-  }}
->
-  {genreText}
-</div>
-
-
+                      <div
+                        className={`px-3 py-1 rounded-full border text-sm font-semibold text-center ${genreColor}`}
+                        style={{ wordBreak: "break-word", whiteSpace: "normal" }}
+                      >
+                        {genreText}
+                      </div>
                   </div>
 
                   
@@ -1554,7 +1546,7 @@ const Repertoire = () => {
                           ></iframe>
                         </div>
                       )}
-                    
+
                     </CardContent>
                 </Card>
               </motion.div>
