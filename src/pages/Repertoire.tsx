@@ -246,33 +246,34 @@ const Repertoire = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
     >
-      <Card className="w-full bg-card border-border shadow-rock transition-rock hover-rock">
-        <CardContent className="p-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            {/* Song Infos */}
-            <div className="flex items-center space-x-4 min-w-0">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <Music className="h-6 w-6 text-primary" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="font-rock text-lg font-bold truncate">{song.title}</h3>
-                <p className="text-muted-foreground truncate">{song.artist}</p>
-              </div>
-            </div>
+<Card className="w-full bg-card border-border shadow-rock transition-rock hover-rock">
+  <CardContent className="p-6">
+    {/* Song Infos + Genre */}
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex items-center space-x-4 min-w-0">
+        <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <Music className="h-6 w-6 text-primary" />
+        </div>
+        <div className="min-w-0">
+          <h3 className="font-rock text-lg font-bold truncate">{song.title}</h3>
+          <p className="text-muted-foreground truncate">{song.artist}</p>
+        </div>
+      </div>
 
-            {/* Genre Badge */}
-            <div
-              className={`px-3 py-1 rounded-full border text-sm font-semibold ${genreColor}`}
-              style={{
-                wordBreak: "break-word",
-                whiteSpace: "normal",
-                maxWidth: "100%",
-                overflowWrap: "anywhere",
-              }}
-            >
-              {genreText}
-            </div>
-          </div>
+      {/* Responsive Genre Badge */}
+      <div
+        className={`px-3 py-1 rounded-full border text-sm font-semibold text-center ${genreColor}`}
+        style={{
+          wordBreak: "break-word",
+          whiteSpace: "normal",
+          maxWidth: "100%",
+          overflowWrap: "anywhere",
+        }}
+      >
+        {genreText}
+      </div>
+    </div>
+
 
 
 
