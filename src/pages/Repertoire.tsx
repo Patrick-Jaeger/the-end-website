@@ -138,7 +138,7 @@ const Repertoire = () => {
   const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
   return (
-    <div className="min-h-screen bg-rock-gradient">
+    
       <Navigation />
 
       {/* Hero Section */}
