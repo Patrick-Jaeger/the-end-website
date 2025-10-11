@@ -207,46 +207,51 @@ const Repertoire = () => {
   <div className="container mx-auto px-4">
     <div className="max-w-4xl mx-auto">
       <div className="grid gap-4">
-        {filteredSongs.map((song, index) => {
-          // Genre in Textform bringen
-          const genreText = Array.isArray(song.genre)
-            ? song.genre.join(", ")
-            : song.genre;
+  {filteredSongs.length > 0 ? (
+    filteredSongs.map((song, index) => {
+      const genreText = Array.isArray(song.genre)
+        ? song.genre.join(", ")
+        : song.genre;
 
-          // Farbklasse abhängig vom ersten Genre
-          const genreKey = Array.isArray(song.genre)
-            ? song.genre[0]
-            : song.genre;
+      const genreKey = Array.isArray(song.genre)
+        ? song.genre[0]
+        : song.genre;
 
-          const genreColor =
-            genreColors[genreKey] ||
-            "bg-gray-500/20 text-gray-400 border-gray-500/30";
+      const genreColor = genreColors[genreKey] || "bg-gray-500/20 text-gray-400 border-gray-500/30";
 
-          return (
-            <motion.div
-              key={`${song.artist}-${song.title}-${index}`}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
-                <CardContent className="p-6">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    {/* Song Infos */}
-                    <div className="flex items-center space-x-4 min-w-0">
-                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Music className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="font-rock text-lg font-bold truncate">
-                          {song.title}
-                        </h3>
-                        <p className="text-muted-foreground truncate">
-                          {song.artist}
-                        </p>
-                      </div>
-                    </div>
+      return (
+        <motion.div
+          key={`${song.artist}-${song.title}-${index}`}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.05 }}
+        >
+          <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
+            <CardContent className="p-6">
+              {/* Song Infos + Genre + Spotify Embed */}
+            </CardContent>
+          </Card>
+        </motion.div>
+      );
+    })
+  ) : (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="text-center py-16"
+    >
+      <Music className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+      <p className="text-xl text-muted-foreground">
+        Keine Songs gefunden für "{searchTerm}"
+      </p>
+      <p className="text-muted-foreground mt-2">
+        Versucht es mit einem anderen Suchbegriff oder wählt ein anderes Genre.
+      </p>
+    </motion.div>
+  )}
+</div>
+
 
                     {/* Genre Badge */}
                     <div
