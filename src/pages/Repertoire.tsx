@@ -205,8 +205,8 @@ const Repertoire = () => {
      {/* Song List */}
 <section className="py-20 bg-background">
   <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto">
-      <div className="grid gap-4">
+    <div className="max-w-4xl mx-auto px-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
         {filteredSongs.length > 0 ? (
           filteredSongs.map((song, index) => {
             const genreText = Array.isArray(song.genre)
