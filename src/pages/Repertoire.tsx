@@ -11,21 +11,18 @@ import { useTextSplit } from "@/hooks/useGSAP";
 const Repertoire = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("Alle");
-  
+
   // GSAP Animation
-  useTextSplit('.text-split-repertoire', 0.3);
+  useTextSplit(".text-split-repertoire", 0.3);
 
   const songs = [
     {
       artist: "System Of A Down",
       title: "Aerials",
-      genre: "Alternative Metal",
+      genre: ["Alternative Metal", "Nu Metal"],
       links: {
         spotify: "https://open.spotify.com/track/4e9eGQYsOiBcftrWXwsVco",
-        appleMusic: "https://music.apple.com/az/song/aerials/273714765",
-        amazonMusic: "https://music.amazon.de/tracks/B07BCLK212?marketplaceId=A1PA6795UKMFR9&musicTerritory=DE&ref=dm_sh_zZkF4lSoMoGDjbQbmqIy4DZ3P",
-        youtube: "https://www.youtube.com/watch?v=L-iepu3EtyE&list=RDL-iepu3EtyE&start_radio=1"
-      }
+      },
     },
 
     { artist: "AC/DC", title: "The Jack", genre: "Rock" },
@@ -105,14 +102,19 @@ const Repertoire = () => {
     { artist: "Böhse Onkelz", title: "Du kannst alles haben", genre: "Hard Rock" }
   ];
 
-  const genres = ["Alle", ...Array.from(new Set(songs.map(song => song.genre)))];
+  // Dynamische Liste aller Genres (aus Arrays gesammelt)
+  const genres = ["Alle", ...Array.from(new Set(songs.flatMap(song => song.genre)))];
 
-  const filteredSongs = songs.filter(song => {
-    const matchesSearch = song.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  // Filterlogik (Suche + Genre)
+  const filteredSongs = songs.filter((song) => {
+    const matchesSearch =
+      song.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
       song.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesGenre = selectedGenre === "Alle" || song.genre === selectedGenre;
+    const matchesGenre =
+      selectedGenre === "Alle" || song.genre.includes(selectedGenre);
     return matchesSearch && matchesGenre;
   });
+
 
   const genreColors = {
     Rock: "bg-blue-500/20 text-blue-400 border-blue-500/30",
@@ -169,24 +171,23 @@ const Repertoire = () => {
       </section>
 
 
-      {/* Search and Filter */}
+      {/* Filter & Suche */}
       <section className="py-12 bg-rock-lighter w-full">
-        <div className="max-w-4xl mx-auto px-4 w-full">
+        <div className="max-w-4xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full"
           >
-            <div className="flex flex-col gap-6 mb-8 w-full">
+            <div className="flex flex-col gap-6 mb-8">
               {/* Genre Filter */}
-              <div className="flex flex-col gap-2 w-full">
+              <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
-                  <Filter className="h-5 w-5 text-muted-foreground shrink-0" />
+                  <Filter className="h-5 w-5 text-muted-foreground" />
                   <span className="text-muted-foreground font-medium">Genre:</span>
                 </div>
-                <div className="flex flex-wrap gap-2 w-full">
+                <div className="flex flex-wrap gap-2">
                   {genres.map((genre) => (
                     <Button
                       key={genre}
@@ -201,27 +202,24 @@ const Repertoire = () => {
                 </div>
               </div>
 
-              {/* Searchbar */}
-              <div className="relative w-full">
+              {/* Suche */}
+              <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   placeholder="Song oder Interpret suchen..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-card border-border text-base py-5 w-full"
+                  className="pl-10 bg-card border-border py-5"
                 />
               </div>
 
+              <p className="text-muted-foreground text-sm">
+                {filteredSongs.length} Song{filteredSongs.length !== 1 ? "s" : ""} gefunden
+              </p>
             </div>
-
-            {/* Results Counter */}
-            <p className="text-muted-foreground mb-6 text-sm md:text-base">
-              {filteredSongs.length} Song{filteredSongs.length !== 1 ? "s" : ""} gefunden
-            </p>
           </motion.div>
         </div>
       </section>
-
 
       {/* Song List */}
       <section className="py-20 bg-background">
