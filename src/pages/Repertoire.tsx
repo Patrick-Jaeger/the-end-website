@@ -299,6 +299,22 @@ const Repertoire = () => {
 
                       {/* Responsive Spotify Music Embed */}
 
+                    <div className="mt-6 rounded-xl overflow-hidden">
+  <div className="w-full max-w-full">
+    <iframe
+      src="https://open.spotify.com/embed/track/4e9eGQYsOiBcftrWXwsVco?utm_source=generator&theme=0"
+      className="w-full h-40 sm:h-40 md:h-44 lg:h-48"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+      title="Spotify Player – Aerials by System of a Down"
+    ></iframe>
+  </div>
+</div>
+
+
+                    {/*
+                    
                       {(song.artist === "System Of A Down" && song.title === "Aerials") && (
                         <div className="mt-6 rounded-xl overflow-hidden">
                           <iframe
@@ -1548,7 +1564,7 @@ const Repertoire = () => {
                           ></iframe>
                         </div>
                       )}
-
+*/}
                     </CardContent>
                 </Card>
               </motion.div>
