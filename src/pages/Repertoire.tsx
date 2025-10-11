@@ -19,11 +19,87 @@ const Repertoire = () => {
     {
       artist: "System Of A Down",
       title: "Aerials",
-      genre: ["Alternative Metal", "Nu Metal", "Test1", "Test2", "Test3"],
+      genre: ["Alternative Metal", "Nu Metal"],
       links: {
         spotify: "https://open.spotify.com/track/4e9eGQYsOiBcftrWXwsVco",
       },
-    }
+    },
+
+    { artist: "AC/DC", title: "The Jack", genre: "Rock" },
+    { artist: "Green Day", title: "Basket Case", genre: "Punk Rock" },
+    { artist: "Foo Fighters", title: "The Pretender", genre: "Alternative Rock" },
+    { artist: "Die Ärzte", title: "½ Lovesong", genre: "Punk Rock" },
+    { artist: "Blink-182", title: "Don’t Leave Me", genre: "Punk Rock" },
+    { artist: "Böhse Onkelz", title: "Leere Worte", genre: "Hard Rock" },
+    { artist: "The White Stripes", title: "Seven Nation Army", genre: "Garage Rock" },
+    { artist: "Volbeat", title: "Thanks", genre: "Metal" },
+    { artist: "Peter Schilling/Die Ärzte/The McCoys", title: "Medley: Major Tom/Westerland/Hang on Sloopy", genre: "Mix" },
+    { artist: "Rammstein", title: "Deutschland", genre: "Industrial Metal" },
+    { artist: "Sum 41", title: "The Hell Song", genre: "Punk Rock" },
+    { artist: "Bloodhound Gang", title: "Fire Water Burn", genre: "Alternative Rock" },
+    { artist: "Die Toten Hosen", title: "Kein Alkohol ist auch keine Lösung", genre: "Punk Rock" },
+    { artist: "Red Hot Chili Peppers", title: "Dani California", genre: "Alternative Rock" },
+    { artist: "Farin Urlaub", title: "Das schöne Mädchen", genre: "Rock" },
+    { artist: "Böhse Onkelz", title: "Erinnerungen", genre: "Hard Rock" },
+    { artist: "Korn", title: "Word up!", genre: "Nu Metal" },
+    { artist: "Rage Against The Machine", title: "Killing In The Name", genre: "Alternative Metal" },
+    { artist: "Avril Lavigne", title: "Sk8ter Boi", genre: "Pop Punk" },
+    { artist: "Royal Republic", title: "Everybody Wants to Be an Astronaut", genre: "Garage Rock" },
+    { artist: "Beartooth", title: "King of Anything", genre: "Metalcore" },
+    { artist: "Papa Roach", title: "Last Resort", genre: "Nu Metal" },
+    { artist: "Die Ärzte", title: "Junge", genre: "Punk Rock" },
+    { artist: "Joan Jett", title: "I Love Rock'N Roll", genre: "Rock" },
+    { artist: "System Of A Down", title: "Lonely Day", genre: "Alternative Metal" },
+    { artist: "Blink-182", title: "All The Small Things", genre: "Punk Rock" },
+    { artist: "Billy Talent", title: "Fallen Leaves", genre: "Alternative Rock" },
+    { artist: "Lenny Kravitz", title: "Fly Away", genre: "Rock" },
+    { artist: "Sportfreunde Stiller", title: "Ein Kompliment", genre: "Indie Rock" },
+    { artist: "Böhse Onkelz", title: "Stunde des Siegers", genre: "Hard Rock" },
+    { artist: "Nirvana", title: "Rape Me", genre: "Grunge" },
+    { artist: "Nickelback", title: "How You Remind Me", genre: "Post-Grunge" },
+    { artist: "Sum 41", title: "In Too Deep", genre: "Punk Rock" },
+    { artist: "Ramones", title: "Blitzkrieg Bop", genre: "Punk Rock" },
+    { artist: "Böhse Onkelz", title: "Kirche", genre: "Hard Rock" },
+    { artist: "The Hives", title: "Tick Tick Boom", genre: "Garage Rock" },
+    { artist: "Die Ärzte", title: "Himmelblau", genre: "Punk Rock" },
+    { artist: "Green Day", title: "Brain Stew", genre: "Punk Rock" },
+    { artist: "Volbeat", title: "Fallen", genre: "Metal" },
+    { artist: "The Offspring", title: "Pretty Fly", genre: "Punk Rock" },
+    { artist: "Puddle Of Mudd", title: "She Hates Me", genre: "Post-Grunge" },
+    { artist: "Manowar", title: "Warriors of the World", genre: "Heavy Metal" },
+    { artist: "Metallica", title: "For Whom The Bell Tolls", genre: "Metal" },
+    { artist: "Böhse Onkelz", title: "Wir ham noch lange nicht genug", genre: "Hard Rock" },
+    { artist: "Böhse Onkelz", title: "Mexico", genre: "Hard Rock" },
+    { artist: "Die Ärzte", title: "Deine Schuld", genre: "Punk Rock" },
+    { artist: "Farin Urlaub", title: "OK", genre: "Rock" },
+    { artist: "Green Day", title: "When I Come Around", genre: "Punk Rock" },
+    { artist: "Böhse Onkelz", title: "Ich bin in Dir", genre: "Hard Rock" },
+    { artist: "Rammstein", title: "Rammstein", genre: "Industrial Metal" },
+    { artist: "The White Stripes", title: "The Hardest Button to Button", genre: "Garage Rock" },
+    { artist: "Blur", title: "Song 2", genre: "Alternative Rock" },
+    { artist: "Nirvana", title: "Come As You Are", genre: "Grunge" },
+    { artist: "The Subways", title: "Rock & Roll Queen", genre: "Indie Rock" },
+    { artist: "Die Ärzte", title: "Hurra", genre: "Punk Rock" },
+    { artist: "Judas Priest", title: "Living After Midnight", genre: "Heavy Metal" },
+    { artist: "Sleipnir", title: "Alkoholiker", genre: "Rock" },
+    { artist: "AC/DC", title: "Highway to Hell", genre: "Rock" },
+    { artist: "Metallica", title: "Die, Die My Darling", genre: "Metal" },
+    { artist: "Böhse Onkelz", title: "Bin ich nur glücklich wenn es schmerzt", genre: "Hard Rock" },
+    { artist: "Green Day", title: "Holiday", genre: "Punk Rock" },
+    { artist: "Die Ärzte", title: "Schrei nach Liebe", genre: "Punk Rock" },
+    { artist: "The Hives", title: "Hate To Say I Told You So", genre: "Garage Rock" },
+    { artist: "Danzig", title: "Mother", genre: "Heavy Metal" },
+    { artist: "Lynyrd Skynyrd", title: "Simple Man", genre: "Southern Rock" },
+    { artist: "Nirvana", title: "Smells Like Teen Spirit", genre: "Grunge" },
+    { artist: "Böhse Onkelz", title: "Nur die besten sterben jung", genre: "Hard Rock" },
+    { artist: "Böhse Onkelz", title: "Auf gute Freunde", genre: "Hard Rock" },
+    { artist: "Wolfmother", title: "Joker And The Thief", genre: "Rock" },
+    { artist: "Green Day", title: "American Idiot", genre: "Punk Rock" },
+    { artist: "Böhse Onkelz", title: "Für immer", genre: "Hard Rock" },
+    { artist: "Böhse Onkelz", title: "Die Firma", genre: "Hard Rock" },
+    { artist: "Böhse Onkelz", title: "Terpentin", genre: "Hard Rock" },
+    { artist: "Red Hot Chili Peppers", title: "Californication", genre: "Alternative Rock" },
+    { artist: "Böhse Onkelz", title: "Du kannst alles haben", genre: "Hard Rock" }
   ];
 
   // Dynamische Liste aller Genres (aus Arrays gesammelt)
@@ -61,7 +137,7 @@ const Repertoire = () => {
 
   const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
- return (
+  return (
     <div className="min-h-screen bg-rock-gradient">
       <Navigation />
 
@@ -77,112 +153,107 @@ const Repertoire = () => {
             <h1 className="font-rock text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-glow mb-6 leading-tight text-split-repertoire">
               Repertoire
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Willkommen zur Rock Library!
-            </p>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Über {roundedSongsCount} Songs für jeden Geschmack.
-            </p>
+
+            <div className="space-y-2">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Willkommen zur Rock Library!
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Über {roundedSongsCount} Songs für jeden Geschmack.
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Entdecke Songs nach Genre, Künstler oder Titel.
+              </p>
+              
+            </div>
           </motion.div>
         </div>
       </section>
 
 
-
-      {/* Filter */}
+      {/* Filter & Suche */}
       <section className="py-12 bg-rock-lighter w-full">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-col gap-6 mb-8">
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <Filter className="h-5 w-5 text-muted-foreground" />
-                <span className="text-muted-foreground font-medium">Genre:</span>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex flex-col gap-6 mb-8">
+              {/* Genre Filter */}
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <Filter className="h-5 w-5 text-muted-foreground" />
+                  <span className="text-muted-foreground font-medium">Genre:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {genres.map((genre) => (
+                    <Button
+                      key={genre}
+                      variant={selectedGenre === genre ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedGenre(genre)}
+                      className={selectedGenre === genre ? "btn-rock" : "btn-outline-rock"}
+                    >
+                      {genre}
+                    </Button>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {genres.map(genre => (
-                  <Button
-                    key={genre}
-                    variant={selectedGenre === genre ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedGenre(genre)}
-                    className={selectedGenre === genre ? "btn-rock" : "btn-outline-rock"}
-                  >
-                    {genre}
-                  </Button>
-                ))}
-              </div>
-            </div>
 
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <Input
-                placeholder="Song oder Interpret suchen..."
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                className="pl-10 bg-card border-border py-5"
-              />
+              {/* Suche */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                  placeholder="Song oder Interpret suchen..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-card border-border py-5"
+                />
+              </div>
+
+              <p className="text-muted-foreground text-sm">
+                {filteredSongs.length} Song{filteredSongs.length !== 1 ? "s" : ""} gefunden
+              </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-     {/* Song List */}
-<section className="py-20 bg-background">
-  <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto px-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        {filteredSongs.length > 0 ? (
-          filteredSongs.map((song, index) => {
-            const genreText = Array.isArray(song.genre)
-              ? song.genre.join(", ")
-              : song.genre;
-
-            const genreKey = Array.isArray(song.genre)
-              ? song.genre[0]
-              : song.genre;
-
-            const genreColor = genreColors[genreKey] || "bg-gray-500/20 text-gray-400 border-gray-500/30";
-
-            return (
-              <motion.div
-                key={`${song.artist}-${song.title}-${index}`}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-              >
-<Card className="w-full bg-card border-border shadow-rock transition-rock hover-rock">
-                  <CardContent className="p-6">
-                    {/* Song Infos */}
-<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 flex-wrap">
-
-                      <div className="flex items-center space-x-4 min-w-0">
-                        <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Music className="h-6 w-6 text-primary" />
+      {/* Song List */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-4">
+              {filteredSongs.map((song, index) => (
+                <motion.div
+                  key={`${song.artist}-${song.title}`}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                >
+                  <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div className="flex items-center space-x-4">
+                          <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                            <Music className="h-6 w-6 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-rock text-lg font-bold">{song.title}</h3>
+                            <p className="text-muted-foreground">{song.artist}</p>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <h3 className="font-rock text-lg font-bold truncate">{song.title}</h3>
-                          <p className="text-muted-foreground truncate">{song.artist}</p>
+
+                        <div className={`px-3 py-1 rounded-full border text-sm font-semibold w-fit ${genreColors[song.genre]}`}>
+                          {song.genre}
                         </div>
                       </div>
 
-                      {/* Genre Badge */}
-<div
-  className={`px-2 sm:px-3 py-1 rounded-full border text-xs sm:text-sm font-semibold text-center ${genreColor}`}
-  style={{
-    wordBreak: "break-word",
-    whiteSpace: "normal",
-    maxWidth: "100%",   // wichtig für mobile
-    overflowWrap: "break-word",
-  }}
->
-  {genreText}
-</div>
 
 
-                  </div>
-
-                  
                       {/* Musik-Links */}
                       {/*
                             {song.links && (
@@ -227,20 +298,8 @@ const Repertoire = () => {
                             )}
                       */}
 
-<div className="mt-6 w-full overflow-hidden rounded-xl" style={{ aspectRatio: '16/3.2' }}>
-  <iframe
-    src="https://open.spotify.com/embed/track/4e9eGQYsOiBcftrWXwsVco?utm_source=generator&theme=0"
-    width="100%"
-    height="100%"
-    frameBorder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy"
-    className="rounded-xl"
-    title="Spotify Player – Aerials by System of a Down"
-  ></iframe>
-</div>
+                      {/* Responsive Spotify Music Embed */}
 
-                    {/*
                       {(song.artist === "System Of A Down" && song.title === "Aerials") && (
                         <div className="mt-6 rounded-xl overflow-hidden">
                           <iframe
@@ -1490,31 +1549,32 @@ const Repertoire = () => {
                           ></iframe>
                         </div>
                       )}
-                      */}
+
                     </CardContent>
-                </Card>
+                  </Card>
+                </motion.div>
+              ))}
+
+            </div>
+
+            {filteredSongs.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-16"
+              >
+                <Music className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+                <p className="text-xl text-muted-foreground">
+                  Keine Songs gefunden für "{searchTerm}"
+                </p>
+                <p className="text-muted-foreground mt-2">
+                  Versucht es mit einem anderen Suchbegriff oder wählt ein anderes Genre.
+                </p>
               </motion.div>
-            );
-          })
-        ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-16"
-          >
-            <Music className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <p className="text-xl text-muted-foreground">
-              Keine Songs gefunden für "{searchTerm}"
-            </p>
-            <p className="text-muted-foreground mt-2">
-              Versucht es mit einem anderen Suchbegriff oder wählt ein anderes Genre.
-            </p>
-          </motion.div>
-        )}
-      </div>
-    </div>
-  </div>
-</section>
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* Genre Stats */}
       <section className="py-20 bg-rock-lighter">
@@ -1531,10 +1591,7 @@ const Repertoire = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {genres.slice(1).map((genre, index) => {
-                const count = songs.filter(song =>
-  Array.isArray(song.genre) ? song.genre.includes(genre) : song.genre === genre
-).length;
-
+                const count = songs.filter(song => song.genre === genre).length;
                 return (
                   <motion.div
                     key={genre}
