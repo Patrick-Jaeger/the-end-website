@@ -19,7 +19,7 @@ const Repertoire = () => {
     {
       artist: "System Of A Down",
       title: "Aerials",
-      genre: ["Alternative Metal", "Nu Metal"],
+      genre: ["Alternative Metal", "Nu Metal", "Test1", "Test2", "Test3"],
       links: {
         spotify: "https://open.spotify.com/track/4e9eGQYsOiBcftrWXwsVco",
       },
