@@ -221,36 +221,56 @@ const Repertoire = () => {
         </div>
       </section>
 
-      {/* Song List */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid gap-4">
-              {filteredSongs.map((song, index) => (
-                <motion.div
-                  key={`${song.artist}-${song.title}`}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                >
-                  <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div className="flex items-center space-x-4">
-                          <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                            <Music className="h-6 w-6 text-primary" />
-                          </div>
-                          <div>
-                            <h3 className="font-rock text-lg font-bold">{song.title}</h3>
-                            <p className="text-muted-foreground">{song.artist}</p>
-                          </div>
-                        </div>
+      
+      {/* Song-Liste */}
+      <section className="py-16 bg-gradient-to-b from-rock-lighter to-background">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredSongs.map((song, index) => (
+              <motion.div
+                key={`${song.title}-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+              >
+                <Card className="bg-card border-border shadow-rock hover:shadow-rock-lg transition-shadow duration-300">
+                  <CardContent className="p-6 flex flex-col justify-between h-full">
+                    <div>
+                      <h3 className="font-rock text-xl font-bold mb-2">{song.title}</h3>
+                      <p className="text-muted-foreground mb-4">{song.artist}</p>
 
-                        <div className={`px-3 py-1 rounded-full border text-sm font-semibold w-fit ${genreColors[song.genre]}`}>
-                          {song.genre}
-                        </div>
+                      {/* Genre als Text, komma-getrennt */}
+                      <p className="text-sm text-muted-foreground text-right">
+                        {Array.isArray(song.genre) ? song.genre.join(", ") : song.genre}
+                      </p>
+                    </div>
+
+                    {/* Spotify-Link (falls vorhanden) */}
+                    {song.links?.spotify && (
+                      <div className="mt-4">
+                        <iframe
+                          style={{ borderRadius: "12px" }}
+                          src={song.links.spotify.replace(
+                            "https://open.spotify.com/track/",
+                            "https://open.spotify.com/embed/track/"
+                          ) + "?utm_source=generator&theme=0"}
+                          width="100%"
+                          height="80"
+                          frameBorder="0"
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          loading="lazy"
+                        ></iframe>
                       </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
 
 
