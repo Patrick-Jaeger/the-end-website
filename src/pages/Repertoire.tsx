@@ -230,7 +230,8 @@ const Repertoire = () => {
                 <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
                   <CardContent className="p-6">
                     {/* Song Infos */}
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 flex-wrap">
+
                       <div className="flex items-center space-x-4 min-w-0">
                         <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
                           <Music className="h-6 w-6 text-primary" />
