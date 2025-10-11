@@ -227,28 +227,26 @@ const Repertoire = () => {
                             )}
                       */}
 
-                      {/* Responsive Spotify Music Embed */}
-
-{/* Responsive Spotify Embed */}
+{/* Scaled Spotify Embed */}
 {(song.artist === "System Of A Down" && song.title === "Aerials") && (
-  <div className="mt-6 relative w-full" style={{ paddingBottom: "18%" }}>
+  <div className="mt-6 w-full flex justify-center">
     <iframe
       src="https://open.spotify.com/embed/track/4e9eGQYsOiBcftrWXwsVco?utm_source=generator&theme=0"
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-      }}
+      width="300"
+      height="80"
       frameBorder="0"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy"
       title="Spotify Player – Aerials by System of a Down"
       className="rounded-xl"
+      style={{
+        transform: "scale(0.8)",       // skaliert den Player
+        transformOrigin: "top left",   // Ursprung oben links, damit er nicht verschoben wird
+      }}
     ></iframe>
   </div>
 )}
+
 
 
                     {/*
