@@ -242,13 +242,12 @@ const Repertoire = () => {
                       </div>
 
                       {/* Genre Badge */}
-<div
-  className={`px-3 py-1 rounded-full border text-sm font-semibold text-center break-words max-w-full sm:max-w-[150px] md:max-w-[200px] ${genreColor}`}
-  style={{ wordBreak: "break-word", whiteSpace: "normal" }}
->
-  {genreText}
-</div>
-
+                      <div
+                        className={`px-3 py-1 rounded-full border text-sm font-semibold text-center ${genreColor}`}
+                        style={{ wordBreak: "break-word", whiteSpace: "normal" }}
+                      >
+                        {genreText}
+                      </div>
                   </div>
 
                   
