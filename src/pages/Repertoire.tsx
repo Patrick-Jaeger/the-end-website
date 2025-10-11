@@ -137,7 +137,7 @@ const Repertoire = () => {
 
   const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
-  return (
+ return (
     <div className="min-h-screen bg-rock-gradient">
       <Navigation />
 
@@ -153,19 +153,12 @@ const Repertoire = () => {
             <h1 className="font-rock text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-glow mb-6 leading-tight text-split-repertoire">
               Repertoire
             </h1>
-
-            <div className="space-y-2">
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                Willkommen zur Rock Library!
-              </p>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                Über {roundedSongsCount} Songs für jeden Geschmack.
-              </p>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                Entdecke Songs nach Genre, Künstler oder Titel.
-              </p>
-              
-            </div>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Willkommen zur Rock Library!
+            </p>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Über {roundedSongsCount} Songs für jeden Geschmack.
+            </p>
           </motion.div>
         </div>
       </section>
