@@ -137,7 +137,7 @@ const Repertoire = () => {
 
   const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
- return (
+  return (
     <div className="min-h-screen bg-rock-gradient">
       <Navigation />
 
@@ -153,116 +153,107 @@ const Repertoire = () => {
             <h1 className="font-rock text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-glow mb-6 leading-tight text-split-repertoire">
               Repertoire
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Willkommen zur Rock Library!
-            </p>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Über {roundedSongsCount} Songs für jeden Geschmack.
-            </p>
+
+            <div className="space-y-2">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Willkommen zur Rock Library!
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Über {roundedSongsCount} Songs für jeden Geschmack.
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Entdecke Songs nach Genre, Künstler oder Titel.
+              </p>
+              
+            </div>
           </motion.div>
         </div>
       </section>
 
 
-
-      {/* Filter */}
+      {/* Filter & Suche */}
       <section className="py-12 bg-rock-lighter w-full">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-col gap-6 mb-8">
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <Filter className="h-5 w-5 text-muted-foreground" />
-                <span className="text-muted-foreground font-medium">Genre:</span>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex flex-col gap-6 mb-8">
+              {/* Genre Filter */}
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <Filter className="h-5 w-5 text-muted-foreground" />
+                  <span className="text-muted-foreground font-medium">Genre:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {genres.map((genre) => (
+                    <Button
+                      key={genre}
+                      variant={selectedGenre === genre ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedGenre(genre)}
+                      className={selectedGenre === genre ? "btn-rock" : "btn-outline-rock"}
+                    >
+                      {genre}
+                    </Button>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {genres.map(genre => (
-                  <Button
-                    key={genre}
-                    variant={selectedGenre === genre ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedGenre(genre)}
-                    className={selectedGenre === genre ? "btn-rock" : "btn-outline-rock"}
-                  >
-                    {genre}
-                  </Button>
-                ))}
-              </div>
-            </div>
 
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <Input
-                placeholder="Song oder Interpret suchen..."
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                className="pl-10 bg-card border-border py-5"
-              />
+              {/* Suche */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                  placeholder="Song oder Interpret suchen..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-card border-border py-5"
+                />
+              </div>
+
+              <p className="text-muted-foreground text-sm">
+                {filteredSongs.length} Song{filteredSongs.length !== 1 ? "s" : ""} gefunden
+              </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-     {/* Song List */}
-<section className="py-20 bg-background">
-  <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto">
-      <div className="grid gap-4">
-  {filteredSongs.length > 0 ? (
-    filteredSongs.map((song, index) => {
-      const genreText = Array.isArray(song.genre)
-        ? song.genre.join(", ")
-        : song.genre;
+      {/* Song List */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-4">
+              {filteredSongs.map((song, index) => (
+                <motion.div
+                  key={`${song.artist}-${song.title}`}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                >
+                  <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div className="flex items-center space-x-4">
+                          <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                            <Music className="h-6 w-6 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-rock text-lg font-bold">{song.title}</h3>
+                            <p className="text-muted-foreground">{song.artist}</p>
+                          </div>
+                        </div>
 
-      const genreKey = Array.isArray(song.genre)
-        ? song.genre[0]
-        : song.genre;
-
-      const genreColor = genreColors[genreKey] || "bg-gray-500/20 text-gray-400 border-gray-500/30";
-
-      return (
-        <motion.div
-          key={`${song.artist}-${song.title}-${index}`}
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.05 }}
-        >
-          <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
-            <CardContent className="p-6">
-              {/* Song Infos + Genre + Spotify Embed */}
-            </CardContent>
-          </Card>
-        </motion.div>
-      );
-    })
-  ) : (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="text-center py-16"
-    >
-      <Music className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-      <p className="text-xl text-muted-foreground">
-        Keine Songs gefunden für "{searchTerm}"
-      </p>
-      <p className="text-muted-foreground mt-2">
-        Versucht es mit einem anderen Suchbegriff oder wählt ein anderes Genre.
-      </p>
-    </motion.div>
-  )}
-</div>
+                        <div className={`px-3 py-1 rounded-full border text-sm font-semibold w-fit ${genreColors[song.genre]}`}>
+                          {song.genre}
+                        </div>
+                      </div>
 
 
-                    {/* Genre Badge */}
-                    <div
-                      className={`px-3 py-1 rounded-full border text-sm font-semibold text-center ${genreColor}`}
-                      style={{ wordBreak: "break-word", whiteSpace: "normal" }}
-                    >
-                      {genreText}
-                    </div>
-                  </div>
 
-                  
                       {/* Musik-Links */}
                       {/*
                             {song.links && (
@@ -1564,7 +1555,9 @@ const Repertoire = () => {
                 </motion.div>
               ))}
 
-              {filteredSongs.length === 0 && (
+            </div>
+
+            {filteredSongs.length === 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -1598,10 +1591,7 @@ const Repertoire = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {genres.slice(1).map((genre, index) => {
-                const count = songs.filter(song =>
-  Array.isArray(song.genre) ? song.genre.includes(genre) : song.genre === genre
-).length;
-
+                const count = songs.filter(song => song.genre === genre).length;
                 return (
                   <motion.div
                     key={genre}
