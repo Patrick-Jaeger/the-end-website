@@ -14,7 +14,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { AnimatedSocialIcons } from "@/components/ui/floating-action-button";
 
 const Kontakt = () => {
   const { toast } = useToast();
@@ -184,7 +183,7 @@ const Kontakt = () => {
               </Card>
 
               {/* Social Media */}
-              <div className="mt-8">
+              <div className="mt-8 ml-4">
                 <h3 className="font-rock text-xl font-bold text-glow mb-4">
                   Social Media
                 </h3>
@@ -192,23 +191,38 @@ const Kontakt = () => {
                   Folgt uns für Updates, Behind-the-Scenes Content und neue Videos!
                 </p>
                 
-                <AnimatedSocialIcons
-                  icons={[
-                    {
-                      Icon: Instagram,
-                      href: "https://www.instagram.com/Die_Band_The_End"
-                    },
-                    {
-                      Icon: Facebook,
-                      href: "https://www.facebook.com/profile.php?id=100063827957058"
-                    },
-                    {
-                      Icon: Youtube,
-                      href: "https://youtube.com"
-                    }
-                  ]}
-                  iconSize={20}
-                />
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://www.instagram.com/Die_Band_The_End" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center transition-rock hover-rock">
+                      <Instagram className="h-6 w-6 text-white" />
+                    </div>
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=100063827957058" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center transition-rock hover-rock">
+                      <Facebook className="h-6 w-6 text-white" />
+                    </div>
+                  </a>
+                  <a 
+                    href="https://youtube.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center transition-rock hover-rock">
+                      <Youtube className="h-6 w-6 text-white" />
+                    </div>
+                  </a>
+                </div>
               </div>
             </motion.div>
 
