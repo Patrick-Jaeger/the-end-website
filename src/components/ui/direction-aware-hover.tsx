@@ -114,12 +114,12 @@ export const DirectionAwareHover = ({
       </motion.div>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-[95vw] max-h-[95vh] w-auto h-auto p-2 bg-black/95 border-border flex items-center justify-center">
+        <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
           <div className="w-full h-full flex items-center justify-center">
             <img
               src={imageUrl}
               alt="Enlarged view"
-              className="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg"
+              className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
             />
           </div>
         </DialogContent>
