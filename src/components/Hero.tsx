@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
 import logo from "@/assets/logo.png";
 import { StarBorder } from "@/components/ui/star-border";
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 
 const Hero = () => {
   return (
@@ -93,10 +94,15 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.5 }}
           >
             <Link to="/gigs" className="w-full sm:w-auto">
-              <button className="btn-rock w-full sm:w-auto flex items-center justify-center">
-                <Calendar className="mr-2 h-5 w-5" />
-                Nächste Gigs ansehen
-              </button>
+              <div className="relative rounded-full border-2 border-primary p-[2px] w-full sm:w-auto overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
+                <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors">
+                  <Calendar className="mr-2 h-5 w-5 text-primary" />
+                  <AnimatedShinyText className="text-base font-medium">
+                    Nächste Gigs ansehen
+                  </AnimatedShinyText>
+                </div>
+              </div>
             </Link>
 
             <Link to="/kontakt">
