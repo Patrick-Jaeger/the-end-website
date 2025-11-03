@@ -23,7 +23,7 @@ export function StarBorder<T extends ElementType = "button">({
   return (
     <Component 
       className={cn(
-        "relative inline-block py-[1px] overflow-hidden rounded-[20px] transition-all duration-300 hover:scale-105",
+        "relative inline-block py-[3px] overflow-hidden rounded-[20px] transition-all duration-300 hover:scale-105",
         className
       )} 
       {...props}

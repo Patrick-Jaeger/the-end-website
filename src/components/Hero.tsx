@@ -98,7 +98,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
                 <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors">
                   <Calendar className="mr-2 h-5 w-5 text-primary" />
-                  <AnimatedShinyText className="text-base font-medium">
+                  <AnimatedShinyText className="text-base font-medium text-primary">
                     Nächste Gigs ansehen
                   </AnimatedShinyText>
                 </div>
