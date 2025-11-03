@@ -178,7 +178,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
               return (
                 <motion.div
                   key={index}
-                  className="absolute left-1/2 top-1/2 w-72 h-96 sm:w-64 sm:h-80 md:w-72 md:h-96 lg:w-80 lg:h-[28rem] bg-card border border-border rounded-lg shadow-rock cursor-pointer"
+                  className="absolute left-1/2 top-1/2 w-64 h-80 sm:w-60 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] bg-card border border-border rounded-lg shadow-rock cursor-pointer"
                   style={{
                     transform: `translate(-50%, -50%) ${style.transform}`,
                     zIndex: style.zIndex,
@@ -190,9 +190,9 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                   }}
                   onClick={() => setCurrentIndex(index)}
                 >
-                  <div className="h-full flex flex-col p-6">
+                  <div className="h-full flex flex-col p-5">
                     <div 
-                      className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
+                      className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelectedImage(member.image);
@@ -205,9 +205,9 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                       />
                     </div>
                     <div className="text-center flex-1 flex flex-col justify-start">
-                      <h3 className="font-rock text-lg font-bold mb-2 text-foreground">{member.name}</h3>
-                      <p className="text-primary font-medium text-sm mb-3">{member.role}</p>
-                      <p className="text-muted-foreground text-xs leading-relaxed overflow-hidden">{member.description}</p>
+                      <h3 className="font-rock text-base font-bold mb-1.5 text-foreground">{member.name}</h3>
+                      <p className="text-primary font-medium text-xs mb-2">{member.role}</p>
+                      <p className="text-muted-foreground text-xs leading-relaxed overflow-hidden line-clamp-6">{member.description}</p>
                     </div>
                   </div>
                 </motion.div>
