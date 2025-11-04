@@ -7,6 +7,7 @@ import { Play, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 const Media = () => {
   const [isTrigger, setIsTrigger] = useState(false);
@@ -45,6 +46,39 @@ const Media = () => {
       description: "Komplettes Live-Set von unserem Open-Air Auftritt",
       thumbnail: "youtube-thumb-3"
     }
+  ];
+
+  const testimonials = [
+    {
+      quote: "The End hat unser Event mit ihrer energiegeladenen Performance zu einem unvergesslichen Erlebnis gemacht. Absolut professionell und mitreißend!",
+      name: "Michael Weber",
+      designation: "Event Manager, Rockfestival Bergheim",
+      src: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=3540&auto=format&fit=crop",
+    },
+    {
+      quote: "Eine Band, die weiß wie man das Publikum begeistert. Technisch versiert und mit einer unglaublichen Bühnenpräsenz.",
+      name: "Sarah Müller",
+      designation: "Veranstalterin, Stadthalle Linz",
+      src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=3540&auto=format&fit=crop",
+    },
+    {
+      quote: "The End hat unser Firmenevent zu einem echten Highlight gemacht. Die Stimmung war fantastisch und alle Gäste waren begeistert!",
+      name: "Thomas Gruber",
+      designation: "HR Director, TechSolutions GmbH",
+      src: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=3540&auto=format&fit=crop",
+    },
+    {
+      quote: "Hervorragende Musiker mit einem breiten Repertoire. Von Rock-Klassikern bis zu modernen Hits - alles wurde perfekt dargeboten.",
+      name: "Lisa Berger",
+      designation: "Kulturbeauftragte, Stadt Wels",
+      src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=3540&auto=format&fit=crop",
+    },
+    {
+      quote: "Die Zusammenarbeit mit The End war von Anfang bis Ende professionell. Eine absolute Empfehlung für jeden, der eine Rock-Band sucht!",
+      name: "Andreas Schmidt",
+      designation: "Clubbesitzer, Rockhouse Salzburg",
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3540&auto=format&fit=crop",
+    },
   ];
 
   return (
@@ -107,8 +141,24 @@ const Media = () => {
         </div>
       </section>
 
-      {/* Video Section */}
+      {/* Referenzen Section */}
       <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
+              Referenzen
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Was unsere Partner und Veranstalter über uns sagen
+            </p>
+          </div>
+
+          <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
