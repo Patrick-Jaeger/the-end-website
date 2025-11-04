@@ -99,8 +99,8 @@ const Hero = () => {
                 <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors">
                   <Calendar className="mr-2 h-5 w-5 text-primary" />
                   <GradientText
-                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                    animationSpeed={3}
+                    colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                    animationSpeed={6}
                     showBorder={false}
                     className="text-base font-bold"
                   >
