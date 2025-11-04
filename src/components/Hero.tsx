@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
 import logo from "@/assets/logo.png";
 import { StarBorder } from "@/components/ui/star-border";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
+import GradientText from "@/components/ui/GradientText";
 
 const Hero = () => {
   return (
@@ -98,9 +98,14 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
                 <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors">
                   <Calendar className="mr-2 h-5 w-5 text-primary" />
-                  <AnimatedShinyText className="text-base font-medium text-primary">
+                  <GradientText
+                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                    animationSpeed={3}
+                    showBorder={false}
+                    className="text-base font-bold"
+                  >
                     Nächste Gigs ansehen
-                  </AnimatedShinyText>
+                  </GradientText>
                 </div>
               </div>
             </Link>
