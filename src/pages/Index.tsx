@@ -8,6 +8,7 @@ import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { useState } from "react";
 import EventModal from "@/components/EventModal";
 import { StarBorder } from "@/components/ui/star-border";
+import { ElectricCard } from "@/components/ui/electric-card";
 
 const Index = () => {
   console.log("Index component rendering...");
@@ -56,43 +57,51 @@ const Index = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-4xl mx-auto bg-card border border-border rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300"
+            className="max-w-4xl mx-auto cursor-pointer"
             onClick={handleEventCardClick}
           >
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="flex items-center space-x-2 text-primary mb-4">
-                  <Calendar className="h-5 w-5" />
-                  <span className="font-rock font-semibold">09. Januar 2026</span>
+            <ElectricCard
+              variant="swirl"
+              color="#4079ff"
+              className="w-full"
+            >
+              <div className="p-8 w-full h-full">
+                <div className="grid md:grid-cols-2 gap-8 items-center h-full">
+                  <div>
+                    <div className="flex items-center space-x-2 text-primary mb-4">
+                      <Calendar className="h-5 w-5" />
+                      <span className="font-rock font-semibold">09. Januar 2026</span>
+                    </div>
+                    <h3 className="font-rock text-2xl font-bold mb-2">
+                      Rock in Bouch
+                    </h3>
+                    <p className="text-muted-foreground mb-4">
+                      Mendorferbuch, Gasthaus Reis
+                    </p>
+                    <p className="mb-6">
+                      Freut euch auf einen Abend voller Rock-Klassiker! 
+                      Von Green Day bis hin zu Metallica - 
+                      wir bringen die größten Hits live auf die Bühne.
+                    </p>
+                    <Link to="/gigs">
+                      <StarBorder as="div" color="hsl(var(--primary))">
+                        Alle Termine anzeigen
+                      </StarBorder>
+                    </Link>
+                  </div>
+                  
+                  <div className="bg-secondary rounded-lg p-6 text-center">
+                    <Music className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <h4 className="font-rock text-xl font-bold mb-2">
+                      Live Performance
+                    </h4>
+                    <p className="text-muted-foreground">
+                      Energie pur und authentische Covers eurer Lieblings-Songs
+                    </p>
+                  </div>
                 </div>
-                <h3 className="font-rock text-2xl font-bold mb-2">
-                  Rock in Bouch
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Mendorferbuch, Gasthaus Reis
-                </p>
-                <p className="mb-6">
-                  Freut euch auf einen Abend voller Rock-Klassiker! 
-                  Von Green Day bis hin zu Metallica - 
-                  wir bringen die größten Hits live auf die Bühne.
-                </p>
-                <Link to="/gigs">
-                  <StarBorder as="div" color="hsl(var(--primary))">
-                    Alle Termine anzeigen
-                  </StarBorder>
-                </Link>
               </div>
-              
-              <div className="bg-secondary rounded-lg p-6 text-center">
-                <Music className="h-16 w-16 text-primary mx-auto mb-4" />
-                <h4 className="font-rock text-xl font-bold mb-2">
-                  Live Performance
-                </h4>
-                <p className="text-muted-foreground">
-                  Energie pur und authentische Covers eurer Lieblings-Songs
-                </p>
-              </div>
-            </div>
+            </ElectricCard>
           </motion.div>
         </div>
       </section>
