@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 type Testimonial = {
   quote: string;
@@ -22,6 +23,8 @@ export const AnimatedTestimonials = ({
   className?: string;
 }) => {
   const [active, setActive] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImageSrc, setModalImageSrc] = useState("");
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
@@ -44,6 +47,11 @@ export const AnimatedTestimonials = ({
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
+  };
+
+  const handleImageClick = (src: string) => {
+    setModalImageSrc(src);
+    setIsModalOpen(true);
   };
 
   return (
@@ -91,7 +99,8 @@ export const AnimatedTestimonials = ({
                       src={testimonial.src}
                       alt={testimonial.name}
                       draggable={false}
-                      className="h-full w-full rounded-3xl object-cover object-center"
+                      onClick={() => handleImageClick(testimonial.src)}
+                      className="h-full w-full rounded-3xl object-cover object-center cursor-pointer"
                     />
                   </motion.div>
                 );
@@ -167,6 +176,18 @@ export const AnimatedTestimonials = ({
           </div>
         </div>
       </div>
+
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src={modalImageSrc}
+              alt="Enlarged view"
+              className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
