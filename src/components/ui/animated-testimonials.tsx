@@ -64,11 +64,11 @@ export const AnimatedTestimonials = ({
                       opacity: 0.7,
                     }}
                     animate={{
-                      x: isActive(index) ? 0 : 20 * Math.min(offset, 3),
-                      rotateY: isActive(index) ? 0 : 5 * Math.min(offset, 3),
-                      z: isActive(index) ? 0 : -100 * Math.min(offset, 3),
-                      opacity: isActive(index) ? 1 : Math.max(0.4, 1 - offset * 0.2),
-                      scale: isActive(index) ? 1 : Math.max(0.9, 1 - offset * 0.03),
+                      x: isActive(index) ? 0 : offset <= 2 ? (offset % 2 === 1 ? 30 : -30) : 0,
+                      rotateY: isActive(index) ? 0 : offset <= 2 ? (offset % 2 === 1 ? 8 : -8) : 0,
+                      z: isActive(index) ? 0 : -80 * Math.min(offset, 4),
+                      opacity: offset <= 2 ? (isActive(index) ? 1 : 0.6) : 0,
+                      scale: isActive(index) ? 1 : Math.max(0.85, 1 - offset * 0.05),
                       zIndex: isActive(index) ? 999 : testimonials.length - offset,
                     }}
                     exit={{
