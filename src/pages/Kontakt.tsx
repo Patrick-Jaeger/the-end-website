@@ -9,15 +9,41 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Mail, MapPin, Instagram, Facebook, Youtube, Send, CalendarIcon } from "lucide-react";
+import { Mail, MapPin, Instagram, Facebook, Youtube, Send, CalendarIcon, PlusIcon, MinusIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
+const faqItems = [
+  {
+    id: '1',
+    question: 'Wie lange spielt ihr?',
+    answer: 'Standard sind 3 Stunden, aber wir können flexibel je nach euren Wünschen variieren.'
+  },
+  {
+    id: '2',
+    question: 'Welche Technik braucht ihr?',
+    answer: 'Wir bringen unsere komplette Anlage mit. Ihr braucht nur Strom (16A) und eine Bühne von mindestens 4x3 Metern, besser sind 6x6 Meter.'
+  },
+  {
+    id: '3',
+    question: 'Wie weit fahrt ihr?',
+    answer: 'Hauptsächlich 92277 Hohenburg und Umgebung. Bis 20km kostenfrei, weitere Entfernungen nach Absprache.'
+  },
+  {
+    id: '4',
+    question: 'Könnt ihr auch akustisch spielen?',
+    answer: 'Ja! Wir haben auch Songs in acoustic Versionen für ruhigere Veranstaltungen im Repertoire.'
+  }
+];
+
 const Kontakt = () => {
   const { toast } = useToast();
   const [date, setDate] = useState<Date>();
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,6 +56,10 @@ const Kontakt = () => {
   // GSAP Animations
   useTextSplit('.text-split', 0.5);
   useParallax('.parallax-bg', 0.3);
+
+  const toggleExpand = (id: string) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -304,59 +334,73 @@ const Kontakt = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-12">
-              Häufige Fragen
-            </h2>
+            <div className="mb-12 flex flex-col items-center">
+              <Badge
+                variant="outline"
+                className="border-primary mb-4 px-3 py-1 text-xs font-medium tracking-wider uppercase"
+              >
+                FAQs
+              </Badge>
+              <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-6 text-center">
+                Häufige Fragen
+              </h2>
+              <p className="text-muted-foreground max-w-2xl text-center">
+                Findet Antworten auf die häufigsten Fragen zu unseren Auftritten und technischen Anforderungen.
+              </p>
+            </div>
             
-            <div className="grid md:grid-cols-2 gap-8 text-left">
-              <Card className="bg-card border-border shadow-rock">
-                <CardContent className="p-6">
-                  <h3 className="font-rock text-lg font-bold mb-3">
-                    Wie lange spielt ihr?
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Standard sind 3 Stunden, aber wir können flexibel je nach euren Wünschen variieren.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card border-border shadow-rock">
-                <CardContent className="p-6">
-                  <h3 className="font-rock text-lg font-bold mb-3">
-                    Welche Technik braucht ihr?
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Wir bringen unsere komplette Anlage mit. Ihr braucht nur 
-                    Strom (16A) und eine Bühne von mindestens 4x3 Metern, besser sind 6x6 Meter.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card border-border shadow-rock">
-                <CardContent className="p-6">
-                  <h3 className="font-rock text-lg font-bold mb-3">
-                    Wie weit fahrt ihr?
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Hauptsächlich 92277 Hohenburg und Umgebung. Bis 20km kostenfrei, 
-                    weitere Entfernungen nach Absprache.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card border-border shadow-rock">
-                <CardContent className="p-6">
-                  <h3 className="font-rock text-lg font-bold mb-3">
-                    Könnt ihr auch akustisch spielen?
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Ja! Wir haben auch Songs in acoustic Versionen 
-                    für ruhigere Veranstaltungen im Repertoire.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <AnimatePresence>
+                {faqItems.map((faq, index) => (
+                  <motion.div
+                    key={faq.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className={cn(
+                      'border-border h-fit overflow-hidden rounded-xl border',
+                      expandedId === faq.id
+                        ? 'shadow-3xl bg-card/50'
+                        : 'bg-card/50',
+                    )}
+                    style={{ minHeight: '88px' }}
+                  >
+                    <button
+                      onClick={() => toggleExpand(faq.id)}
+                      className="flex w-full items-center justify-between p-6 text-left"
+                    >
+                      <h3 className="font-rock text-lg font-medium">
+                        {faq.question}
+                      </h3>
+                      <div className="ml-4 flex-shrink-0">
+                        {expandedId === faq.id ? (
+                          <MinusIcon className="text-primary h-5 w-5" />
+                        ) : (
+                          <PlusIcon className="text-primary h-5 w-5" />
+                        )}
+                      </div>
+                    </button>
+                    <AnimatePresence>
+                      {expandedId === faq.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="border-border border-t px-6 pt-2 pb-6">
+                            <p className="text-muted-foreground">{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           </motion.div>
         </div>
