@@ -50,42 +50,42 @@ export const AnimatedTestimonials = ({
     <div className={cn("max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20", className)}>
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
         <div>
-          <div className="relative h-80 w-full" style={{ perspective: "1000px" }}>
+          <div className="relative h-80 w-full">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => {
                 const offset = (index - active + testimonials.length) % testimonials.length;
+                const rotation = offset === 0 ? 0 : (offset % 2 === 1 ? 5 : -5);
                 return (
                   <motion.div
                     key={testimonial.src}
                     initial={{
-                      x: 0,
-                      rotateY: 0,
-                      z: -100 * offset,
-                      opacity: 0.7,
+                      opacity: 0,
+                      scale: 0.9,
+                      z: -100,
+                      rotate: 0,
                     }}
                     animate={{
-                      x: isActive(index) ? 0 : offset <= 2 ? (offset % 2 === 1 ? 30 : -30) : 0,
-                      rotateY: isActive(index) ? 0 : offset <= 2 ? (offset % 2 === 1 ? 8 : -8) : 0,
-                      z: isActive(index) ? 0 : -80 * Math.min(offset, 4),
-                      opacity: offset <= 2 ? (isActive(index) ? 1 : 0.6) : 0,
-                      scale: isActive(index) ? 1 : Math.max(0.85, 1 - offset * 0.05),
-                      zIndex: isActive(index) ? 999 : testimonials.length - offset,
+                      opacity: isActive(index) ? 1 : 0.7,
+                      scale: isActive(index) ? 1 : 0.95 - offset * 0.02,
+                      z: isActive(index) ? 0 : -100 - offset * 20,
+                      rotate: rotation,
+                      zIndex: isActive(index)
+                        ? 999
+                        : testimonials.length + 2 - index,
+                      y: isActive(index) ? 0 : offset * 5,
                     }}
                     exit={{
                       x: -300,
-                      rotateY: -15,
                       opacity: 0,
+                      scale: 0.9,
                       z: -200,
+                      rotate: -10,
                     }}
                     transition={{
                       duration: 0.8,
                       ease: [0.32, 0.72, 0, 1],
                     }}
-                    className="absolute inset-0"
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center center",
-                    }}
+                    className="absolute inset-0 origin-bottom"
                   >
                     <img
                       src={testimonial.src}
