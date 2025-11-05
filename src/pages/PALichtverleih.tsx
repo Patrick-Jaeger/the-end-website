@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import { de } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { useTextSplit } from "@/hooks/useGSAP";
+import LightRays from "@/components/ui/LightRays";
 
 const PALichtverleih = () => {
   const [date, setDate] = useState<Date>();
@@ -29,8 +30,25 @@ const PALichtverleih = () => {
   useTextSplit('.text-split-pa', 0.3);
 
   return (
-    <div className="min-h-screen bg-rock-gradient">
-      <Navigation />
+    <div className="min-h-screen bg-rock-gradient relative">
+      {/* Light Rays Background Effect */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+        />
+      </div>
+      
+      {/* Content Wrapper */}
+      <div className="relative z-10">
+        <Navigation />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-b from-background/50 to-rock-lighter">
@@ -339,7 +357,8 @@ const PALichtverleih = () => {
         </div>
       </section>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };
