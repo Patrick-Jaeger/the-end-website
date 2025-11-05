@@ -153,7 +153,7 @@ const Media = () => {
             </p>
           </div>
 
-          <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+          <AnimatedTestimonials testimonials={testimonials} autoplay={false} />
         </div>
       </section>
 

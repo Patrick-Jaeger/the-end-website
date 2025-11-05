@@ -40,7 +40,7 @@ export const AnimatedTestimonials = ({
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay]);
+  }, [autoplay, active]);
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
@@ -50,47 +50,52 @@ export const AnimatedTestimonials = ({
     <div className={cn("max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20", className)}>
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
         <div>
-          <div className="relative h-80 w-full">
+          <div className="relative h-80 w-full" style={{ perspective: "1000px" }}>
             <AnimatePresence>
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial.src}
-                  initial={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: -100,
-                    rotate: randomRotateY(),
-                  }}
-                  animate={{
-                    opacity: isActive(index) ? 1 : 0.7,
-                    scale: isActive(index) ? 1 : 0.95,
-                    z: isActive(index) ? 0 : -100,
-                    rotate: isActive(index) ? 0 : randomRotateY(),
-                    zIndex: isActive(index)
-                      ? 999
-                      : testimonials.length + 2 - index,
-                    y: isActive(index) ? [0, -80, 0] : 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: 100,
-                    rotate: randomRotateY(),
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 origin-bottom"
-                >
-                  <img
-                    src={testimonial.src}
-                    alt={testimonial.name}
-                    draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
-                  />
-                </motion.div>
-              ))}
+              {testimonials.map((testimonial, index) => {
+                const offset = (index - active + testimonials.length) % testimonials.length;
+                return (
+                  <motion.div
+                    key={testimonial.src}
+                    initial={{
+                      x: 0,
+                      rotateY: 0,
+                      z: -100 * offset,
+                      opacity: 0.7,
+                    }}
+                    animate={{
+                      x: isActive(index) ? 0 : 20 * Math.min(offset, 3),
+                      rotateY: isActive(index) ? 0 : 5 * Math.min(offset, 3),
+                      z: isActive(index) ? 0 : -100 * Math.min(offset, 3),
+                      opacity: isActive(index) ? 1 : Math.max(0.4, 1 - offset * 0.2),
+                      scale: isActive(index) ? 1 : Math.max(0.9, 1 - offset * 0.03),
+                      zIndex: isActive(index) ? 999 : testimonials.length - offset,
+                    }}
+                    exit={{
+                      x: -300,
+                      rotateY: -15,
+                      opacity: 0,
+                      z: -200,
+                    }}
+                    transition={{
+                      duration: 0.8,
+                      ease: [0.32, 0.72, 0, 1],
+                    }}
+                    className="absolute inset-0"
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transformOrigin: "center center",
+                    }}
+                  >
+                    <img
+                      src={testimonial.src}
+                      alt={testimonial.name}
+                      draggable={false}
+                      className="h-full w-full rounded-3xl object-cover object-center"
+                    />
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
           </div>
         </div>
@@ -110,7 +115,7 @@ export const AnimatedTestimonials = ({
               opacity: 0,
             }}
             transition={{
-              duration: 0.2,
+              duration: 0.5,
               ease: "easeInOut",
             }}
           >
@@ -135,9 +140,9 @@ export const AnimatedTestimonials = ({
                     y: 0,
                   }}
                   transition={{
-                    duration: 0.2,
+                    duration: 0.3,
                     ease: "easeInOut",
-                    delay: 0.02 * index,
+                    delay: 0.03 * index,
                   }}
                   className="inline-block"
                 >
