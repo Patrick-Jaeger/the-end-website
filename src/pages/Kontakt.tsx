@@ -105,6 +105,15 @@ const Kontakt = () => {
         </div>
       </section>
 
+      {/* Velocity Scroll Effect - Full Width */}
+      <section className="py-12 bg-rock-lighter overflow-hidden">
+        <VelocityScroll
+          className="font-rock text-2xl md:text-4xl font-bold tracking-tight text-glow"
+          text="THE END - Punk, Rock & Metal Cover Band - Live & laut."
+          default_velocity={3}
+        />
+      </section>
+
       {/* Contact Form & Info */}
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
@@ -212,15 +221,6 @@ const Kontakt = () => {
                   </form>
                 </CardContent>
               </Card>
-
-              {/* Velocity Scroll Effect */}
-              <div className="mt-8 mb-8">
-                <VelocityScroll
-                  className="font-rock text-2xl md:text-4xl font-bold tracking-tight text-glow"
-                  text="THE END - Punk, Rock & Metal Cover Band - Live & laut."
-                  default_velocity={3}
-                />
-              </div>
 
               {/* Social Media */}
               <div className="mt-8 ml-4">
