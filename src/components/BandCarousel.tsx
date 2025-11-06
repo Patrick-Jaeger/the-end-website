@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import GradualBlur from '@/components/ui/GradualBlur';
 
 interface BandMember {
   name: string;
@@ -156,7 +157,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
   return (
     <div className="w-full py-8">
       {/* Desktop/Tablet Carousel */}
-      <div className="hidden md:block relative">
+      <div className="hidden md:block relative" style={{ position: 'relative', overflow: 'hidden' }}>
         <div 
           className="relative h-96 overflow-hidden"
           style={{ perspective: '1000px' }}
@@ -247,6 +248,17 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
             />
           ))}
         </div>
+        
+        {/* Gradual Blur Effect */}
+        <GradualBlur
+          target="parent"
+          position="bottom"
+          height="6rem"
+          strength={2.5}
+          divCount={5}
+          curve="bezier"
+          opacity={1}
+        />
       </div>
 
       {/* Mobile Stack */}
