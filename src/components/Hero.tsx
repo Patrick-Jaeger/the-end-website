@@ -5,7 +5,6 @@ import heroBackground from "@/assets/hero-background.jpg";
 import logo from "@/assets/logo.png";
 import { StarBorder } from "@/components/ui/star-border";
 import GradientText from "@/components/ui/GradientText";
-import GradualBlur from "@/components/ui/GradualBlur";
 
 const Hero = () => {
   return (
@@ -129,18 +128,6 @@ const Hero = () => {
 
       {/* Decorative Elements */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
-      
-      {/* Gradual Blur Effect */}
-      <GradualBlur
-        target="parent"
-        position="bottom"
-        height="8rem"
-        strength={3}
-        divCount={6}
-        curve="bezier"
-        exponential={true}
-        opacity={1}
-      />
     </section>
   );
 };

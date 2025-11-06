@@ -9,7 +9,6 @@ import { useState } from "react";
 import EventModal from "@/components/EventModal";
 import { StarBorder } from "@/components/ui/star-border";
 import ElectricBorder from "@/components/ui/ElectricBorder";
-import GradualBlur from "@/components/ui/GradualBlur";
 
 const Index = () => {
   console.log("Index component rendering...");
@@ -36,7 +35,7 @@ const Index = () => {
       <Hero />
       
       {/* Highlight Section */}
-      <section className="py-20 bg-gradient-to-b from-background to-rock-lighter" style={{ position: 'relative', overflow: 'hidden' }}>
+      <section className="py-20 bg-gradient-to-b from-background to-rock-lighter">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -106,17 +105,6 @@ const Index = () => {
             </ElectricBorder>
           </motion.div>
         </div>
-        
-        {/* Gradual Blur Effect */}
-        <GradualBlur
-          target="parent"
-          position="bottom"
-          height="6rem"
-          strength={2}
-          divCount={5}
-          curve="bezier"
-          opacity={0.9}
-        />
       </section>
 
       {/* Quick Info Cards */}
