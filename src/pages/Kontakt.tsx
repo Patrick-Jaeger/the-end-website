@@ -105,15 +105,6 @@ const Kontakt = () => {
         </div>
       </section>
 
-      {/* Velocity Scroll Effect - Full Width */}
-      <section className="py-12 bg-rock-lighter overflow-hidden">
-        <VelocityScroll
-          className="font-rock text-2xl md:text-4xl font-bold tracking-tight text-glow"
-          text="THE END - Punk, Rock & Metal Cover Band - Live & laut."
-          default_velocity={3}
-        />
-      </section>
-
       {/* Contact Form & Info */}
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
@@ -124,7 +115,6 @@ const Kontakt = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              
             >
               <Card className="bg-card border-border shadow-rock">
                 <CardContent className="p-8">
@@ -221,49 +211,6 @@ const Kontakt = () => {
                   </form>
                 </CardContent>
               </Card>
-
-              {/* Social Media */}
-              <div className="mt-8 ml-4">
-                <h3 className="font-rock text-xl font-bold text-glow mb-4">
-                  Social Media
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Folgt uns für Updates, Behind-the-Scenes Content und neue Videos!
-                </p>
-                
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://www.instagram.com/Die_Band_The_End" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group"
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center transition-rock hover-rock">
-                      <Instagram className="h-6 w-6 text-white" />
-                    </div>
-                  </a>
-                  <a 
-                    href="https://www.facebook.com/profile.php?id=100063827957058" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group"
-                  >
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center transition-rock hover-rock">
-                      <Facebook className="h-6 w-6 text-white" />
-                    </div>
-                  </a>
-                  <a 
-                    href="https://youtube.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group"
-                  >
-                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center transition-rock hover-rock">
-                      <Youtube className="h-6 w-6 text-white" />
-                    </div>
-                  </a>
-                </div>
-              </div>
             </motion.div>
 
             {/* Contact Info */}
@@ -275,7 +222,6 @@ const Kontakt = () => {
               className="space-y-8"
             >
               <div>
-               
                 <Card className="bg-card border-border shadow-rock mb-8">
                   <CardContent className="p-6">
                     <h3 className="font-rock text-lg font-bold text-primary mb-4">
@@ -295,7 +241,6 @@ const Kontakt = () => {
                   </CardContent>
                 </Card>
               </div>
-
 
               {/* Contact Info */}
               <div>
@@ -333,6 +278,68 @@ const Kontakt = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Velocity Scroll Effect */}
+      <section className="py-12 bg-rock-lighter overflow-hidden">
+        <VelocityScroll
+          className="font-rock text-2xl md:text-4xl font-bold tracking-tight text-glow"
+          text="THE END - Punk, Rock & Metal Cover Band - Live & laut."
+          default_velocity={3}
+        />
+      </section>
+
+      {/* Social Media Section */}
+      <section className="py-12 bg-rock-lighter">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h3 className="font-rock text-xl font-bold text-glow mb-4">
+              Social Media
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              Folgt uns für Updates, Behind-the-Scenes Content und neue Videos!
+            </p>
+            
+            <div className="flex justify-center space-x-4">
+              <a 
+                href="https://www.instagram.com/Die_Band_The_End" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center transition-rock hover-rock">
+                  <Instagram className="h-6 w-6 text-white" />
+                </div>
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=100063827957058" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center transition-rock hover-rock">
+                  <Facebook className="h-6 w-6 text-white" />
+                </div>
+              </a>
+              <a 
+                href="https://youtube.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center transition-rock hover-rock">
+                  <Youtube className="h-6 w-6 text-white" />
+                </div>
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
