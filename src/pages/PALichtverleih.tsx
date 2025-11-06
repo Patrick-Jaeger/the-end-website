@@ -32,7 +32,7 @@ const PALichtverleih = () => {
   return (
     <div className="min-h-screen bg-rock-gradient relative">
       {/* Light Rays Background Effect */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 1 }}>
         <LightRays
           raysOrigin="top-center"
           raysColor="#00ffff"
@@ -47,7 +47,7 @@ const PALichtverleih = () => {
       </div>
       
       {/* Content Wrapper */}
-      <div className="relative z-10">
+      <div className="relative" style={{ zIndex: 2 }}>
         <Navigation />
       
       {/* Hero Section */}
