@@ -16,6 +16,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { VelocityScroll } from "@/components/ui/scrollbasedvelocity";
 
 const faqItems = [
   {
@@ -211,6 +212,15 @@ const Kontakt = () => {
                   </form>
                 </CardContent>
               </Card>
+
+              {/* Velocity Scroll Effect */}
+              <div className="mt-8 mb-8">
+                <VelocityScroll
+                  className="font-rock text-2xl md:text-4xl font-bold tracking-tight text-glow"
+                  text="THE END - Punk, Rock & Metal Cover Band - Live & laut."
+                  default_velocity={3}
+                />
+              </div>
 
               {/* Social Media */}
               <div className="mt-8 ml-4">
