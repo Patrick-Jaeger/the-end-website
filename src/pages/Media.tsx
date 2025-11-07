@@ -7,6 +7,7 @@ import { Play, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 
 const Media = () => {
@@ -49,18 +50,78 @@ const Media = () => {
   ];
 
   const referenzen = [
-    { id: 1, title: "Pink Panther Hiatberg 2011", imageUrl: "/images/referenzen/2011-pink-panther-hiatberg.png" },
-    { id: 2, title: "FFW Fest Mendorferbuch 2013", imageUrl: "/images/referenzen/2013-ffw-fest-mendorferbuch.jpg" },
-    { id: 3, title: "Over The Hills Pfaffenhofen 2014", imageUrl: "/images/referenzen/2014-over-the-hills-pfaffenhofen.JPG" },
-    { id: 4, title: "Rock am LKW TUS Hohenburg 2014", imageUrl: "/images/referenzen/2014-rock-am-lkw-tus-hohenburg.JPG" },
-    { id: 5, title: "40. Geburtstag Hohenburg 2019", imageUrl: "/images/referenzen/2019-40-geburtstag-hohenburg.JPG" },
-    { id: 6, title: "Rock in Bouch 2019", imageUrl: "/images/referenzen/2019_rock-in-bouch.jpg" },
-    { id: 7, title: "Geburtstag Hohenburg 2023", imageUrl: "/images/referenzen/2023-geburtstag-hohenburg.jpg" },
-    { id: 8, title: "Sandlochfest Ehenfeld 2023", imageUrl: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg" },
-    { id: 9, title: "2x40 Geburtstag Altenricht 2024", imageUrl: "/images/referenzen/2024-2x40-geburtstag-altenricht.jpg" },
-    { id: 10, title: "40. Geburtstag Ehenfeld 2024", imageUrl: "/images/referenzen/2024-40-geburtstag-ehenfeld.jpg" },
-    { id: 11, title: "Das Event Lauterhofen 2025", imageUrl: "/images/referenzen/2025-das-event-lauterhofen.jpg" },
-    { id: 12, title: "Rock im Stodl 2025", imageUrl: "/images/referenzen/2025_rock-im-stodl.jpg" }
+    {
+      quote: "Eine unvergessliche Rock-Nacht mit energiegeladenen Performances und begeistertem Publikum.",
+      name: "Rock im Stodl 2025",
+      designation: "Festival",
+      src: "/images/referenzen/2025_rock-im-stodl.jpg",
+    },
+    {
+      quote: "Ein großartiges Event mit professioneller Band und ausgelassener Stimmung.",
+      name: "Das Event Lauterhofen 2025",
+      designation: "Veranstaltung",
+      src: "/images/referenzen/2025-das-event-lauterhofen.jpg",
+    },
+    {
+      quote: "The End hat unsere Geburtstagsfeier zu einem echten Highlight gemacht.",
+      name: "2x40 Geburtstag Altenricht 2024",
+      designation: "Private Feier",
+      src: "/images/referenzen/2024-2x40-geburtstag-altenricht.jpg",
+    },
+    {
+      quote: "Eine fantastische Party mit der besten Rock-Musik.",
+      name: "40. Geburtstag Ehenfeld 2024",
+      designation: "Private Feier",
+      src: "/images/referenzen/2024-40-geburtstag-ehenfeld.jpg",
+    },
+    {
+      quote: "Das Sandlochfest wurde durch The End zu einem unvergesslichen Erlebnis.",
+      name: "Sandlochfest Ehenfeld 2023",
+      designation: "Dorffest",
+      src: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg",
+    },
+    {
+      quote: "Eine gelungene Geburtstagsfeier mit mitreißender Live-Musik.",
+      name: "Geburtstag Hohenburg 2023",
+      designation: "Private Feier",
+      src: "/images/referenzen/2023-geburtstag-hohenburg.jpg",
+    },
+    {
+      quote: "Rock in Bouch war ein voller Erfolg dank The End!",
+      name: "Rock in Bouch 2019",
+      designation: "Rock Festival",
+      src: "/images/referenzen/2019_rock-in-bouch.jpg",
+    },
+    {
+      quote: "Eine großartige 40. Geburtstagsfeier mit energiegeladener Rock-Musik.",
+      name: "40. Geburtstag Hohenburg 2019",
+      designation: "Private Feier",
+      src: "/images/referenzen/2019-40-geburtstag-hohenburg.JPG",
+    },
+    {
+      quote: "Rock am LKW war ein voller Erfolg mit begeistertem Publikum.",
+      name: "Rock am LKW TUS Hohenburg 2014",
+      designation: "Vereinsfest",
+      src: "/images/referenzen/2014-rock-am-lkw-tus-hohenburg.JPG",
+    },
+    {
+      quote: "Over The Hills wurde durch The End zu einem unvergesslichen Event.",
+      name: "Over The Hills Pfaffenhofen 2014",
+      designation: "Festival",
+      src: "/images/referenzen/2014-over-the-hills-pfaffenhofen.JPG",
+    },
+    {
+      quote: "Das FFW Fest war ein Highlight mit großartiger Live-Musik.",
+      name: "FFW Fest Mendorferbuch 2013",
+      designation: "Feuerwehrfest",
+      src: "/images/referenzen/2013-ffw-fest-mendorferbuch.jpg",
+    },
+    {
+      quote: "Pink Panther Hiatberg - ein unvergessliches Event mit The End.",
+      name: "Pink Panther Hiatberg 2011",
+      designation: "Event",
+      src: "/images/referenzen/2011-pink-panther-hiatberg.png",
+    },
   ];
 
   return (
@@ -135,24 +196,7 @@ const Media = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {referenzen.map((referenz, index) => (
-              <motion.div
-                key={referenz.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <DirectionAwareHover
-                  imageUrl={referenz.imageUrl}
-                  className="parallax-media card-wiggle"
-                >
-                  <h3 className="font-rock text-lg font-bold">{referenz.title}</h3>
-                </DirectionAwareHover>
-              </motion.div>
-            ))}
-          </div>
+          <AnimatedTestimonials testimonials={referenzen} autoplay={false} />
         </div>
       </section>
 
