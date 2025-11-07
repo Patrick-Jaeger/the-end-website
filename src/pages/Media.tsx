@@ -7,7 +7,7 @@ import { Play, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+
 
 const Media = () => {
   const [isTrigger, setIsTrigger] = useState(false);
@@ -48,37 +48,19 @@ const Media = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "The End hat unser Event mit ihrer energiegeladenen Performance zu einem unvergesslichen Erlebnis gemacht. Absolut professionell und mitreißend!",
-      name: "Michael Weber",
-      designation: "Event Manager, Rockfestival Bergheim",
-      src: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=3540&auto=format&fit=crop",
-    },
-    {
-      quote: "Eine Band, die weiß wie man das Publikum begeistert. Technisch versiert und mit einer unglaublichen Bühnenpräsenz.",
-      name: "Sarah Müller",
-      designation: "Veranstalterin, Stadthalle Linz",
-      src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=3540&auto=format&fit=crop",
-    },
-    {
-      quote: "The End hat unser Firmenevent zu einem echten Highlight gemacht. Die Stimmung war fantastisch und alle Gäste waren begeistert!",
-      name: "Thomas Gruber",
-      designation: "HR Director, TechSolutions GmbH",
-      src: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=3540&auto=format&fit=crop",
-    },
-    {
-      quote: "Hervorragende Musiker mit einem breiten Repertoire. Von Rock-Klassikern bis zu modernen Hits - alles wurde perfekt dargeboten.",
-      name: "Lisa Berger",
-      designation: "Kulturbeauftragte, Stadt Wels",
-      src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=3540&auto=format&fit=crop",
-    },
-    {
-      quote: "Die Zusammenarbeit mit The End war von Anfang bis Ende professionell. Eine absolute Empfehlung für jeden, der eine Rock-Band sucht!",
-      name: "Andreas Schmidt",
-      designation: "Clubbesitzer, Rockhouse Salzburg",
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3540&auto=format&fit=crop",
-    },
+  const referenzen = [
+    { id: 1, title: "Pink Panther Hiatberg 2011", imageUrl: "/images/referenzen/2011-pink-panther-hiatberg.png" },
+    { id: 2, title: "FFW Fest Mendorferbuch 2013", imageUrl: "/images/referenzen/2013-ffw-fest-mendorferbuch.jpg" },
+    { id: 3, title: "Over The Hills Pfaffenhofen 2014", imageUrl: "/images/referenzen/2014-over-the-hills-pfaffenhofen.JPG" },
+    { id: 4, title: "Rock am LKW TUS Hohenburg 2014", imageUrl: "/images/referenzen/2014-rock-am-lkw-tus-hohenburg.JPG" },
+    { id: 5, title: "40. Geburtstag Hohenburg 2019", imageUrl: "/images/referenzen/2019-40-geburtstag-hohenburg.JPG" },
+    { id: 6, title: "Rock in Bouch 2019", imageUrl: "/images/referenzen/2019_rock-in-bouch.jpg" },
+    { id: 7, title: "Geburtstag Hohenburg 2023", imageUrl: "/images/referenzen/2023-geburtstag-hohenburg.jpg" },
+    { id: 8, title: "Sandlochfest Ehenfeld 2023", imageUrl: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg" },
+    { id: 9, title: "2x40 Geburtstag Altenricht 2024", imageUrl: "/images/referenzen/2024-2x40-geburtstag-altenricht.jpg" },
+    { id: 10, title: "40. Geburtstag Ehenfeld 2024", imageUrl: "/images/referenzen/2024-40-geburtstag-ehenfeld.jpg" },
+    { id: 11, title: "Das Event Lauterhofen 2025", imageUrl: "/images/referenzen/2025-das-event-lauterhofen.jpg" },
+    { id: 12, title: "Rock im Stodl 2025", imageUrl: "/images/referenzen/2025_rock-im-stodl.jpg" }
   ];
 
   return (
@@ -149,11 +131,28 @@ const Media = () => {
               Referenzen
             </h2>
             <p className="text-lg text-muted-foreground">
-              Was unsere Partner und Veranstalter über uns sagen
+              Unsere vergangenen Events und Auftritte
             </p>
           </div>
 
-          <AnimatedTestimonials testimonials={testimonials} autoplay={false} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {referenzen.map((referenz, index) => (
+              <motion.div
+                key={referenz.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <DirectionAwareHover
+                  imageUrl={referenz.imageUrl}
+                  className="parallax-media card-wiggle"
+                >
+                  <h3 className="font-rock text-lg font-bold">{referenz.title}</h3>
+                </DirectionAwareHover>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
