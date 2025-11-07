@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,16 +7,49 @@ import { Play, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 
 const Media = () => {
   const [isTrigger, setIsTrigger] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   // GSAP Animations
   useTextSplit('.text-split-media', 0.3);
   useParallax('.parallax-media', 0.4);
   useCardWiggle('.card-wiggle');
+
+  const handleNavigate = (direction: 'next' | 'prev') => {
+    if (direction === 'next') {
+      setCurrentImageIndex((prev) => (prev + 1) % photos.length);
+    } else {
+      setCurrentImageIndex((prev) => (prev - 1 + photos.length) % photos.length);
+    }
+  };
+
+  const handleImageClick = (index: number) => {
+    setCurrentImageIndex(index);
+    setIsImageModalOpen(true);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isImageModalOpen) return;
+      
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handleNavigate('prev');
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleNavigate('next');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isImageModalOpen, currentImageIndex]);
   
 
   const photos = [
@@ -32,19 +65,18 @@ const Media = () => {
     { id: 10, title: "DJ Rxxd 2022", category: "Live", imageUrl: "/images/media/2022-dj-rxxd.jpg" },
     { id: 11, title: "Bandprobe mit Freunden 2021", category: "BTS", imageUrl: "/images/media/2021_bandprobe-mit-freunden.jpg" },
     { id: 12, title: "Ausflug zum Thomann 2020", category: "BTS", imageUrl: "/images/media/2020-ausflug-zum-thomann.JPG" },
-    { id: 13, title: "Bandprobe 2019", category: "BTS", imageUrl: "/images/media/2019-bandprobe.jpg" },
-    { id: 14, title: "Rock in Bouch 2019", category: "Live", imageUrl: "/images/media/2019-rock-in-bouch.jpg" },
-    { id: 15, title: "Rock Meets Electro 2018", category: "Live", imageUrl: "/images/media/2018-rock-meets-electro.jpg" },
-    { id: 16, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch.jpg" },
-    { id: 17, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch1.jpg" },
-    { id: 18, title: "Rock in Bouch 2017", category: "Live", imageUrl: "/images/media/2017-rock-in-bouch.jpg" },
-    { id: 19, title: "Sommerrock 2015", category: "Live", imageUrl: "/images/media/2015-sommerrock.png" },
-    { id: 20, title: "Rock in Bouch 2015", category: "Live", imageUrl: "/images/media/2015-rock-in-bouch.png" },
-    { id: 21, title: "Pink Panther Hiatberg 2015", category: "Live", imageUrl: "/images/media/2015-pink-panther-hiatberg.jpg" },
-    { id: 22, title: "Over The Hills Festival 2014", category: "Live", imageUrl: "/images/media/2014-over-the-hills-festival.jpg" },
-    { id: 23, title: "Rock in Bouch 2010", category: "Live", imageUrl: "/images/media/2010-rock-in-bouch.jpg" },
-    { id: 24, title: "Mofarocker 2009", category: "Portrait", imageUrl: "/images/media/2009_mofarocker.jpg" },
-    { id: 25, title: "Wo alles begann", category: "BTS", imageUrl: "/images/media/wo-alles-begann.jpg" }
+    { id: 13, title: "Rock in Bouch 2019", category: "Live", imageUrl: "/images/media/2019-rock-in-bouch.jpg" },
+    { id: 14, title: "Rock Meets Electro 2018", category: "Live", imageUrl: "/images/media/2018-rock-meets-electro.jpg" },
+    { id: 15, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch.jpg" },
+    { id: 16, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch1.jpg" },
+    { id: 17, title: "Rock in Bouch 2017", category: "Live", imageUrl: "/images/media/2017-rock-in-bouch.jpg" },
+    { id: 18, title: "Sommerrock 2015", category: "Live", imageUrl: "/images/media/2015-sommerrock.png" },
+    { id: 19, title: "Rock in Bouch 2015", category: "Live", imageUrl: "/images/media/2015-rock-in-bouch.png" },
+    { id: 20, title: "Pink Panther Hiatberg 2015", category: "Live", imageUrl: "/images/media/2015-pink-panther-hiatberg.jpg" },
+    { id: 21, title: "Over The Hills Festival 2014", category: "Live", imageUrl: "/images/media/2014-over-the-hills-festival.jpg" },
+    { id: 22, title: "Rock in Bouch 2010", category: "Live", imageUrl: "/images/media/2010-rock-in-bouch.jpg" },
+    { id: 23, title: "Mofarocker 2009", category: "Portrait", imageUrl: "/images/media/2009_mofarocker.jpg" },
+    { id: 24, title: "Wo alles begann", category: "BTS", imageUrl: "/images/media/wo-alles-begann.jpg" }
   ];
 
   const videos = [
@@ -66,81 +98,6 @@ const Media = () => {
       description: "Komplettes Live-Set von unserem Open-Air Auftritt",
       thumbnail: "youtube-thumb-3"
     }
-  ];
-
-  const referenzen = [
-    {
-      quote: "Eine unvergessliche Rock-Nacht mit energiegeladenen Performances und begeistertem Publikum.",
-      name: "Rock im Stodl 2025",
-      designation: "Festival",
-      src: "/images/referenzen/2025_rock-im-stodl.jpg",
-    },
-    {
-      quote: "Ein großartiges Event mit professioneller Band und ausgelassener Stimmung.",
-      name: "Das Event Lauterhofen 2025",
-      designation: "Veranstaltung",
-      src: "/images/referenzen/2025-das-event-lauterhofen.jpg",
-    },
-    {
-      quote: "The End hat unsere Geburtstagsfeier zu einem echten Highlight gemacht.",
-      name: "2x40 Geburtstag Altenricht 2024",
-      designation: "Private Feier",
-      src: "/images/referenzen/2024-2x40-geburtstag-altenricht.jpg",
-    },
-    {
-      quote: "Eine fantastische Party mit der besten Rock-Musik.",
-      name: "40. Geburtstag Ehenfeld 2024",
-      designation: "Private Feier",
-      src: "/images/referenzen/2024-40-geburtstag-ehenfeld.jpg",
-    },
-    {
-      quote: "Das Sandlochfest wurde durch The End zu einem unvergesslichen Erlebnis.",
-      name: "Sandlochfest Ehenfeld 2023",
-      designation: "Dorffest",
-      src: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg",
-    },
-    {
-      quote: "Eine gelungene Geburtstagsfeier mit mitreißender Live-Musik.",
-      name: "Geburtstag Hohenburg 2023",
-      designation: "Private Feier",
-      src: "/images/referenzen/2023-geburtstag-hohenburg.jpg",
-    },
-    {
-      quote: "Rock in Bouch war ein voller Erfolg dank The End!",
-      name: "Rock in Bouch 2019",
-      designation: "Rock Festival",
-      src: "/images/referenzen/2019_rock-in-bouch.jpg",
-    },
-    {
-      quote: "Eine großartige 40. Geburtstagsfeier mit energiegeladener Rock-Musik.",
-      name: "40. Geburtstag Hohenburg 2019",
-      designation: "Private Feier",
-      src: "/images/referenzen/2019-40-geburtstag-hohenburg.JPG",
-    },
-    {
-      quote: "Rock am LKW war ein voller Erfolg mit begeistertem Publikum.",
-      name: "Rock am LKW TUS Hohenburg 2014",
-      designation: "Vereinsfest",
-      src: "/images/referenzen/2014-rock-am-lkw-tus-hohenburg.JPG",
-    },
-    {
-      quote: "Over The Hills wurde durch The End zu einem unvergesslichen Event.",
-      name: "Over The Hills Pfaffenhofen 2014",
-      designation: "Festival",
-      src: "/images/referenzen/2014-over-the-hills-pfaffenhofen.JPG",
-    },
-    {
-      quote: "Das FFW Fest war ein Highlight mit großartiger Live-Musik.",
-      name: "FFW Fest Mendorferbuch 2013",
-      designation: "Feuerwehrfest",
-      src: "/images/referenzen/2013-ffw-fest-mendorferbuch.jpg",
-    },
-    {
-      quote: "Pink Panther Hiatberg - ein unvergessliches Event mit The End.",
-      name: "Pink Panther Hiatberg 2011",
-      designation: "Event",
-      src: "/images/referenzen/2011-pink-panther-hiatberg.png",
-    },
   ];
 
   return (
@@ -191,6 +148,8 @@ const Media = () => {
                 <DirectionAwareHover
                   imageUrl={photo.imageUrl}
                   className="parallax-media card-wiggle"
+                  onClick={() => handleImageClick(index)}
+                  disableModal
                 >
                   <div className="bg-black/50 px-3 py-1 rounded text-sm mb-2 inline-block">
                     {photo.category}
@@ -200,22 +159,6 @@ const Media = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Referenzen Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
-              Referenzen
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Unsere vergangenen Events und Auftritte
-            </p>
-          </div>
-
-          <AnimatedTestimonials testimonials={referenzen} autoplay={false} />
         </div>
       </section>
 
@@ -327,6 +270,19 @@ const Media = () => {
       </section>
 
       <Footer />
+
+      {/* Image Modal with keyboard navigation */}
+      <Dialog open={isImageModalOpen} onOpenChange={setIsImageModalOpen}>
+        <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src={photos[currentImageIndex]?.imageUrl}
+              alt={photos[currentImageIndex]?.title}
+              className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

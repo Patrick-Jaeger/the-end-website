@@ -9,7 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Mail, MapPin, Instagram, Facebook, Youtube, Send, CalendarIcon, PlusIcon, MinusIcon } from "lucide-react";
+import { Mail, MapPin, Instagram, Facebook, Youtube, Send, CalendarIcon, PlusIcon, MinusIcon, Calendar as CalendarIconLucide } from "lucide-react";
+import GradientText from "@/components/ui/GradientText";
 import { Badge } from "@/components/ui/badge";
 import { AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
@@ -204,10 +205,23 @@ const Kontakt = () => {
                       required
                     />
 
-                    <Button type="submit" size="lg" className="btn-rock w-full">
-                      <Send className="mr-2 h-5 w-5" />
-                      Rock On!
-                    </Button>
+                    <div className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
+                      <button 
+                        type="submit" 
+                        className="relative bg-background rounded-full px-6 py-3 w-full flex items-center justify-center hover:bg-primary/5 transition-colors"
+                      >
+                        <Send className="mr-2 h-5 w-5 text-primary" />
+                        <GradientText
+                          colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                          animationSpeed={6}
+                          showBorder={false}
+                          className="text-base font-bold"
+                        >
+                          Rock On!
+                        </GradientText>
+                      </button>
+                    </div>
                   </form>
                 </CardContent>
               </Card>

@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CalendarIcon, Volume2, Lightbulb, Music, Mic, Settings, Send, Zap, Cable } from "lucide-react";
+import GradientText from "@/components/ui/GradientText";
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -346,10 +347,23 @@ const PALichtverleih = () => {
                     className="mt-1 min-h-[120px]"
                   />
                   
-                  <Button type="submit" className="btn-rock w-full">
-                    <Send className="mr-2 h-5 w-5" />
-                    Anfrage senden
-                  </Button>
+                  <div className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
+                    <button 
+                      type="submit" 
+                      className="relative bg-background rounded-full px-6 py-3 w-full flex items-center justify-center hover:bg-primary/5 transition-colors"
+                    >
+                      <Send className="mr-2 h-5 w-5 text-primary" />
+                      <GradientText
+                        colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                        animationSpeed={6}
+                        showBorder={false}
+                        className="text-base font-bold"
+                      >
+                        Anfrage senden
+                      </GradientText>
+                    </button>
+                  </div>
                 </form>
               </CardContent>
             </Card>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -11,12 +11,16 @@ export const DirectionAwareHover = ({
   childrenClassName,
   imageClassName,
   className,
+  onClick,
+  disableModal = false,
 }: {
   imageUrl: string;
   children: React.ReactNode | string;
   childrenClassName?: string;
   imageClassName?: string;
   className?: string;
+  onClick?: () => void;
+  disableModal?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [direction, setDirection] = useState<
@@ -60,11 +64,17 @@ export const DirectionAwareHover = ({
     return d;
   };
 
+
   return (
     <>
       <motion.div
         onMouseEnter={handleMouseEnter}
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          if (!disableModal) {
+            setIsModalOpen(true);
+          }
+          onClick?.();
+        }}
         ref={ref}
         className={cn(
           "md:h-96 w-full h-60 md:w-full bg-transparent rounded-lg overflow-hidden group/card relative cursor-pointer",
@@ -113,17 +123,19 @@ export const DirectionAwareHover = ({
         </AnimatePresence>
       </motion.div>
 
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
-          <div className="w-full h-full flex items-center justify-center">
-            <img
-              src={imageUrl}
-              alt="Enlarged view"
-              className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
+      {!disableModal && (
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
+              <img
+                src={imageUrl}
+                alt="Enlarged view"
+                className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </>
   );
 };
