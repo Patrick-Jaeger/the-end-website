@@ -60,77 +60,78 @@ const Gigs = () => {
   ];
 
   const referenzen = [
+
     {
-      quote: "Eine unvergessliche Rock-Nacht mit energiegeladenen Performances und begeistertem Publikum.",
-      name: "Rock im Stodl 2025",
-      designation: "Festival",
-      src: "/images/referenzen/2025_rock-im-stodl.jpg",
-    },
-    {
-      quote: "Ein großartiges Event mit professioneller Band und ausgelassener Stimmung.",
+      quote: "Ein riesiges Geburtstags-Event mit vielen coolen Bands und ausgelassener Stimmung.",
       name: "Das Event Lauterhofen 2025",
-      designation: "Veranstaltung",
+      designation: "Private Feier",
       src: "/images/referenzen/2025-das-event-lauterhofen.jpg",
     },
     {
-      quote: "The End hat unsere Geburtstagsfeier zu einem echten Highlight gemacht.",
-      name: "2x40 Geburtstag Altenricht 2024",
+      quote: "Top Stimmung und super Leute!",
+      name: "2*40 Jahre Geburtstagsfeier in Altenricht 2024",
       designation: "Private Feier",
       src: "/images/referenzen/2024-2x40-geburtstag-altenricht.jpg",
     },
     {
-      quote: "Eine fantastische Party mit der besten Rock-Musik.",
-      name: "40. Geburtstag Ehenfeld 2024",
+      quote: "40 Jahre auf dem Tacho – und noch kein bisschen Rost! ;)",
+      name: "40. Geburtstag in Ehenfeld 2024",
       designation: "Private Feier",
       src: "/images/referenzen/2024-40-geburtstag-ehenfeld.jpg",
     },
     {
-      quote: "Das Sandlochfest wurde durch The End zu einem unvergesslichen Erlebnis.",
+      quote: "LAAAAUDAAAA!!! Irre, besser kann man's nicht beschreiben.",
       name: "Sandlochfest Ehenfeld 2023",
       designation: "Dorffest",
       src: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg",
     },
     {
-      quote: "Eine gelungene Geburtstagsfeier mit mitreißender Live-Musik.",
-      name: "Geburtstag Hohenburg 2023",
+      quote: "An Tagen wie diesen... Danke fürs Mitrocken!",
+      name: "2*30 Jahre Geburtstag in Hohenburg 2023",
       designation: "Private Feier",
       src: "/images/referenzen/2023-geburtstag-hohenburg.jpg",
     },
     {
-      quote: "Rock in Bouch war ein voller Erfolg dank The End!",
+      quote: "Rock Warriors und Headbanger of the World!!",
       name: "Rock in Bouch 2019",
-      designation: "Rock Festival",
+      designation: "Öffentliche Veranstaltung",
       src: "/images/referenzen/2019_rock-in-bouch.jpg",
     },
     {
-      quote: "Eine großartige 40. Geburtstagsfeier mit energiegeladener Rock-Musik.",
+      quote: "Es war uns eine Ehre - THE B.U.T.T.",
       name: "40. Geburtstag Hohenburg 2019",
       designation: "Private Feier",
       src: "/images/referenzen/2019-40-geburtstag-hohenburg.JPG",
     },
     {
-      quote: "Rock am LKW war ein voller Erfolg mit begeistertem Publikum.",
+      quote: "Rock am LKW mit den Buam vom Lautrachtal!",
       name: "Rock am LKW TUS Hohenburg 2014",
-      designation: "Vereinsfest",
+      designation: "Öffentliche Veranstaltung",
       src: "/images/referenzen/2014-rock-am-lkw-tus-hohenburg.JPG",
     },
     {
-      quote: "Over The Hills wurde durch The End zu einem unvergesslichen Event.",
+      quote: "Wahnsinns Ambiente auf der alten Schweppermannsburg - unvergesslichen Event!",
       name: "Over The Hills Pfaffenhofen 2014",
       designation: "Festival",
       src: "/images/referenzen/2014-over-the-hills-pfaffenhofen.JPG",
     },
     {
-      quote: "Das FFW Fest war ein Highlight mit großartiger Live-Musik.",
+      quote: "Rockabend beim 125 Jahre Fest der FFW Mendorferbuch.",
       name: "FFW Fest Mendorferbuch 2013",
       designation: "Feuerwehrfest",
       src: "/images/referenzen/2013-ffw-fest-mendorferbuch.jpg",
     },
     {
-      quote: "Pink Panther Hiatberg - ein unvergessliches Event mit The End.",
+      quote: "Aus dem Fußballtrikot ins Bandshirt geschlüpft und die ganze Nacht abgeockt!",
       name: "Pink Panther Hiatberg 2011",
       designation: "Event",
       src: "/images/referenzen/2011-pink-panther-hiatberg.png",
+    },
+    {
+      quote: "Die Rock-Crew zuhause, danke an unsere treue tanzende Meute ;)",
+      name: "Rock im Stodl 2025",
+      designation: "Öffentliche Veranstaltung",
+      src: "/images/referenzen/2025_rock-im-stodl.jpg",
     },
   ];
 
