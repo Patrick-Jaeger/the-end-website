@@ -20,12 +20,21 @@ const Media = () => {
   
 
   const photos = [
-    { id: 1, title: "Live on Stage", category: "Live", imageUrl: "/images/band/Gruppenfoto.jpg" },
-    { id: 2, title: "Band Portrait", category: "Portrait", imageUrl: "/images/band/david.jpg" },
-    { id: 3, title: "Behind the Scenes", category: "BTS", imageUrl: "/images/band/lukas.jpg" },
-    { id: 4, title: "Crowd Interaction", category: "Live", imageUrl: "/images/band/martin.jpg" },
-    { id: 5, title: "Sound Check", category: "BTS", imageUrl: "/images/band/patrick.jpg" },
-    { id: 6, title: "Group Shot", category: "Portrait", imageUrl: "/images/band/sebastian.jpg" }
+    { id: 1, title: "Rock im Stodl 2025", category: "Live", imageUrl: "/images/media/2025_rock-im-stodl.jpg" },
+    { id: 2, title: "Rock im Stodl 2025", category: "Live", imageUrl: "/images/media/2025_rock-im-stodl1.jpg" },
+    { id: 3, title: "Rock im Stodl 2025", category: "Live", imageUrl: "/images/media/2025_rock-im-stodl2.jpg" },
+    { id: 4, title: "Rock im Stodl 2025", category: "Live", imageUrl: "/images/media/2025_rock-im-stodl3.jpg" },
+    { id: 5, title: "Soundcheck Lauterhofen 2025", category: "BTS", imageUrl: "/images/media/2025_soundcheck-lauterhofen.jpg" },
+    { id: 6, title: "Rock in Bouch 2023", category: "Live", imageUrl: "/images/media/2023_rock-in-bouch.jpg" },
+    { id: 7, title: "Bandausflug 2023", category: "BTS", imageUrl: "/images/media/2023_bandausflug.jpg" },
+    { id: 8, title: "Acoustic Bandprobe 2023", category: "BTS", imageUrl: "/images/media/2023_accoustic-bandprobe.jpg" },
+    { id: 9, title: "Rock im Stodl 2022", category: "Live", imageUrl: "/images/media/2022_rock-im-stodl.jpg" },
+    { id: 10, title: "Bandprobe mit Freunden 2021", category: "BTS", imageUrl: "/images/media/2021_bandprobe-mit-freunden.jpg" },
+    { id: 11, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch.jpg" },
+    { id: 12, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch1.jpg" },
+    { id: 13, title: "Mofarocker 2009", category: "Portrait", imageUrl: "/images/media/2009_mofarocker.jpg" },
+    { id: 14, title: "Bandprobe Ukulele", category: "BTS", imageUrl: "/images/media/bandprobe-ukulele.jpg" },
+    { id: 15, title: "Kellertür", category: "BTS", imageUrl: "/images/media/kellertuer.jpg" }
   ];
 
   const videos = [
