@@ -134,7 +134,7 @@ const Band = () => {
                 <div className="text-muted-foreground">Songs im Repertoire</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">10+</div>
+                <div className="text-3xl font-bold text-primary">15+</div>
                 <div className="text-muted-foreground">Jahre Banderfahrung</div>
               </div>
             </div>
