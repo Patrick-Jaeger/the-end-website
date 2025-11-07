@@ -29,12 +29,22 @@ const Media = () => {
     { id: 7, title: "Bandausflug 2023", category: "BTS", imageUrl: "/images/media/2023_bandausflug.jpg" },
     { id: 8, title: "Acoustic Bandprobe 2023", category: "BTS", imageUrl: "/images/media/2023_accoustic-bandprobe.jpg" },
     { id: 9, title: "Rock im Stodl 2022", category: "Live", imageUrl: "/images/media/2022_rock-im-stodl.jpg" },
-    { id: 10, title: "Bandprobe mit Freunden 2021", category: "BTS", imageUrl: "/images/media/2021_bandprobe-mit-freunden.jpg" },
-    { id: 11, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch.jpg" },
-    { id: 12, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch1.jpg" },
-    { id: 13, title: "Mofarocker 2009", category: "Portrait", imageUrl: "/images/media/2009_mofarocker.jpg" },
-    { id: 14, title: "Bandprobe Ukulele", category: "BTS", imageUrl: "/images/media/bandprobe-ukulele.jpg" },
-    { id: 15, title: "Kellertür", category: "BTS", imageUrl: "/images/media/kellertuer.jpg" }
+    { id: 10, title: "DJ Rxxd 2022", category: "Live", imageUrl: "/images/media/2022-dj-rxxd.jpg" },
+    { id: 11, title: "Bandprobe mit Freunden 2021", category: "BTS", imageUrl: "/images/media/2021_bandprobe-mit-freunden.jpg" },
+    { id: 12, title: "Ausflug zum Thomann 2020", category: "BTS", imageUrl: "/images/media/2020-ausflug-zum-thomann.JPG" },
+    { id: 13, title: "Bandprobe 2019", category: "BTS", imageUrl: "/images/media/2019-bandprobe.jpg" },
+    { id: 14, title: "Rock in Bouch 2019", category: "Live", imageUrl: "/images/media/2019-rock-in-bouch.jpg" },
+    { id: 15, title: "Rock Meets Electro 2018", category: "Live", imageUrl: "/images/media/2018-rock-meets-electro.jpg" },
+    { id: 16, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch.jpg" },
+    { id: 17, title: "Rock in Bouch 2018", category: "Live", imageUrl: "/images/media/2018_rock-in-bouch1.jpg" },
+    { id: 18, title: "Rock in Bouch 2017", category: "Live", imageUrl: "/images/media/2017-rock-in-bouch.jpg" },
+    { id: 19, title: "Sommerrock 2015", category: "Live", imageUrl: "/images/media/2015-sommerrock.png" },
+    { id: 20, title: "Rock in Bouch 2015", category: "Live", imageUrl: "/images/media/2015-rock-in-bouch.png" },
+    { id: 21, title: "Pink Panther Hiatberg 2015", category: "Live", imageUrl: "/images/media/2015-pink-panther-hiatberg.jpg" },
+    { id: 22, title: "Over The Hills Festival 2014", category: "Live", imageUrl: "/images/media/2014-over-the-hills-festival.jpg" },
+    { id: 23, title: "Rock in Bouch 2010", category: "Live", imageUrl: "/images/media/2010-rock-in-bouch.jpg" },
+    { id: 24, title: "Mofarocker 2009", category: "Portrait", imageUrl: "/images/media/2009_mofarocker.jpg" },
+    { id: 25, title: "Wo alles begann", category: "BTS", imageUrl: "/images/media/wo-alles-begann.jpg" }
   ];
 
   const videos = [
