@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,12 +12,9 @@ import { ShoppingBag, Shirt, Star, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTextSplit } from "@/hooks/useGSAP";
 import GradientText from "@/components/ui/GradientText";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
-import { Spinner, SuccessCheck } from "@/components/ui/spinner";
 
 const Mearch = () => {
   const { toast } = useToast();
-  const [buttonState, setButtonState] = useState<"initial" | "loading" | "success">("initial");
   
   // GSAP Animation
   useTextSplit('.text-split-mearch', 0.3);
@@ -79,28 +76,19 @@ const Mearch = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setButtonState("loading");
-    
-    setTimeout(() => {
-      setButtonState("success");
-      toast({
-        title: "Bestellung gesendet!",
-        description: "Wir melden uns in Kürze bei euch mit den Details.",
-      });
-      
-      setTimeout(() => {
-        setButtonState("initial");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          product: "",
-          size: "",
-          quantity: "1",
-          message: ""
-        });
-      }, 2000);
-    }, 2000);
+    toast({
+      title: "Bestellung gesendet!",
+      description: "Wir melden uns in Kürze bei euch mit den Details.",
+    });
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      product: "",
+      size: "",
+      quantity: "1",
+      message: ""
+    });
   };
 
   return (
@@ -295,54 +283,20 @@ const Mearch = () => {
                     rows={4}
                   />
 
-                  <motion.button
-                    type="submit"
-                    className="w-full bg-background/10 backdrop-blur-sm border border-primary/30 text-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/20 transition-all duration-300 shadow-lg hover:shadow-primary/20 hover:scale-105 flex items-center justify-center gap-2"
-                    whileHover={{ scale: buttonState === "initial" ? 1.02 : 1 }}
-                    whileTap={{ scale: buttonState === "initial" ? 0.98 : 1 }}
-                    disabled={buttonState !== "initial"}
-                  >
-                    <AnimatePresence mode="wait">
-                      {buttonState === "loading" && (
-                        <motion.div
-                          key="loading"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="flex items-center gap-2"
-                        >
-                          <Spinner size="sm" color="white" />
-                          <span className="text-lg">senden</span>
-                        </motion.div>
-                      )}
-                      {buttonState === "success" && (
-                        <motion.div
-                          key="success"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="flex items-center gap-2"
-                        >
-                          <SuccessCheck size="sm" />
-                          <span className="text-lg">Anfrage gesendet</span>
-                        </motion.div>
-                      )}
-                      {buttonState === "initial" && (
-                        <motion.div
-                          key="initial"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                        >
-                          <AnimatedShinyText className="text-lg">
-                            <GradientText>
-                              Anfrage senden
-                            </GradientText>
-                          </AnimatedShinyText>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.button>
+                  <button type="submit" className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
+                    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors">
+                      <Mail className="mr-2 h-5 w-5 text-primary" />
+                      <GradientText
+                        colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                        animationSpeed={6}
+                        showBorder={false}
+                        className="text-base font-bold"
+                      >
+                        Anfrage senden
+                      </GradientText>
+                    </div>
+                  </button>
                  
                 </form>
               </CardContent>
