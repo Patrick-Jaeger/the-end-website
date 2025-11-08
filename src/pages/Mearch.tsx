@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ShoppingBag, Shirt, Star, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTextSplit } from "@/hooks/useGSAP";
+import GradientText from "@/components/ui/GradientText";
 
 const Mearch = () => {
   const { toast } = useToast();
@@ -282,10 +283,20 @@ const Mearch = () => {
                     rows={4}
                   />
 
-                  <Button type="submit" size="lg" className="btn-rock w-full">
-                    <Mail className="mr-2 h-5 w-5" />
-                    Anfrage senden
-                  </Button>
+                  <button type="submit" className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
+                    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors">
+                      <Mail className="mr-2 h-5 w-5 text-primary" />
+                      <GradientText
+                        colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                        animationSpeed={6}
+                        showBorder={false}
+                        className="text-base font-bold"
+                      >
+                        Anfrage senden
+                      </GradientText>
+                    </div>
+                  </button>
                  
                 </form>
               </CardContent>

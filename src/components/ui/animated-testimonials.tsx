@@ -100,7 +100,7 @@ export const AnimatedTestimonials = ({
                       alt={testimonial.name}
                       draggable={false}
                       onClick={() => handleImageClick(testimonial.src)}
-                      className="h-full w-full rounded-3xl object-cover object-center cursor-pointer"
+                      className="h-full w-full rounded-3xl object-cover aspect-square cursor-pointer"
                     />
                   </motion.div>
                 );

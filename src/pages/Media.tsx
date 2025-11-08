@@ -271,15 +271,34 @@ const Media = () => {
 
       <Footer />
 
-      {/* Image Modal with keyboard navigation */}
+      {/* Image Modal with keyboard and button navigation */}
       <Dialog open={isImageModalOpen} onOpenChange={setIsImageModalOpen}>
         <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center relative">
             <img
               src={photos[currentImageIndex]?.imageUrl}
               alt={photos[currentImageIndex]?.title}
               className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
             />
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => handleNavigate('prev')}
+              className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 hover:bg-background flex items-center justify-center group transition-all z-50"
+              aria-label="Vorheriges Bild"
+            >
+              <svg className="h-6 w-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={() => handleNavigate('next')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 hover:bg-background flex items-center justify-center group transition-all z-50"
+              aria-label="Nächstes Bild"
+            >
+              <svg className="h-6 w-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </DialogContent>
       </Dialog>

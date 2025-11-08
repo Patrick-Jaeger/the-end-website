@@ -238,51 +238,6 @@ const Gigs = () => {
         </div>
       </section>
 
-      {/* Past Shows */}
-      <section className="relative z-10 py-20 bg-background/70">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
-              Vergangene Shows
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Ein Rückblick auf unsere letzten Auftritte
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {pastShows.map((show, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock">
-                  <CardContent className="p-6 text-center">
-                    <div className="text-sm text-primary font-semibold mb-2">
-                      {show.date}
-                    </div>
-                    <h3 className="font-rock text-lg font-bold mb-2">
-                      {show.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {show.venue}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Referenzen Section */}
       <section className="relative z-10 py-20 bg-background">
