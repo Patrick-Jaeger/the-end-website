@@ -62,7 +62,7 @@ const Gigs = () => {
   const referenzen = [
 
     {
-      quote: "Ein riesiges Geburtstags-Event mit vielen coolen Bands und ausgelassener Stimmung.",
+      quote: "Ein riesiges Geburtstags-Festival mit vielen coolen Bands und ausgelassener Stimmung.",
       name: "Das Event Lauterhofen 2025",
       designation: "Private Feier",
       src: "/images/referenzen/2025-das-event-lauterhofen.jpg",
@@ -86,7 +86,7 @@ const Gigs = () => {
       src: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg",
     },
     {
-      quote: "An Tagen wie diesen... Danke fürs Mitrocken!",
+      quote: "An Tagen wie diesen...                          Danke fürs Mitrocken!",
       name: "2*30 Jahre Geburtstag in Hohenburg 2023",
       designation: "Private Feier",
       src: "/images/referenzen/2023-geburtstag-hohenburg.jpg",
@@ -110,7 +110,7 @@ const Gigs = () => {
       src: "/images/referenzen/2014-rock-am-lkw-tus-hohenburg.JPG",
     },
     {
-      quote: "Wahnsinns Ambiente auf der alten Schweppermannsburg - unvergesslichen Event!",
+      quote: "Wahnsinns Ambiente auf der alten Schweppermannsburg - unvergessliches Fest!",
       name: "Over The Hills Pfaffenhofen 2014",
       designation: "Festival",
       src: "/images/referenzen/2014-over-the-hills-pfaffenhofen.JPG",
@@ -128,7 +128,7 @@ const Gigs = () => {
       src: "/images/referenzen/2011-pink-panther-hiatberg.png",
     },
     {
-      quote: "Die Rock-Crew zuhause, danke an unsere treue tanzende Meute ;)",
+      quote: "Die Rock-Crew zuhause, danke an unsere treue mittanzende Meute ;)",
       name: "Rock im Stodl 2025",
       designation: "Öffentliche Veranstaltung",
       src: "/images/referenzen/2025_rock-im-stodl.jpg",
