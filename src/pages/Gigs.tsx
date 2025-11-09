@@ -247,7 +247,7 @@ const Gigs = () => {
               Referenzen
             </h2>
             <p className="text-lg text-muted-foreground">
-              Unsere vergangenen Events und Auftritte
+              Auszug unserer vergangenen Events und Auftritte
             </p>
           </div>
 
