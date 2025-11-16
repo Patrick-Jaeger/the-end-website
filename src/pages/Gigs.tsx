@@ -68,8 +68,8 @@ const Gigs = () => {
       src: "/images/referenzen/2025-das-event-lauterhofen.jpg",
     },
     {
-      quote: "Top Stimmung und super Leute!",
-      name: "2*40 Jahre Geburtstagsfeier in Altenricht 2024",
+      quote: "Top Stimmung und super Leute! Wir glauben ihr hättet ewig weiter feiern können :D",
+      name: "2*40. Geburtstagsfeier in Altenricht 2024",
       designation: "Private Feier",
       src: "/images/referenzen/2024-2x40-geburtstag-altenricht.jpg",
     },
@@ -87,12 +87,12 @@ const Gigs = () => {
     },
     {
       quote: "An Tagen wie diesen...                          Danke fürs Mitrocken!",
-      name: "2*30 Jahre Geburtstag in Hohenburg 2023",
+      name: "2*30. Geburtstag in Hohenburg 2023",
       designation: "Private Feier",
       src: "/images/referenzen/2023-geburtstag-hohenburg.jpg",
     },
     {
-      quote: "Rock Warriors und Headbanger of the World!!",
+      quote: "Rock Warrior's und Headbanger's of the World!!",
       name: "Rock in Bouch 2019",
       designation: "Öffentliche Veranstaltung",
       src: "/images/referenzen/2019_rock-in-bouch.jpg",
