@@ -86,7 +86,7 @@ const Gigs = () => {
       src: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg",
     },
     {
-      quote: "An Tagen wie diesen...                          Danke fürs Mitrocken!",
+      quote: "An Tagen wie diesen...    Danke fürs Mitrocken!",
       name: "2*30. Geburtstag in Hohenburg 2023",
       designation: "Private Feier",
       src: "/images/referenzen/2023-geburtstag-hohenburg.jpg",
