@@ -37,7 +37,7 @@ const Gigs = () => {
       title: "Rock im Stodl",
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "21:00 Uhr", 
-      description: "Frühlingserwachen mit den besten Rock- und Metal-Hits."
+      description: "Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits."
     }
   ];
 
@@ -64,7 +64,7 @@ const Gigs = () => {
     {
       quote: "Ein riesiges Geburtstags-Festival mit vielen coolen Bands und ausgelassener Stimmung.",
       name: "Das Event Lauterhofen 2025",
-      designation: "Private Feier",
+      designation: "Open Air Bühne",
       src: "/images/referenzen/2025-das-event-lauterhofen.jpg",
     },
     {
@@ -124,7 +124,7 @@ const Gigs = () => {
     {
       quote: "Aus dem Fußballtrikot ins Bandshirt geschlüpft und die ganze Nacht abgeockt!",
       name: "Pink Panther Hiatberg 2011",
-      designation: "Event",
+      designation: "Vereinsfest",
       src: "/images/referenzen/2011-pink-panther-hiatberg.png",
     },
     {
