@@ -12,7 +12,8 @@ import { ShoppingBag, Shirt, Star, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTextSplit } from "@/hooks/useGSAP";
 import GradientText from "@/components/ui/GradientText";
-import { Spinner, SuccessCheck } from "@/components/ui/spinner";
+import { SuccessCheck } from "@/components/ui/spinner";
+import { WaveLoader } from "@/components/ui/wave-loader";
 const Mearch = () => {
   const { toast } = useToast();
   
@@ -309,10 +310,8 @@ const Mearch = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="flex items-center"
                           >
-                            <Spinner size="sm" className="mr-2" />
-                            <span className="text-primary font-bold">senden...</span>
+                            <WaveLoader message="senden..." />
                           </motion.div>
                         )}
                         {buttonState === "success" && (
