@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { ShoppingBag, Shirt, Star, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTextSplit } from "@/hooks/useGSAP";
 import GradientText from "@/components/ui/GradientText";
-
+import { Spinner, SuccessCheck } from "@/components/ui/spinner";
 const Mearch = () => {
   const { toast } = useToast();
   
@@ -28,6 +28,7 @@ const Mearch = () => {
     quantity: "1",
     message: ""
   });
+  const [buttonState, setButtonState] = useState<"initial" | "loading" | "success">("initial");
 
   const merchandise = [
     {
@@ -76,19 +77,30 @@ const Mearch = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Bestellung gesendet!",
-      description: "Wir melden uns in Kürze bei euch mit den Details.",
-    });
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      product: "",
-      size: "",
-      quantity: "1",
-      message: ""
-    });
+    if (buttonState !== "initial") return;
+    
+    setButtonState("loading");
+    
+    setTimeout(() => {
+      setButtonState("success");
+      toast({
+        title: "Bestellung gesendet!",
+        description: "Wir melden uns in Kürze bei euch mit den Details.",
+      });
+      
+      setTimeout(() => {
+        setButtonState("initial");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          product: "",
+          size: "",
+          quantity: "1",
+          message: ""
+        });
+      }, 2000);
+    }, 1500);
   };
 
   return (
@@ -283,21 +295,60 @@ const Mearch = () => {
                     rows={4}
                   />
 
-                  <button type="submit" className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden">
+                  <button 
+                    type="submit" 
+                    disabled={buttonState !== "initial"}
+                    className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70"
+                  >
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
-                    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors">
-                      <Mail className="mr-2 h-5 w-5 text-primary" />
-                      <GradientText
-                        colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
-                        animationSpeed={6}
-                        showBorder={false}
-                        className="text-base font-bold"
-                      >
-                        Anfrage senden
-                      </GradientText>
+                    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
+                      <AnimatePresence mode="wait">
+                        {buttonState === "loading" && (
+                          <motion.div
+                            key="loading"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center"
+                          >
+                            <Spinner size="sm" className="mr-2" />
+                            <span className="text-primary font-bold">senden...</span>
+                          </motion.div>
+                        )}
+                        {buttonState === "success" && (
+                          <motion.div
+                            key="success"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center"
+                          >
+                            <SuccessCheck size="sm" className="mr-2" />
+                            <span className="text-emerald-500 font-bold">Anfrage gesendet</span>
+                          </motion.div>
+                        )}
+                        {buttonState === "initial" && (
+                          <motion.div
+                            key="initial"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center"
+                          >
+                            <Mail className="mr-2 h-5 w-5 text-primary" />
+                            <GradientText
+                              colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                              animationSpeed={6}
+                              showBorder={false}
+                              className="text-base font-bold"
+                            >
+                              Anfrage senden
+                            </GradientText>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </button>
-                 
                 </form>
               </CardContent>
             </Card>

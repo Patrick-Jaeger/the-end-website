@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -15,8 +15,11 @@ import { de } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { useTextSplit } from "@/hooks/useGSAP";
 import LightRays from "@/components/ui/LightRays";
+import { Spinner, SuccessCheck } from "@/components/ui/spinner";
+import { useToast } from "@/hooks/use-toast";
 
 const PALichtverleih = () => {
+  const { toast } = useToast();
   const [date, setDate] = useState<Date>();
   const [formData, setFormData] = useState({
     name: "",
@@ -26,6 +29,7 @@ const PALichtverleih = () => {
     eventType: "",
     requirements: ""
   });
+  const [buttonState, setButtonState] = useState<"initial" | "loading" | "success">("initial");
   
   // GSAP Animation
   useTextSplit('.text-split-pa', 0.3);
@@ -260,7 +264,33 @@ const PALichtverleih = () => {
                   Schildert uns euer Event und wir stellen euch zusammen, was ihr braucht.
                 </p>
                 
-                <form className="space-y-6">
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  if (buttonState !== "initial") return;
+                  
+                  setButtonState("loading");
+                  
+                  setTimeout(() => {
+                    setButtonState("success");
+                    toast({
+                      title: "Anfrage gesendet!",
+                      description: "Wir melden uns in Kürze bei euch mit einem Angebot.",
+                    });
+                    
+                    setTimeout(() => {
+                      setButtonState("initial");
+                      setFormData({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        location: "",
+                        eventType: "",
+                        requirements: ""
+                      });
+                      setDate(undefined);
+                    }, 2000);
+                  }, 1500);
+                }} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <Input 
                       label="Name *"
@@ -347,23 +377,60 @@ const PALichtverleih = () => {
                     className="mt-1 min-h-[120px]"
                   />
                   
-                  <div className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden">
+                  <button 
+                    type="submit" 
+                    disabled={buttonState !== "initial"}
+                    className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70"
+                  >
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
-                    <button 
-                      type="submit" 
-                      className="relative bg-background rounded-full px-6 py-3 w-full flex items-center justify-center hover:bg-primary/5 transition-colors"
-                    >
-                      <Send className="mr-2 h-5 w-5 text-primary" />
-                      <GradientText
-                        colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
-                        animationSpeed={6}
-                        showBorder={false}
-                        className="text-base font-bold"
-                      >
-                        Anfrage senden
-                      </GradientText>
-                    </button>
-                  </div>
+                    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
+                      <AnimatePresence mode="wait">
+                        {buttonState === "loading" && (
+                          <motion.div
+                            key="loading"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center"
+                          >
+                            <Spinner size="sm" className="mr-2" />
+                            <span className="text-primary font-bold">senden...</span>
+                          </motion.div>
+                        )}
+                        {buttonState === "success" && (
+                          <motion.div
+                            key="success"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center"
+                          >
+                            <SuccessCheck size="sm" className="mr-2" />
+                            <span className="text-emerald-500 font-bold">Anfrage gesendet</span>
+                          </motion.div>
+                        )}
+                        {buttonState === "initial" && (
+                          <motion.div
+                            key="initial"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center"
+                          >
+                            <Send className="mr-2 h-5 w-5 text-primary" />
+                            <GradientText
+                              colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                              animationSpeed={6}
+                              showBorder={false}
+                              className="text-base font-bold"
+                            >
+                              Anfrage senden
+                            </GradientText>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </button>
                 </form>
               </CardContent>
             </Card>
