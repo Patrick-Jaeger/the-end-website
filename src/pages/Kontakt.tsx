@@ -17,7 +17,8 @@ import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { VelocityScroll } from "@/components/ui/scrollbasedvelocity";
-import { Spinner, SuccessCheck } from "@/components/ui/spinner";
+import { SuccessCheck } from "@/components/ui/spinner";
+import { WaveLoader } from "@/components/ui/wave-loader";
 const faqItems = [
   {
     id: '1',
@@ -230,10 +231,8 @@ const Kontakt = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              className="flex items-center"
                             >
-                              <Spinner size="sm" className="mr-2" />
-                              <span className="text-primary font-bold">senden...</span>
+                              <WaveLoader message="senden..." />
                             </motion.div>
                           )}
                           {buttonState === "success" && (
