@@ -8,6 +8,7 @@ import { Download, Guitar, Mic, Music } from "lucide-react";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import BandCarousel from "@/components/BandCarousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Link } from "react-router-dom";
 
 const Band = () => {
   const [isGroupPhotoOpen, setIsGroupPhotoOpen] = useState(false);
@@ -125,25 +126,25 @@ const Band = () => {
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">6</div>
-                <div className="text-muted-foreground">Band-Mitglieder</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">70+</div>
-                <div className="text-muted-foreground">Songs im Repertoire</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">15+</div>
-                <div className="text-muted-foreground">Jahre Banderfahrung</div>
-              </div>
+              <a href="#the-crew" className="text-center group cursor-pointer hover:scale-105 transition-transform">
+                <div className="text-3xl font-bold text-primary group-hover:text-primary/80">6</div>
+                <div className="text-muted-foreground group-hover:text-foreground transition-colors">Band-Mitglieder</div>
+              </a>
+              <Link to="/repertoire" className="text-center group cursor-pointer hover:scale-105 transition-transform">
+                <div className="text-3xl font-bold text-primary group-hover:text-primary/80">70+</div>
+                <div className="text-muted-foreground group-hover:text-foreground transition-colors">Songs im Repertoire</div>
+              </Link>
+              <Link to="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform">
+                <div className="text-3xl font-bold text-primary group-hover:text-primary/80">15+</div>
+                <div className="text-muted-foreground group-hover:text-foreground transition-colors">Jahre Banderfahrung</div>
+              </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Band Members */}
-      <section className="py-20 bg-rock-lighter">
+      <section id="the-crew" className="py-20 bg-rock-lighter scroll-mt-24">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
