@@ -157,7 +157,8 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
       style={{
         width: '100%',
         height: '100%',
-        position: 'relative'
+        position: 'relative',
+        cursor: 'pointer'
       }}
       onClick={handleClick}
     >
@@ -170,7 +171,9 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
           zIndex: 10
         }}
       />
-      {children}
+      <div style={{ cursor: 'pointer' }}>
+        {children}
+      </div>
     </div>
   );
 };

@@ -134,10 +134,13 @@ const Band = () => {
                 <div className="text-3xl font-bold text-primary group-hover:text-primary/80">70+</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors">Songs im Repertoire</div>
               </Link>
-              <Link to="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform">
+              <a href="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform" onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/gigs#referenzen';
+              }}>
                 <div className="text-3xl font-bold text-primary group-hover:text-primary/80">15+</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors">Jahre Banderfahrung</div>
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>

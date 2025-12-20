@@ -49,10 +49,11 @@ export function StarBorder<T extends ElementType = "button">({
         }}
       />
       <div className={cn(
-        "relative z-1 border text-center text-base py-3 px-6 rounded-[20px] font-semibold",
-        "bg-background border-background/90",
-        "dark:bg-background dark:border-background transition-all duration-300",
-        "hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] hover:border-primary/60"
+        "relative z-1 border text-center text-base py-3 px-6 rounded-[20px] font-semibold cursor-pointer",
+        "bg-[linear-gradient(135deg,hsl(0_0%_8%)_0%,hsl(0_0%_15%)_50%,hsl(0_0%_8%)_100%)] border-primary/30",
+        "dark:bg-[linear-gradient(135deg,hsl(0_0%_8%)_0%,hsl(0_0%_15%)_50%,hsl(0_0%_8%)_100%)] dark:border-primary/30 transition-all duration-300",
+        "hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] hover:border-primary/60",
+        "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_4px_12px_rgba(0,0,0,0.5)]"
       )}>
         {children}
       </div>
