@@ -23,7 +23,7 @@ export function StarBorder<T extends ElementType = "button">({
   return (
     <Component 
       className={cn(
-        "relative inline-block py-[3px] overflow-hidden rounded-[20px] transition-all duration-300 hover:scale-105",
+        "relative inline-block p-[2px] overflow-hidden rounded-full transition-all duration-300 hover:scale-105",
         className
       )} 
       {...props}
@@ -49,7 +49,7 @@ export function StarBorder<T extends ElementType = "button">({
         }}
       />
       <div className={cn(
-        "relative z-1 border text-center text-base py-3 px-6 rounded-[20px] font-semibold cursor-pointer",
+        "relative z-1 border text-center text-base py-3 px-6 rounded-full font-semibold cursor-pointer",
         "bg-[linear-gradient(135deg,hsl(0_0%_8%)_0%,hsl(0_0%_15%)_50%,hsl(0_0%_8%)_100%)] border-primary/30",
         "dark:bg-[linear-gradient(135deg,hsl(0_0%_8%)_0%,hsl(0_0%_15%)_50%,hsl(0_0%_8%)_100%)] dark:border-primary/30 transition-all duration-300",
         "hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)] hover:border-primary/60",
