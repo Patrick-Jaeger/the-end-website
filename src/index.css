@@ -187,11 +187,16 @@
 
   /* Custom cursor */
   * {
-    cursor: url('@/assets/Curser.svg'), auto !important;
+    cursor: url('@/assets/Curser.svg'), auto;
   }
 
-  a:hover {
-    cursor: url('@/assets/Curser.svg'), pointer !important;
+  a,
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  .cursor-pointer {
+    cursor: url('@/assets/Curser.svg'), pointer;
   }
 
   /* Card wiggle effect */
