@@ -10,6 +10,7 @@ import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import { useState } from "react";
 import EventModal from "@/components/EventModal";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import ClickSpark from "@/components/ui/click-spark";
 
 const Gigs = () => {
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
@@ -240,7 +241,7 @@ const Gigs = () => {
 
 
       {/* Referenzen Section */}
-      <section className="relative z-10 py-20 bg-background">
+      <section id="referenzen" className="relative z-10 py-20 bg-background scroll-mt-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
@@ -295,9 +296,11 @@ const Gigs = () => {
               </div>
             </div>
             <Link to="/kontakt">
-              <Button size="lg" className="btn-rock">
-                Jetzt Anfrage stellen
-              </Button>
+              <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                <Button size="lg" className="btn-rock">
+                  Jetzt Anfrage stellen
+                </Button>
+              </ClickSpark>
             </Link>
           </motion.div>
         </div>

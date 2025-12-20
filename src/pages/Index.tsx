@@ -9,6 +9,7 @@ import { useState } from "react";
 import EventModal from "@/components/EventModal";
 import { StarBorder } from "@/components/ui/star-border";
 import ElectricBorder from "@/components/ui/ElectricBorder";
+import ClickSpark from "@/components/ui/click-spark";
 
 const Index = () => {
   console.log("Index component rendering...");
@@ -85,9 +86,11 @@ const Index = () => {
                       wir bringen die größten Hits live auf die Bühne.
                     </p>
                     <Link to="/gigs">
-                      <StarBorder as="div" color="hsl(var(--primary))">
-                        Alle Termine anzeigen
-                      </StarBorder>
+                      <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                        <StarBorder as="div" color="hsl(var(--primary))">
+                          Alle Termine anzeigen
+                        </StarBorder>
+                      </ClickSpark>
                     </Link>
                   </div>
                   
@@ -125,9 +128,11 @@ const Index = () => {
                   Lernt die Musiker hinter den Covers kennen
                 </p>
                 <Link to="/band">
-                  <StarBorder as="div" color="hsl(var(--primary))">
-                    Mehr erfahren
-                  </StarBorder>
+                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                    <StarBorder as="div" color="hsl(var(--primary))">
+                      Mehr erfahren
+                    </StarBorder>
+                  </ClickSpark>
                 </Link>
               </div>
             </motion.div>
@@ -146,9 +151,11 @@ const Index = () => {
                   Entdeckt unsere komplette Setlist
                 </p>
                 <Link to="/repertoire">
-                  <StarBorder as="div" color="hsl(var(--primary))">
-                    Songs ansehen
-                  </StarBorder>
+                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                    <StarBorder as="div" color="hsl(var(--primary))">
+                      Songs ansehen
+                    </StarBorder>
+                  </ClickSpark>
                 </Link>
               </div>
             </motion.div>
@@ -167,9 +174,11 @@ const Index = () => {
                   Bucht uns für eure Veranstaltung
                 </p>
                 <Link to="/kontakt">
-                  <StarBorder as="div" color="hsl(var(--primary))">
-                    Kontakt aufnehmen
-                  </StarBorder>
+                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                    <StarBorder as="div" color="hsl(var(--primary))">
+                      Kontakt aufnehmen
+                    </StarBorder>
+                  </ClickSpark>
                 </Link>
               </div>
             </motion.div>
