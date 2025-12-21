@@ -94,17 +94,17 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5 }}
           >
-            <Link to="/gigs" className="w-full sm:w-auto">
+            <Link to="/gigs" className="w-full sm:w-auto cursor-pointer">
               <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
                 <div className="relative rounded-full border-2 border-primary p-[2px] w-full sm:w-auto overflow-hidden cursor-pointer">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
-                  <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors cursor-pointer">
-                    <Calendar className="mr-2 h-5 w-5 text-primary" />
+                  <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors cursor-pointer select-none">
+                    <Calendar className="mr-2 h-5 w-5 text-primary cursor-pointer" />
                     <GradientText
                       colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
                       animationSpeed={6}
                       showBorder={false}
-                      className="text-base font-bold"
+                      className="text-base font-bold cursor-pointer select-none"
                     >
                       Nächste Gigs ansehen
                     </GradientText>
@@ -113,16 +113,16 @@ const Hero = () => {
               </ClickSpark>
             </Link>
 
-            <Link to="/kontakt" className="w-full sm:w-auto">
+            <Link to="/kontakt" className="w-full sm:w-auto cursor-pointer">
               <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
                 <StarBorder
                   as="div"
                   color="hsl(var(--primary))"
                   className="w-full sm:w-auto select-none"
                 >
-                  <div className="flex items-center justify-center select-none">
-                    <Mail className="mr-2 h-5 w-5" />
-                    Anfrage senden
+                  <div className="flex items-center justify-center cursor-pointer select-none">
+                    <Mail className="mr-2 h-5 w-5 cursor-pointer" />
+                    <span className="cursor-pointer select-none">Anfrage senden</span>
                   </div>
                 </StarBorder>
               </ClickSpark>
