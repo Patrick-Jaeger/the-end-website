@@ -23,7 +23,7 @@ export function StarBorder<T extends ElementType = "button">({
   return (
     <Component 
       className={cn(
-        "relative inline-block p-[2px] overflow-hidden rounded-full transition-all duration-300 scale-105 hover:scale-110 select-none",
+        "relative inline-block p-[2px] overflow-hidden rounded-full transition-all duration-300 scale-105 hover:scale-110 select-none cursor-pointer",
         className
       )} 
       {...props}
