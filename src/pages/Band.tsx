@@ -126,21 +126,18 @@ const Band = () => {
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-4">
-              <a href="#the-crew" className="text-center group cursor-pointer hover:scale-105 transition-transform">
+              <a href="#the-crew" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
                 <div className="text-3xl font-bold text-primary group-hover:text-primary/80">6</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors">Band-Mitglieder</div>
               </a>
-              <Link to="/repertoire" className="text-center group cursor-pointer hover:scale-105 transition-transform">
+              <Link to="/repertoire" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
                 <div className="text-3xl font-bold text-primary group-hover:text-primary/80">70+</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors">Songs im Repertoire</div>
               </Link>
-              <a href="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform" onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '/gigs#referenzen';
-              }}>
+              <Link to="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
                 <div className="text-3xl font-bold text-primary group-hover:text-primary/80">15+</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors">Jahre Banderfahrung</div>
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

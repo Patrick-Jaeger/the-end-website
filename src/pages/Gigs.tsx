@@ -7,7 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin, Clock, Users, Music } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import EventModal from "@/components/EventModal";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import ClickSpark from "@/components/ui/click-spark";
@@ -15,10 +16,23 @@ import ClickSpark from "@/components/ui/click-spark";
 const Gigs = () => {
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const location = useLocation();
   
   // GSAP Animations
   useTextSplit('.text-split-gigs', 0.3);
   useParallax('.parallax-gigs', 0.3);
+
+  // Scroll to hash element on page load
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
 
   const handleEventClick = (event: any) => {
     setSelectedEvent(event);
