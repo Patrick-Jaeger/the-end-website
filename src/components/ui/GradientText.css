@@ -12,6 +12,7 @@
   transition: box-shadow 0.5s ease-out;
   overflow: hidden;
   cursor: pointer;
+  user-select: none;
 }
 
 .gradient-overlay {
@@ -65,4 +66,6 @@
   -webkit-background-clip: text;
   color: transparent;
   animation: gradient linear infinite;
+  cursor: pointer;
+  user-select: none;
 }
