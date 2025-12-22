@@ -244,7 +244,7 @@ const Media = () => {
                 href="https://www.instagram.com/Die_Band_The_End" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock text-center"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-semibold transition-rock hover-rock text-center"
               >
                 Instagram
               </a>
@@ -252,7 +252,7 @@ const Media = () => {
                 href="https://youtube.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock text-center"
+                className="bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition-rock hover-rock text-center"
               >
                 YouTube
               </a>
@@ -260,7 +260,7 @@ const Media = () => {
                 href="https://www.facebook.com/profile.php?id=100063827957058" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-rock hover-rock text-center"
+                className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-rock hover-rock text-center"
               >
                 Facebook
               </a>

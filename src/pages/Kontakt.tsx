@@ -299,7 +299,7 @@ const Kontakt = () => {
                       <li>• Set-Dauer: 3 Stunden (flexibel)</li>
                       <li>• Umkreis: 20km kostenfrei</li>
                     </ul>
-                    <Button className="btn-outline-rock mt-4 w-full">
+                    <Button className="btn-outline-rock mt-4 w-full rounded-full">
                       Technical Rider
                     </Button>
                   </CardContent>
