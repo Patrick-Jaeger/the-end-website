@@ -311,7 +311,7 @@ const Gigs = () => {
             </div>
             <Link to="/kontakt">
               <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
-                <Button size="lg" className="btn-rock">
+                <Button size="lg" className="btn-rock rounded-full">
                   Jetzt Anfrage stellen
                 </Button>
               </ClickSpark>
