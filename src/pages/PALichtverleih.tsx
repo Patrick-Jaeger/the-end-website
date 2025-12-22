@@ -58,7 +58,7 @@ const PALichtverleih = () => {
         <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-background/50 to-rock-lighter">
+      <section className="pt-32 pb-20 bg-background/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -80,7 +80,7 @@ const PALichtverleih = () => {
       </section>
 
       {/* PA Equipment */}
-      <section className="py-20 bg-rock-lighter">
+      <section className="py-20 bg-background/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -151,7 +151,7 @@ const PALichtverleih = () => {
       </section>
 
       {/* Lichttechnik */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -209,7 +209,7 @@ const PALichtverleih = () => {
       </section>
 
       {/* Zusätzliches Equipment */}
-      <section className="py-20 bg-rock-lighter">
+      <section className="py-20 bg-background/30">
         <div className="container mx-auto px-4">
           <Card className="bg-card border-border shadow-rock max-w-4xl mx-auto">
             <CardContent className="p-8 text-center">
@@ -248,7 +248,7 @@ const PALichtverleih = () => {
       </section>
 
       {/* Contact Form */}
-      <section className="py-20 bg-rock-lighter">
+      <section className="py-20 bg-background/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
