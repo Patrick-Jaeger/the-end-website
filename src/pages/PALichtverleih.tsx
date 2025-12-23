@@ -411,7 +411,8 @@ const PALichtverleih = () => {
                               className="flex items-center"
                             >
                               <SuccessCheck size="sm" className="mr-2" />
-                              <span className="text-emerald-500 font-bold"> Anfrage gesendet</span>
+                              <span className="text-emerald-500 font-bold"> 
+                                Anfrage gesendet</span>
                             </motion.div>
                           )}
                           {buttonState === "initial" && (
