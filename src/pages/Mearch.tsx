@@ -132,7 +132,13 @@ const Mearch = () => {
         </div>
       </section>
 
+<p className="text-xl text-muted-foreground max-w-3xl mx-auto">Coming soon...</p>
+      
       {/* Merchandise Grid */}
+
+{/*
+
+      
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
           <motion.div
@@ -196,6 +202,9 @@ const Mearch = () => {
       </section>
 
       {/* Order Form */}
+
+{/*
+      
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div
@@ -360,6 +369,8 @@ const Mearch = () => {
       </section>
 
       {/* Info Section */}
+{/*
+      
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
           <motion.div
