@@ -20,7 +20,8 @@ const Index = () => {
   useCardWiggle(".card-wiggle");
 
   /**
-   * EIGENTLICHER Click-Handler
+   * Click-Handler für die Event-Karte
+   * (öffnet das Modal, außer bei Klick auf Button oder Link)
    */
   const handleEventCardClick = (e: React.MouseEvent) => {
     if (
@@ -31,12 +32,6 @@ const Index = () => {
     }
     setIsEventModalOpen(true);
   };
-
-  /**
-   * 🔥 ALIAS-FIX
-   * Falls irgendwo noch handleCardClick verwendet wird
-   */
-  const handleCardClick = handleEventCardClick;
 
   return (
     <div className="min-h-screen bg-rock-gradient">
@@ -77,7 +72,7 @@ const Index = () => {
             >
               <div
                 className="bg-card rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300"
-                onClick={handleCardClick}
+                onClick={handleEventCardClick}
               >
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div>
