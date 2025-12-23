@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, Music, Filter } from "lucide-react";
 import { useTextSplit } from "@/hooks/useGSAP";
+import GroundFog from "@/components/ui/ground-fog";
 
 const Repertoire = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -1619,6 +1620,9 @@ const Repertoire = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Ground Fog Effect */}
+      <GroundFog height={180} fogOpacity={0.5} />
 
       <Footer />
     </div>

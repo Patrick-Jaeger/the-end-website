@@ -8,6 +8,7 @@ import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import GroundFog from "@/components/ui/ground-fog";
 
 
 const Media = () => {
@@ -268,6 +269,9 @@ const Media = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Ground Fog Effect */}
+      <GroundFog height={180} fogOpacity={0.5} />
 
       <Footer />
 
