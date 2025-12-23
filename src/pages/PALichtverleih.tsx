@@ -366,20 +366,20 @@ const PALichtverleih = () => {
                   </div>
                   
                   <Input 
-                    label="Art der Veranstaltung (Konzert, Geburtstag, Feuerwehrfest, ...)"
+                    label="Art der Veranstaltung"
                     id="event-type" 
                     value={formData.eventType}
                     onChange={(e) => setFormData({...formData, eventType: e.target.value})}
-                    placeholder="z.B. Konzert, Hochzeit, Firmenevent" 
+                    placeholder="z.B. Konzert, Hochzeit, Firmenevent, Geburtstag, Feuerwehrfest,..." 
                     className="mt-1" 
                   />
                   
                   <Textarea 
-                    label="Anforderungen & Wünsche (Beschreibt euer Event: Anzahl Gäste, Raumgröße, ...)"
+                    label="Anforderungen & Wünsche"
                     id="requirements" 
                     value={formData.requirements}
                     onChange={(e) => setFormData({...formData, requirements: e.target.value})}
-                    placeholder="Beschreibt euer Event: Anzahl Gäste, Bühne, spezielle Anforderungen..."
+                    placeholder="Beschreibt euer Event: Anzahl Gäste, Raumgröße, Bühne, spezielle Anforderungen..."
                     className="mt-1 min-h-[120px]"
                   />
                   
