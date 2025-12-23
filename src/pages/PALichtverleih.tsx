@@ -280,7 +280,7 @@ const PALichtverleih = () => {
                     setButtonState("success");
                     toast({
                       title: "Anfrage gesendet!",
-                      description: "Wir melden uns in Kürze bei euch mit einem Angebot.",
+                      description: "Wir melden uns in Kürze bei Dir.",
                     });
                     
                     setTimeout(() => {
@@ -399,7 +399,7 @@ const PALichtverleih = () => {
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
                             >
-                              <WaveLoader message=" senden..." />
+                              <WaveLoader className="ml-2" message=" senden..." />
                             </motion.div>
                           )}
                           {buttonState === "success" && (
