@@ -13,28 +13,32 @@ import ClickSpark from "@/components/ui/click-spark";
 
 const Index = () => {
   console.log("Index component rendering...");
+
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
-  
-  // Re-enable GSAP animations for consistent experience
-  useTextSplit('.text-split-home', 0.3);
-  useParallax('.parallax-home', 0.2);
-  useCardWiggle('.card-wiggle');
+
+  // GSAP Animations
+  useTextSplit(".text-split-home", 0.3);
+  useParallax(".parallax-home", 0.2);
+  useCardWiggle(".card-wiggle");
 
   const handleEventCardClick = (e: React.MouseEvent) => {
-    // Don't open modal if button was clicked
-    if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('a')) {
+    // Prevent modal opening when clicking links or buttons
+    if (
+      (e.target as HTMLElement).closest("button") ||
+      (e.target as HTMLElement).closest("a")
+    ) {
       return;
     }
-    setIsModalOpen(true);
+    setIsEventModalOpen(true);
   };
 
   return (
     <div className="min-h-screen bg-rock-gradient">
       <Navigation />
-      
-      {/* Hero Section */}
+
+      {/* Hero */}
       <Hero />
-      
+
       {/* Highlight Section */}
       <section className="py-20 bg-gradient-to-b from-background to-rock-lighter">
         <div className="container mx-auto px-4">
@@ -67,33 +71,48 @@ const Index = () => {
               thickness={2}
               style={{ borderRadius: 16 }}
             >
-              <div className="bg-card rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300" onClick={handleCardClick}>
+              <div
+                className="bg-card rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300"
+                onClick={handleEventCardClick}
+              >
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div>
                     <div className="flex items-center space-x-2 text-primary mb-4">
                       <Calendar className="h-5 w-5" />
-                      <span className="font-rock font-semibold">09. Januar 2026</span>
+                      <span className="font-rock font-semibold">
+                        09. Januar 2026
+                      </span>
                     </div>
+
                     <h3 className="font-rock text-2xl font-bold mb-2">
                       Rock in Bouch
                     </h3>
+
                     <p className="text-muted-foreground mb-4">
                       Mendorferbuch, Gasthaus Reis
                     </p>
+
                     <p className="mb-6">
-                      Freut euch auf einen Abend voller Rock-Klassiker! 
-                      Von Green Day bis hin zu Metallica - 
-                      wir bringen die größten Hits live auf die Bühne.
+                      Freut euch auf einen Abend voller Rock-Klassiker! Von Green
+                      Day bis hin zu Metallica – wir bringen die größten Hits live
+                      auf die Bühne.
                     </p>
+
                     <Link to="/gigs">
-                      <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                      <ClickSpark
+                        sparkColor="#4079ff"
+                        sparkSize={12}
+                        sparkRadius={25}
+                        sparkCount={10}
+                        duration={500}
+                      >
                         <StarBorder as="div" color="hsl(var(--primary))">
                           Alle Termine anzeigen
                         </StarBorder>
                       </ClickSpark>
                     </Link>
                   </div>
-                  
+
                   <div className="bg-secondary rounded-lg p-6 text-center">
                     <Music className="h-16 w-16 text-primary mx-auto mb-4" />
                     <h4 className="font-rock text-xl font-bold mb-2">
@@ -118,7 +137,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0 * 0.1 }}
+              transition={{ duration: 0.6 }}
               className="text-center group"
             >
               <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
@@ -128,11 +147,9 @@ const Index = () => {
                   Lernt die Musiker hinter den Covers kennen
                 </p>
                 <Link to="/band">
-                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
-                    <StarBorder as="div" color="hsl(var(--primary))">
-                      Mehr erfahren
-                    </StarBorder>
-                  </ClickSpark>
+                  <StarBorder as="div" color="hsl(var(--primary))">
+                    Mehr erfahren
+                  </StarBorder>
                 </Link>
               </div>
             </motion.div>
@@ -141,7 +158,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 1 * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="text-center group"
             >
               <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
@@ -151,11 +168,9 @@ const Index = () => {
                   Entdeckt unsere komplette Setlist
                 </p>
                 <Link to="/repertoire">
-                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
-                    <StarBorder as="div" color="hsl(var(--primary))">
-                      Songs ansehen
-                    </StarBorder>
-                  </ClickSpark>
+                  <StarBorder as="div" color="hsl(var(--primary))">
+                    Songs ansehen
+                  </StarBorder>
                 </Link>
               </div>
             </motion.div>
@@ -164,7 +179,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 2 * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center group"
             >
               <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
@@ -174,11 +189,9 @@ const Index = () => {
                   Bucht uns für eure Veranstaltung
                 </p>
                 <Link to="/kontakt">
-                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
-                    <StarBorder as="div" color="hsl(var(--primary))">
-                      Kontakt aufnehmen
-                    </StarBorder>
-                  </ClickSpark>
+                  <StarBorder as="div" color="hsl(var(--primary))">
+                    Kontakt aufnehmen
+                  </StarBorder>
                 </Link>
               </div>
             </motion.div>
@@ -187,14 +200,15 @@ const Index = () => {
       </section>
 
       <Footer />
-      
+
+      {/* Event Modal */}
       <EventModal
         isOpen={isEventModalOpen}
         onClose={() => setIsEventModalOpen(false)}
         title="Rock in Bouch"
         date="09. Januar 2026"
         location="Mendorferbuch, Gasthaus Reis"
-        description="Freut euch auf einen Abend voller Rock-Klassiker! Von Green Day bis hin zu Metallica - wir bringen die größten Hits live auf die Bühne. Ein unvergesslicher Abend mit authentischen Covers eurer Lieblings-Songs wartet auf euch!"
+        description="Freut euch auf einen Abend voller Rock-Klassiker! Von Green Day bis hin zu Metallica – wir bringen die größten Hits live auf die Bühne. Ein unvergesslicher Abend mit authentischen Covers eurer Lieblings-Songs wartet auf euch!"
         flyerImage="/images/gigs/rock_in_bouch.jpg"
       />
     </div>
