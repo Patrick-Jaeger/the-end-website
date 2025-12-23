@@ -7,6 +7,7 @@ interface EventModalProps {
   date: string;
   location: string;
   description: string;
+  flyerImage: string; // ✅ HINZUGEFÜGT
 }
 
 const EventModal = ({
@@ -16,6 +17,7 @@ const EventModal = ({
   date,
   location,
   description,
+  flyerImage, // ✅ HINZUGEFÜGT
 }: EventModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
