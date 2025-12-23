@@ -97,7 +97,7 @@ const Band = () => {
                   Alles begann in einem Keller in Mendorferbuch – dort haben wir die ersten Akkorde gespielt und die ersten Pläne geschmiedet.
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Seit 2008 proben wir in Allertshofen, unserem musikalischen Zuhause,
+                  Seit 2007 proben wir in Allertshofen, unserem musikalischen Zuhause,
                   wo wir unseren eigenen Sound erarbeitet haben, gemeinsam weiterwachsen und jede Menge unvergessliche Momente erleben.
                 </p>
                 <p className="text-muted-foreground mb-4">
