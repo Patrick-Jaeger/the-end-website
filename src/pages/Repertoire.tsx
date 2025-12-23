@@ -1621,9 +1621,6 @@ const Repertoire = () => {
         </div>
       </section>
 
-      {/* Ground Fog Effect */}
-      <GroundFog height={180} fogOpacity={0.5} />
-
       <Footer />
     </div>
   );
