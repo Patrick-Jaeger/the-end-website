@@ -133,7 +133,13 @@ const Mearch = () => {
       </section>
       <section>
         <div>
+          <br />
+          <br />
+          <br />
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Coming soon...</p>
+          <br />
+          <br />
+          <br />
         </div>
       </section>
       {/* Merchandise Grid */}
