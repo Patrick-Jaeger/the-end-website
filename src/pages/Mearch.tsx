@@ -15,6 +15,7 @@ import GradientText from "@/components/ui/GradientText";
 import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
+import GroundFog from "@/components/ui/ground-fog";
 const Mearch = () => {
   const { toast } = useToast();
   
@@ -397,6 +398,9 @@ const Mearch = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Ground Fog Effect */}
+      <GroundFog height={180} fogOpacity={0.5} />
 
       <Footer />
     </div>

@@ -19,6 +19,7 @@ import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
 import { useToast } from "@/hooks/use-toast";
+import GroundFog from "@/components/ui/ground-fog";
 
 const PALichtverleih = () => {
   const { toast } = useToast();
@@ -442,6 +443,9 @@ const PALichtverleih = () => {
           </motion.div>
         </div>
       </section>
+
+        {/* Ground Fog Effect */}
+        <GroundFog height={180} fogOpacity={0.5} />
 
         <Footer />
       </div>
