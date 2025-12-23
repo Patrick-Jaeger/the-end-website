@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Calendar, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
-import logo from "@/assets/logo.png";
+import AnimatedLogo from "@/components/ui/animated-logo";
 import { StarBorder } from "@/components/ui/star-border";
 import GradientText from "@/components/ui/GradientText";
 import ClickSpark from "@/components/ui/click-spark";
@@ -27,14 +27,14 @@ const Hero = () => {
           className="space-y-8"
         >
           {/* Logo */}
-          <motion.img
-            src={logo}
-            alt="The End Logo"
+          <motion.div
             className="mx-auto mb-4 w-72 md:w-96 lg:w-[400px]"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <AnimatedLogo className="w-full h-auto" />
+          </motion.div>
 
           {/* Genre Subtitle */}
           <motion.h2
