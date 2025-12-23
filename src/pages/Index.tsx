@@ -25,7 +25,7 @@ const Index = () => {
     if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('a')) {
       return;
     }
-    setIsEventModalOpen(true);
+    setIsModalOpen(true);
   };
 
   return (
@@ -67,7 +67,7 @@ const Index = () => {
               thickness={2}
               style={{ borderRadius: 16 }}
             >
-              <div className="bg-card rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300" onClick={handleEventCardClick}>
+              <div className="bg-card rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300" onClick={handleCardClick}>
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div>
                     <div className="flex items-center space-x-2 text-primary mb-4">
@@ -195,7 +195,7 @@ const Index = () => {
         date="09. Januar 2026"
         location="Mendorferbuch, Gasthaus Reis"
         description="Freut euch auf einen Abend voller Rock-Klassiker! Von Green Day bis hin zu Metallica - wir bringen die größten Hits live auf die Bühne. Ein unvergesslicher Abend mit authentischen Covers eurer Lieblings-Songs wartet auf euch!"
-        flyerImage="/images/rock-in-bouch-flyer.jpg"
+        flyerImage="/images/gigs/rock_in_bouch.jpg"
       />
     </div>
   );
