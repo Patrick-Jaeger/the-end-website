@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import logo from "@/assets/logo.png";
-
+import { NeonQrButton } from "@/components/ui/neon-qr-button";
 const Footer = () => {
   return (
     <footer className="bg-rock-dark border-t border-border">
@@ -49,6 +49,7 @@ const Footer = () => {
               >
                 <Youtube className="h-5 w-5" />
               </a>
+              <NeonQrButton />
             </div>
           </div>
 
