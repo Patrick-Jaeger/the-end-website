@@ -31,17 +31,14 @@ const AnimatedLogo = ({ className = "" }: { className?: string }) => {
       duration: 2500,
       delay: stagger(150),
       onComplete: () => {
-        // After stroke animation, fill the letters
-        animate(letterPaths, {
-          fill: "#fefefe",
-          stroke: "#fefefe",
-          ease: "inOutQuad",
-          duration: 800,
-          delay: stagger(50),
-          onComplete: () => {
-            setAnimationComplete(true);
-          }
+        // After stroke animation, fill the letters with white
+        letterPaths.forEach((path: Element) => {
+          const pathElement = path as SVGPathElement;
+          pathElement.style.fill = "#ffffff";
+          pathElement.style.stroke = "#ffffff";
+          pathElement.style.strokeWidth = "0";
         });
+        setAnimationComplete(true);
       }
     });
   }, []);
