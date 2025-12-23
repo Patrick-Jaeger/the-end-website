@@ -393,13 +393,14 @@ const PALichtverleih = () => {
                       <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
                         <AnimatePresence mode="wait">
                           {buttonState === "loading" && (
-                            <motion.div
-                              key="loading"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                            >
-                              <WaveLoader className="ml-2" message=" senden..." />
+<motion.div
+  key="loading"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  className="ml-2" 
+>
+  <WaveLoader message=" senden..." />
                             </motion.div>
                           )}
                           {buttonState === "success" && (
