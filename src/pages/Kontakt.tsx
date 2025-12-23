@@ -235,7 +235,7 @@ const Kontakt = () => {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                               >
-                                <WaveLoader message="senden..." />
+                                <WaveLoader message=" senden..." />
                               </motion.div>
                             )}
                             {buttonState === "success" && (
@@ -247,7 +247,7 @@ const Kontakt = () => {
                                 className="flex items-center"
                               >
                                 <SuccessCheck size="sm" className="mr-2" />
-                                <span className="text-emerald-500 font-bold">Anfrage gesendet</span>
+                                <span className="text-emerald-500 font-bold"> Anfrage gesendet</span>
                               </motion.div>
                             )}
                             {buttonState === "initial" && (
