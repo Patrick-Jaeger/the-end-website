@@ -270,10 +270,7 @@ const Media = () => {
         </div>
       </section>
 
-      {/* Ground Fog Effect */}
-      <GroundFog height={180} fogOpacity={0.5} />
-
-      <Footer />
+     <Footer />
 
       {/* Image Modal with keyboard and button navigation */}
       <Dialog open={isImageModalOpen} onOpenChange={setIsImageModalOpen}>
