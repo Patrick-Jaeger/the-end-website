@@ -12,17 +12,17 @@ import ElectricBorder from "@/components/ui/ElectricBorder";
 import ClickSpark from "@/components/ui/click-spark";
 
 const Index = () => {
-  console.log("Index component rendering...");
-
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
 
-  // GSAP Animations
+  // GSAP hooks
   useTextSplit(".text-split-home", 0.3);
   useParallax(".parallax-home", 0.2);
   useCardWiggle(".card-wiggle");
 
+  /**
+   * EIGENTLICHER Click-Handler
+   */
   const handleEventCardClick = (e: React.MouseEvent) => {
-    // Prevent modal opening when clicking links or buttons
     if (
       (e.target as HTMLElement).closest("button") ||
       (e.target as HTMLElement).closest("a")
@@ -32,11 +32,15 @@ const Index = () => {
     setIsEventModalOpen(true);
   };
 
+  /**
+   * 🔥 ALIAS-FIX
+   * Falls irgendwo noch handleCardClick verwendet wird
+   */
+  const handleCardClick = handleEventCardClick;
+
   return (
     <div className="min-h-screen bg-rock-gradient">
       <Navigation />
-
-      {/* Hero */}
       <Hero />
 
       {/* Highlight Section */}
@@ -73,7 +77,7 @@ const Index = () => {
             >
               <div
                 className="bg-card rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300"
-                onClick={handleEventCardClick}
+                onClick={handleCardClick}
               >
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div>
@@ -94,8 +98,8 @@ const Index = () => {
 
                     <p className="mb-6">
                       Freut euch auf einen Abend voller Rock-Klassiker! Von Green
-                      Day bis hin zu Metallica – wir bringen die größten Hits live
-                      auf die Bühne.
+                      Day bis Metallica – wir bringen die größten Hits live auf
+                      die Bühne.
                     </p>
 
                     <Link to="/gigs">
@@ -119,83 +123,13 @@ const Index = () => {
                       Live Performance
                     </h4>
                     <p className="text-muted-foreground">
-                      Energie pur und authentische Covers eurer Lieblings-Songs
+                      Energie pur und authentische Covers
                     </p>
                   </div>
                 </div>
               </div>
             </ElectricBorder>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Quick Info Cards */}
-      <section className="py-20 bg-rock-lighter">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center group"
-            >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
-                <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
-                <p className="text-muted-foreground mb-4">
-                  Lernt die Musiker hinter den Covers kennen
-                </p>
-                <Link to="/band">
-                  <StarBorder as="div" color="hsl(var(--primary))">
-                    Mehr erfahren
-                  </StarBorder>
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-center group"
-            >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
-                <Music className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
-                <p className="text-muted-foreground mb-4">
-                  Entdeckt unsere komplette Setlist
-                </p>
-                <Link to="/repertoire">
-                  <StarBorder as="div" color="hsl(var(--primary))">
-                    Songs ansehen
-                  </StarBorder>
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center group"
-            >
-              <div className="bg-card rounded-lg p-8 border border-border shadow-rock transition-rock card-wiggle">
-                <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
-                <p className="text-muted-foreground mb-4">
-                  Bucht uns für eure Veranstaltung
-                </p>
-                <Link to="/kontakt">
-                  <StarBorder as="div" color="hsl(var(--primary))">
-                    Kontakt aufnehmen
-                  </StarBorder>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -208,7 +142,7 @@ const Index = () => {
         title="Rock in Bouch"
         date="09. Januar 2026"
         location="Mendorferbuch, Gasthaus Reis"
-        description="Freut euch auf einen Abend voller Rock-Klassiker! Von Green Day bis hin zu Metallica – wir bringen die größten Hits live auf die Bühne. Ein unvergesslicher Abend mit authentischen Covers eurer Lieblings-Songs wartet auf euch!"
+        description="Freut euch auf einen Abend voller Rock-Klassiker! Von Green Day bis hin zu Metallica – wir bringen die größten Hits live auf die Bühne."
         flyerImage="/images/gigs/rock_in_bouch.jpg"
       />
     </div>
