@@ -122,12 +122,18 @@ const Mearch = () => {
             <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6 text-split-mearch">
               Mearch
             </h1>
+            {/*
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Zeigt eure Liebe zur Band!
             </p>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Unser Merchandise ist handverlesen und in bester Qualität - perfekt für echte Rock-Fans.
             </p>
+            */}
+          <br />
+          <br />
+          <br />
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Coming soon...</p>
           </motion.div>
         </div>
       </section>
@@ -136,12 +142,16 @@ const Mearch = () => {
           <br />
           <br />
           <br />
+          <p></p>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Coming soon...</p>
+          <p></p>
           <br />
           <br />
           <br />
         </div>
       </section>
+
+      
       {/* Merchandise Grid */}
 
 {/*
