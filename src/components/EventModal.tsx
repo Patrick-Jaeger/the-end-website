@@ -26,7 +26,7 @@ const EventModal = ({
           {/* Flyer */}
           <div className="mb-6">
             <img
-              src="/images/gigs/rock_in_bouch.jpg"
+              src={flyerImage}
               alt={`Flyer für ${title}`}
               className="w-full h-auto rounded-lg shadow-lg"
             />
