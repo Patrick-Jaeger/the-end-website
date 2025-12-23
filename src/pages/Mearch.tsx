@@ -137,21 +137,7 @@ const Mearch = () => {
           </motion.div>
         </div>
       </section>
-      <section>
-        <div>
-          <br />
-          <br />
-          <br />
-          <p></p>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Coming soon...</p>
-          <p></p>
-          <br />
-          <br />
-          <br />
-        </div>
-      </section>
-
-      
+            
       {/* Merchandise Grid */}
 
 {/*
