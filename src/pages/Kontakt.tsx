@@ -30,7 +30,7 @@ const faqItems = [
   {
     id: '2',
     question: 'Welche Technik braucht ihr?',
-    answer: 'Wir bringen unsere komplette Anlage mit. Ihr braucht nur Strom (16A) und eine Bühne von mindestens 4x3 Metern, besser sind 6x6 Meter.'
+    answer: 'Wir bringen unsere komplette Anlage mit. Ihr braucht nur Strom (16A) und eine Bühne von mindestens 4x3 Metern, optimal wären 6x5 Meter.'
   },
   {
     id: '3',
@@ -219,60 +219,76 @@ const Kontakt = () => {
                       required
                     />
 
-                    <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
-                      <button 
-                        type="submit" 
-                        disabled={buttonState !== "initial"}
-                        className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
-                        <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
-                          <AnimatePresence mode="wait">
-                            {buttonState === "loading" && (
-                              <motion.div
-                                key="loading"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                              >
-                                <WaveLoader message=" senden..." />
-                              </motion.div>
-                            )}
-                            {buttonState === "success" && (
-                              <motion.div
-                                key="success"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="flex items-center"
-                              >
-                                <SuccessCheck size="sm" className="mr-2" />
-                                <span className="text-emerald-500 font-bold"> Anfrage gesendet</span>
-                              </motion.div>
-                            )}
-                            {buttonState === "initial" && (
-                              <motion.div
-                                key="initial"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="flex items-center"
-                              >
-                                <Send className="mr-2 h-5 w-5 text-primary" />
-                                <GradientText
-                                  colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
-                                  animationSpeed={6}
-                                  showBorder={false}
-                                  className="text-base font-bold"
-                                >
-                                  Rock On!
-                                </GradientText>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </button>
-                    </ClickSpark>
+<ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+  <button 
+    type="submit" 
+    disabled={buttonState !== "initial"}
+    className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70"
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
+
+    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
+      <AnimatePresence mode="wait">
+
+        {/* LOADING */}
+        {buttonState === "loading" && (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="flex items-center"
+          >
+            <WaveLoader />
+            <span className="ml-2 font-medium">senden…</span>
+          </motion.div>
+        )}
+
+        {/* SUCCESS */}
+        {buttonState === "success" && (
+          <motion.div
+            key="success"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            className="flex items-center"
+          >
+            <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15">
+              <SuccessCheck className="w-4 h-4 text-emerald-500" />
+            </div>
+
+            <span className="text-emerald-500 font-bold">
+              Anfrage gesendet
+            </span>
+          </motion.div>
+        )}
+
+        {/* INITIAL */}
+        {buttonState === "initial" && (
+          <motion.div
+            key="initial"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="flex items-center"
+          >
+            <Send className="mr-2 h-5 w-5 text-primary" />
+            <GradientText
+              colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+              animationSpeed={6}
+              showBorder={false}
+              className="text-base font-bold"
+            >
+              Rock On!
+            </GradientText>
+          </motion.div>
+        )}
+
+      </AnimatePresence>
+    </div>
+  </button>
+</ClickSpark>
+
                   </form>
                 </CardContent>
               </Card>
@@ -293,7 +309,7 @@ const Kontakt = () => {
                       Technical Requirements
                     </h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Bühnengröße optimal: 6x6 Meter und 3 Meter hoch</li>
+                      <li>• Bühnengröße optimal: 6x5 Meter und 3 Meter hoch</li>
                       <li>• Überdachung</li>
                       <li>• Stromanschluss: 16A oder 9 KW Aggregat</li>
                       <li>• Aufbauzeit: ca. 3 Stunden</li>
