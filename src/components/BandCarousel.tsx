@@ -176,7 +176,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
             {members.map((member, index) => {
               const style = getCardStyle(index);
               return (
-                <motion.div
+              <motion.div
                   key={index}
                   className="absolute left-1/2 top-1/2 w-64 h-80 sm:w-60 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] bg-card border border-border rounded-lg shadow-rock cursor-pointer"
                   style={{
@@ -188,15 +188,15 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                     duration: isDragging ? 0 : 0.5,
                     ease: "easeOut"
                   }}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => {
+                    if (Math.abs(dragOffset) < 10) {
+                      setSelectedImage(member.image);
+                    }
+                  }}
                 >
-                  <div className="h-full flex flex-col p-5">
+                  <div className="h-full flex flex-col p-5 cursor-pointer">
                     <div 
                       className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedImage(member.image);
-                      }}
                     >
                       <img 
                         src={member.image} 
@@ -204,10 +204,10 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="text-center flex-1 flex flex-col justify-start">
-                      <h3 className="font-rock text-base font-bold mb-1.5 text-foreground">{member.name}</h3>
-                      <p className="text-primary font-medium text-xs mb-2">{member.role}</p>
-                      <p className="text-muted-foreground text-xs leading-relaxed overflow-hidden line-clamp-6">{member.description}</p>
+                    <div className="text-center flex-1 flex flex-col justify-start cursor-pointer">
+                      <h3 className="font-rock text-base font-bold mb-1.5 text-foreground cursor-pointer">{member.name}</h3>
+                      <p className="text-primary font-medium text-xs mb-2 cursor-pointer">{member.role}</p>
+                      <p className="text-muted-foreground text-xs leading-relaxed overflow-hidden line-clamp-6 cursor-pointer">{member.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -252,22 +252,25 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
       {/* Mobile Stack */}
       <div className="block md:hidden space-y-6">
         {members.map((member, index) => (
-          <Card key={index} className="bg-card border-border shadow-rock transition-rock hover-rock">
-            <CardContent className="p-6">
-              <div className="flex flex-col items-center text-center">
+          <Card 
+            key={index} 
+            className="bg-card border-border shadow-rock transition-rock hover-rock cursor-pointer"
+            onClick={() => setSelectedImage(member.image)}
+          >
+            <CardContent className="p-6 cursor-pointer">
+              <div className="flex flex-col items-center text-center cursor-pointer">
                 <div 
                   className="w-24 h-24 mb-4 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
-                  onClick={() => setSelectedImage(member.image)}
                 >
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover cursor-pointer"
                   />
                 </div>
-                <h3 className="font-rock text-xl font-bold mb-2 text-foreground">{member.name}</h3>
-                <p className="text-primary font-medium text-base mb-3">{member.role}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">{member.description}</p>
+                <h3 className="font-rock text-xl font-bold mb-2 text-foreground cursor-pointer">{member.name}</h3>
+                <p className="text-primary font-medium text-base mb-3 cursor-pointer">{member.role}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed cursor-pointer">{member.description}</p>
               </div>
             </CardContent>
           </Card>
