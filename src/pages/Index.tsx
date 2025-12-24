@@ -128,6 +128,67 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Quick Links Section */}
+      <section className="py-20 bg-rock-lighter">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Die Band Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0 }}
+            >
+              <Link to="/band">
+                <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full">
+                  <Users className="h-12 w-12 text-primary mx-auto mb-4" />
+                  <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
+                  <p className="text-muted-foreground">
+                    Lerne die Gesichter hinter der Musik kennen
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Repertoire Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Link to="/repertoire">
+                <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full">
+                  <Music className="h-12 w-12 text-primary mx-auto mb-4" />
+                  <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
+                  <p className="text-muted-foreground">
+                    Entdecke unsere Song-Auswahl
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Booking Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Link to="/kontakt">
+                <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full">
+                  <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
+                  <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
+                  <p className="text-muted-foreground">
+                    Buche uns für dein Event
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
 
       {/* Event Modal */}

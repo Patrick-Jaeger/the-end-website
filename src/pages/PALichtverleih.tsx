@@ -405,8 +405,7 @@ const PALichtverleih = () => {
   </motion.div>
 )}
 
-                          )}
-{buttonState === "success" && (
+                          {buttonState === "success" && (
   <motion.div
     key="success"
     initial={{ opacity: 0, scale: 0.9 }}
