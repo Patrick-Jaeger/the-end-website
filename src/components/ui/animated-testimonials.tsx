@@ -56,7 +56,8 @@ export const AnimatedTestimonials = ({
 
   return (
     <div className={cn("max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20", className)}>
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20">
+        {/* Image Section */}
         <div>
           <div className="relative h-96 w-full">
             <AnimatePresence>
@@ -107,7 +108,25 @@ export const AnimatedTestimonials = ({
               })}
             </AnimatePresence>
           </div>
+          
+          {/* Mobile Navigation - Below Image */}
+          <div className="flex gap-4 justify-center mt-6 md:hidden">
+            <button
+              onClick={handlePrev}
+              className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center group/button"
+            >
+              <ArrowLeft className="h-6 w-6 text-foreground group-hover/button:rotate-12 transition-transform duration-300" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center group/button"
+            >
+              <ArrowRight className="h-6 w-6 text-foreground group-hover/button:-rotate-12 transition-transform duration-300" />
+            </button>
+          </div>
         </div>
+        
+        {/* Text Section */}
         <div className="flex justify-between flex-col py-4">
           <motion.div
             key={active}
@@ -160,7 +179,9 @@ export const AnimatedTestimonials = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
+          
+          {/* Desktop Navigation - Below Text */}
+          <div className="hidden md:flex gap-4 pt-12 md:pt-0">
             <button
               onClick={handlePrev}
               className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center group/button"
