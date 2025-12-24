@@ -77,7 +77,7 @@ const PALichtverleih = () => {
               Professionelle PA- und Lichttechnik für Events aller Größenordnungen. 
             </p>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Von kleinen Acoustic-Sets bis zu großen Bühnen.
+              Von kleinen Geburtstagspartys bis hin zur Hochzeitsbeleuchtung.
             </p>
           </motion.div>
         </div>
@@ -392,16 +392,19 @@ const PALichtverleih = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
                       <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
                         <AnimatePresence mode="wait">
-                          {buttonState === "loading" && (
-<motion.div
-  key="loading"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
-  className="ml-2" 
->
-  <WaveLoader message=" senden..." />
-                            </motion.div>
+                         {buttonState === "loading" && (
+  <motion.div
+    key="loading"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="flex items-center"
+  >
+    <WaveLoader />
+    <span className="ml-2 font-medium">senden…</span>
+  </motion.div>
+)}
+
                           )}
                           {buttonState === "success" && (
                             <motion.div
