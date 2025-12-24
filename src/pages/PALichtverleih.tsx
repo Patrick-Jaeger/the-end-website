@@ -406,18 +406,25 @@ const PALichtverleih = () => {
 )}
 
                           )}
-                          {buttonState === "success" && (
-                            <motion.div
-                              key="success"
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              exit={{ opacity: 0 }}
-                              className="flex items-center"
-                            >
-                              <SuccessCheck size="sm" className="mr-2" />
-                              <span className="ml-2 text-emerald-500 font-bold">Anfrage gesendet</span>
-                            </motion.div>
-                          )}
+{buttonState === "success" && (
+  <motion.div
+    key="success"
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0 }}
+    className="flex items-center"
+  >
+    {/* Success Icon mit Kreis */}
+    <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15">
+      <SuccessCheck className="w-4 h-4 text-emerald-500" />
+    </div>
+
+    <span className="text-emerald-500 font-bold">
+      Anfrage gesendet
+    </span>
+  </motion.div>
+)}
+
                           {buttonState === "initial" && (
                             <motion.div
                               key="initial"
