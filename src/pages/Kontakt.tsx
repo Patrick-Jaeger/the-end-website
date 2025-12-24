@@ -30,7 +30,7 @@ const faqItems = [
   {
     id: '2',
     question: 'Welche Technik braucht ihr?',
-    answer: 'Wir bringen unsere komplette Anlage mit. Ihr braucht nur Strom (16A) und eine Bühne von mindestens 4x3 Metern, optimal wären 6x5 Meter.'
+    answer: 'Wir bringen unsere komplette Anlage mit. Ihr braucht nur Strom (16A) und Platz von mindestens 4x3 Metern, optimal wären 6x5 Meter.'
   },
   {
     id: '3',
