@@ -139,15 +139,20 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0 }}
             >
-              <Link to="/band">
-                <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full">
-                  <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
-                  <p className="text-muted-foreground">
-                    Lerne die Gesichter hinter der Musik kennen
-                  </p>
-                </div>
-              </Link>
+              <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full flex flex-col">
+                <Users className="h-12 w-12 text-primary mx-auto mb-4" />
+                <h3 className="font-rock text-xl font-bold mb-2">Die Band</h3>
+                <p className="text-muted-foreground mb-6">
+                  Lerne die Gesichter hinter der Musik kennen
+                </p>
+                <Link to="/band" className="mt-auto">
+                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                    <StarBorder as="div" color="hsl(var(--primary))">
+                      Mehr erfahren
+                    </StarBorder>
+                  </ClickSpark>
+                </Link>
+              </div>
             </motion.div>
 
             {/* Repertoire Card */}
@@ -157,15 +162,20 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <Link to="/repertoire">
-                <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full">
-                  <Music className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
-                  <p className="text-muted-foreground">
-                    Entdecke unsere Song-Auswahl
-                  </p>
-                </div>
-              </Link>
+              <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full flex flex-col">
+                <Music className="h-12 w-12 text-primary mx-auto mb-4" />
+                <h3 className="font-rock text-xl font-bold mb-2">Repertoire</h3>
+                <p className="text-muted-foreground mb-6">
+                  Entdecke unsere Song-Auswahl
+                </p>
+                <Link to="/repertoire" className="mt-auto">
+                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                    <StarBorder as="div" color="hsl(var(--primary))">
+                      Songs entdecken
+                    </StarBorder>
+                  </ClickSpark>
+                </Link>
+              </div>
             </motion.div>
 
             {/* Booking Card */}
@@ -175,15 +185,20 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Link to="/kontakt">
-                <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full">
-                  <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
-                  <p className="text-muted-foreground">
-                    Buche uns für dein Event
-                  </p>
-                </div>
-              </Link>
+              <div className="card-wiggle bg-card rounded-lg p-8 text-center hover:shadow-glow hover:animate-glow transition-all duration-300 h-full flex flex-col">
+                <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
+                <h3 className="font-rock text-xl font-bold mb-2">Booking</h3>
+                <p className="text-muted-foreground mb-6">
+                  Buche uns für dein Event
+                </p>
+                <Link to="/kontakt" className="mt-auto">
+                  <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                    <StarBorder as="div" color="hsl(var(--primary))">
+                      Jetzt anfragen
+                    </StarBorder>
+                  </ClickSpark>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
