@@ -178,7 +178,7 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
               return (
               <motion.div
                   key={index}
-                  className="absolute left-1/2 top-1/2 w-64 h-80 sm:w-60 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] bg-card border border-border rounded-lg shadow-rock cursor-pointer"
+                  className={`absolute left-1/2 top-1/2 w-64 h-80 sm:w-60 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] bg-card border border-border rounded-lg shadow-rock ${index === currentIndex ? 'cursor-pointer' : 'cursor-pointer'}`}
                   style={{
                     transform: `translate(-50%, -50%) ${style.transform}`,
                     zIndex: style.zIndex,
@@ -190,13 +190,17 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                   }}
                   onClick={() => {
                     if (Math.abs(dragOffset) < 10) {
-                      setSelectedImage(member.image);
+                      if (index === currentIndex) {
+                        setSelectedImage(member.image);
+                      } else {
+                        setCurrentIndex(index);
+                      }
                     }
                   }}
                 >
-                  <div className="h-full flex flex-col p-5 cursor-pointer">
+                  <div className={`h-full flex flex-col p-5 ${index === currentIndex ? 'cursor-pointer' : 'cursor-pointer'}`}>
                     <div 
-                      className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
+                      className={`w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-secondary flex-shrink-0 ${index === currentIndex ? 'cursor-pointer hover:ring-2 hover:ring-primary' : 'cursor-pointer'} transition-all`}
                     >
                       <img 
                         src={member.image} 
