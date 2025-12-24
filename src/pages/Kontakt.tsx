@@ -76,7 +76,7 @@ const Kontakt = () => {
       setButtonState("success");
       toast({
         title: "Nachricht gesendet!",
-        description: "Wir melden uns in Kürze bei euch zurück.",
+        description: "Wir melden uns in Kürze bei Dir.",
       });
       
       setTimeout(() => {
@@ -169,11 +169,11 @@ const Kontakt = () => {
                     />
 
                     <Input
-                      label="Betreff (z.B. Booking-Anfrage, Allgemeine Frage, ...)"
+                      label="Betreff"
                       id="subject"
                       value={formData.subject}
                       onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                      placeholder="z.B. Booking-Anfrage, Allgemeine Frage..."
+                      placeholder="z.B. Booking-Anfrage, Allgemeine Frage, ..."
                       className="bg-background border-border"
                     />
 
@@ -209,7 +209,7 @@ const Kontakt = () => {
                     </div>
 
                     <Textarea
-                      label="Nachricht (Erzählt uns von eurer Veranstaltung...)"
+                      label="Nachricht"
                       id="message"
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
