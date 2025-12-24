@@ -88,7 +88,7 @@ const Mearch = () => {
       setButtonState("success");
       toast({
         title: "Bestellung gesendet!",
-        description: "Wir melden uns in Kürze bei euch mit den Details.",
+        description: "Wir melden uns in Kürze bei Dir mit den Details.",
       });
       
       setTimeout(() => {
@@ -278,11 +278,11 @@ const Mearch = () => {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <Input
-                      label="Größe (z.B. S, M, L, XL, usw.)"
+                      label="Größe"
                       id="size"
                       value={formData.size}
                       onChange={(e) => setFormData({...formData, size: e.target.value})}
-                      placeholder="z.B. L, XL oder One Size"
+                      placeholder="z.B. S, M, L, XL, One Size, usw."
                       className="bg-background border-border"
                     />
                     <div>
@@ -302,7 +302,7 @@ const Mearch = () => {
                   </div>
                   <p>  Bei mehreren Produkten einfach alles in das Nachrichtenfeld schreiben.</p>
                   <Textarea
-                    label="Nachricht (z.B. zusätzliche Wünsche oder Anmerkungen)"
+                    label="Nachricht"
                     id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
