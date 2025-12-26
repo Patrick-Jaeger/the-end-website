@@ -79,7 +79,7 @@ const Index = () => {
                     <div className="flex items-center space-x-2 text-primary mb-4">
                       <Calendar className="h-5 w-5" />
                       <span className="font-rock font-semibold">
-                        09. Januar 2026
+                        16. Januar 2026
                       </span>
                     </div>
 
@@ -92,9 +92,8 @@ const Index = () => {
                     </p>
 
                     <p className="mb-6">
-                      Freut euch auf einen Abend voller Rock-Klassiker! Von Green
-                      Day bis Metallica – wir bringen die größten Hits live auf
-                      die Bühne.
+                      Freut euch auf einen Abend voller Rock-Klassiker!
+                      Mit unseren Freunden von Mary Eg.
                     </p>
 
                     <Link to="/gigs">
@@ -211,9 +210,9 @@ const Index = () => {
         isOpen={isEventModalOpen}
         onClose={() => setIsEventModalOpen(false)}
         title="Rock in Bouch"
-        date="09. Januar 2026"
+        date="16. Januar 2026"
         location="Mendorferbuch, Gasthaus Reis"
-        description="Freut euch auf einen Abend voller Rock-Klassiker! Von Green Day bis hin zu Metallica – wir bringen die größten Hits live auf die Bühne."
+        description="Freut euch auf einen Abend voller Rock-Klassiker! Mit unseren Freunden von Mary Eg."
         flyerImage="/images/gigs/rock_in_bouch.jpg"
       />
     </div>
