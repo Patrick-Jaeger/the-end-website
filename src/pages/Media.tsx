@@ -126,42 +126,37 @@ const Media = () => {
       </section>
 
       {/* Photo Gallery */}
-      <section className="py-20 bg-rock-lighter">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
-              Photo Gallery
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Impressionen von der Bühne und hinter den Kulissen
-            </p>
-          </div>
+<section className="py-20 bg-rock-lighter">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
+        Photo Gallery
+      </h2>
+      <p className="text-lg text-muted-foreground">
+        Impressionen von der Bühne und hinter den Kulissen
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {photos.map((photo, index) => (
-              <motion.div
-                key={photo.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <DirectionAwareHover
-                  imageUrl={photo.imageUrl}
-                  className="parallax-media card-wiggle"
-                  onClick={() => handleImageClick(index)}
-                  disableModal
-                >
-                  <div className="bg-black/50 px-3 py-1 rounded text-sm mb-2 inline-block">
-                    {photo.category}
-                  </div>
-                  <h3 className="font-rock text-lg font-bold">{photo.title}</h3>
-                </DirectionAwareHover>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {photos.map((photo, index) => (
+        <motion.div key={photo.id}>
+          <DirectionAwareHover
+            imageUrl={photo.imageUrl}
+            className="parallax-media card-wiggle"
+            onClick={() => handleImageClick(index)}
+            disableModal
+          >
+            <div className="bg-black/50 px-3 py-1 rounded text-sm mb-2 inline-block">
+              {photo.category}
+            </div>
+            <h3 className="font-rock text-lg font-bold">{photo.title}</h3>
+          </DirectionAwareHover>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Video Section */}
       <section className="py-20 bg-rock-lighter">
