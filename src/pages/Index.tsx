@@ -220,15 +220,22 @@ const Index = () => {
       <Footer />
 
       {/* Event Modal */}
-      <EventModal
-        isOpen={isEventModalOpen}
-        onClose={() => setIsEventModalOpen(false)}
-        title="Rock in Bouch"
-        date="16. Januar 2026"
-        location="Mendorferbuch, Gasthaus Reis"
-        description="Freut euch auf einen Abend voller Rock-Klassiker! <br><br> Mit unseren Freunden von Mary Eg."
-        flyerImage="/images/gigs/rock_in_bouch.jpg"
-      />
+<EventModal
+  isOpen={isEventModalOpen}
+  onClose={() => setIsEventModalOpen(false)}
+  title="Rock in Bouch"
+  date="16. Januar 2026"
+  location="Mendorferbuch, Gasthaus Reis"
+  description={
+    <>
+      Freut euch auf einen Abend voller Rock-Klassiker!
+      <br /><br />
+      Mit unseren Freunden von Mary Eg.
+    </>
+  }
+  flyerImage="/images/gigs/rock_in_bouch.jpg"
+/>
+
     </div>
   );
 };
