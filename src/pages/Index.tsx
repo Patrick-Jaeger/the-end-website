@@ -93,6 +93,7 @@ const Index = () => {
 
                     <p className="mb-6">
                       Freut euch auf einen Abend voller Rock-Klassiker!
+                      <br></br>
                       Mit unseren Freunden von Mary Eg.
                     </p>
 
