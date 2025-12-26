@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { NeonQrButton } from "@/components/ui/neon-qr-button";
+
 const Footer = () => {
   return (
     <footer className="bg-rock-dark border-t border-border">
@@ -11,9 +12,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img src={logo} alt="Rock Band Logo" className="h-12 w-auto" />
-              <span className="font-rock text-2xl font-bold text-glow">
-                
-              </span>
+              <span className="font-rock text-2xl font-bold text-glow"></span>
             </div>
             <p className="text-muted-foreground max-w-md">
               Punk, Rock & Metal Cover Band aus der Region.
@@ -22,51 +21,39 @@ const Footer = () => {
               Wir bringen die größten Hits live auf die Bühne – 
               von Rock bis klassischem Metal.
             </p>
-            
+
             {/* Social Media */}
-<div className="flex space-x-4">
-  <a
-    href="https://www.instagram.com/Die_Band_The_End"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="
-      p-2 rounded-full bg-secondary
-      hover:bg-primary transition-rock hover-rock
-      cursor-pointer
-    "
-  >
-    <Instagram className="h-5 w-5 cursor-pointer" />
-  </a>
+            <div className="flex space-x-4">
+              <a
+                href="https://www.instagram.com/Die_Band_The_End"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock cursor-pointer"
+              >
+                <Instagram className="h-5 w-5 pointer-events-none" />
+              </a>
 
-  <a
-    href="https://www.facebook.com/profile.php?id=100063827957058"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="
-      p-2 rounded-full bg-secondary
-      hover:bg-primary transition-rock hover-rock
-      cursor-pointer
-    "
-  >
-    <Facebook className="h-5 w-5 cursor-pointer" />
-  </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=100063827957058"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock cursor-pointer"
+              >
+                <Facebook className="h-5 w-5 pointer-events-none" />
+              </a>
 
-  <a
-    href="https://youtube.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="
-      p-2 rounded-full bg-secondary
-      hover:bg-primary transition-rock hover-rock
-      cursor-pointer
-    "
-  >
-    <Youtube className="h-5 w-5 cursor-pointer" />
-  </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock cursor-pointer"
+              >
+                <Youtube className="h-5 w-5 pointer-events-none" />
+              </a>
 
-  <NeonQrButton />
-</div>
-
+              {/* QR-Code Button */}
+              <NeonQrButton />
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -126,7 +113,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/mearch" 
+                  to="/merch" 
                   className="hover:text-primary transition-rock"
                 >
                   Merchandise
