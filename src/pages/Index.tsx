@@ -112,15 +112,16 @@ const Index = () => {
                     </Link>
                   </div>
 
-                  <div className="bg-secondary rounded-lg p-6 text-center">
-                    <Music className="h-16 w-16 text-primary mx-auto mb-4" />
-                    <h4 className="font-rock text-xl font-bold mb-2">
-                      Live Performance
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Energie pur und authentische Covers
-                    </p>
-                  </div>
+<div className="bg-secondary rounded-lg p-6 text-center cursor-pointer select-none">
+  <Music className="h-16 w-16 text-primary mx-auto mb-4" />
+  <h4 className="font-rock text-xl font-bold mb-2">
+    Live Performance
+  </h4>
+  <p className="text-muted-foreground">
+    Energie pur und authentische Covers
+  </p>
+</div>
+
                 </div>
               </div>
             </ElectricBorder>
