@@ -24,33 +24,49 @@ const Footer = () => {
             </p>
             
             {/* Social Media */}
-            <div className="flex space-x-4">
-              <a 
-                href="https://www.instagram.com/Die_Band_The_End" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://www.facebook.com/profile.php?id=100063827957058" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://youtube.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-              <NeonQrButton />
-            </div>
+<div className="flex space-x-4">
+  <a
+    href="https://www.instagram.com/Die_Band_The_End"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      p-2 rounded-full bg-secondary
+      hover:bg-primary transition-rock hover-rock
+      cursor-pointer
+    "
+  >
+    <Instagram className="h-5 w-5 cursor-pointer" />
+  </a>
+
+  <a
+    href="https://www.facebook.com/profile.php?id=100063827957058"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      p-2 rounded-full bg-secondary
+      hover:bg-primary transition-rock hover-rock
+      cursor-pointer
+    "
+  >
+    <Facebook className="h-5 w-5 cursor-pointer" />
+  </a>
+
+  <a
+    href="https://youtube.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      p-2 rounded-full bg-secondary
+      hover:bg-primary transition-rock hover-rock
+      cursor-pointer
+    "
+  >
+    <Youtube className="h-5 w-5 cursor-pointer" />
+  </a>
+
+  <NeonQrButton />
+</div>
+
           </div>
 
           {/* Quick Links */}
