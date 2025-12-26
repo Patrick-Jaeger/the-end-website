@@ -53,8 +53,8 @@ const Gigs = () => {
       title: "Rock in Bouch",
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "20:00 Uhr",
-      description: "Ein Abend voller Rock-Klassiker in uriger Atmosphäre.",
-      flyerImage: "/images/gigs/rock_in_bouch.jpg", // ✅ Bild hinzugefügt
+      description: "Ein Abend voller Rock-Klassiker in uriger Atmosphäre. Mit unseren Freunden von Mary Eg.",
+      flyerImage: "/images/gigs/rock_in_bouch.jpg", // 
     },
     {
       date: "25. April 2026",
@@ -62,7 +62,7 @@ const Gigs = () => {
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "21:00 Uhr",
       description: "Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits.",
-      flyerImage: "/images/gigs/rock-im-stodl.jpg", // optional
+      flyerImage: "/images/gigs/rock-im-stodl.jpg", 
     },
   ];
 
