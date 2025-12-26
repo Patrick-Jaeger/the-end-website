@@ -98,7 +98,7 @@ const Index = () => {
           </p>
 
           <p className="mb-6 cursor-pointer">
-            Freut euch auf einen Abend voller Rock-Klassiker!
+            Ein Abend voller Rock-Klassiker in uriger Atmosphäre.
             <br />
             Mit unseren Freunden von Mary Eg.
           </p>
@@ -228,8 +228,8 @@ const Index = () => {
   location="Mendorferbuch, Gasthaus Reis"
   description={
     <>
-      Freut euch auf einen Abend voller Rock-Klassiker!
-      <br /><br />
+      Ein Abend voller Rock-Klassiker in uriger Atmosphäre.
+      <br />
       Mit unseren Freunden von Mary Eg.
     </>
   }
