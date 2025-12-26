@@ -56,76 +56,88 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-4xl mx-auto"
-          >
-            <ElectricBorder
-              color="#4079ff"
-              speed={1}
-              chaos={0.5}
-              thickness={2}
-              style={{ borderRadius: 16 }}
+<motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="max-w-4xl mx-auto cursor-pointer"
+>
+  <ElectricBorder
+    color="#4079ff"
+    speed={1}
+    chaos={0.5}
+    thickness={2}
+    style={{ borderRadius: 16, cursor: "pointer" }}
+  >
+    <div
+      onClick={handleEventCardClick}
+      className="
+        bg-card rounded-lg p-8
+        cursor-pointer select-none
+        hover:shadow-glow hover:animate-glow
+        transition-all duration-300
+      "
+    >
+      <div className="grid md:grid-cols-2 gap-8 items-center cursor-pointer">
+        {/* LINKER BEREICH */}
+        <div className="cursor-pointer">
+          <div className="flex items-center space-x-2 text-primary mb-4 cursor-pointer">
+            <Calendar className="h-5 w-5 cursor-pointer" />
+            <span className="font-rock font-semibold cursor-pointer">
+              16. Januar 2026
+            </span>
+          </div>
+
+          <h3 className="font-rock text-2xl font-bold mb-2 cursor-pointer">
+            Rock in Bouch
+          </h3>
+
+          <p className="text-muted-foreground mb-4 cursor-pointer">
+            Mendorferbuch, Gasthaus Reis
+          </p>
+
+          <p className="mb-6 cursor-pointer">
+            Freut euch auf einen Abend voller Rock-Klassiker!
+            <br />
+            Mit unseren Freunden von Mary Eg.
+          </p>
+
+          {/* LINK – Cursor bleibt Hand */}
+          <Link to="/gigs" className="inline-block cursor-pointer">
+            <ClickSpark
+              sparkColor="#4079ff"
+              sparkSize={12}
+              sparkRadius={25}
+              sparkCount={10}
+              duration={500}
             >
-              <div
-                className="bg-card rounded-lg p-8 cursor-pointer hover:shadow-glow hover:animate-glow transition-all duration-300"
-                onClick={handleEventCardClick}
+              <StarBorder
+                as="div"
+                color="hsl(var(--primary))"
+                className="cursor-pointer"
               >
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <div className="flex items-center space-x-2 text-primary mb-4">
-                      <Calendar className="h-5 w-5" />
-                      <span className="font-rock font-semibold">
-                        16. Januar 2026
-                      </span>
-                    </div>
+                Alle Termine anzeigen
+              </StarBorder>
+            </ClickSpark>
+          </Link>
+        </div>
 
-                    <h3 className="font-rock text-2xl font-bold mb-2">
-                      Rock in Bouch
-                    </h3>
+        {/* RECHTER BEREICH */}
+        <div className="bg-secondary rounded-lg p-6 text-center cursor-pointer select-none">
+          <Music className="h-16 w-16 text-primary mx-auto mb-4 cursor-pointer" />
+          <h4 className="font-rock text-xl font-bold mb-2 cursor-pointer">
+            Live Performance
+          </h4>
+          <p className="text-muted-foreground cursor-pointer">
+            Energie pur und authentische Covers
+          </p>
+        </div>
+      </div>
+    </div>
+  </ElectricBorder>
+</motion.div>
 
-                    <p className="text-muted-foreground mb-4">
-                      Mendorferbuch, Gasthaus Reis
-                    </p>
-
-                    <p className="mb-6">
-                      Freut euch auf einen Abend voller Rock-Klassiker!
-                      <br></br>
-                      Mit unseren Freunden von Mary Eg.
-                    </p>
-
-                    <Link to="/gigs">
-                      <ClickSpark
-                        sparkColor="#4079ff"
-                        sparkSize={12}
-                        sparkRadius={25}
-                        sparkCount={10}
-                        duration={500}
-                      >
-                        <StarBorder as="div" color="hsl(var(--primary))">
-                          Alle Termine anzeigen
-                        </StarBorder>
-                      </ClickSpark>
-                    </Link>
-                  </div>
-
-<div className="bg-secondary rounded-lg p-6 text-center cursor-pointer select-none">
-  <Music className="h-16 w-16 text-primary mx-auto mb-4" />
-  <h4 className="font-rock text-xl font-bold mb-2">
-    Live Performance
-  </h4>
-  <p className="text-muted-foreground">
-    Energie pur und authentische Covers
-  </p>
-</div>
-
-                </div>
-              </div>
-            </ElectricBorder>
-          </motion.div>
         </div>
       </section>
 
