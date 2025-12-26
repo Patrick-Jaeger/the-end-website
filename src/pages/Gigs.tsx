@@ -131,55 +131,76 @@ const Gigs = () => {
             </p>
           </motion.div>
 
-          <div className="space-y-8 max-w-4xl mx-auto">
-            {upcomingGigs.map((gig, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card
-                  className="bg-card border-border shadow-rock transition-rock hover-rock cursor-pointer"
-                  onClick={() => handleEventClick(gig)}
-                >
-                  <CardContent className="p-8">
-                    <div className="grid md:grid-cols-3 gap-6 items-center">
-                      <div className="md:col-span-2">
-                        <div className="flex items-center space-x-2 text-primary mb-3">
-                          <Calendar className="h-5 w-5" />
-                          <span className="font-rock font-bold text-lg">{gig.date}</span>
-                        </div>
+<div className="space-y-8 max-w-4xl mx-auto cursor-pointer">
+  {upcomingGigs.map((gig, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="cursor-pointer"
+    >
+      <Card
+        onClick={() => handleEventClick(gig)}
+        className="
+          bg-card border-border shadow-rock
+          transition-rock hover-rock
+          cursor-pointer select-none
+        "
+      >
+        <CardContent className="p-8 cursor-pointer">
+          <div className="grid md:grid-cols-3 gap-6 items-center cursor-pointer">
+            {/* LINKER BEREICH */}
+            <div className="md:col-span-2 cursor-pointer">
+              <div className="flex items-center space-x-2 text-primary mb-3 cursor-pointer">
+                <Calendar className="h-5 w-5 cursor-pointer" />
+                <span className="font-rock font-bold text-lg cursor-pointer">
+                  {gig.date}
+                </span>
+              </div>
 
-                        <h3 className="font-rock text-2xl font-bold mb-2">{gig.title}</h3>
+              <h3 className="font-rock text-2xl font-bold mb-2 cursor-pointer">
+                {gig.title}
+              </h3>
 
-                        <div className="flex items-center space-x-2 text-muted-foreground mb-2">
-                          <MapPin className="h-4 w-4" />
-                          <span>{gig.venue}</span>
-                        </div>
+              <div className="flex items-center space-x-2 text-muted-foreground mb-2 cursor-pointer">
+                <MapPin className="h-4 w-4 cursor-pointer" />
+                <span className="cursor-pointer">{gig.venue}</span>
+              </div>
 
-                        <div className="flex items-center space-x-2 text-muted-foreground mb-4">
-                          <Clock className="h-4 w-4" />
-                          <span>{gig.time}</span>
-                        </div>
+              <div className="flex items-center space-x-2 text-muted-foreground mb-4 cursor-pointer">
+                <Clock className="h-4 w-4 cursor-pointer" />
+                <span className="cursor-pointer">{gig.time}</span>
+              </div>
 
-                        <p className="text-muted-foreground">{gig.description}</p>
-                      </div>
+              <p className="text-muted-foreground cursor-pointer">
+                {gig.description}
+              </p>
+            </div>
 
-                      <div className="text-center">
-                        <div className="bg-primary/10 rounded-lg p-6 border border-primary/20">
-                          <Users className="h-12 w-12 text-primary mx-auto mb-3" />
-                          <p className="font-rock font-semibold text-primary">Live Performance</p>
-                          <p className="text-sm text-muted-foreground mt-2">Freier Eintritt</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            {/* RECHTER INFO-BLOCK */}
+            <div className="text-center cursor-pointer">
+              <div className="
+                bg-primary/10 rounded-lg p-6
+                border border-primary/20
+                cursor-pointer
+              ">
+                <Users className="h-12 w-12 text-primary mx-auto mb-3 cursor-pointer" />
+                <p className="font-rock font-semibold text-primary cursor-pointer">
+                  Live Performance
+                </p>
+                <p className="text-sm text-muted-foreground mt-2 cursor-pointer">
+                  Freier Eintritt
+                </p>
+              </div>
+            </div>
           </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  ))}
+</div>
         </div>
       </section>
 
