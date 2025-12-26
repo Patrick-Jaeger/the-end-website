@@ -6,7 +6,7 @@ const NeonQrButton = () => {
 
   return (
     <div
-      className="relative inline-block"
+      className="relative inline-block cursor-pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -19,11 +19,10 @@ const NeonQrButton = () => {
           transition-rock hover-rock
           flex items-center justify-center
           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
-          cursor-pointer
-          select-none
+          cursor-pointer select-none
         "
       >
-        <QrCode className="h-5 w-5" strokeWidth={2} />
+        <QrCode className="h-5 w-5 pointer-events-none" strokeWidth={2} />
       </button>
 
       {/* QR Code popover */}
