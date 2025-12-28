@@ -1,89 +1,99 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextPlugin } from "gsap/TextPlugin";
 
-// Register GSAP plugins
+// GSAP Plugins registrieren (einmalig)
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
+/**
+ * Basis-Hook für GSAP in einer SPA
+ * - KEIN ScrollTrigger.refresh()
+ * - KEIN globales killAll()
+ */
 export const useGSAP = () => {
-  const isInitialized = useRef(false);
+  const initialized = useRef(false);
 
   useEffect(() => {
-    if (!isInitialized.current) {
-      // Initialize GSAP ScrollTrigger
-      ScrollTrigger.refresh();
-      isInitialized.current = true;
-    }
+    if (!initialized.current) {
+      ScrollTrigger.config({
+        ignoreMobileResize: true
+      });
 
-    return () => {
-      // Cleanup on unmount
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+      initialized.current = true;
+    }
   }, []);
 
-  return {
-    gsap,
-    ScrollTrigger,
-    TextPlugin
-  };
+  return { gsap, ScrollTrigger, TextPlugin };
 };
 
-// Custom hook for scroll-triggered animations
-export const useScrollAnimation = (selector: string, animation: object, trigger?: object) => {
-  const { gsap, ScrollTrigger } = useGSAP();
+/**
+ * Scroll-basierte Fade/Move Animation
+ */
+export const useScrollAnimation = (
+  selector: string,
+  animation: gsap.TweenVars = {},
+  triggerOptions: ScrollTrigger.Vars = {}
+) => {
+  const { gsap } = useGSAP();
+  const triggers = useRef<ScrollTrigger[]>([]);
 
   useEffect(() => {
     const elements = document.querySelectorAll(selector);
-    
-    if (elements.length > 0) {
-      elements.forEach(element => {
-        gsap.fromTo(element, 
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play none none reverse",
-              ...trigger
-            },
-            ...animation
+
+    elements.forEach(el => {
+      const tween = gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          ...animation,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            ...triggerOptions
           }
-        );
-      });
-    }
+        }
+      );
+
+      if (tween.scrollTrigger) {
+        triggers.current.push(tween.scrollTrigger);
+      }
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      triggers.current.forEach(t => t.kill());
+      triggers.current = [];
     };
-  }, [selector, animation, trigger, gsap, ScrollTrigger]);
+  }, [selector]);
 };
 
-// Custom hook for text split animations
-export const useTextSplit = (selector: string, delay: number = 0) => {
+/**
+ * Text-Split Animation (Hash-sicher)
+ */
+export const useTextSplit = (selector: string, delay = 0) => {
   const { gsap } = useGSAP();
+  const { hash } = useLocation();
+  const triggers = useRef<ScrollTrigger[]>([]);
 
   useEffect(() => {
+    // ⛔ Keine Text-Manipulation bei Hash-Navigation
+    if (hash) return;
+
     const elements = document.querySelectorAll(selector);
-    
-    elements.forEach(element => {
-      const text = element.textContent || '';
-      const chars = text.split('').map(char => 
-        char === ' ' ? '&nbsp;' : char
-      );
-      
-      element.innerHTML = chars
-        .map(char => `<span class="char">${char}</span>`)
-        .join('');
-      
-      const charElements = element.querySelectorAll('.char');
-      
-      gsap.fromTo(charElements, 
+
+    elements.forEach(el => {
+      const text = el.textContent || "";
+      const chars = text.split("").map(c => (c === " " ? "&nbsp;" : c));
+
+      el.innerHTML = chars.map(c => `<span class="char">${c}</span>`).join("");
+
+      const tween = gsap.fromTo(
+        el.querySelectorAll(".char"),
         { opacity: 0, y: 30, rotationX: 45 },
         {
           opacity: 1,
@@ -94,119 +104,120 @@ export const useTextSplit = (selector: string, delay: number = 0) => {
           delay,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: element,
+            trigger: el,
             start: "top 85%",
             toggleActions: "play none none none"
           }
         }
       );
+
+      if (tween.scrollTrigger) {
+        triggers.current.push(tween.scrollTrigger);
+      }
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      triggers.current.forEach(t => t.kill());
+      triggers.current = [];
     };
-  }, [selector, delay, gsap]);
+  }, [selector, delay, gsap, hash]);
 };
 
-// Custom hook for parallax effects
-export const useParallax = (selector: string, speed: number = 0.5) => {
-  const { gsap, ScrollTrigger } = useGSAP();
+/**
+ * Parallax Effekt
+ */
+export const useParallax = (selector: string, speed = 0.5) => {
+  const { gsap } = useGSAP();
+  const triggers = useRef<ScrollTrigger[]>([]);
 
   useEffect(() => {
     const elements = document.querySelectorAll(selector);
-    
-    elements.forEach(element => {
-      gsap.to(element, {
+
+    elements.forEach(el => {
+      const tween = gsap.to(el, {
         yPercent: -50 * speed,
         ease: "none",
         scrollTrigger: {
-          trigger: element,
+          trigger: el,
           start: "top bottom",
           end: "bottom top",
           scrub: true
         }
       });
+
+      if (tween.scrollTrigger) {
+        triggers.current.push(tween.scrollTrigger);
+      }
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      triggers.current.forEach(t => t.kill());
+      triggers.current = [];
     };
-  }, [selector, speed, gsap, ScrollTrigger]);
+  }, [selector, speed, gsap]);
 };
 
-// Custom hook for hover effects
-export const useHoverEffect = (selector: string, hoverAnimation: object, leaveAnimation: object) => {
+/**
+ * Hover Animation
+ */
+export const useHoverEffect = (
+  selector: string,
+  hoverAnimation: gsap.TweenVars,
+  leaveAnimation: gsap.TweenVars
+) => {
   const { gsap } = useGSAP();
 
   useEffect(() => {
     const elements = document.querySelectorAll(selector);
-    
-    elements.forEach(element => {
-      const handleMouseEnter = () => {
-        gsap.to(element, {
-          duration: 0.3,
-          ease: "power2.out",
-          ...hoverAnimation
-        });
-      };
 
-      const handleMouseLeave = () => {
-        gsap.to(element, {
-          duration: 0.3,
-          ease: "power2.out",
-          ...leaveAnimation
-        });
-      };
+    elements.forEach(el => {
+      const enter = () => gsap.to(el, { duration: 0.3, ...hoverAnimation });
+      const leave = () => gsap.to(el, { duration: 0.3, ...leaveAnimation });
 
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
+      el.addEventListener("mouseenter", enter);
+      el.addEventListener("mouseleave", leave);
 
       return () => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
+        el.removeEventListener("mouseenter", enter);
+        el.removeEventListener("mouseleave", leave);
       };
     });
   }, [selector, hoverAnimation, leaveAnimation, gsap]);
 };
 
-// Custom hook for card wiggle effect
+/**
+ * Card Wiggle Effekt
+ */
 export const useCardWiggle = (selector: string) => {
   const { gsap } = useGSAP();
 
   useEffect(() => {
     const elements = document.querySelectorAll(selector);
-    
-    elements.forEach(element => {
-      // Entfernt: Scroll-Animation beim Sichtbarwerden
 
-      // Hover-Effekt
-      const handleMouseEnter = () => {
-        gsap.to(element, {
+    elements.forEach(el => {
+      const enter = () =>
+        gsap.to(el, {
           duration: 0.3,
           rotation: 2,
           scale: 1.05,
           ease: "power2.out"
         });
-      };
 
-      const handleMouseLeave = () => {
-        gsap.to(element, {
+      const leave = () =>
+        gsap.to(el, {
           duration: 0.3,
           rotation: 0,
           scale: 1,
           ease: "power2.out"
         });
-      };
 
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
+      el.addEventListener("mouseenter", enter);
+      el.addEventListener("mouseleave", leave);
 
       return () => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
+        el.removeEventListener("mouseenter", enter);
+        el.removeEventListener("mouseleave", leave);
       };
     });
-
-    // Kein ScrollTrigger-Cleanup mehr notwendig
   }, [selector, gsap]);
 };
