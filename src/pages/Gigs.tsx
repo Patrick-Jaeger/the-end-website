@@ -54,7 +54,7 @@ const Gigs = () => {
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "20:00 Uhr",
       description: [
-  "Ein Abend voller Rock-Klassiker in uriger Atmosphäre.",
+  "Ein Abend voller Rock-Klassiker in uriger Atmosphäre. ",
   "Mit unseren Freunden von Mary Eg."
 ],
       flyerImage: "/images/gigs/rock_in_bouch.jpg", // 
@@ -66,6 +66,14 @@ const Gigs = () => {
       time: "21:00 Uhr",
       description: "Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits.",
       flyerImage: "/images/gigs/rock-im-stodl.jpg", 
+    },
+        {
+      date: "24. Mai 2026",
+      title: "Sandlochfest",
+      venue: "Ehenfeld",
+      time: "21:00 Uhr",
+      description: "Abrissparty in idyllischer Umgebung.",
+      flyerImage: "/images/gigs/", 
     },
   ];
 
