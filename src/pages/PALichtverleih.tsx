@@ -390,7 +390,7 @@ const PALichtverleih = () => {
     className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70 cursor-pointer select-none"
   >
     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
-    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px] cursor-pointer">
+    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
       <AnimatePresence mode="wait">
 
         {buttonState === "loading" && (
@@ -415,7 +415,7 @@ const PALichtverleih = () => {
             className="flex items-center"
           >
             <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15">
-              <SuccessCheck className="w-4 h-4 text-emerald-500 pointer-events-none" />
+              <SuccessCheck className="w-4 h-4 text-emerald-500" />
             </div>
             <span className="text-emerald-500 font-bold">
               Anfrage gesendet
@@ -431,12 +431,12 @@ const PALichtverleih = () => {
             exit={{ opacity: 0 }}
             className="flex items-center"
           >
-            <Send className="mr-2 h-5 w-5 text-primary pointer-events-none" />
+            <Send className="mr-2 h-5 w-5 text-primary" />
             <GradientText
               colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
               animationSpeed={6}
               showBorder={false}
-              className="text-base font-bold pointer-events-none"
+              className="text-base font-bold"
             >
               Anfrage senden
             </GradientText>
