@@ -223,84 +223,65 @@ const Kontakt = () => {
   <button 
     type="submit" 
     disabled={buttonState !== "initial"}
-    className="
-      relative rounded-full border-2 border-primary
-      p-[2px] w-full overflow-hidden
-      disabled:opacity-70
-      cursor-pointer select-none
-    "
+    className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70 cursor-pointer select-none"
   >
-
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
-
-    <div className="
-  relative bg-background rounded-full
-  px-6 py-3 flex items-center justify-center
-  hover:bg-primary/5 transition-colors
-  min-h-[52px]
-  cursor-pointer
-">
-
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text cursor-pointer" />
+    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px] cursor-pointer">
       <AnimatePresence mode="wait">
-
-        {/* LOADING */}
         {buttonState === "loading" && (
           <motion.div
             key="loading"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex items-center"
+            className="flex items-center cursor-pointer"
           >
             <WaveLoader />
-            <span className="ml-2 font-medium">senden…</span>
+            <span className="ml-2 font-medium cursor-pointer">senden…</span>
           </motion.div>
         )}
 
-        {/* SUCCESS */}
         {buttonState === "success" && (
           <motion.div
             key="success"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            className="flex items-center"
+            className="flex items-center cursor-pointer"
           >
-            <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15">
-              <SuccessCheck className="w-4 h-4 text-emerald-500 pointer-events-none" />
+            <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15 cursor-pointer">
+              <SuccessCheck className="w-4 h-4 text-emerald-500 cursor-pointer" />
             </div>
-
-            <span className="text-emerald-500 font-bold">
+            <span className="text-emerald-500 font-bold cursor-pointer">
               Anfrage gesendet
             </span>
           </motion.div>
         )}
 
-        {/* INITIAL */}
         {buttonState === "initial" && (
           <motion.div
             key="initial"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex items-center"
+            className="flex items-center cursor-pointer"
           >
-            <Send className="mr-2 h-5 w-5 text-primary pointer-events-none" />
+            <Send className="mr-2 h-5 w-5 text-primary cursor-pointer" />
             <GradientText
               colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
               animationSpeed={6}
               showBorder={false}
-              className="text-base font-bold"
+              className="text-base font-bold cursor-pointer"
             >
               Rock On!
             </GradientText>
           </motion.div>
         )}
-
       </AnimatePresence>
     </div>
   </button>
 </ClickSpark>
+
 
                   </form>
                 </CardContent>
