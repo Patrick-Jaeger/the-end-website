@@ -223,11 +223,24 @@ const Kontakt = () => {
   <button 
     type="submit" 
     disabled={buttonState !== "initial"}
-    className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70"
+    className="
+      relative rounded-full border-2 border-primary
+      p-[2px] w-full overflow-hidden
+      disabled:opacity-70
+      cursor-pointer select-none
+    "
   >
+
     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
 
-    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px]">
+    <div className="
+  relative bg-background rounded-full
+  px-6 py-3 flex items-center justify-center
+  hover:bg-primary/5 transition-colors
+  min-h-[52px]
+  cursor-pointer
+">
+
       <AnimatePresence mode="wait">
 
         {/* LOADING */}
@@ -254,7 +267,7 @@ const Kontakt = () => {
             className="flex items-center"
           >
             <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15">
-              <SuccessCheck className="w-4 h-4 text-emerald-500" />
+              <SuccessCheck className="w-4 h-4 text-emerald-500 pointer-events-none" />
             </div>
 
             <span className="text-emerald-500 font-bold">
@@ -272,7 +285,7 @@ const Kontakt = () => {
             exit={{ opacity: 0 }}
             className="flex items-center"
           >
-            <Send className="mr-2 h-5 w-5 text-primary" />
+            <Send className="mr-2 h-5 w-5 text-primary pointer-events-none" />
             <GradientText
               colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
               animationSpeed={6}
