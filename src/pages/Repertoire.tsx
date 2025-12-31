@@ -20,7 +20,7 @@ const Repertoire = () => {
     {
       artist: "System Of A Down",
       title: "Aerials",
-      genre: "Alternative Metal",
+      genre: ["Alternative Metal", "Nu Metal"],
       links: {
         spotify: "https://open.spotify.com/track/4e9eGQYsOiBcftrWXwsVco",
         appleMusic: "https://music.apple.com/az/song/aerials/273714765",
@@ -106,12 +106,19 @@ const Repertoire = () => {
     { artist: "Böhse Onkelz", title: "Du kannst alles haben", genre: "Hard Rock" }
   ];
 
-  const genres = ["Alle", ...Array.from(new Set(songs.map(song => song.genre)))];
+  const genres = [
+  "Alle",
+  ...Array.from(
+    new Set(songs.flatMap(song => song.genre))
+  )
+];
+
 
   const filteredSongs = songs.filter(song => {
     const matchesSearch = song.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
       song.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesGenre = selectedGenre === "Alle" || song.genre === selectedGenre;
+    const matchesGenre = selectedGenre === "Alle" || song.genre.includes(selectedGenre);
+
     return matchesSearch && matchesGenre;
   });
 
@@ -250,9 +257,17 @@ const Repertoire = () => {
                           </div>
                         </div>
 
-                        <div className={`px-3 py-1 rounded-full border text-sm font-semibold w-fit ${genreColors[song.genre]}`}>
-                          {song.genre}
-                        </div>
+                        <div className="flex flex-wrap gap-1 max-w-full">
+  {song.genre.map((g) => (
+    <span
+      key={g}
+      className={`px-3 py-1 rounded-full border text-sm font-semibold whitespace-normal break-words ${genreColors[g]}`}
+    >
+      {g}
+    </span>
+  ))}
+</div>
+
                       </div>
 
 
@@ -1594,7 +1609,7 @@ const Repertoire = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {genres.slice(1).map((genre, index) => {
-                const count = songs.filter(song => song.genre === genre).length;
+                const count = songs.filter(song => song.genre.includes(genre)).length;
                 return (
                   <motion.div
                     key={genre}
