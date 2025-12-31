@@ -42,7 +42,7 @@ const Repertoire = () => {
     { artist: "Sum 41", title: "The Hell Song", genre: ["Punk Rock", "Alternative", "Indie"] },
     { artist: "Bloodhound Gang", title: "Fire Water Burn", genre: ["Alternative", "Rock", "Funk", "Indie"] },
     { artist: "Die Toten Hosen", title: "Kein Alkohol ist auch keine Lösung", genre: ["Punk Rock", "Rock"] },
-    { artist: "Red Hot Chili Peppers", title: "Dani California", genre: ["Alternative Rock", "Funk", "Alternative", "Indie"] },
+    { artist: "Red Hot Chili Peppers", title: "Dani California", genre: ["Funk", "Alternative", "Indie"] },
     { artist: "Farin Urlaub", title: "Das schöne Mädchen", genre: ["Rock", "Punk"] },
     { artist: "Böhse Onkelz", title: "Erinnerungen", genre: ["Hard Rock", "Deutschrock"] },
     { artist: "Korn", title: "Word up!", genre: ["Nu Metal", "Alternative"] },
