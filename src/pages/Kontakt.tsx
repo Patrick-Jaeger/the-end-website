@@ -389,36 +389,39 @@ const Kontakt = () => {
             </p>
             
             <div className="flex justify-center space-x-4">
-              <a 
-                href="https://www.instagram.com/Die_Band_The_End" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center transition-rock hover-rock">
-                  <Instagram className="h-6 w-6 text-white" />
-                </div>
-              </a>
-              <a 
-                href="https://www.facebook.com/profile.php?id=100063827957058" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group"
-              >
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center transition-rock hover-rock">
-                  <Facebook className="h-6 w-6 text-white" />
-                </div>
-              </a>
-              <a 
-                href="https://youtube.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group"
-              >
-                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center transition-rock hover-rock">
-                  <Youtube className="h-6 w-6 text-white" />
-                </div>
-              </a>
+<a 
+  href="https://www.instagram.com/Die_Band_The_End" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="group cursor-pointer"
+>
+  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center transition-rock hover-rock cursor-pointer">
+    <Instagram className="h-6 w-6 text-white pointer-events-none" />
+  </div>
+</a>
+
+<a 
+  href="https://www.facebook.com/profile.php?id=100063827957058" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="group cursor-pointer"
+>
+  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center transition-rock hover-rock cursor-pointer">
+    <Facebook className="h-6 w-6 text-white pointer-events-none" />
+  </div>
+</a>
+
+<a 
+  href="https://youtube.com" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="group cursor-pointer"
+>
+  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center transition-rock hover-rock cursor-pointer">
+    <Youtube className="h-6 w-6 text-white pointer-events-none" />
+  </div>
+</a>
+
             </div>
           </motion.div>
         </div>
