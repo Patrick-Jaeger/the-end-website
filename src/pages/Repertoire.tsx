@@ -30,7 +30,7 @@ const Repertoire = () => {
     },
 
     { artist: "AC/DC", title: "The Jack", genre: ["Rock", "Hard Rock", "Blues Rock"] },
-    { artist: "Green Day", title: "Basket Case", genre: ["Punk Rock", "Alternative", "Pop Punk", "Skate Punk"] },
+    { artist: "Green Day", title: "Basket Case", genre: ["Punk Rock", "Alternative", "Pop-Punk", "Skate Punk"] },
     { artist: "Foo Fighters", title: "The Pretender", genre: ["Alternative", "Hard Rock", "Post-Grunge", "Indie"] },
     { artist: "Die Ärzte", title: "½ Lovesong", genre: ["Punk Rock"] },
     { artist: "Blink-182", title: "Don’t Leave Me", genre: ["Punk Rock", "Pop-Punk", "Skate Punk"] },
@@ -47,7 +47,7 @@ const Repertoire = () => {
     { artist: "Böhse Onkelz", title: "Erinnerungen", genre: ["Hard Rock", "Deutschrock"] },
     { artist: "Korn", title: "Word up!", genre: ["Nu Metal", "Alternative"] },
     { artist: "Rage Against The Machine", title: "Killing In The Name", genre: ["Alternative", "Metal", "Funk"] },
-    { artist: "Avril Lavigne", title: "Sk8ter Boi", genre: ["Pop Punk", "Skate Punk"] },
+    { artist: "Avril Lavigne", title: "Sk8ter Boi", genre: ["Pop-Punk", "Skate Punk"] },
     { artist: "Royal Republic", title: "Everybody Wants to Be an Astronaut", genre: ["Garage Rock", "Alternative"] },
     { artist: "Beartooth", title: "King of Anything", genre: ["Metalcore"] },
     { artist: "Papa Roach", title: "Last Resort", genre: ["Nu Metal", "Alternative"] },
@@ -122,24 +122,36 @@ const Repertoire = () => {
     return matchesSearch && matchesGenre;
   });
 
-  const genreColors = {
-    Rock: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-    Metal: "bg-red-500/20 text-red-400 border-red-500/30",
-    "Punk Rock": "bg-green-500/20 text-green-400 border-green-500/30",
-    "Pop Punk": "bg-pink-500/20 text-pink-400 border-pink-500/30",
-    "Alternative Rock": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-    "Hard Rock": "bg-purple-500/20 text-purple-400 border-purple-500/30",
-    "Garage Rock": "bg-orange-500/20 text-orange-400 border-orange-500/30",
-    "Rockabilly Metal": "bg-amber-500/20 text-amber-400 border-amber-500/30",
-    "Industrial Metal": "bg-gray-500/20 text-gray-400 border-gray-500/30",
-    "Nu Metal": "bg-teal-500/20 text-teal-400 border-teal-500/30",
-    "Rap Metal": "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
-    "Metalcore": "bg-lime-500/20 text-lime-400 border-lime-500/30",
-    "Post-Grunge": "bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30",
-    Grunge: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
-    "Alternative Metal": "bg-rose-500/20 text-rose-400 border-rose-500/30",
-    "Indie Rock": "bg-sky-500/20 text-sky-400 border-sky-500/30",
-  };
+  const genreColors: Record<string, string> = {
+  Rock: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  "Hard Rock": "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  "Blues Rock": "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
+  "Southern Rock": "bg-amber-500/20 text-amber-400 border-amber-500/30",
+
+  Metal: "bg-red-500/20 text-red-400 border-red-500/30",
+  "Heavy Metal": "bg-red-700/20 text-red-500 border-red-700/30",
+  "Nu Metal": "bg-teal-500/20 text-teal-400 border-teal-500/30",
+  "Industrial Metal": "bg-gray-500/20 text-gray-400 border-gray-500/30",
+  Metalcore: "bg-lime-500/20 text-lime-400 border-lime-500/30",
+
+  "Punk Rock": "bg-green-500/20 text-green-400 border-green-500/30",
+  "Pop-Punk": "bg-pink-500/20 text-pink-400 border-pink-500/30",
+  "Skate Punk": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+
+  Alternative: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  Indie: "bg-sky-500/20 text-sky-400 border-sky-500/30",
+  "Garage Rock": "bg-orange-500/20 text-orange-400 border-orange-500/30",
+
+  Funk: "bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30",
+  Grunge: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
+  "Post-Grunge": "bg-rose-500/20 text-rose-400 border-rose-500/30",
+
+  Rockabilly: "bg-yellow-700/20 text-yellow-500 border-yellow-700/30",
+  Deutschrock: "bg-stone-500/20 text-stone-400 border-stone-500/30",
+
+  Mix: "bg-neutral-500/20 text-neutral-400 border-neutral-500/30",
+};
+
 
   const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
