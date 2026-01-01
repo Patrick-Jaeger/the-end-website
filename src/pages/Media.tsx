@@ -2,15 +2,11 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
-import { Play, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
-import { TextScramble } from "@/components/ui/text-scramble";
-import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Media = () => {
-  const [isTrigger, setIsTrigger] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
@@ -54,6 +50,7 @@ const Media = () => {
     );
   };
 
+  // Keyboard navigation
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!isImageModalOpen) return;
@@ -80,48 +77,98 @@ const Media = () => {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery with fly-in animation */}
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {photos.map((photo, index) => (
-            <DirectionAwareHover
+            <motion.div
               key={photo.id}
-              imageUrl={photo.imageUrl}
-              className="parallax-media card-wiggle"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.5, 
+                delay: (index % 6) * 0.1,
+                ease: "easeOut"
+              }}
+              whileHover={{ scale: 1.02 }}
+              className="parallax-media card-wiggle cursor-pointer overflow-hidden rounded-lg"
               onClick={() => {
                 setCurrentImageIndex(index);
                 setIsImageModalOpen(true);
               }}
-              disableModal
             >
-              <img
-                src={photo.imageUrl}
-                alt={photo.title}
-                loading="lazy"
-                decoding="async"
-                className="hidden"
-              />
-              <div className="bg-black/50 px-3 py-1 rounded text-sm mb-2 inline-block">
-                {photo.category}
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg group">
+                <img
+                  src={photo.imageUrl}
+                  alt={photo.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="bg-primary/80 px-3 py-1 rounded text-sm mb-2 inline-block text-primary-foreground">
+                    {photo.category}
+                  </span>
+                  <h3 className="font-rock text-lg font-bold text-white">{photo.title}</h3>
+                </div>
               </div>
-              <h3 className="font-rock text-lg font-bold">{photo.title}</h3>
-            </DirectionAwareHover>
+            </motion.div>
           ))}
         </div>
       </section>
 
       <Footer />
 
-      {/* Modal */}
+      {/* Modal with responsive sizing and navigation */}
       <Dialog open={isImageModalOpen} onOpenChange={setIsImageModalOpen}>
-        <DialogContent className="max-w-full max-h-full bg-black/95 border-0">
-          <img
-            src={photos[currentImageIndex]?.imageUrl}
-            alt={photos[currentImageIndex]?.title}
-            loading="eager"
-            decoding="async"
-            className="w-full h-full object-contain"
-          />
+        <DialogContent className="max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[90vh] bg-black/95 border-primary/20 p-2 md:p-4">
+          <div className="relative flex items-center justify-center w-full h-full">
+            {/* Previous Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNavigate("prev");
+              }}
+              className="absolute left-2 md:left-4 z-10 p-2 md:p-3 rounded-full bg-black/50 hover:bg-primary/50 transition-colors text-white"
+              aria-label="Vorheriges Bild"
+            >
+              <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
+            </button>
+
+            {/* Image */}
+            <motion.img
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              src={photos[currentImageIndex]?.imageUrl}
+              alt={photos[currentImageIndex]?.title}
+              loading="eager"
+              decoding="async"
+              className="max-w-full max-h-[80vh] object-contain rounded-lg"
+            />
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNavigate("next");
+              }}
+              className="absolute right-2 md:right-4 z-10 p-2 md:p-3 rounded-full bg-black/50 hover:bg-primary/50 transition-colors text-white"
+              aria-label="Nächstes Bild"
+            >
+              <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
+            </button>
+
+            {/* Image Title */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-lg">
+              <p className="text-white text-sm md:text-base font-rock">
+                {photos[currentImageIndex]?.title} ({currentImageIndex + 1}/{photos.length})
+              </p>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
     </div>

@@ -226,13 +226,7 @@ const Index = () => {
   title="Rock in Bouch"
   date="16. Januar 2026"
   location="Mendorferbuch, Gasthaus Reis"
-  description={
-    <>
-      Ein Abend voller Rock-Klassiker in uriger Atmosphäre.
-      <br />
-      Mit unseren Freunden von Mary Eg.
-    </>
-  }
+  description="Ein Abend voller Rock-Klassiker in uriger Atmosphäre. Mit unseren Freunden von Mary Eg."
   flyerImage="/images/gigs/rock_in_bouch.jpg"
 />
 
