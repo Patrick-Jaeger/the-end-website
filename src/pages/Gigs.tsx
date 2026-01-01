@@ -76,12 +76,6 @@ const Gigs = () => {
 
   const referenzen = [
     {
-      quote: "Großartige Premiere für unser neues Scheunenfest-Format - ihr habt den Laden zum Beben gebracht!",
-      name: "Rock im Stodl 2025",
-      designation: "Öffentliche Veranstaltung",
-      src: "/images/referenzen/2025_rock-im-stodl.jpg",
-    },
-    {
       quote: "Ein riesiges Geburtstags-Festival mit vielen coolen Bands und ausgelassener Stimmung.",
       name: "Das Event Lauterhofen 2025",
       designation: "Open Air Bühne",
