@@ -76,6 +76,12 @@ const Gigs = () => {
 
   const referenzen = [
     {
+      quote: "Großartige Premiere für unser neues Scheunenfest-Format - ihr habt den Laden zum Beben gebracht!",
+      name: "Rock im Stodl 2025",
+      designation: "Öffentliche Veranstaltung",
+      src: "/images/referenzen/2025_rock-im-stodl.jpg",
+    },
+    {
       quote: "Ein riesiges Geburtstags-Festival mit vielen coolen Bands und ausgelassener Stimmung.",
       name: "Das Event Lauterhofen 2025",
       designation: "Open Air Bühne",
@@ -88,10 +94,58 @@ const Gigs = () => {
       src: "/images/referenzen/2024-2x40-geburtstag-altenricht.jpg",
     },
     {
+      quote: "Ein unvergesslicher 40. Geburtstag mit bester Rock-Musik und Party bis in die Nacht!",
+      name: "40. Geburtstag Ehenfeld 2024",
+      designation: "Private Feier",
+      src: "/images/referenzen/2024-40-geburtstag-ehenfeld.jpg",
+    },
+    {
+      quote: "Beste Unterhaltung beim Sandlochfest - die Stimmung war gigantisch!",
+      name: "Sandlochfest Ehenfeld 2023",
+      designation: "Öffentliche Veranstaltung",
+      src: "/images/referenzen/2023-sandlochfest-ehenfeld.jpg",
+    },
+    {
+      quote: "Mega Party zum Geburtstag - ihr habt für beste Stimmung gesorgt!",
+      name: "Geburtstagsfeier Hohenburg 2023",
+      designation: "Private Feier",
+      src: "/images/referenzen/2023-geburtstag-hohenburg.jpg",
+    },
+    {
       quote: "Rock Warrior's und Headbanger's of the World!!",
       name: "Rock in Bouch 2019",
       designation: "Öffentliche Veranstaltung",
       src: "/images/referenzen/2019_rock-in-bouch.jpg",
+    },
+    {
+      quote: "Ein runder Geburtstag der rockt - danke für die unvergessliche Feier!",
+      name: "40. Geburtstag Hohenburg 2019",
+      designation: "Private Feier",
+      src: "/images/referenzen/2019-40-geburtstag-hohenburg.JPG",
+    },
+    {
+      quote: "Abriss-Party beim Rock am LKW - die Bühne hat gebebt!",
+      name: "Rock am LKW, TuS Hohenburg 2014",
+      designation: "Öffentliche Veranstaltung",
+      src: "/images/referenzen/2014-rock-am-lkw-tus-hohenburg.JPG",
+    },
+    {
+      quote: "Festival-Feeling pur beim Over the Hills - was für ein Auftritt!",
+      name: "Over the Hills Festival Pfaffenhofen 2014",
+      designation: "Festival",
+      src: "/images/referenzen/2014-over-the-hills-pfaffenhofen.JPG",
+    },
+    {
+      quote: "Legendäres FFW-Fest mit super Stimmung - gerne wieder!",
+      name: "FFW-Fest Mendorferbuch 2013",
+      designation: "Öffentliche Veranstaltung",
+      src: "/images/referenzen/2013-ffw-fest-mendorferbuch.jpg",
+    },
+    {
+      quote: "Unser erster großer Auftritt im Pink Panther - unvergesslich!",
+      name: "Pink Panther Hiatberg 2011",
+      designation: "Club/Bar",
+      src: "/images/referenzen/2011-pink-panther-hiatberg.png",
     },
   ];
 
