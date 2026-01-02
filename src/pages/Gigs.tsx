@@ -83,7 +83,7 @@ const Gigs = () => {
       title: "Sandlochfest",
       venue: "Ehenfeld",
       time: "21:00 Uhr",
-      type: "öffentlich",
+      type: "Dorffest",
       description: "Abrissparty in idyllischer Umgebung.",
       flyerImage: "/images/gigs/",
     },
