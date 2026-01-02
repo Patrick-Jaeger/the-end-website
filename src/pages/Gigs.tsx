@@ -17,6 +17,7 @@ interface Gig {
   title: string;
   venue: string;
   time: string;
+  type: "öffentlich" | "privat";
   description: string;
   flyerImage?: string;
 }
@@ -53,24 +54,27 @@ const Gigs = () => {
       title: "Rock in Bouch",
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "20:00 Uhr",
+      type: "öffentlich",
       description: "Ein Abend voller Rock-Klassiker in uriger Atmosphäre. Mit unseren Freunden von Mary Eg.",
-      flyerImage: "/images/gigs/rock_in_bouch.jpg", // 
+      flyerImage: "/images/gigs/rock_in_bouch.jpg",
     },
     {
       date: "25. April 2026",
       title: "Rock im Stodl",
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "21:00 Uhr",
+      type: "öffentlich",
       description: "Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits.",
-      flyerImage: "/images/gigs/rock-im-stodl.jpg", 
+      flyerImage: "/images/gigs/rock-im-stodl.jpg",
     },
-        {
+    {
       date: "24. Mai 2026",
       title: "Sandlochfest",
       venue: "Ehenfeld",
       time: "21:00 Uhr",
+      type: "öffentlich",
       description: "Abrissparty in idyllischer Umgebung.",
-      flyerImage: "/images/gigs/", 
+      flyerImage: "/images/gigs/",
     },
   ];
 
@@ -225,9 +229,16 @@ const Gigs = () => {
                 <span className="cursor-pointer">{gig.venue}</span>
               </div>
 
-              <div className="flex items-center space-x-2 text-muted-foreground mb-4 cursor-pointer">
+              <div className="flex items-center space-x-2 text-muted-foreground cursor-pointer">
                 <Clock className="h-4 w-4 cursor-pointer" />
                 <span className="cursor-pointer">{gig.time}</span>
+              </div>
+
+              <div className="flex items-center space-x-2 text-muted-foreground mb-4 cursor-pointer">
+                <Users className="h-4 w-4 cursor-pointer" />
+                <span className={`cursor-pointer capitalize ${gig.type === "öffentlich" ? "text-green-500" : "text-yellow-500"}`}>
+                  {gig.type}
+                </span>
               </div>
 
               <p className="text-muted-foreground cursor-pointer">
