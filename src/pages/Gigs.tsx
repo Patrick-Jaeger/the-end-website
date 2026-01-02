@@ -12,11 +12,7 @@ import EventModal from "@/components/EventModal";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import ClickSpark from "@/components/ui/click-spark";
 
-interface Gig {
-  date: string;
-  title: string;
-  venue: string;
-  type Visibility =
+type Visibility =
   | "öffentlich"
   | "privat"
   | "Festival"
@@ -28,11 +24,16 @@ interface Gig {
   | "Firmenfeier"
   | "Open Air"
   | "Sonstiges";
-  type: "öffentlich" | "privat";
+
+interface Gig {
+  date: string;
+  title: string;
+  venue: string;
+  time: string;
+  visibility: Visibility;
   description: string;
   flyerImage?: string;
 }
-
 const Gigs = () => {
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Gig | null>(null);
