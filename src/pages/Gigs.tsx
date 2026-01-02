@@ -236,22 +236,23 @@ const Gigs = () => {
                 {gig.title}
               </h3>
 
-              <div className="flex items-center space-x-2 text-muted-foreground mb-2 cursor-pointer">
-                <MapPin className="h-4 w-4 cursor-pointer" />
-                <span className="cursor-pointer">{gig.venue}</span>
-              </div>
+<div className="space-y-2 text-muted-foreground cursor-pointer">
+  <div className="flex items-center space-x-2">
+    <MapPin className="h-4 w-4" />
+    <span>{gig.venue}</span>
+  </div>
 
-              <div className="flex items-center space-x-2 text-muted-foreground cursor-pointer">
-                <Clock className="h-4 w-4 cursor-pointer" />
-                <span className="cursor-pointer">{gig.time}</span>
-              </div>
+  <div className="flex items-center space-x-2">
+    <Clock className="h-4 w-4" />
+    <span>{gig.time}</span>
+  </div>
 
-<div className="flex items-center space-x-2 text-muted-foreground mb-4 cursor-pointer">
-  <Users className="h-4 w-4 cursor-pointer" />
-  <span className="capitalize cursor-pointer">
-    {gig.visibility}
-  </span>
+  <div className="flex items-center space-x-2">
+    <Users className="h-4 w-4" />
+    <span className="capitalize">{gig.visibility}</span>
+  </div>
 </div>
+
 
 
               <p className="text-muted-foreground cursor-pointer">
