@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Calendar, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBackground from "@/assets/hero-background.jpg";
+import heroBackground from "@/assets/hero-background1.jpg";
 import AnimatedLogo from "@/components/ui/animated-logo";
 import { StarBorder } from "@/components/ui/star-border";
 import GradientText from "@/components/ui/GradientText";
