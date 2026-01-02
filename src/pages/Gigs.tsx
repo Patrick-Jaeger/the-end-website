@@ -16,7 +16,18 @@ interface Gig {
   date: string;
   title: string;
   venue: string;
-  time: string;
+  type Visibility =
+  | "öffentlich"
+  | "privat"
+  | "Festival"
+  | "Dorffest"
+  | "Geburtstag"
+  | "Club"
+  | "Bar"
+  | "Vereinsfest"
+  | "Firmenfeier"
+  | "Open Air"
+  | "Sonstiges";
   type: "öffentlich" | "privat";
   description: string;
   flyerImage?: string;
@@ -234,12 +245,13 @@ const Gigs = () => {
                 <span className="cursor-pointer">{gig.time}</span>
               </div>
 
-              <div className="flex items-center space-x-2 text-muted-foreground mb-4 cursor-pointer">
-                <Users className="h-4 w-4 cursor-pointer" />
-                <span className={`cursor-pointer capitalize ${gig.type === "öffentlich" ? "text-green-500" : "text-yellow-500"}`}>
-                  {gig.type}
-                </span>
-              </div>
+<div className="flex items-center space-x-2 text-muted-foreground mb-4 cursor-pointer">
+  <Users className="h-4 w-4 cursor-pointer" />
+  <span className="capitalize cursor-pointer">
+    {gig.visibility}
+  </span>
+</div>
+
 
               <p className="text-muted-foreground cursor-pointer">
                 {gig.description}
