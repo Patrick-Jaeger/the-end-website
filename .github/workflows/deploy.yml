@@ -1,0 +1,36 @@
+name: Build and Deploy React to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Code aus GitHub holen
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Node.js installieren
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3️⃣ Abhängigkeiten installieren
+      - name: Install dependencies
+        run: npm install
+
+      # 4️⃣ Projekt bauen
+      - name: Build project
+        run: npm run build
+
+      # 5️⃣ Build auf main bereitstellen (GitHub Pages)
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main
+          folder: build
