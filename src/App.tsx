@@ -28,9 +28,9 @@ const App = () => {
           <Toaster />
           <Sonner />
 
+          {/* Hauptinhalt */}
           <div className="relative z-10">
-            {/* WICHTIG: basename setzen für GitHub Pages Unterpfad */}
-            <BrowserRouter basename="/the-end-website">
+            <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/band" element={<Band />} />
