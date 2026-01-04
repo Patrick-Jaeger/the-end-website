@@ -21,6 +21,8 @@ import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
 import GroundFog from "@/components/ui/ground-fog";
+import SkullScrollAnimation from "@/components/SkullScrollAnimation";
+
 const faqItems = [
   {
     id: '1',
@@ -120,11 +122,13 @@ const Kontakt = () => {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Skull Scroll Animation Section */}
+      <SkullScrollAnimation />
+
+      {/* Contact Form */}
       <section className="py-20 bg-rock-lighter">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+          <div className="max-w-2xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -219,144 +223,71 @@ const Kontakt = () => {
                       required
                     />
 
-<ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
-  <button 
-    type="submit" 
-    disabled={buttonState !== "initial"}
-    className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70 cursor-pointer select-none"
-  >
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text cursor-pointer" />
-    <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px] cursor-pointer">
-      <AnimatePresence mode="wait">
-        {buttonState === "loading" && (
-          <motion.div
-            key="loading"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="flex items-center cursor-pointer"
-          >
-            <WaveLoader />
-            <span className="ml-2 font-medium cursor-pointer">senden…</span>
-          </motion.div>
-        )}
+                    <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+                      <button 
+                        type="submit" 
+                        disabled={buttonState !== "initial"}
+                        className="relative rounded-full border-2 border-primary p-[2px] w-full overflow-hidden disabled:opacity-70 cursor-pointer select-none"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text cursor-pointer" />
+                        <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors min-h-[52px] cursor-pointer">
+                          <AnimatePresence mode="wait">
+                            {buttonState === "loading" && (
+                              <motion.div
+                                key="loading"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="flex items-center cursor-pointer"
+                              >
+                                <WaveLoader />
+                                <span className="ml-2 font-medium cursor-pointer">senden…</span>
+                              </motion.div>
+                            )}
 
-        {buttonState === "success" && (
-          <motion.div
-            key="success"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            className="flex items-center cursor-pointer"
-          >
-            <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15 cursor-pointer">
-              <SuccessCheck className="w-4 h-4 text-emerald-500 cursor-pointer" />
-            </div>
-            <span className="text-emerald-500 font-bold cursor-pointer">
-              Anfrage gesendet
-            </span>
-          </motion.div>
-        )}
+                            {buttonState === "success" && (
+                              <motion.div
+                                key="success"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="flex items-center cursor-pointer"
+                              >
+                                <div className="flex items-center justify-center w-6 h-6 mr-2 rounded-full bg-emerald-500/15 cursor-pointer">
+                                  <SuccessCheck className="w-4 h-4 text-emerald-500 cursor-pointer" />
+                                </div>
+                                <span className="text-emerald-500 font-bold cursor-pointer">
+                                  Anfrage gesendet
+                                </span>
+                              </motion.div>
+                            )}
 
-        {buttonState === "initial" && (
-          <motion.div
-            key="initial"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="flex items-center cursor-pointer"
-          >
-            <Send className="mr-2 h-5 w-5 text-primary cursor-pointer" />
-            <GradientText
-              colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
-              animationSpeed={6}
-              showBorder={false}
-              className="text-base font-bold cursor-pointer"
-            >
-              Rock On!
-            </GradientText>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  </button>
-</ClickSpark>
-
-
+                            {buttonState === "initial" && (
+                              <motion.div
+                                key="initial"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="flex items-center cursor-pointer"
+                              >
+                                <Send className="mr-2 h-5 w-5 text-primary cursor-pointer" />
+                                <GradientText
+                                  colors={["#4079ff", "#ffffff", "#4079ff", "#ffffff", "#4079ff"]}
+                                  animationSpeed={6}
+                                  showBorder={false}
+                                  className="text-base font-bold cursor-pointer"
+                                >
+                                  Rock On!
+                                </GradientText>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </button>
+                    </ClickSpark>
                   </form>
                 </CardContent>
               </Card>
-            </motion.div>
-
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
-            >
-              <div>
-                <Card className="bg-card border-border shadow-rock mb-8">
-                  <CardContent className="p-6">
-                    <h3 className="font-rock text-lg font-bold text-primary mb-4">
-                      Technical Requirements
-                    </h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Bühnengröße optimal: 6x5 Meter und 3 Meter hoch</li>
-                      <li>• Überdachung</li>
-                      <li>• Stromanschluss: 16A oder 9 KW Aggregat</li>
-                      <li>• Aufbauzeit: ca. 3 Stunden</li>
-                      <li>• Set-Dauer: 3 Stunden (flexibel)</li>
-                      <li>• Umkreis: 20km kostenfrei</li>
-                    </ul>
-<a 
-  href="/Stagerider_The-End.pdf" 
-  download
->
-  <Button className="btn-outline-rock mt-4 w-full rounded-full">
-    Technical Rider
-  </Button>
-</a>
-
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Contact Info */}
-              <div>
-                <h2 className="font-rock text-2xl font-bold text-glow mb-6">
-                  Kontakt-Info
-                </h2>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-rock font-bold mb-1">E-Mail</h3>
-                      <p className="text-muted-foreground">booking@rockband.de</p>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Für Booking-Anfragen und allgemeine Fragen
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-rock font-bold mb-1">Region</h3>
-                      <p className="text-muted-foreground">92277 Hohenburg & Umgebung</p>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Hauptsächlich Landkreis Amberg-Sulzbach
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
