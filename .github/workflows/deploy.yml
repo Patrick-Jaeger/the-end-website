@@ -1,4 +1,4 @@
-name: Build and Deploy React to GitHub Pages
+name: Build and Deploy Vite React
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Code aus GitHub holen
+      # 1️⃣ Repository auschecken
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -24,13 +24,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 4️⃣ Projekt bauen
+      # 4️⃣ Projekt bauen (Vite)
       - name: Build project
         run: npm run build
 
-      # 5️⃣ Build auf main bereitstellen (GitHub Pages)
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      # 5️⃣ Build-Ordner für GitHub Pages bereitstellen
+      - name: Deploy to GitHub Pages on main
+        uses: peaceiris/actions-gh-pages@v7
         with:
-          branch: main
-          folder: build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: main
