@@ -29,7 +29,6 @@ jobs:
         run: npm run build
 
       # 5️⃣ Build-Ordner auf Main Branch pushen
-      #    Hier nutzen wir commit & push, da gh-pages nicht mehr verwendet wird
       - name: Push build to main
         run: |
           git config --global user.name "github-actions[bot]"
