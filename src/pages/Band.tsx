@@ -160,7 +160,7 @@ const Band = () => {
             members={bandMembers.map(member => ({
               name: member.name,
               role: member.instrument,
-              image: `/images/band/${member.name.split(' ')[0].toLowerCase()}.jpg`, // nur der Vorname
+              image: `/images/band/${member.name.split(' ')[0].toLowerCase()}.webp`, // nur der Vorname
               description: member.description
             }))}
           />
@@ -200,7 +200,7 @@ const Band = () => {
             {/* Group photo */}
             <div className="flex justify-center">
               <img
-                src="/images/band/Gruppenfoto.jpg"
+                src="/images/band/Gruppenfoto.webp"
                 alt="Gruppenfoto der Band"
                 className="max-w-full h-auto max-h-[90vh] mx-auto cursor-pointer hover:ring-4 hover:ring-primary transition-all rounded-lg"
                 onClick={() => setIsGroupPhotoOpen(true)}
@@ -217,7 +217,7 @@ const Band = () => {
         <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
           <div className="w-full h-full flex items-center justify-center">
             <img
-              src="/images/band/Gruppenfoto.jpg"
+              src="/images/band/Gruppenfoto.webp"
               alt="Gruppenfoto der Band vergrößert"
               className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
             />
