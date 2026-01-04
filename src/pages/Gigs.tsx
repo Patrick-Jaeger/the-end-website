@@ -236,7 +236,7 @@ const Gigs = () => {
                 {gig.title}
               </h3>
 
-<div className="space-y-2 text-muted-foreground cursor-pointer">
+<div className="space-y-2 text-muted-foreground mb-4 cursor-pointer">
   <div className="flex items-center space-x-2">
     <MapPin className="h-4 w-4" />
     <span>{gig.venue}</span>
@@ -253,11 +253,10 @@ const Gigs = () => {
   </div>
 </div>
 
+<p className="text-muted-foreground cursor-pointer">
+  {gig.description}
+</p>
 
-
-              <p className="text-muted-foreground cursor-pointer">
-                {gig.description}
-              </p>
             </div>
 
             {/* RECHTER INFO-BLOCK */}
