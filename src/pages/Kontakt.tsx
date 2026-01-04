@@ -336,7 +336,7 @@ const Kontakt = () => {
                     </div>
                     <div>
                       <h3 className="font-rock font-bold mb-1">E-Mail</h3>
-                      <p className="text-muted-foreground">booking@rockband.de</p>
+                      <p className="text-muted-foreground">mail@die-band-the-end.de</p>
                       <p className="text-sm text-muted-foreground mt-1">
                         Für Booking-Anfragen und allgemeine Fragen
                       </p>
