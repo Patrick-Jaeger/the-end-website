@@ -30,7 +30,8 @@ const App = () => {
 
           {/* Hauptinhalt */}
           <div className="relative z-10">
-            <BrowserRouter>
+            {/* WICHTIG: basename für GitHub Pages */}
+            <BrowserRouter basename="/the-end-website">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/band" element={<Band />} />
