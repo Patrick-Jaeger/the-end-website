@@ -292,7 +292,7 @@ const Gigs = () => {
             <p className="text-lg text-muted-foreground">Auszug unserer vergangenen Events und Auftritte</p>
           </div>
 
-          <div className="relative pb-24 md:pb-0">
+          <div className="relative pb-36 md:pb-0">
   <AnimatedTestimonials testimonials={referenzen} autoplay={false} />
 </div>
 
