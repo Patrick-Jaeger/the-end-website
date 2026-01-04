@@ -110,7 +110,7 @@ export const AnimatedTestimonials = ({
           </div>
           
           {/* Mobile Navigation - Below Image */}
-          <div className="flex gap-4 justify-center mt-18 md:hidden">
+          <div className="flex gap-4 justify-center mt-14 md:hidden">
             <button
               onClick={handlePrev}
               className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center group/button"
