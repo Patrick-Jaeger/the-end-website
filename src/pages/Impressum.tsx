@@ -64,7 +64,7 @@ const Impressum = () => {
                   Kontakt
                 </h2>
                 <p className="text-muted-foreground">
-                  E-Mail: [E-Mail-Adresse]
+                  E-Mail: mail@die-band-the-end.de
                 </p>
               </div>
 
