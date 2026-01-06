@@ -11,7 +11,7 @@ import Gigs from "./pages/Gigs";
 import Media from "./pages/Media";
 import Repertoire from "./pages/Repertoire";
 import PALichtverleih from "./pages/PALichtverleih";
-import Mearch from "./pages/Mearch";
+import Merch from "./pages/Merch";
 import Kontakt from "./pages/Kontakt";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
@@ -38,7 +38,7 @@ const App = () => {
                 <Route path="/media" element={<Media />} />
                 <Route path="/repertoire" element={<Repertoire />} />
                 <Route path="/pa-lichtverleih" element={<PALichtverleih />} />
-                <Route path="/mearch" element={<Mearch />} />
+                <Route path="/merch" element={<Merch />} />
                 <Route path="/kontakt" element={<Kontakt />} />
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/datenschutz" element={<Datenschutz />} />

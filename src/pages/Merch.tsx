@@ -16,7 +16,7 @@ import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
 import GroundFog from "@/components/ui/ground-fog";
-const Mearch = () => {
+const Merch = () => {
   const { toast } = useToast();
   
   // GSAP Animation
@@ -436,4 +436,4 @@ const Mearch = () => {
   );
 };
 
-export default Mearch;
+export default Merch;

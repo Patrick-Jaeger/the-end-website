@@ -17,7 +17,7 @@ const Navigation = () => {
     { path: "/gigs", label: "Gigs" },
     { path: "/media", label: "Media" },
     { path: "/repertoire", label: "Repertoire" },
-    { path: "/mearch", label: "Mearch" },
+    { path: "/merch", label: "Merch" },
     { path: "/kontakt", label: "Kontakt" },
     { path: "/pa-lichtverleih", label: "PA- & Lichtverleih" },
   ];
