@@ -19,37 +19,37 @@ const Band = () => {
 
   const bandMembers = [
     {
-      name: "Thomas Gründemann",
+      name: "Thomas",
       instrument: "Gitarre & Backing Vocals",
       description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
       icon: Guitar
     },
     {
-      name: "David Wood",
+      name: "David",
       instrument: "Bass",
       description: "Das rhythmische Fundament der Band. David sorgt für den treibenden Groove in jedem Song.",
       icon: Music
     },
     {
-      name: "Martin Delling",
+      name: "Martin",
       instrument: "Techniker",
       description: "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
       icon: Music
     },
     {
-      name: "Lukas Ried",
+      name: "Lukas",
       instrument: "Lead Gitarre",
       description: "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
       icon: Guitar
     },
     {
-      name: "Patrick Jäger",
+      name: "Patrick",
       instrument: "Schlagzeug",
       description: "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
       icon: Music
     },
     {
-      name: "Sebastian Delling",
+      name: "Sebastian",
       instrument: "Vocals",
       description: "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
       icon: Mic
