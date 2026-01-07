@@ -78,10 +78,7 @@ const Band = () => {
               Die Band
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Sechs Freunde, eine Leidenschaft: Rock-Musik in ihrer reinsten Form.
-            </p>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Wir leben für die Energie der Bühne und die Verbindung zu unserem Publikum.
+              Sechs Freunde, eine Leidenschaft: Bock auf Rock-Musik.
             </p>
           </motion.div>
 
@@ -96,46 +93,52 @@ const Band = () => {
             <h2 className="font-rock text-2xl font-bold text-primary mb-6">
               Our Journey
             </h2>
-
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Alles begann in einem Keller in Mendorferbuch – dort haben wir die ersten Akkorde gespielt
-                  und die ersten Pläne geschmiedet.
+                  Alles begann in einem Keller in Mendorferbuch – dort haben wir die ersten Akkorde gespielt und die ersten Pläne geschmiedet.
                 </p>
                 <p className="text-muted-foreground mb-4">
                   Seit 2007 proben wir in Allertshofen, unserem musikalischen Zuhause,
-                  wo wir unseren eigenen Sound erarbeitet haben.
+                  wo wir unseren eigenen Sound erarbeitet haben, gemeinsam weiterwachsen und jede Menge unvergessliche Momente erleben.
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Von Punk über Rock bis Metal – aber immer mit einem Ziel:
+                  Von den rebellischen Klängen der Punk-Ära über epische Rock-Hymnen
+                  bis hin zu den härtesten Metal-Anthems – wir decken das ganze Spektrum ab,
+                  aber im Mittelpunkt steht für uns immer eins: 
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Spaß, Energie und ehrliche Musik.
+                  Der Spaß am Spielen.
+                  Die Energie auf der Bühne und die Verbindung zum Publikum sind das, was uns antreibt.
                 </p>
               </div>
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Danke an alle Fans, Helfer und Unterstützer!
+                  Ein besonderer Dank gilt allen, die uns auf unserem Weg begleiten – unseren treuen Fans, Helfern und Unterstützern.
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Ohne euch wäre diese Reise nur halb so laut.
+                  Ganz besonders möchten wir die Mini Mäuse Mendorferbuch, unsere Freunde von B.U.T.T., mit deren Anlage wir damals immer spielen durften, sowie Rudi Jung hervorheben.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  Ebenso danken wir herzlich für die kostenlose Nutzung unseres Bandraums und den Lagerplatz für unser Equipment.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  Ohne euch wäre diese Reise nur halb so laut, wild und großartig!
                 </p>
               </div>
             </div>
-
-            <div className="grid md:grid-cols-3 gap-4 mt-8">
-              <a href="#the-crew" className="text-center group hover:scale-105 transition-transform">
-                <div className="text-3xl font-bold text-primary">6</div>
-                <div className="text-muted-foreground">Band-Mitglieder</div>
+            <div className="grid md:grid-cols-3 gap-4">
+              <a href="#the-crew" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
+                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">6</div>
+                <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Band-Mitglieder</div>
               </a>
-              <Link to="/repertoire" className="text-center group hover:scale-105 transition-transform">
-                <div className="text-3xl font-bold text-primary">70+</div>
-                <div className="text-muted-foreground">Songs im Repertoire</div>
+              <Link to="/repertoire" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
+                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">70+</div>
+                <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Songs im Repertoire</div>
               </Link>
-              <Link to="/gigs#referenzen" className="text-center group hover:scale-105 transition-transform">
-                <div className="text-3xl font-bold text-primary">15+</div>
-                <div className="text-muted-foreground">Jahre Banderfahrung</div>
+              <Link to="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
+                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">15+</div>
+                <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Jahre Banderfahrung</div>
               </Link>
             </div>
           </motion.div>
