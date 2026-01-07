@@ -2,9 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Download, Guitar, Mic, Music } from "lucide-react";
+import { Guitar, Mic, Music } from "lucide-react";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import BandCarousel from "@/components/BandCarousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -12,48 +11,54 @@ import { Link } from "react-router-dom";
 
 const Band = () => {
   const [isGroupPhotoOpen, setIsGroupPhotoOpen] = useState(false);
-  
+
   // GSAP Animations
-  useTextSplit('.text-split-band', 0.4);
-  useParallax('.parallax-band', 0.25);
+  useTextSplit(".text-split-band", 0.4);
+  useParallax(".parallax-band", 0.25);
 
   const bandMembers = [
     {
       name: "Thomas",
       instrument: "Gitarre & Backing Vocals",
-      description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
-      icon: Guitar
+      description:
+        "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
+      icon: Guitar,
     },
     {
       name: "David",
       instrument: "Bass",
-      description: "Das rhythmische Fundament der Band. David sorgt für den treibenden Groove in jedem Song.",
-      icon: Music
+      description:
+        "Das rhythmische Fundament der Band. David sorgt für den treibenden Groove in jedem Song.",
+      icon: Music,
     },
     {
       name: "Martin",
       instrument: "Techniker",
-      description: "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
-      icon: Music
+      description:
+        "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
+      icon: Music,
     },
     {
       name: "Lukas",
       instrument: "Lead Gitarre",
-      description: "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
-      icon: Guitar
+      description:
+        "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
+      icon: Guitar,
     },
     {
       name: "Patrick",
       instrument: "Schlagzeug",
-      description: "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
-      icon: Music
+      description:
+        "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
+      icon: Music,
     },
     {
       name: "Sebastian",
       instrument: "Vocals",
-      description: "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
-      icon: Mic
-    }
+      description:
+        "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
+      icon: Mic,
+    },
   ];
 
   return (
@@ -91,52 +96,46 @@ const Band = () => {
             <h2 className="font-rock text-2xl font-bold text-primary mb-6">
               Our Journey
             </h2>
+
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Alles begann in einem Keller in Mendorferbuch – dort haben wir die ersten Akkorde gespielt und die ersten Pläne geschmiedet.
+                  Alles begann in einem Keller in Mendorferbuch – dort haben wir die ersten Akkorde gespielt
+                  und die ersten Pläne geschmiedet.
                 </p>
                 <p className="text-muted-foreground mb-4">
                   Seit 2007 proben wir in Allertshofen, unserem musikalischen Zuhause,
-                  wo wir unseren eigenen Sound erarbeitet haben, gemeinsam weiterwachsen und jede Menge unvergessliche Momente erleben.
+                  wo wir unseren eigenen Sound erarbeitet haben.
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Von den rebellischen Klängen der Punk-Ära über epische Rock-Hymnen
-                  bis hin zu den härtesten Metal-Anthems – wir decken das ganze Spektrum ab,
-                  aber im Mittelpunkt steht für uns immer eins: 
+                  Von Punk über Rock bis Metal – aber immer mit einem Ziel:
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Der Spaß am Spielen.
-                  Die Energie auf der Bühne und die Verbindung zum Publikum sind das, was uns antreibt.
+                  Spaß, Energie und ehrliche Musik.
                 </p>
               </div>
               <div>
                 <p className="text-muted-foreground mb-4">
-                  Ein besonderer Dank gilt allen, die uns auf unserem Weg begleiten – unseren treuen Fans, Helfern und Unterstützern.
+                  Danke an alle Fans, Helfer und Unterstützer!
                 </p>
                 <p className="text-muted-foreground mb-4">
-                  Ganz besonders möchten wir die Mini Mäuse Mendorferbuch, unsere Freunde von B.U.T.T., mit deren Anlage wir damals immer spielen durften, sowie Rudi Jung hervorheben.
-                </p>
-                <p className="text-muted-foreground mb-4">
-                  Ebenso danken wir herzlich für die kostenlose Nutzung unseres Bandraums und den Lagerplatz für unser Equipment.
-                </p>
-                <p className="text-muted-foreground mb-4">
-                  Ohne euch wäre diese Reise nur halb so laut, wild und großartig!
+                  Ohne euch wäre diese Reise nur halb so laut.
                 </p>
               </div>
             </div>
-            <div className="grid md:grid-cols-3 gap-4">
-              <a href="#the-crew" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
-                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">6</div>
-                <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Band-Mitglieder</div>
+
+            <div className="grid md:grid-cols-3 gap-4 mt-8">
+              <a href="#the-crew" className="text-center group hover:scale-105 transition-transform">
+                <div className="text-3xl font-bold text-primary">6</div>
+                <div className="text-muted-foreground">Band-Mitglieder</div>
               </a>
-              <Link to="/repertoire" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
-                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">70+</div>
-                <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Songs im Repertoire</div>
+              <Link to="/repertoire" className="text-center group hover:scale-105 transition-transform">
+                <div className="text-3xl font-bold text-primary">70+</div>
+                <div className="text-muted-foreground">Songs im Repertoire</div>
               </Link>
-              <Link to="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
-                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">15+</div>
-                <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Jahre Banderfahrung</div>
+              <Link to="/gigs#referenzen" className="text-center group hover:scale-105 transition-transform">
+                <div className="text-3xl font-bold text-primary">15+</div>
+                <div className="text-muted-foreground">Jahre Banderfahrung</div>
               </Link>
             </div>
           </motion.div>
@@ -157,35 +156,19 @@ const Band = () => {
           </motion.h2>
 
           <BandCarousel
-            members={bandMembers.map(member => ({
+            members={bandMembers.map((member) => ({
               name: member.name,
               role: member.instrument,
-              image: `/images/band/${member.name.split(' ')[0].toLowerCase()}.webp`, // nur der Vorname
-              description: member.description
+              image: `/images/band/${member.name.toLowerCase()}.webp`,
+              description: member.description,
             }))}
           />
-
-
-
         </div>
       </section>
 
-      {/* Group Photo Section with 3D Background */}
-      <section className="relative bg-background overflow-hidden py-32 sm:py-32 md:py-36 lg:py-48 xl:py-56">
-        {/* Spline 3D Background */}
-        <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
-          <iframe
-            src="https://my.spline.design/embers-qRRVF9jO002fkB1KZvsr2ozN/"
-            frameBorder="0"
-            width="100%"
-            height="100%"
-            loading="lazy"
-            className="w-full h-[120%] transform scale-[1.5] translate-x-16 -translate-y-28 pointer-events-auto will-change-transform"
-          />
-        </div>
-
-        {/* Foreground Content */}
-        <div className="relative z-10 container mx-auto px-4">
+      {/* Group Photo Section */}
+      <section className="relative bg-background py-32">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -197,17 +180,14 @@ const Band = () => {
               Die Band im Bild
             </h2>
 
-            {/* Group photo */}
             <div className="flex justify-center">
               <img
                 src="/images/band/Gruppenfoto.webp"
                 alt="Gruppenfoto der Band"
-                className="max-w-full h-auto max-h-[90vh] mx-auto cursor-pointer hover:ring-4 hover:ring-primary transition-all rounded-lg"
+                className="max-w-full h-auto max-h-[90vh] cursor-pointer rounded-lg hover:ring-4 hover:ring-primary transition-all"
                 onClick={() => setIsGroupPhotoOpen(true)}
               />
             </div>
-
-
           </motion.div>
         </div>
       </section>
@@ -215,13 +195,11 @@ const Band = () => {
       {/* Group Photo Modal */}
       <Dialog open={isGroupPhotoOpen} onOpenChange={setIsGroupPhotoOpen}>
         <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
-          <div className="w-full h-full flex items-center justify-center">
-            <img
-              src="/images/band/Gruppenfoto.webp"
-              alt="Gruppenfoto der Band vergrößert"
-              className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
-            />
-          </div>
+          <img
+            src="/images/band/Gruppenfoto.webp"
+            alt="Gruppenfoto vergrößert"
+            className="w-full h-full md:w-auto md:h-auto object-contain md:max-h-[90vh]"
+          />
         </DialogContent>
       </Dialog>
 
