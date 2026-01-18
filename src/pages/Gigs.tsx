@@ -62,15 +62,6 @@ const Gigs = () => {
 
   const upcomingGigs: Gig[] = [
     {
-      date: "16. Januar 2026",
-      title: "Rock in Bouch",
-      venue: "Gasthaus Reis, Mendorferbuch",
-      time: "20:00 Uhr",
-      visibility: "öffentlich",
-      description: "Ein Abend voller Rock-Klassiker in uriger Atmosphäre. Mit unseren Freunden von Mary Eg.",
-      flyerImage: "/images/gigs/rock_in_bouch.jpg",
-    },
-    {
       date: "25. April 2026",
       title: "Rock im Stodl",
       venue: "Gasthaus Reis, Mendorferbuch",
