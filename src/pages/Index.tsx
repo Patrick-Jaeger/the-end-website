@@ -85,22 +85,20 @@ const Index = () => {
           <div className="flex items-center space-x-2 text-primary mb-4 cursor-pointer">
             <Calendar className="h-5 w-5 cursor-pointer" />
             <span className="font-rock font-semibold cursor-pointer">
-              16. Januar 2026
+              22. Februar 2026
             </span>
           </div>
 
           <h3 className="font-rock text-2xl font-bold mb-2 cursor-pointer">
-            Rock in Bouch
+            Rock im Stodl
           </h3>
 
           <p className="text-muted-foreground mb-4 cursor-pointer">
-            Mendorferbuch, Gasthaus Reis
+            Ehenfeld, Stodl
           </p>
 
           <p className="mb-6 cursor-pointer">
             Ein Abend voller Rock-Klassiker in uriger Atmosphäre.
-            <br />
-            Mit unseren Freunden von Mary Eg.
           </p>
 
           {/* LINK – Cursor bleibt Hand */}
@@ -223,11 +221,10 @@ const Index = () => {
 <EventModal
   isOpen={isEventModalOpen}
   onClose={() => setIsEventModalOpen(false)}
-  title="Rock in Bouch"
-  date="16. Januar 2026"
-  location="Mendorferbuch, Gasthaus Reis"
-  description="Ein Abend voller Rock-Klassiker in uriger Atmosphäre. Mit unseren Freunden von Mary Eg."
-  flyerImage="/images/gigs/rock_in_bouch.jpg"
+  title="Rock im Stodl"
+  date="22. Februar 2026"
+  location="Ehenfeld, Stodl"
+  description="Ein Abend voller Rock-Klassiker in uriger Atmosphäre."
 />
 
     </div>
