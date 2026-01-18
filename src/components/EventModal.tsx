@@ -7,7 +7,7 @@ interface EventModalProps {
   date: string;
   location: string;
   description: string;
-  flyerImage: string; // muss ins Interface
+  flyerImage?: string;
 }
 
 const EventModal = ({
@@ -26,13 +26,15 @@ const EventModal = ({
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-auto bg-card border border-border">
         <div className="p-6">
           {/* Flyer */}
-          <div className="mb-6">
-            <img
-              src={flyerImage}
-              alt={`Flyer für ${title}`}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div>
+          {flyerImage && (
+            <div className="mb-6">
+              <img
+                src={flyerImage}
+                alt={`Flyer für ${title}`}
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          )}
 
           <div className="space-y-4">
             <h2 className="font-rock text-2xl font-bold">{title}</h2>
