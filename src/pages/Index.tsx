@@ -85,7 +85,7 @@ const Index = () => {
           <div className="flex items-center space-x-2 text-primary mb-4 cursor-pointer">
             <Calendar className="h-5 w-5 cursor-pointer" />
             <span className="font-rock font-semibold cursor-pointer">
-              22. Februar 2026
+              25. April 2026
             </span>
           </div>
 
@@ -94,11 +94,11 @@ const Index = () => {
           </h3>
 
           <p className="text-muted-foreground mb-4 cursor-pointer">
-            Ehenfeld, Stodl
+            Gasthaus Reis, Mendorferbuch
           </p>
 
           <p className="mb-6 cursor-pointer">
-            Ein Abend voller Rock-Klassiker in uriger Atmosphäre.
+            Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits.
           </p>
 
           {/* LINK – Cursor bleibt Hand */}
@@ -222,9 +222,10 @@ const Index = () => {
   isOpen={isEventModalOpen}
   onClose={() => setIsEventModalOpen(false)}
   title="Rock im Stodl"
-  date="22. Februar 2026"
-  location="Ehenfeld, Stodl"
-  description="Ein Abend voller Rock-Klassiker in uriger Atmosphäre."
+  date="25. April 2026"
+  location="Gasthaus Reis, Mendorferbuch"
+  description="Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits."
+  flyerImage="/images/gigs/rock-im-stodl.jpg"
 />
 
     </div>
