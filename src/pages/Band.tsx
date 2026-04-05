@@ -128,7 +128,7 @@ const Band = () => {
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Band-Mitglieder</div>
               </a>
               <Link to="/repertoire" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
-                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">70+</div>
+                <div className="text-3xl font-bold text-primary group-hover:text-primary/80 cursor-pointer">80+</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors cursor-pointer">Songs im Repertoire</div>
               </Link>
               <Link to="/gigs#referenzen" className="text-center group cursor-pointer hover:scale-105 transition-transform select-none">
