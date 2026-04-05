@@ -43,10 +43,6 @@ const Repertoire = () => {
         youtube: "https://www.youtube.com/watch?v=L-iepu3EtyE&list=RDL-iepu3EtyE&start_radio=1"
       }
     },
-    { artist: "Linkin Park", title: "Given Up", genre: ["Alternative Metal", "Nu Metal"], spotifyTrackId: "400lQTCx3wYGgqAIHSZbNA" },
-    { artist: 'Red Hot Chili Peppers', title: "Can't Stop", genre: ['Indie', 'Funk', 'Alternative'], spotifyTrackId: '3ZOEytgrvLwQaqXreDs2Jx' },
-    { artist: "Oasis", title: "Don't Look Back in Anger", genre: ["Rock"], spotifyTrackId: "7ppPZa3TRUSGKaks9wH7VT" },
-    { artist: "Kraftklub", title: "Ich will nicht nach Berlin", genre: ["Indie", "Rock"], spotifyTrackId: "0XcC71H8QAjrW0NUqXHX1A" }, 
     { artist: "AC/DC", title: "The Jack", genre: ["Rock", "Hard Rock", "Blues Rock"], spotifyTrackId: "3k1WwLG1OXCm6iQ13VrJEL" },
     { artist: "Green Day", title: "Basket Case", genre: ["Punk Rock", "Alternative", "Pop-Punk", "Skate Punk"], spotifyTrackId: "6L89mwZXSOwYl76YXfX13s" },
     { artist: "Foo Fighters", title: "The Pretender", genre: ["Alternative", "Hard Rock", "Post-Grunge", "Indie"], spotifyTrackId: "7x8dCjCr0x6x2lXKujYD34" },
