@@ -55,7 +55,7 @@ const NeonQrButton = () => {
         >
           <div className="bg-white rounded-xl p-2 flex items-center justify-center">
             <img 
-              src="/images/qr-code.png" 
+              src="images/qr-code.png" 
               alt="QR Code" 
               className="w-40 h-40 object-contain"
             />
@@ -69,7 +69,7 @@ const NeonQrButton = () => {
           <div className="flex flex-col items-center justify-center">
             <div className="bg-white rounded-2xl p-4">
               <img 
-                src="/images/qr-code.png" 
+                src="images/qr-code.png" 
                 alt="QR Code" 
                 className="w-64 h-64 md:w-80 md:h-80 object-contain"
               />
