@@ -44,7 +44,7 @@ const Repertoire = () => {
       }
     },
     { artist: "Linkin Park", title: "Given Up", genre: ["Alternative Metal", "Nu Metal"], spotifyTrackId: "400lQTCx3wYGgqAIHSZbNA" },
-    { artist: "Red Hot Chili Peppers", title: "Can't Stop", genre: ["Indie", "Funk", "Alternative"], spotifyTrackId: "3ZOEytgrvLwQaqXreDs2Jx" },
+    { artist: 'Red Hot Chili Peppers', title: "Can't Stop", genre: ['Indie', 'Funk', 'Alternative'], spotifyTrackId: '3ZOEytgrvLwQaqXreDs2Jx' },
     { artist: "Oasis", title: "Don't Look Back in Anger", genre: ["Rock"], spotifyTrackId: "7ppPZa3TRUSGKaks9wH7VT" },
     { artist: "Kraftklub", title: "Ich will nicht nach Berlin", genre: ["Indie", "Rock"], spotifyTrackId: "0XcC71H8QAjrW0NUqXHX1A" }, 
     { artist: "AC/DC", title: "The Jack", genre: ["Rock", "Hard Rock", "Blues Rock"], spotifyTrackId: "3k1WwLG1OXCm6iQ13VrJEL" },
