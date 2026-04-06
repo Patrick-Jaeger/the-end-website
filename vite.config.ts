@@ -4,6 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
+<<<<<<< HEAD
   base: "/the-end-website/",  // 👈 wichtig für GitHub Pages
   publicDir: "public",
   server: { host: "::", port: 8080 },
@@ -28,6 +29,23 @@ export default defineConfig(({ mode }) => ({
           return "assets/[name]-[hash][extname]";
         },
       },
+=======
+  base: "/mendorferbuch/",
+
+  server: {
+    host: "::",
+    port: 8080,
+    hmr: {
+      overlay: false,
+    },
+  },
+
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+>>>>>>> 6833e0dd9faea89b9c0c6e3755f39f80260e6b45
     },
   },
 }));
