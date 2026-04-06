@@ -2,9 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Download, Guitar, Mic, Music } from "lucide-react";
+import { Guitar, Mic, Music } from "lucide-react";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import BandCarousel from "@/components/BandCarousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -12,48 +11,54 @@ import { Link } from "react-router-dom";
 
 const Band = () => {
   const [isGroupPhotoOpen, setIsGroupPhotoOpen] = useState(false);
-  
+
   // GSAP Animations
-  useTextSplit('.text-split-band', 0.4);
-  useParallax('.parallax-band', 0.25);
+  useTextSplit(".text-split-band", 0.4);
+  useParallax(".parallax-band", 0.25);
 
   const bandMembers = [
     {
-      name: "Thomas Gründemann",
+      name: "Thomas",
       instrument: "Gitarre & Backing Vocals",
-      description: "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
-      icon: Guitar
+      description:
+        "Von klassischen Rock-Sounds bis zu modernen Synthie-Parts - Thomas vervollständigt unseren Sound.",
+      icon: Guitar,
     },
     {
-      name: "David Wood",
+      name: "David",
       instrument: "Bass",
-      description: "Das rhythmische Fundament der Band. David sorgt für den treibenden Groove in jedem Song.",
-      icon: Music
+      description:
+        "Das rhythmische Fundament der Band. David sorgt für den treibenden Groove in jedem Song.",
+      icon: Music,
     },
     {
-      name: "Martin Delling",
+      name: "Martin",
       instrument: "Techniker",
-      description: "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
-      icon: Music
+      description:
+        "Als unser technisches Mastermind sorgt Martin dafür, dass Sound und Licht immer perfekt sitzen – unsichtbar, aber unverzichtbar.",
+      icon: Music,
     },
     {
-      name: "Lukas Ried",
+      name: "Lukas",
       instrument: "Lead Gitarre",
-      description: "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
-      icon: Guitar
+      description:
+        "Mit über 10 Jahren Bühnenerfahrung bringt Lukas die Energie und die Riffs, die jeder Rock-Song braucht.",
+      icon: Guitar,
     },
     {
-      name: "Patrick Jäger",
+      name: "Patrick",
       instrument: "Schlagzeug",
-      description: "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
-      icon: Music
+      description:
+        "Der kraftvolle Heartbeat der Band. Patrick hält den Takt und sorgt für explosive Drum-Fills.",
+      icon: Music,
     },
     {
-      name: "Sebastian Delling",
+      name: "Sebastian",
       instrument: "Vocals",
-      description: "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
-      icon: Mic
-    }
+      description:
+        "Mit seiner kraftvollen Stimme und Bühnenpräsenz bringt Sebastian jede Show zum Kochen und zieht das Publikum in seinen Bann.",
+      icon: Mic,
+    },
   ];
 
   return (
@@ -154,35 +159,19 @@ const Band = () => {
           </motion.h2>
 
           <BandCarousel
-            members={bandMembers.map(member => ({
+            members={bandMembers.map((member) => ({
               name: member.name,
               role: member.instrument,
               image: `images/band/${member.name.split(' ')[0].toLowerCase()}.webp`, // nur der Vorname
               description: member.description
             }))}
           />
-
-
-
         </div>
       </section>
 
-      {/* Group Photo Section with 3D Background */}
-      <section className="relative bg-background overflow-hidden py-32 sm:py-32 md:py-36 lg:py-48 xl:py-56">
-        {/* Spline 3D Background */}
-        <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
-          <iframe
-            src="https://my.spline.design/embers-qRRVF9jO002fkB1KZvsr2ozN/"
-            frameBorder="0"
-            width="100%"
-            height="100%"
-            loading="lazy"
-            className="w-full h-[120%] transform scale-[1.5] translate-x-16 -translate-y-28 pointer-events-auto will-change-transform"
-          />
-        </div>
-
-        {/* Foreground Content */}
-        <div className="relative z-10 container mx-auto px-4">
+      {/* Group Photo Section */}
+      <section className="relative bg-background py-32">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -194,17 +183,14 @@ const Band = () => {
               Die Band im Bild
             </h2>
 
-            {/* Group photo */}
             <div className="flex justify-center">
               <img
                 src="images/band/Gruppenfoto.webp"
                 alt="Gruppenfoto der Band"
-                className="max-w-full h-auto max-h-[90vh] mx-auto cursor-pointer hover:ring-4 hover:ring-primary transition-all rounded-lg"
+                className="max-w-full h-auto max-h-[90vh] cursor-pointer rounded-lg hover:ring-4 hover:ring-primary transition-all"
                 onClick={() => setIsGroupPhotoOpen(true)}
               />
             </div>
-
-
           </motion.div>
         </div>
       </section>
@@ -212,13 +198,12 @@ const Band = () => {
       {/* Group Photo Modal */}
       <Dialog open={isGroupPhotoOpen} onOpenChange={setIsGroupPhotoOpen}>
         <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
-          <div className="w-full h-full flex items-center justify-center">
-            <img
-              src="images/band/Gruppenfoto.webp"
-              alt="Gruppenfoto der Band vergrößert"
-              className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
-            />
-          </div>
+          <img
+            src="/images/band/Gruppenfoto.webp"
+            alt="Gruppenfoto vergrößert"
+            className="w-full h-full md:w-auto md:h-auto object-contain md:max-h-[90vh]"
+          />
+
         </DialogContent>
       </Dialog>
 
