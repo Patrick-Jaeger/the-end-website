@@ -98,7 +98,7 @@ const Index = () => {
           </p>
 
           <p className="mb-6 cursor-pointer">
-            Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits.
+            Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits und den Minzie Brothers.
           </p>
 
           {/* LINK – Cursor bleibt Hand */}
@@ -224,8 +224,8 @@ const Index = () => {
   title="Rock im Stodl"
   date="25. April 2026"
   location="Gasthaus Reis, Mendorferbuch"
-  description="Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits."
-  flyerImage="/images/gigs/rock-im-stodl.jpg"
+  description="Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits und den Minzie Brothers."
+  flyerImage="images/gigs/rock-im-stodl.jpg"
 />
 
     </div>
