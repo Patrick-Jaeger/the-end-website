@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pages: write
@@ -21,13 +25,14 @@ jobs:
     steps:
       # Repository auschecken
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Node.js installieren
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
+          cache: npm
 
       # GitHub Pages vorbereiten
       - name: Setup Pages
@@ -35,7 +40,7 @@ jobs:
 
       # Abhängigkeiten installieren
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Vite Build
       - name: Build project
