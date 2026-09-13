@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, Video } from "lucide-react";
 import { useTextSplit, useParallax, useCardWiggle } from "@/hooks/useGSAP";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import GroundFog from "@/components/ui/ground-fog";
-
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
+import { Play } from "lucide-react";
 
 const Media = () => {
   const [isTrigger, setIsTrigger] = useState(false);
@@ -77,26 +77,29 @@ const Media = () => {
     { id: 21, title: "Wo alles begann", category: "BTS", imageUrl: "images/media/wo-alles-begann.webp" }
   ];
 
-  const videos = [
-    {
-      id: 1,
-      title: "Sandlochfest 2023",
-      description: "Unser Cover des Metallica-Klassikers live beim Herbstrock Festival",
-      thumbnail: "youtube-thumb-1"
-    },
-    {
-      id: 2,
-      title: "Smells Like Teen Spirit - Acoustic Version",
-      description: "Eine acoustic Version des Nirvana-Hits in unserem Proberaum",
-      thumbnail: "youtube-thumb-2"
-    },
-    {
-      id: 3,
-      title: "Full Live Set - Sommernachtstraum 2024",
-      description: "Komplettes Live-Set von unserem Open-Air Auftritt",
-      thumbnail: "youtube-thumb-3"
-    }
-  ];
+const videos = [
+  {
+    id: 1,
+    youtubeId: "GJc2y4HMh6U",
+    title: "Sandlochfest - Ehenfeld",
+    description: "Live beim Sandlochfest 2023",
+    thumbnail: "/images/media/youtube-sandlochfest-2023.webp",
+  },
+  {
+    id: 2,
+    youtubeId: "jUyXKIJBQ6A",
+    title: "Pink Panther",
+    description: "THE END im Waldstadion",
+    thumbnail: "/images/media/youtube-pink-panther-2023.webp",
+  },
+  {
+    id: 3,
+    youtubeId: "kS-EaKuJwhk",
+    title: "Rock in Bouch 2023",
+    description: "Rock in Bouch - da san ma dahoam",
+    thumbnail: "/images/media/youtube-rock-in-bouch-2023.webp",
+  },
+];
 
   return (
     <div className="min-h-screen bg-rock-gradient">
@@ -154,59 +157,72 @@ const Media = () => {
   </div>
 </section>
 
+{/* Video Section */}
+<section className="py-20 bg-rock-lighter">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
+        Live Videos
+      </h2>
 
-      {/* Video Section */}
-      <section className="py-20 bg-rock-lighter">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-rock text-3xl md:text-4xl font-bold text-glow mb-4">
-              Live Videos
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              THE END Live-Performances auf YouTube
-            </p>
-          </div>
+      <p className="text-lg text-muted-foreground">
+        THE END Live-Performances auf YouTube
+      </p>
+    </div>
 
-          <div className="grid lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
-            {videos.map((video, index) => (
-              <div key={video.id}>
-                <Card className="bg-card border-border shadow-rock transition-rock hover-rock overflow-hidden">
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div className="md:col-span-1">
-                      <div className="aspect-video bg-secondary relative overflow-hidden group cursor-pointer">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-rock">
-                            <Play className="h-8 w-8 text-primary-foreground ml-1" fill="currentColor" />
-                          </div>
-                        </div>
-                        <div className="absolute top-4 right-4 bg-black/50 text-white px-2 py-1 rounded text-sm flex items-center space-x-1">
-                          <Video className="h-3 w-3" />
-                          <span>YouTube</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="md:col-span-2">
-                      <CardContent className="p-6">
-                        <h3 className="font-rock text-xl font-bold mb-3">
-                          {video.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4">
-                          {video.description}
-                        </p>
-                        <div className="flex items-center space-x-2 text-primary">
-                          <Play className="h-4 w-4" />
-                          <span className="font-semibold">Auf YouTube ansehen</span>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            ))}
+    <div className="grid lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
+      {videos.map((video) => (
+        <Card
+          key={video.id}
+          className="bg-card border-border shadow-rock transition-rock hover-rock overflow-hidden"
+        >
+          <div className="grid md:grid-cols-3 gap-6">
+
+            {/* YouTube Video */}
+            <div className="md:col-span-1">
+              <YouTubeEmbed
+                videoId={video.youtubeId}
+                title={video.title}
+                thumbnail={video.thumbnail}
+              />
+            </div>
+
+            {/* Video Information */}
+            <div className="md:col-span-2">
+              <CardContent className="p-6 h-full flex flex-col justify-center">
+                <h3 className="font-rock text-xl font-bold mb-3">
+                  {video.title}
+                </h3>
+
+                <p className="text-muted-foreground mb-4">
+                  {video.description}
+                </p>
+
+                <a
+                  href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-rock"
+                >
+                  <Play
+                    className="h-4 w-4"
+                    fill="currentColor"
+                  />
+
+                  <span className="font-semibold">
+                    Auf YouTube ansehen
+                  </span>
+                </a>
+              </CardContent>
+            </div>
+
           </div>
-        </div>
-      </section>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Social Media Links */}
       <section className="py-20 bg-rock-lighter">

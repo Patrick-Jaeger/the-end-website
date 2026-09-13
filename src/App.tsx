@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SpotifyConsentProvider } from "@/contexts/SpotifyConsentContext";
+import { YouTubeConsentProvider } from "@/contexts/YouTubeConsentContext";
 
 import Index from "./pages/Index";
 import Band from "./pages/Band";
@@ -24,29 +25,31 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <SpotifyConsentProvider>
-          <Toaster />
-          <Sonner />
+       <SpotifyConsentProvider>
+  <YouTubeConsentProvider>
+    <Toaster />
+    <Sonner />
 
-          {/* Hauptinhalt */}
-          <div className="relative z-10">
-            <BrowserRouter basename="/the-end-website">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/band" element={<Band />} />
-                <Route path="/gigs" element={<Gigs />} />
-                <Route path="/media" element={<Media />} />
-                <Route path="/repertoire" element={<Repertoire />} />
-                <Route path="/pa-lichtverleih" element={<PALichtverleih />} />
-                <Route path="/merch" element={<Merch />} />
-                <Route path="/kontakt" element={<Kontakt />} />
-                <Route path="/impressum" element={<Impressum />} />
-                <Route path="/datenschutz" element={<Datenschutz />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </BrowserRouter>
-          </div>
-        </SpotifyConsentProvider>
+    {/* Hauptinhalt */}
+    <div className="relative z-10">
+      <BrowserRouter basename="/the-end-website">
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/band" element={<Band />} />
+          <Route path="/gigs" element={<Gigs />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/repertoire" element={<Repertoire />} />
+          <Route path="/pa-lichtverleih" element={<PALichtverleih />} />
+          <Route path="/merch" element={<Merch />} />
+          <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  </YouTubeConsentProvider>
+</SpotifyConsentProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
