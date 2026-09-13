@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Play, Video } from "lucide-react";
 import { useYouTubeConsent } from "@/contexts/YouTubeConsentContext";
 
@@ -18,10 +17,9 @@ export function YouTubeEmbed({
   if (!hasConsent) {
     return (
       <div className="aspect-video bg-secondary relative overflow-hidden group">
-
         {/* Lokales Thumbnail – keine Verbindung zu YouTube */}
         <img
-          src={thumbnail}
+          src={`${import.meta.env.BASE_URL}${thumbnail.replace(/^\/+/, "")}`}
           alt={title}
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -35,25 +33,26 @@ export function YouTubeEmbed({
           <span>YouTube</span>
         </div>
 
-        {/* Blauer Play Button */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        {/* Blauer Play-Button = YouTube laden */}
+        <button
+          type="button"
+          onClick={giveConsent}
+          aria-label={`YouTube-Video "${title}" laden`}
+          className="absolute inset-0 flex items-center justify-center cursor-pointer"
+        >
           <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-rock">
             <Play
               className="h-8 w-8 text-primary-foreground ml-1"
               fill="currentColor"
             />
           </div>
-        </div>
+        </button>
 
-        {/* YouTube laden Button */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center px-4">
-          <Button
-            onClick={giveConsent}
-            className="bg-red-600 hover:bg-red-700 text-white shadow-lg"
-          >
-            <Video className="h-4 w-4 mr-2" />
+        {/* Hinweis */}
+        <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+          <span className="inline-block bg-black/60 text-white text-sm px-3 py-1.5 rounded">
             YouTube laden
-          </Button>
+          </span>
         </div>
       </div>
     );

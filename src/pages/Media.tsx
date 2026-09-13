@@ -83,21 +83,21 @@ const videos = [
     youtubeId: "GJc2y4HMh6U",
     title: "Sandlochfest - Ehenfeld",
     description: "Live beim Sandlochfest 2023",
-    thumbnail: "/images/media/youtube-sandlochfest-2023.webp",
+    thumbnail: "/images/media/youtube-sandlochfest-2023.webp"
   },
   {
     id: 2,
     youtubeId: "jUyXKIJBQ6A",
     title: "Pink Panther",
     description: "THE END im Waldstadion",
-    thumbnail: "/images/media/youtube-pink-panther-2023.webp",
+    thumbnail: "/images/media/youtube-rock-in-bouch-2023.webp",
   },
   {
     id: 3,
     youtubeId: "kS-EaKuJwhk",
     title: "Rock in Bouch 2023",
     description: "Rock in Bouch - da san ma dahoam",
-    thumbnail: "/images/media/youtube-rock-in-bouch-2023.webp",
+    thumbnail: "/images/media/youtube-pink-panther-2023.webp",
   },
 ];
 
@@ -202,7 +202,7 @@ const videos = [
                   href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-rock"
+                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-rock cursor-pointer"
                 >
                   <Play
                     className="h-4 w-4"
