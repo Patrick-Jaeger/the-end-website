@@ -97,14 +97,16 @@ export const DirectionAwareHover = ({
                 ease: "easeOut",
               }}
             >
-              <img
-                alt="image"
-                className={cn(
-                  "h-full w-full object-cover scale-[1.15] grayscale group-hover/card:grayscale-0 transition-all duration-500",
-                  imageClassName
-                )}
-                src={imageUrl}
-              />
+<img
+  alt="image"
+  loading="lazy"
+  decoding="async"
+  className={cn(
+    "h-full w-full object-cover scale-[1.15] grayscale group-hover/card:grayscale-0 transition-all duration-500",
+    imageClassName
+  )}
+  src={imageUrl}
+/>
             </motion.div>
             <motion.div
               variants={textVariants}
