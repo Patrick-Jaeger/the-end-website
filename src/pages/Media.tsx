@@ -198,21 +198,21 @@ const videos = [
                   {video.description}
                 </p>
 
-                <a
-                  href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-rock cursor-pointer"
-                >
-                  <Play
-                    className="h-4 w-4"
-                    fill="currentColor"
-                  />
+               <a
+  href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-rock cursor-pointer"
+>
+  <Play
+    className="h-4 w-4 cursor-pointer"
+    fill="currentColor"
+  />
 
-                  <span className="font-semibold">
-                    Auf YouTube ansehen
-                  </span>
-                </a>
+  <span className="font-semibold cursor-pointer">
+    Auf YouTube ansehen
+  </span>
+</a>
               </CardContent>
             </div>
 

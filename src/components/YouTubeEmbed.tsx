@@ -34,19 +34,19 @@ export function YouTubeEmbed({
         </div>
 
         {/* Blauer Play-Button = YouTube laden */}
-        <button
-          type="button"
-          onClick={giveConsent}
-          aria-label={`YouTube-Video "${title}" laden`}
-          className="absolute inset-0 flex items-center justify-center cursor-pointer"
-        >
-          <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-rock">
-            <Play
-              className="h-8 w-8 text-primary-foreground ml-1"
-              fill="currentColor"
-            />
-          </div>
-        </button>
+<button
+  type="button"
+  onClick={giveConsent}
+  aria-label={`YouTube-Video "${title}" laden`}
+  className="absolute inset-0 flex items-center justify-center cursor-pointer"
+>
+  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-rock cursor-pointer">
+    <Play
+      className="h-8 w-8 text-primary-foreground ml-1"
+      fill="currentColor"
+    />
+  </div>
+</button>
 
         {/* Hinweis */}
         <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
