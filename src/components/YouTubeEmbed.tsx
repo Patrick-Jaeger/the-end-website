@@ -41,10 +41,10 @@ export function YouTubeEmbed({
   className="absolute inset-0 flex items-center justify-center cursor-pointer"
 >
   <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-rock cursor-pointer">
-    <Play
-      className="h-8 w-8 text-primary-foreground ml-1"
-      fill="currentColor"
-    />
+<Play
+  className="h-8 w-8 text-primary-foreground ml-1 cursor-pointer"
+  fill="currentColor"
+/>
   </div>
 </button>
 
