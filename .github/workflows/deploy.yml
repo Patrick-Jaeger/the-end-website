@@ -10,28 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Repository auschecken
+      # Repository auschecken
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 2️⃣ Node.js installieren
+      # Node.js installieren
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 3️⃣ Abhängigkeiten installieren
+      # Abhängigkeiten installieren
       - name: Install dependencies
         run: npm install
 
-      # 4️⃣ Projekt bauen (Vite)
+      # Projekt bauen
       - name: Build project
         run: npm run build
-
-      # 5️⃣ Build-Ordner für GitHub Pages bereitstellen
-      - name: Deploy to GitHub Pages on main
-        uses: peaceiris/actions-gh-pages@v7
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: main
