@@ -11,6 +11,7 @@ type Testimonial = {
   name: string;
   designation: string;
   src: string;
+  thumbnail?: string;
 };
 
 export const AnimatedTestimonials = ({
@@ -96,13 +97,13 @@ export const AnimatedTestimonials = ({
                     }}
                     className="absolute inset-0 origin-bottom"
                   >
-                    <img
-                      src={testimonial.src}
-                      alt={testimonial.name}
-                      draggable={false}
-                      onClick={() => handleImageClick(testimonial.src)}
-                      className="h-full w-full rounded-3xl object-cover aspect-square cursor-pointer"
-                    />
+<img
+  src={testimonial.thumbnail || testimonial.src}
+  alt={testimonial.name}
+  draggable={false}
+  onClick={() => handleImageClick(testimonial.src)}
+  className="h-full w-full rounded-3xl object-cover aspect-square cursor-pointer"
+/>
                   </motion.div>
                 );
               })}

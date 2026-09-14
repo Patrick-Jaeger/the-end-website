@@ -162,7 +162,8 @@ const Band = () => {
             members={bandMembers.map((member) => ({
               name: member.name,
               role: member.instrument,
-              image: `images/band/${member.name.split(' ')[0].toLowerCase()}.webp`, // nur der Vorname
+              image: `images/band/${member.name.split(' ')[0].toLowerCase()}.webp`,
+thumbnail: `images/band/thumbs/${member.name.split(' ')[0].toLowerCase()}.webp`,
               description: member.description
             }))}
           />
@@ -184,12 +185,12 @@ const Band = () => {
             </h2>
 
             <div className="flex justify-center">
-              <img
-                src="images/band/Gruppenfoto.webp"
-                alt="Gruppenfoto der Band"
-                className="max-w-full h-auto max-h-[90vh] cursor-pointer rounded-lg hover:ring-4 hover:ring-primary transition-all"
-                onClick={() => setIsGroupPhotoOpen(true)}
-              />
+<img
+  src="images/band/thumbs/Gruppenfoto.webp"
+  alt="Gruppenfoto der Band"
+  className="max-w-full h-auto max-h-[90vh] cursor-pointer rounded-lg hover:ring-4 hover:ring-primary transition-all"
+  onClick={() => setIsGroupPhotoOpen(true)}
+/>
             </div>
           </motion.div>
         </div>

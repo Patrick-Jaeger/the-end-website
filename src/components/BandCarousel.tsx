@@ -9,6 +9,7 @@ interface BandMember {
   name: string;
   role: string;
   image: string;
+  thumbnail?: string;
   description?: string;
 }
 
@@ -202,11 +203,11 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                     <div 
                       className={`w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-secondary flex-shrink-0 ${index === currentIndex ? 'cursor-pointer hover:ring-2 hover:ring-primary' : 'cursor-pointer'} transition-all`}
                     >
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
+<img 
+  src={member.thumbnail || member.image} 
+  alt={member.name}
+  className="w-full h-full object-cover"
+/>
                     </div>
                     <div className="text-center flex-1 flex flex-col justify-start cursor-pointer">
                       <h3 className="font-rock text-base font-bold mb-1.5 text-foreground cursor-pointer">{member.name}</h3>
@@ -266,11 +267,11 @@ const BandCarousel = ({ members }: BandCarouselProps) => {
                 <div 
                   className="w-24 h-24 mb-4 rounded-full overflow-hidden bg-secondary flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
                 >
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover cursor-pointer"
-                  />
+<img 
+  src={member.thumbnail || member.image} 
+  alt={member.name}
+  className="w-full h-full object-cover cursor-pointer"
+/>
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-2 text-foreground cursor-pointer">{member.name}</h3>
                 <p className="text-primary font-medium text-base mb-3 cursor-pointer">{member.role}</p>

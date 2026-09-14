@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Calendar, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBackground from "@/assets/hero-background2.jpg";
+import heroBackgroundDesktop from "@/assets/hero-background2-desktop.webp";
+import heroBackgroundMobile from "@/assets/hero-background2-mobile.webp";
 import AnimatedLogo from "@/components/ui/animated-logo";
 import { StarBorder } from "@/components/ui/star-border";
 import GradientText from "@/components/ui/GradientText";
@@ -11,12 +12,18 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24">
       {/* Background Image with Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      >
+      <picture className="absolute inset-0">
+        <source
+          media="(max-width: 767px)"
+          srcSet={heroBackgroundMobile}
+        />
+        <img
+          src={heroBackgroundDesktop}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
-      </div>
+      </picture>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center justify-center">
@@ -95,7 +102,13 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.5 }}
           >
             <Link to="/gigs" className="w-full sm:w-auto cursor-pointer">
-              <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+              <ClickSpark
+                sparkColor="#4079ff"
+                sparkSize={12}
+                sparkRadius={25}
+                sparkCount={10}
+                duration={500}
+              >
                 <div className="relative rounded-full border-2 border-primary p-[2px] w-full sm:w-auto overflow-hidden cursor-pointer">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shiny-text" />
                   <div className="relative bg-background rounded-full px-6 py-3 flex items-center justify-center hover:bg-primary/5 transition-colors cursor-pointer select-none">
@@ -114,7 +127,13 @@ const Hero = () => {
             </Link>
 
             <Link to="/kontakt" className="w-full sm:w-auto cursor-pointer">
-              <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
+              <ClickSpark
+                sparkColor="#4079ff"
+                sparkSize={12}
+                sparkRadius={25}
+                sparkCount={10}
+                duration={500}
+              >
                 <StarBorder
                   as="div"
                   color="hsl(var(--primary))"
@@ -122,7 +141,9 @@ const Hero = () => {
                 >
                   <div className="flex items-center justify-center cursor-pointer select-none">
                     <Mail className="mr-2 h-5 w-5 cursor-pointer" />
-                    <span className="cursor-pointer select-none">Anfrage senden</span>
+                    <span className="cursor-pointer select-none">
+                      Anfrage senden
+                    </span>
                   </div>
                 </StarBorder>
               </ClickSpark>

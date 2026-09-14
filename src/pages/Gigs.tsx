@@ -81,80 +81,92 @@ const Gigs = () => {
     },
   ];
 
-  const referenzen = [
-    {
-      quote: "Ein riesiges Geburtstags-Festival mit vielen coolen Bands und ausgelassener Stimmung.",
-      name: "Das Event - Lauterhofen 2025",
-      designation: "Open Air Bühne",
-      src: "images/referenzen/2025-das-event-lauterhofen.webp",
-    },
-    {
-      quote: "Top Stimmung und super Leute! Wir glauben ihr hättet ewig weiter feiern können :D",
-      name: "2*40. Geburtstagsfeier - Altenricht 2024",
-      designation: "Private Feier",
-      src: "images/referenzen/2024-2x40-geburtstag-altenricht.webp",
-    },
-    {
-      quote: "40 Jahre auf dem Tacho – und noch kein bisschen Rost! ;)",
-      name: "40. Geburtstag - Ehenfeld 2024",
-      designation: "Private Feier",
-      src: "images/referenzen/2024-40-geburtstag-ehenfeld.webp",
-    },
-    {
-      quote: "LAAAAUDAAAA!!! Irre, besser kann man's nicht beschreiben.",
-      name: "Sandlochfest - Ehenfeld 2023",
-      designation: "Dorffest",
-      src: "images/referenzen/2023-sandlochfest-ehenfeld.webp",
-    },
-    {
-      quote: "Hochzeit meets unplugged Rock",
-      name: "Hochzeit C&M - Rieden 2023",
-      designation: "Private Feier",
-      src: "images/referenzen/2023-hochzeit-unplugged.webp",
-    },
-    {
-      quote: "An Tagen wie diesen...    Danke fürs Mitrocken!",
-      name: "Geburtstagsfeier - Hohenburg 2023",
-      designation: "Private Feier",
-      src: "images/referenzen/2023-geburtstag-hohenburg.webp",
-    },
-    {
-      quote: "Rock Warrior's und Headbanger's of the World!!",
-      name: "Rock in Bouch - Mendorferbuch 2019",
-      designation: "Öffentliche Veranstaltung",
-      src: "images/referenzen/2019_rock-in-bouch.webp",
-    },
-    {
-      quote: "Es war uns eine Ehre - THE B.U.T.T.",
-      name: "40. Geburtstag - Hohenburg 2019",
-      designation: "Private Feier",
-      src: "images/referenzen/2019-40-geburtstag-hohenburg.webp",
-    },
-    {
-      quote: "Rock am LKW mit den Buam vom Lautrachtal!",
-      name: "Rock am LKW - TuS Hohenburg 2014",
-      designation: "Öffentliche Veranstaltung",
-      src: "images/referenzen/2014-rock-am-lkw-tus-hohenburg.webp",
-    },
-    {
-      quote: "Wahnsinns Ambiente auf der alten Schweppermannsburg - unvergessliches Fest!",
-      name: "Over the Hills Festival - Pfaffenhofen 2014",
-      designation: "Festival",
-      src: "images/referenzen/2014-over-the-hills-pfaffenhofen.webp",
-    },
-    {
-      quote: "Rockabend beim 125 Jahre Fest der FFW Mendorferbuch.",
-      name: "FFW-Fest - Mendorferbuch 2013",
-      designation: "Öffentliche Veranstaltung",
-      src: "images/referenzen/2013-ffw-fest-mendorferbuch.webp",
-    },
-    {
-      quote: "Aus dem Fußballtrikot ins Bandshirt geschlüpft und die ganze Nacht abgeockt!",
-      name: "Pink Panther - Hiatberg 2011",
-      designation: "Öffentliche Veranstaltung",
-      src: "images/referenzen/2011-pink-panther-hiatberg.webp",
-    },
-  ];
+ const referenzen = [
+  {
+    quote: "Ein riesiges Geburtstags-Festival mit vielen coolen Bands und ausgelassener Stimmung.",
+    name: "Das Event - Lauterhofen 2025",
+    designation: "Open Air Bühne",
+    src: "images/referenzen/2025-das-event-lauterhofen.webp",
+    thumbnail: "images/referenzen/thumbs/2025-das-event-lauterhofen.webp",
+  },
+  {
+    quote: "Top Stimmung und super Leute! Wir glauben ihr hättet ewig weiter feiern können :D",
+    name: "2*40. Geburtstagsfeier - Altenricht 2024",
+    designation: "Private Feier",
+    src: "images/referenzen/2024-2x40-geburtstag-altenricht.webp",
+    thumbnail: "images/referenzen/thumbs/2024-2x40-geburtstag-altenricht.webp",
+  },
+  {
+    quote: "40 Jahre auf dem Tacho – und noch kein bisschen Rost! ;)",
+    name: "40. Geburtstag - Ehenfeld 2024",
+    designation: "Private Feier",
+    src: "images/referenzen/2024-40-geburtstag-ehenfeld.webp",
+    thumbnail: "images/referenzen/thumbs/2024-40-geburtstag-ehenfeld.webp",
+  },
+  {
+    quote: "LAAAAUDAAAA!!! Irre, besser kann man's nicht beschreiben.",
+    name: "Sandlochfest - Ehenfeld 2023",
+    designation: "Dorffest",
+    src: "images/referenzen/2023-sandlochfest-ehenfeld.webp",
+    thumbnail: "images/referenzen/thumbs/2023-sandlochfest-ehenfeld.webp",
+  },
+  {
+    quote: "Hochzeit meets unplugged Rock",
+    name: "Hochzeit C&M - Rieden 2023",
+    designation: "Private Feier",
+    src: "images/referenzen/2023-hochzeit-unplugged.webp",
+    thumbnail: "images/referenzen/thumbs/2023-hochzeit-unplugged.webp",
+  },
+  {
+    quote: "An Tagen wie diesen...    Danke fürs Mitrocken!",
+    name: "Geburtstagsfeier - Hohenburg 2023",
+    designation: "Private Feier",
+    src: "images/referenzen/2023-geburtstag-hohenburg.webp",
+    thumbnail: "images/referenzen/thumbs/2023-geburtstag-hohenburg.webp",
+  },
+  {
+    quote: "Rock Warrior's und Headbanger's of the World!!",
+    name: "Rock in Bouch - Mendorferbuch 2019",
+    designation: "Öffentliche Veranstaltung",
+    src: "images/referenzen/2019_rock-in-bouch.webp",
+    thumbnail: "images/referenzen/thumbs/2019_rock-in-bouch.webp",
+  },
+  {
+    quote: "Es war uns eine Ehre - THE B.U.T.T.",
+    name: "40. Geburtstag - Hohenburg 2019",
+    designation: "Private Feier",
+    src: "images/referenzen/2019-40-geburtstag-hohenburg.webp",
+    thumbnail: "images/referenzen/thumbs/2019-40-geburtstag-hohenburg.webp",
+  },
+  {
+    quote: "Rock am LKW mit den Buam vom Lautrachtal!",
+    name: "Rock am LKW - TuS Hohenburg 2014",
+    designation: "Öffentliche Veranstaltung",
+    src: "images/referenzen/2014-rock-am-lkw-tus-hohenburg.webp",
+    thumbnail: "images/referenzen/thumbs/2014-rock-am-lkw-tus-hohenburg.webp",
+  },
+  {
+    quote: "Wahnsinns Ambiente auf der alten Schweppermannsburg - unvergessliches Fest!",
+    name: "Over the Hills Festival - Pfaffenhofen 2014",
+    designation: "Festival",
+    src: "images/referenzen/2014-over-the-hills-pfaffenhofen.webp",
+    thumbnail: "images/referenzen/thumbs/2014-over-the-hills-pfaffenhofen.webp",
+  },
+  {
+    quote: "Rockabend beim 125 Jahre Fest der FFW Mendorferbuch.",
+    name: "FFW-Fest - Mendorferbuch 2013",
+    designation: "Öffentliche Veranstaltung",
+    src: "images/referenzen/2013-ffw-fest-mendorferbuch.webp",
+    thumbnail: "images/referenzen/thumbs/2013-ffw-fest-mendorferbuch.webp",
+  },
+  {
+    quote: "Aus dem Fußballtrikot ins Bandshirt geschlüpft und die ganze Nacht abgeockt!",
+    name: "Pink Panther - Hiatberg 2011",
+    designation: "Öffentliche Veranstaltung",
+    src: "images/referenzen/2011-pink-panther-hiatberg.webp",
+    thumbnail: "images/referenzen/thumbs/2011-pink-panther-hiatberg.webp",
+  },
+];
 
   return (
     <div className="min-h-screen bg-rock-gradient relative">
