@@ -54,27 +54,153 @@ const Media = () => {
   
 
   const photos = [
-    { id: 1, title: "Rock im Stodl 2025", category: "Live", imageUrl: "images/media/2025_rock-im-stodl.webp" },
-    { id: 2, title: "Rock im Stodl 2025", category: "Live", imageUrl: "images/media/2025_rock-im-stodl1.webp" },
-    { id: 3, title: "Rock im Stodl 2025", category: "Live", imageUrl: "images/media/2025_rock-im-stodl2.webp" },
-    { id: 4, title: "Rock im Stodl 2025", category: "Live", imageUrl: "images/media/2025_rock-im-stodl3.webp" },
-    { id: 5, title: "Soundcheck Lauterhofen 2025", category: "BTS", imageUrl: "images/media/2025_soundcheck-lauterhofen.webp" },
-    { id: 6, title: "Rock in Bouch 2023", category: "Live", imageUrl: "images/media/2023_rock-in-bouch.webp" },
-    { id: 7, title: "Acoustic Bandprobe 2023", category: "BTS", imageUrl: "images/media/2023_accoustic-bandprobe.webp" },
-    { id: 8, title: "DJ Rxxd 2022", category: "Live", imageUrl: "images/media/2022-dj-rxxd.webp" },
-    { id: 9, title: "Bandprobe mit Freunden 2021", category: "BTS", imageUrl: "images/media/2021_bandprobe-mit-freunden.webp" },
-    { id: 10, title: "Ausflug zum Thomann 2020", category: "BTS", imageUrl: "images/media/2020-ausflug-zum-thomann.JPG" },
-    { id: 11, title: "Rock in Bouch 2019", category: "Live", imageUrl: "images/media/2019-rock-in-bouch.webp" },
-    { id: 12, title: "Rock Meets Electro 2018", category: "Live", imageUrl: "images/media/2018-rock-meets-electro.webp" },
-    { id: 13, title: "Rock in Bouch 2018", category: "Live", imageUrl: "images/media/2018_rock-in-bouch.webp" },
-    { id: 14, title: "Rock in Bouch 2018", category: "Live", imageUrl: "images/media/2018_rock-in-bouch1.webp" },
-    { id: 15, title: "Rock in Bouch 2017", category: "Live", imageUrl: "images/media/2017-rock-in-bouch.webp" },
-    { id: 16, title: "Sommerrock 2015", category: "Live", imageUrl: "images/media/2015-sommerrock.webp" },
-    { id: 17, title: "Rock in Bouch 2015", category: "Live", imageUrl: "images/media/2015-rock-in-bouch.webp" },
-    { id: 18, title: "Pink Panther Hiatberg 2015", category: "Live", imageUrl: "images/media/2015-pink-panther-hiatberg.webp" },
-    { id: 19, title: "Over The Hills Festival 2014", category: "Live", imageUrl: "images/media/2014-over-the-hills-festival.webp" },
-    { id: 20, title: "Rock in Bouch 2010", category: "Live", imageUrl: "images/media/2010-rock-in-bouch.webp" },
-    { id: 21, title: "Wo alles begann", category: "BTS", imageUrl: "images/media/wo-alles-begann.webp" }
+    {
+      id: 1,
+      title: "Rock im Stodl 2025",
+      category: "Live",
+      imageUrl: "images/media/2025_rock-im-stodl.webp",
+      thumbnailUrl: "images/media/thumbs/2025_rock-im-stodl.webp",
+    },
+    {
+      id: 2,
+      title: "Rock im Stodl 2025",
+      category: "Live",
+      imageUrl: "images/media/2025_rock-im-stodl1.webp",
+      thumbnailUrl: "images/media/thumbs/2025_rock-im-stodl1.webp",
+    },
+    {
+      id: 3,
+      title: "Rock im Stodl 2025",
+      category: "Live",
+      imageUrl: "images/media/2025_rock-im-stodl2.webp",
+      thumbnailUrl: "images/media/thumbs/2025_rock-im-stodl2.webp",
+    },
+    {
+      id: 4,
+      title: "Rock im Stodl 2025",
+      category: "Live",
+      imageUrl: "images/media/2025_rock-im-stodl3.webp",
+      thumbnailUrl: "images/media/thumbs/2025_rock-im-stodl3.webp",
+    },
+    {
+      id: 5,
+      title: "Soundcheck Lauterhofen 2025",
+      category: "BTS",
+      imageUrl: "images/media/2025_soundcheck-lauterhofen.webp",
+      thumbnailUrl: "images/media/thumbs/2025_soundcheck-lauterhofen.webp",
+    },
+    {
+      id: 6,
+      title: "Rock in Bouch 2023",
+      category: "Live",
+      imageUrl: "images/media/2023_rock-in-bouch.webp",
+      thumbnailUrl: "images/media/thumbs/2023_rock-in-bouch.webp",
+    },
+    {
+      id: 7,
+      title: "Acoustic Bandprobe 2023",
+      category: "BTS",
+      imageUrl: "images/media/2023_accoustic-bandprobe.webp",
+      thumbnailUrl: "images/media/thumbs/2023_accoustic-bandprobe.webp",
+    },
+    {
+      id: 8,
+      title: "DJ Rxxd 2022",
+      category: "Live",
+      imageUrl: "images/media/2022-dj-rxxd.webp",
+      thumbnailUrl: "images/media/thumbs/2022-dj-rxxd.webp",
+    },
+    {
+      id: 9,
+      title: "Bandprobe mit Freunden 2021",
+      category: "BTS",
+      imageUrl: "images/media/2021_bandprobe-mit-freunden.webp",
+      thumbnailUrl: "images/media/thumbs/2021_bandprobe-mit-freunden.webp",
+    },
+    {
+      id: 10,
+      title: "Ausflug zum Thomann 2020",
+      category: "BTS",
+      imageUrl: "images/media/2020-ausflug-zum-thomann.JPG",
+      thumbnailUrl: "images/media/thumbs/2020-ausflug-zum-thomann.webp",
+    },
+    {
+      id: 11,
+      title: "Rock in Bouch 2019",
+      category: "Live",
+      imageUrl: "images/media/2019-rock-in-bouch.webp",
+      thumbnailUrl: "images/media/thumbs/2019-rock-in-bouch.webp",
+    },
+    {
+      id: 12,
+      title: "Rock Meets Electro 2018",
+      category: "Live",
+      imageUrl: "images/media/2018-rock-meets-electro.webp",
+      thumbnailUrl: "images/media/thumbs/2018-rock-meets-electro.webp",
+    },
+    {
+      id: 13,
+      title: "Rock in Bouch 2018",
+      category: "Live",
+      imageUrl: "images/media/2018_rock-in-bouch.webp",
+      thumbnailUrl: "images/media/thumbs/2018_rock-in-bouch.webp",
+    },
+    {
+      id: 14,
+      title: "Rock in Bouch 2018",
+      category: "Live",
+      imageUrl: "images/media/2018_rock-in-bouch1.webp",
+      thumbnailUrl: "images/media/thumbs/2018_rock-in-bouch1.webp",
+    },
+    {
+      id: 15,
+      title: "Rock in Bouch 2017",
+      category: "Live",
+      imageUrl: "images/media/2017-rock-in-bouch.webp",
+      thumbnailUrl: "images/media/thumbs/2017-rock-in-bouch.webp",
+    },
+    {
+      id: 16,
+      title: "Sommerrock 2015",
+      category: "Live",
+      imageUrl: "images/media/2015-sommerrock.webp",
+      thumbnailUrl: "images/media/thumbs/2015-sommerrock.webp",
+    },
+    {
+      id: 17,
+      title: "Rock in Bouch 2015",
+      category: "Live",
+      imageUrl: "images/media/2015-rock-in-bouch.webp",
+      thumbnailUrl: "images/media/thumbs/2015-rock-in-bouch.webp",
+    },
+    {
+      id: 18,
+      title: "Pink Panther Hiatberg 2015",
+      category: "Live",
+      imageUrl: "images/media/2015-pink-panther-hiatberg.webp",
+      thumbnailUrl: "images/media/thumbs/2015-pink-panther-hiatberg.webp",
+    },
+    {
+      id: 19,
+      title: "Over The Hills Festival 2014",
+      category: "Live",
+      imageUrl: "images/media/2014-over-the-hills-festival.webp",
+      thumbnailUrl: "images/media/thumbs/2014-over-the-hills-festival.webp",
+    },
+    {
+      id: 20,
+      title: "Rock in Bouch 2010",
+      category: "Live",
+      imageUrl: "images/media/2010-rock-in-bouch.webp",
+      thumbnailUrl: "images/media/thumbs/2010-rock-in-bouch.webp",
+    },
+    {
+      id: 21,
+      title: "Wo alles begann",
+      category: "BTS",
+      imageUrl: "images/media/wo-alles-begann.webp",
+      thumbnailUrl: "images/media/thumbs/wo-alles-begann.webp",
+    },
   ];
 
 const videos = [
@@ -140,12 +266,13 @@ const videos = [
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {photos.map((photo, index) => (
         <motion.div key={photo.id}>
-          <DirectionAwareHover
-            imageUrl={photo.imageUrl}
-            className="parallax-media card-wiggle"
-            onClick={() => handleImageClick(index)}
-            disableModal
-          >
+<DirectionAwareHover
+  imageUrl={photo.imageUrl}
+  thumbnailUrl={photo.thumbnailUrl}
+  className="parallax-media card-wiggle"
+  onClick={() => handleImageClick(index)}
+  disableModal
+>
             <div className="bg-black/50 px-3 py-1 rounded text-sm mb-2 inline-block">
               {photo.category}
             </div>

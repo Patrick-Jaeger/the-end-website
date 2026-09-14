@@ -7,6 +7,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export const DirectionAwareHover = ({
   imageUrl,
+  thumbnailUrl,
   children,
   childrenClassName,
   imageClassName,
@@ -15,6 +16,7 @@ export const DirectionAwareHover = ({
   disableModal = false,
 }: {
   imageUrl: string;
+  thumbnailUrl?: string;
   children: React.ReactNode | string;
   childrenClassName?: string;
   imageClassName?: string;
@@ -105,7 +107,7 @@ export const DirectionAwareHover = ({
     "h-full w-full object-cover scale-[1.15] grayscale group-hover/card:grayscale-0 transition-all duration-500",
     imageClassName
   )}
-  src={imageUrl}
+  src={thumbnailUrl || imageUrl}
 />
             </motion.div>
             <motion.div
