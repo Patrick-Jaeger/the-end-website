@@ -43,7 +43,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@DieBandTheEnd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-secondary hover:bg-primary transition-rock hover-rock cursor-pointer"
@@ -126,7 +126,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © 2025 THE-END. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} THE-END. Alle Rechte vorbehalten.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link 
