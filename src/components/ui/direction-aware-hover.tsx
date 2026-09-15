@@ -83,13 +83,13 @@ export const DirectionAwareHover = ({
           className
         )}
       >
-        <AnimatePresence mode="wait">
-          <motion.div
-            className="relative h-full w-full"
-            initial="initial"
-            whileHover={direction}
-            exit="exit"
-          >
+       <AnimatePresence mode="wait">
+  <motion.div
+    className="relative h-full w-full"
+    initial={false}
+    whileHover={direction}
+    exit="exit"
+  >
             <motion.div className="group-hover/card:block hidden absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500" />
             <motion.div
               variants={variants}
@@ -111,18 +111,18 @@ export const DirectionAwareHover = ({
 />
             </motion.div>
             <motion.div
-              variants={textVariants}
-              transition={{
-                duration: 0.5,
-                ease: "easeOut",
-              }}
-              className={cn(
-                "text-white absolute bottom-4 left-4 z-40",
-                childrenClassName
-              )}
-            >
-              {children}
-            </motion.div>
+  variants={textVariants}
+  transition={{
+    duration: 0.5,
+    ease: "easeOut",
+  }}
+  className={cn(
+    "text-white absolute bottom-4 left-4 right-4 z-40 opacity-100 md:opacity-0",
+    childrenClassName
+  )}
+>
+  {children}
+</motion.div>
           </motion.div>
         </AnimatePresence>
       </motion.div>
@@ -194,3 +194,4 @@ const textVariants = {
     opacity: 1,
   },
 };
+
