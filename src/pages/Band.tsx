@@ -197,17 +197,17 @@ thumbnail: `images/band/thumbs/${member.name.split(' ')[0].toLowerCase()}.webp`,
       </section>
 
       {/* Group Photo Modal */}
+            {/* Group Photo Modal */}
       <Dialog open={isGroupPhotoOpen} onOpenChange={setIsGroupPhotoOpen}>
         <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
           <img
-            src="/images/band/Gruppenfoto.webp"
+            src={`${import.meta.env.BASE_URL}images/band/Gruppenfoto.webp`}
             alt="Gruppenfoto vergrößert"
-            className="w-full h-full md:w-auto md:h-auto object-contain md:max-h-[90vh]"
+            className="max-w-full max-h-[85vh] w-auto h-auto md:max-w-[90vw] md:max-h-[90vh] object-contain"
           />
-
         </DialogContent>
       </Dialog>
-
+      
       <Footer />
     </div>
   );
