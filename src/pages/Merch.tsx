@@ -120,7 +120,7 @@ const Merch = () => {
             className="text-center mb-16"
           >
             <h1 className="font-rock text-4xl md:text-6xl font-bold text-glow mb-6 text-split-mearch">
-              Mearch
+              Merch
             </h1>
             {/*
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
