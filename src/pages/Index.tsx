@@ -73,11 +73,11 @@ const Index = () => {
     <div
       onClick={handleEventCardClick}
       className="
-        bg-card rounded-lg p-8
-        cursor-pointer select-none
-        hover:shadow-glow hover:animate-glow
-        transition-all duration-300
-      "
+  bg-card rounded-lg p-8
+  cursor-pointer select-none
+  md:hover:shadow-glow md:hover:animate-glow
+  transition-all duration-300
+"
     >
       <div className="grid md:grid-cols-2 gap-8 items-center cursor-pointer">
         {/* LINKER BEREICH */}
