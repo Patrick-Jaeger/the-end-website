@@ -85,12 +85,12 @@ const Index = () => {
           <div className="flex items-center space-x-2 text-primary mb-4 cursor-pointer">
             <Calendar className="h-5 w-5 cursor-pointer" />
             <span className="font-rock font-semibold cursor-pointer">
-              25. April 2026
+              15. Januar 2027
             </span>
           </div>
 
           <h3 className="font-rock text-2xl font-bold mb-2 cursor-pointer">
-            Rock im Stodl
+            Rock in Bouch
           </h3>
 
           <p className="text-muted-foreground mb-4 cursor-pointer">
@@ -98,7 +98,7 @@ const Index = () => {
           </p>
 
           <p className="mb-6 cursor-pointer">
-            Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits und den Minzie Brothers.
+            Abrissparty im urigen Saal.
           </p>
 
           {/* LINK – Cursor bleibt Hand */}
@@ -221,10 +221,10 @@ const Index = () => {
 <EventModal
   isOpen={isEventModalOpen}
   onClose={() => setIsEventModalOpen(false)}
-  title="Rock im Stodl"
-  date="25. April 2026"
+  title="Rock in Bouch"
+  date="15. Januar 2027"
   location="Gasthaus Reis, Mendorferbuch"
-  description="Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits und den Minzie Brothers."
+  description="Abrissparty im urigen Saal."
   flyerImage="images/gigs/rock-im-stodl.jpg"
 />
 

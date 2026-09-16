@@ -62,15 +62,25 @@ const Gigs = () => {
 
   const upcomingGigs: Gig[] = [
     {
-      date: "25. April 2026",
+      date: "15. Januar 2027",
+      title: "Rock in Bouch",
+      venue: "Gasthaus Reis, Mendorferbuch",
+      time: "19:30 Uhr",
+      visibility: "Dorffest",
+      description: "Abrissparty im urigen Saal.",
+      flyerImage: "images/gigs/rock-in-bouch.jpg",
+    },
+    {
+      date: "24. April 2027",
       title: "Rock im Stodl",
       venue: "Gasthaus Reis, Mendorferbuch",
       time: "21:00 Uhr",
       visibility: "öffentlich",
-      description: "Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits und den Minzie Brothers.",
+      description: "Frühlingserwachen mit den besten Punk-, Rock- und Metal-Hits.",
       flyerImage: "images/gigs/rock-im-stodl.jpg",
     },
-    {
+    {/* 
+   {
       date: "24. Mai 2026",
       title: "Sandlochfest",
       venue: "Ehenfeld",
@@ -79,6 +89,7 @@ const Gigs = () => {
       description: "Abrissparty in idyllischer Umgebung.",
       flyerImage: "images/gigs/",
     },
+    */}
   ];
 
  const referenzen = [
