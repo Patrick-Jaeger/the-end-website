@@ -225,7 +225,7 @@ const Index = () => {
   date="15. Januar 2027"
   location="Gasthaus Reis, Mendorferbuch"
   description="Abrissparty im urigen Saal."
-  flyerImage="images/gigs/rock-im-stodl.jpg"
+  flyerImage="images/gigs/highlight.jpg"
 />
 
     </div>

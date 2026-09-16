@@ -213,17 +213,17 @@ const videos = [
   },
   {
     id: 2,
-    youtubeId: "jUyXKIJBQ6A",
+    youtubeId: "kS-EaKuJwhk",
     title: "Pink Panther",
     description: "THE END im Waldstadion",
-    thumbnail: "/images/media/youtube-rock-in-bouch-2023.webp",
+    thumbnail: "/images/media/youtube-pink-panther-2023.webp",
   },
   {
     id: 3,
-    youtubeId: "kS-EaKuJwhk",
+    youtubeId: "jUyXKIJBQ6A",
     title: "Rock in Bouch 2023",
     description: "Rock in Bouch - da san ma dahoam",
-    thumbnail: "/images/media/youtube-pink-panther-2023.webp",
+    thumbnail: "/images/media/youtube-rock-in-bouch-2023.webp",
   },
 ];
 
