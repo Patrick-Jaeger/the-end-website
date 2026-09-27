@@ -29,7 +29,7 @@ const App = () => {
 
     {/* Hauptinhalt */}
     <div className="relative z-10">
-      <BrowserRouter basename="/the-end-website">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/band" element={<Band />} />
