@@ -1,73 +1,76 @@
-# Welcome to your Lovable project
+# THE END – Website
 
-## Project info
+Offizielle Website der Coverband **THE END**.
 
-**URL**: https://lovable.dev/projects/f933b9cb-7c37-49df-9e18-4776163fecc5
+Die Website enthält unter anderem Informationen zur Band, Repertoire, Referenzen, Medien, kommende Auftritte sowie ein Kontaktformular für Booking-Anfragen.
 
-## How can I edit this code?
+## Technologie
 
-There are several ways of editing your application.
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* shadcn/ui
+* React Router
+* GSAP
+* Framer Motion
 
-**Use Lovable**
+## Entwicklung
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f933b9cb-7c37-49df-9e18-4776163fecc5) and start prompting.
+Voraussetzung ist eine aktuelle Node.js-Version mit npm.
 
-Changes made via Lovable will be committed automatically to this repo.
+Abhängigkeiten installieren:
 
-**Use your preferred IDE**
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Entwicklungsserver starten:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Die lokale Website ist anschließend über die von Vite angezeigte Adresse erreichbar.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Build
 
-**Use GitHub Codespaces**
+Die Website wird mit Vite gebaut:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run build
+```
 
-## What technologies are used for this project?
+Der Produktions-Build wird im Verzeichnis `docs/` erzeugt.
 
-This project is built with:
+## Veröffentlichung
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Die Website wird über **GitHub Pages** veröffentlicht.
 
-## How can I deploy this project?
+Der Quellcode befindet sich im Branch `main`. Das Verzeichnis `docs/` enthält den veröffentlichten Build.
 
-Simply open [Lovable](https://lovable.dev/projects/f933b9cb-7c37-49df-9e18-4776163fecc5) and click on Share -> Publish.
+Die Website ist über die eigene Domain erreichbar:
 
-## Can I connect a custom domain to my Lovable project?
+**https://www.die-band-the-end.de**
 
-Yes, you can!
+## Projektstruktur
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```text
+src/
+├── components/     Wiederverwendbare UI-Komponenten
+├── hooks/          Eigene React-Hooks
+├── pages/          Seiten der Website
+└── ...
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+public/
+└── Statische Dateien und Medien
+
+docs/
+└── Produktions-Build für GitHub Pages
+```
+
+## Hinweise
+
+Externe Dienste werden möglichst sparsam eingesetzt. Eingebettete Inhalte wie YouTube und Spotify werden erst nach entsprechender Einwilligung des Besuchers geladen.
+
+Die Website wird fortlaufend weiterentwickelt und vor der Veröffentlichung auf Desktop und Mobilgeräten getestet.
