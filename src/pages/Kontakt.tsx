@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -9,18 +9,19 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Mail, MapPin, Instagram, Facebook, Youtube, Send, CalendarIcon, PlusIcon, MinusIcon, Calendar as CalendarIconLucide } from "lucide-react";
+import { Mail, MapPin, Instagram, Facebook, Youtube, Send, CalendarIcon, PlusIcon, MinusIcon } from "lucide-react";
 import GradientText from "@/components/ui/GradientText";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import { format } from "date-fns";
+import { de } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { VelocityScroll } from "@/components/ui/scrollbasedvelocity";
 import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
-import GroundFog from "@/components/ui/ground-fog";
+
 const faqItems = [
   {
     id: '1',
@@ -45,9 +46,10 @@ const faqItems = [
 ];
 
 const Kontakt = () => {
-  const { toast } = useToast();
-  const [date, setDate] = useState<Date>();
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+const { toast } = useToast();
+const [date, setDate] = useState<Date>();
+const [datePickerOpen, setDatePickerOpen] = useState(false);
+const [expandedId, setExpandedId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -66,33 +68,76 @@ const Kontakt = () => {
     setExpandedId(expandedId === id ? null : id);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (buttonState !== "initial") return;
-    
-    setButtonState("loading");
-    
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (buttonState !== "initial") return;
+
+  setButtonState("loading");
+
+  try {
+    const response = await fetch(
+      "https://the-end-contact.die-band-the-end.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          date: formData.date,
+          formType: "Kontakt",
+        }),
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(
+        result.error?.message ||
+        result.error ||
+        "Die Nachricht konnte nicht gesendet werden."
+      );
+    }
+
+    setButtonState("success");
+
+    toast({
+      title: "Nachricht gesendet!",
+      description: "Wir melden uns in Kürze bei Dir.",
+    });
+
     setTimeout(() => {
-      setButtonState("success");
-      toast({
-        title: "Nachricht gesendet!",
-        description: "Wir melden uns in Kürze bei Dir.",
-      });
-      
-      setTimeout(() => {
-        setButtonState("initial");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-          date: ""
-        });
-        setDate(undefined);
-      }, 2000);
-    }, 1500);
-  };
+      setButtonState("initial");
+     setFormData({
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+  date: "",
+});
+setDate(undefined);
+setDatePickerOpen(false);
+    }, 2000);
+  } catch (error) {
+    console.error("Kontaktformular:", error);
+
+    setButtonState("initial");
+
+    toast({
+      title: "Nachricht konnte nicht gesendet werden",
+      description:
+        "Bitte versuche es später erneut oder schreibe uns direkt per E-Mail.",
+      variant: "destructive",
+    });
+  }
+};
 
   return (
     <div className="min-h-screen bg-rock-gradient">
@@ -179,33 +224,49 @@ const Kontakt = () => {
 
                     <div>
                       <Label htmlFor="date">Gewünschtes Datum (optional)</Label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className={cn(
-                              "w-full justify-start text-left font-normal bg-background border-border",
-                              !date && "text-muted-foreground"
-                            )}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {date ? format(date, "PPP") : <span>Datum auswählen</span>}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={date}
-                            onSelect={(selectedDate) => {
-                              setDate(selectedDate);
-                              setFormData({...formData, date: selectedDate ? format(selectedDate, "PPP") : ""});
-                            }}
-                            disabled={(date) => date < new Date()}
-                            initialFocus
-                            className="pointer-events-auto"
-                          />
-                        </PopoverContent>
-                      </Popover>
+<Popover open={datePickerOpen} onOpenChange={setDatePickerOpen}>
+  <PopoverTrigger asChild>
+    <Button
+      type="button"
+      variant="outline"
+      className={cn(
+        "w-full justify-start text-left font-normal",
+        !date && "text-muted-foreground"
+      )}
+    >
+      <CalendarIcon className="mr-2 h-4 w-4" />
+
+      {date ? (
+        format(date, "dd-MMMM-yyyy", { locale: de })
+      ) : (
+        <span>Datum auswählen</span>
+      )}
+    </Button>
+  </PopoverTrigger>
+
+  <PopoverContent className="w-auto p-0" align="start">
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={(selectedDate) => {
+        setDate(selectedDate);
+
+        if (selectedDate) {
+          setFormData((prev) => ({
+            ...prev,
+            date: format(selectedDate, "dd-MMMM-yyyy", {
+              locale: de,
+            }),
+          }));
+
+          setDatePickerOpen(false);
+        }
+      }}
+      initialFocus
+      locale={de}
+    />
+  </PopoverContent>
+</Popover>
                     </div>
 
                     <Textarea

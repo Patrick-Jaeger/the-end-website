@@ -3,6 +3,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 interface YouTubeConsentContextType {
   hasConsent: boolean;
   giveConsent: () => void;
+  revokeConsent: () => void;
 }
 
 const YouTubeConsentContext =
@@ -16,7 +17,6 @@ export function YouTubeConsentProvider({
   children: ReactNode;
 }) {
   const [hasConsent, setHasConsent] = useState<boolean>(() => {
-    // Nur im Browser prüfen
     if (typeof window !== "undefined") {
       return localStorage.getItem(STORAGE_KEY) === "true";
     }
@@ -29,8 +29,15 @@ export function YouTubeConsentProvider({
     localStorage.setItem(STORAGE_KEY, "true");
   };
 
+  const revokeConsent = () => {
+    setHasConsent(false);
+    localStorage.removeItem(STORAGE_KEY);
+  };
+
   return (
-    <YouTubeConsentContext.Provider value={{ hasConsent, giveConsent }}>
+    <YouTubeConsentContext.Provider
+      value={{ hasConsent, giveConsent, revokeConsent }}
+    >
       {children}
     </YouTubeConsentContext.Provider>
   );

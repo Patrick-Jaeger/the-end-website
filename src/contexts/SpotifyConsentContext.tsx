@@ -1,20 +1,26 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
 interface SpotifyConsentContextType {
   hasConsent: boolean;
   giveConsent: () => void;
+  revokeConsent: () => void;
 }
 
-const SpotifyConsentContext = createContext<SpotifyConsentContextType | undefined>(undefined);
+const SpotifyConsentContext =
+  createContext<SpotifyConsentContextType | undefined>(undefined);
 
 const STORAGE_KEY = "spotify_consent";
 
-export function SpotifyConsentProvider({ children }: { children: ReactNode }) {
+export function SpotifyConsentProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [hasConsent, setHasConsent] = useState<boolean>(() => {
-    // Nur im Browser prüfen
     if (typeof window !== "undefined") {
       return localStorage.getItem(STORAGE_KEY) === "true";
     }
+
     return false;
   });
 
@@ -23,8 +29,15 @@ export function SpotifyConsentProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, "true");
   };
 
+  const revokeConsent = () => {
+    setHasConsent(false);
+    localStorage.removeItem(STORAGE_KEY);
+  };
+
   return (
-    <SpotifyConsentContext.Provider value={{ hasConsent, giveConsent }}>
+    <SpotifyConsentContext.Provider
+      value={{ hasConsent, giveConsent, revokeConsent }}
+    >
       {children}
     </SpotifyConsentContext.Provider>
   );
@@ -32,8 +45,12 @@ export function SpotifyConsentProvider({ children }: { children: ReactNode }) {
 
 export function useSpotifyConsent() {
   const context = useContext(SpotifyConsentContext);
+
   if (context === undefined) {
-    throw new Error("useSpotifyConsent must be used within a SpotifyConsentProvider");
+    throw new Error(
+      "useSpotifyConsent must be used within a SpotifyConsentProvider"
+    );
   }
+
   return context;
 }

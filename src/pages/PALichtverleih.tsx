@@ -19,19 +19,21 @@ import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
 import { useToast } from "@/hooks/use-toast";
-import GroundFog from "@/components/ui/ground-fog";
+
 
 const PALichtverleih = () => {
   const { toast } = useToast();
   const [date, setDate] = useState<Date>();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    location: "",
-    eventType: "",
-    requirements: ""
-  });
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
+ const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  location: "",
+  eventType: "",
+  requirements: "",
+  date: ""
+});
   const [buttonState, setButtonState] = useState<"initial" | "loading" | "success">("initial");
   
   // GSAP Animation
@@ -77,8 +79,8 @@ const PALichtverleih = () => {
               Professionelle PA- und Lichttechnik für Events aller Größenordnungen. 
             </p>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Von kleinen Geburtstagspartys bis hin zur Hochzeitsbeleuchtung.
-            </p>
+  Von kleinen Geburtstagspartys bis zur stimmungsvollen Beleuchtung eurer Hochzeit.
+</p>
           </motion.div>
         </div>
       </section>
@@ -108,7 +110,7 @@ const PALichtverleih = () => {
                   <Volume2 className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">Kleine Feste</h3>
-                <p className="text-2xl font-bold text-primary mb-2">bis 20 Leute</p>
+                <p className="text-2xl font-bold text-primary mb-2">bis 20 Personen</p>
                 <p className="text-sm text-muted-foreground">
                   Kompakte Musikanlage für kuschelige Veranstaltungen und kleine Feiern
                 </p>
@@ -121,7 +123,7 @@ const PALichtverleih = () => {
                   <Music className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">Mittlere Feste</h3>
-                <p className="text-2xl font-bold text-primary mb-2">bis 50 Leute</p>
+                <p className="text-2xl font-bold text-primary mb-2">bis 50 Personen</p>
                 <p className="text-sm text-muted-foreground">
                   Erweiterte Beschallungsanlage für Dorffeste und mittelgroße Events
                 </p>
@@ -134,7 +136,7 @@ const PALichtverleih = () => {
                   <Zap className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">Große Feste</h3>
-                <p className="text-2xl font-bold text-primary mb-2">bis 150 Leute</p>
+                <p className="text-2xl font-bold text-primary mb-2">bis 150 Personen</p>
                 <p className="text-sm text-muted-foreground">
                   Professionelle PA-Anlage für große Veranstaltungen und Festivals
                 </p>
@@ -168,8 +170,8 @@ const PALichtverleih = () => {
               Lichttechnik
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Unsere Lichter sind energiesparsam und können automatisch über die Musik oder per DMX gesteuert gewerden.
-            </p>
+  Unsere Lichter sind energiesparsam und können automatisch über die Musik oder per DMX gesteuert werden.
+</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -221,14 +223,14 @@ const PALichtverleih = () => {
                 Zusätzliches Equipment
               </h2>
               <p className="text-lg">
-               - Du willst eine Rede bei dem nächsten Fest halten? 
-              </p>
-              <p className="text-lg">
-               - Ihr brauchst eine Nebelmaschine für eure Feuerwehr Atemschutzübung?
-              </p>
-              <p className="text-lg mb-6">
-               - Ihr wollt eure Gstanzeln beim austanzen durch ein Microfon schmettern?
-              </p>
+  - Du willst eine Rede bei deinem nächsten Fest halten?
+</p>
+<p className="text-lg">
+  - Ihr braucht eine Nebelmaschine für eure Feuerwehr-Atemschutzübung?
+</p>
+<p className="text-lg mb-6">
+  - Ihr wollt eure Gstanzeln beim Austanzen durch ein Mikrofon schmettern?
+</p>
               <p className="text-primary font-semibold mb-4">
                 → Wir liefern auch zusätzliches Equipment wie Kabel, Mikros, Nebelmaschinen.
               </p>
@@ -270,37 +272,88 @@ const PALichtverleih = () => {
                   Schildert uns euer Event und wir stellen euch zusammen, was ihr braucht.
                 </p>
                 
-                <form onSubmit={(e) => {
-                  e.preventDefault();
-                  if (buttonState !== "initial") return;
-                  
-                  setButtonState("loading");
-                  
-                  setTimeout(() => {
-                    setButtonState("success");
-                    toast({
-                      title: "Anfrage gesendet!",
-                      description: "Wir melden uns in Kürze bei Dir.",
-                    });
-                    
-                    setTimeout(() => {
-                      setButtonState("initial");
-                      setFormData({
-                        name: "",
-                        email: "",
-                        phone: "",
-                        location: "",
-                        eventType: "",
-                        requirements: ""
-                      });
-                      setDate(undefined);
-                    }, 2000);
-                  }, 1500);
-                }} className="space-y-6">
+<form
+  onSubmit={async (e) => {
+    e.preventDefault();
+
+    if (buttonState !== "initial") return;
+
+    setButtonState("loading");
+
+    try {
+      const response = await fetch(
+        "https://the-end-contact.die-band-the-end.workers.dev",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            subject: `PA- & Lichtverleih – ${formData.eventType || "Anfrage"}`,
+            message: formData.requirements,
+            date: formData.date,
+            formType: "PA- & Lichtverleih",
+            location: formData.location,
+            eventType: formData.eventType,
+          }),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.error?.message ||
+          result.error ||
+          "Die Anfrage konnte nicht gesendet werden."
+        );
+      }
+
+      setButtonState("success");
+
+      toast({
+        title: "Anfrage gesendet!",
+        description: "Wir melden uns in Kürze bei Dir.",
+      });
+
+      setTimeout(() => {
+        setButtonState("initial");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          location: "",
+          eventType: "",
+          requirements: "",
+          date: "",
+        });
+        setDate(undefined);
+        setDatePickerOpen(false);
+      }, 2000);
+    } catch (error) {
+      console.error("PA- & Lichtverleih-Anfrage:", error);
+
+      setButtonState("initial");
+
+      toast({
+        title: "Anfrage konnte nicht gesendet werden",
+        description:
+          "Bitte versuche es später erneut oder schreibe uns direkt per E-Mail.",
+        variant: "destructive",
+      });
+    }
+  }}
+  className="space-y-6"
+>
+                
                   <div className="grid md:grid-cols-2 gap-4">
                     <Input 
                       label="Name *"
-                      id="name" 
+                      id="name"
+                      required
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       placeholder="Euer Name" 
@@ -308,8 +361,9 @@ const PALichtverleih = () => {
                     />
                     <Input 
                       label="E-Mail *"
-                      id="email" 
-                      type="email" 
+                      id="email"
+                      type="email"
+                      required 
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       placeholder="kontakt@example.com" 
@@ -329,31 +383,51 @@ const PALichtverleih = () => {
                   
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className={cn(
-                              "w-full justify-start text-left font-normal mt-1",
-                              !date && "text-muted-foreground"
-                            )}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {date ? format(date, "PPP", { locale: de }) : <span>Datum auswählen</span>}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={date}
-                            onSelect={setDate}
-                            initialFocus
-                            className="p-3 pointer-events-auto"
-                            locale={de}
-                            disabled={(date) => date < new Date()}
-                          />
-                        </PopoverContent>
-                      </Popover>
+                      <Popover open={datePickerOpen} onOpenChange={setDatePickerOpen}>
+  <PopoverTrigger asChild>
+    <Button
+      type="button"
+      variant="outline"
+      className={cn(
+        "w-full justify-start text-left font-normal mt-1",
+        !date && "text-muted-foreground"
+      )}
+    >
+      <CalendarIcon className="mr-2 h-4 w-4" />
+
+      {date ? (
+        format(date, "dd-MMMM-yyyy", { locale: de })
+      ) : (
+        <span>Datum auswählen</span>
+      )}
+    </Button>
+  </PopoverTrigger>
+
+  <PopoverContent className="w-auto p-0" align="start">
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={(selectedDate) => {
+        setDate(selectedDate);
+
+        if (selectedDate) {
+          setFormData((prev) => ({
+            ...prev,
+            date: format(selectedDate, "dd-MMMM-yyyy", {
+              locale: de,
+            }),
+          }));
+
+          setDatePickerOpen(false);
+        }
+      }}
+      initialFocus
+      className="p-3 pointer-events-auto"
+      locale={de}
+      disabled={(date) => date < new Date()}
+    />
+  </PopoverContent>
+</Popover>
                     </div>
                     <Input 
                       label="Veranstaltungsort"
@@ -365,23 +439,24 @@ const PALichtverleih = () => {
                     />
                   </div>
                   
-                  <Input 
-                    label="Art der Veranstaltung"
-                    id="event-type" 
-                    value={formData.eventType}
-                    onChange={(e) => setFormData({...formData, eventType: e.target.value})}
-                    placeholder="z.B. Konzert, Hochzeit, Firmenevent, Geburtstag, Feuerwehrfest,..." 
-                    className="mt-1" 
-                  />
-                  
                   <Textarea 
-                    label="Anforderungen & Wünsche"
-                    id="requirements" 
-                    value={formData.requirements}
-                    onChange={(e) => setFormData({...formData, requirements: e.target.value})}
-                    placeholder="Beschreibt euer Event: Anzahl Gäste, Raumgröße, Bühne, spezielle Anforderungen..."
-                    className="mt-1 min-h-[120px]"
-                  />
+  label="Veranstaltungsart"
+  id="event-type"
+  value={formData.eventType}
+  onChange={(e) => setFormData({...formData, eventType: e.target.value})}
+  placeholder="z.B. Konzert, Hochzeit, Firmenevent, Geburtstag, Feuerwehrfest,..."
+  className="mt-1"
+/>
+
+<Textarea 
+  label="Anforderungen & Wünsche"
+  id="requirements"
+  required
+  value={formData.requirements}
+  onChange={(e) => setFormData({...formData, requirements: e.target.value})}
+  placeholder="Beschreibt euer Event: Anzahl Gäste, Raumgröße, Bühne, spezielle Anforderungen..."
+  className="mt-1 min-h-[120px]"
+/>
                   
 <ClickSpark sparkColor="#4079ff" sparkSize={12} sparkRadius={25} sparkCount={10} duration={500}>
   <button 
