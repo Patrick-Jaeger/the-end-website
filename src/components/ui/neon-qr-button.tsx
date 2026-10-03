@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { QrCode } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
+
 const NeonQrButton = () => {
   const [hovered, setHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,13 +51,17 @@ const NeonQrButton = () => {
             transition-all duration-300 ease-in-out
             z-50
             cursor-pointer
-            ${hovered ? "opacity-100 scale-100 visible" : "opacity-0 scale-75 invisible pointer-events-none"}
+            ${
+              hovered
+                ? "opacity-100 scale-100 visible"
+                : "opacity-0 scale-75 invisible pointer-events-none"
+            }
           `}
         >
           <div className="bg-white rounded-xl p-2 flex items-center justify-center">
-            <img 
-              src="images/qr-code.png" 
-              alt="QR Code" 
+            <img
+              src="/images/qr-code.png"
+              alt="QR Code"
               className="w-40 h-40 object-contain"
             />
           </div>
@@ -67,16 +72,34 @@ const NeonQrButton = () => {
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="max-w-md bg-black/95 border-primary/20 p-4">
           <div className="flex flex-col items-center justify-center">
-            <div className="bg-white rounded-2xl p-4">
-              <img 
-                src="images/qr-code.png" 
-                alt="QR Code" 
-                className="w-64 h-64 md:w-80 md:h-80 object-contain"
-              />
-            </div>
-            <p className="text-muted-foreground mt-4 text-center">
-              Scanne den QR-Code für mehr Infos
-            </p>
+            <a
+  href="https://linktr.ee/die_band_the_end"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="THE END auf Linktree öffnen"
+  className="block cursor-pointer"
+>
+  <div className="bg-white rounded-2xl p-4">
+    <img
+      src="/images/qr-code.png"
+      alt="QR Code"
+      className="w-64 h-64 md:w-80 md:h-80 object-contain cursor-pointer"
+    />
+  </div>
+</a>
+
+<p className="text-muted-foreground mt-4 text-center">
+  Scanne den QR-Code für mehr Infos, oder klicke auf{" "}
+  <span>den </span>
+  <a
+    href="https://linktr.ee/die_band_the_end"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-primary hover:underline cursor-pointer"
+  >
+    Link
+  </a>
+</p>
           </div>
         </DialogContent>
       </Dialog>
