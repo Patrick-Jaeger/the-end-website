@@ -16,7 +16,6 @@ import Kontakt from "./pages/Kontakt";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
-import ScrollToTop from "./components/ScrollTotop";
 
 
 const App = () => {
