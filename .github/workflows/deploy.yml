@@ -46,6 +46,10 @@ jobs:
       - name: Build project
         run: npm run build
 
+      # React Router: GitHub Pages soll auch direkte Unterseiten laden
+      - name: Create SPA fallback
+        run: cp docs/index.html docs/404.html
+
       # docs als GitHub-Pages-Artefakt bereitstellen
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
