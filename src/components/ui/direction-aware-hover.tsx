@@ -8,6 +8,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 export const DirectionAwareHover = ({
   imageUrl,
   thumbnailUrl,
+  alt,
   children,
   childrenClassName,
   imageClassName,
@@ -17,6 +18,7 @@ export const DirectionAwareHover = ({
 }: {
   imageUrl: string;
   thumbnailUrl?: string;
+  alt: string;
   children: React.ReactNode | string;
   childrenClassName?: string;
   imageClassName?: string;
@@ -102,7 +104,7 @@ export const DirectionAwareHover = ({
               }}
             >
 <img
-  alt="image"
+  alt={alt}
   loading="lazy"
   decoding="async"
   className={cn(
@@ -134,8 +136,8 @@ className={cn(
           <DialogContent className="max-w-full max-h-full md:max-w-[95vw] md:max-h-[95vh] w-full h-full md:w-auto md:h-auto p-0 md:p-2 bg-black/95 border-0 md:border border-border flex items-center justify-center">
             <div className="w-full h-full flex items-center justify-center">
               <img
-                src={imageUrl}
-                alt="Enlarged view"
+  src={imageUrl}
+  alt={alt}
                 className="w-full h-full md:w-auto md:h-auto object-contain md:max-w-full md:max-h-[90vh] md:rounded-lg"
               />
             </div>

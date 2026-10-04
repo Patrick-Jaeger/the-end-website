@@ -20,7 +20,7 @@ export function YouTubeEmbed({
         {/* Lokales Thumbnail – keine Verbindung zu YouTube */}
         <img
           src={`${import.meta.env.BASE_URL}${thumbnail.replace(/^\/+/, "")}`}
-          alt={title}
+          alt={`THE END – ${title}`}
           className="absolute inset-0 w-full h-full object-cover"
         />
 

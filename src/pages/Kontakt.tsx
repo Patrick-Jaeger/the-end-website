@@ -21,6 +21,7 @@ import { VelocityScroll } from "@/components/ui/scrollbasedvelocity";
 import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
+import SEO from "@/components/seo/SEO";
 
 const faqItems = [
   {
@@ -139,8 +140,15 @@ setDatePickerOpen(false);
   }
 };
 
-  return (
-    <div className="min-h-screen bg-rock-gradient">
+return (
+    <>
+      <SEO
+        title="Kontakt & Booking | THE END"
+        description="Kontakt und Booking für THE END. Fragt eure Veranstaltung an oder kontaktiert uns für Booking, technische Fragen und weitere Informationen zu unserer Punk-, Rock- und Metal-Coverband."
+        canonical="https://www.die-band-the-end.de/kontakt"
+      />
+
+      <div className="min-h-screen bg-rock-gradient">
       <Navigation />
       
       {/* Hero Section */}
@@ -569,7 +577,8 @@ setDatePickerOpen(false);
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

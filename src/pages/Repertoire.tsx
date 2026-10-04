@@ -9,6 +9,7 @@ import { Search, Music, Filter } from "lucide-react";
 import { useTextSplit } from "@/hooks/useGSAP";
 import GroundFog from "@/components/ui/ground-fog";
 import { SpotifyEmbed } from "@/components/SpotifyEmbed";
+import SEO from "@/components/seo/SEO";
 
 interface Song {
   artist: string;
@@ -175,8 +176,15 @@ const Repertoire = () => {
 
   const roundedSongsCount = Math.floor(songs.length / 10) * 10;
 
-  return (
-    <div className="min-h-screen bg-rock-gradient">
+return (
+    <>
+      <SEO
+        title="Repertoire – Rock, Punk & Metal | THE END"
+        description="Entdeckt das Repertoire von THE END: Über 80 Songs aus Rock, Punk, Metal, Alternative und weiteren Genres. Durchsucht unser Repertoire nach Song, Künstler oder Genre."
+        canonical="https://www.die-band-the-end.de/repertoire"
+      />
+
+      <div className="min-h-screen bg-rock-gradient">
       <Navigation />
 
       {/* Hero Section */}
@@ -379,7 +387,8 @@ const Repertoire = () => {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

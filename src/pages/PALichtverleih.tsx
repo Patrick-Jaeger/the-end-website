@@ -19,7 +19,7 @@ import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
 import { useToast } from "@/hooks/use-toast";
-
+import SEO from "@/components/seo/SEO";
 
 const PALichtverleih = () => {
   const { toast } = useToast();
@@ -39,8 +39,15 @@ const PALichtverleih = () => {
   // GSAP Animation
   useTextSplit('.text-split-pa', 0.3);
 
-  return (
-    <div className="min-h-screen bg-rock-gradient relative">
+return (
+    <>
+      <SEO
+        title="PA- & Lichtverleih | THE END"
+        description="PA- und Lichttechnik für Geburtstage, Hochzeiten, Vereinsfeste, Firmenfeiern und weitere Veranstaltungen. THE END bietet professionelle Beschallung, LED-Lichttechnik und zusätzliches Equipment."
+        canonical="https://www.die-band-the-end.de/pa-lichtverleih"
+      />
+
+      <div className="min-h-screen bg-rock-gradient relative">
       {/* Light Rays Background Effect */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 1 }}>
         <LightRays
@@ -534,6 +541,7 @@ const PALichtverleih = () => {
         <Footer />
       </div>
     </div>
+    </>
   );
 };
 

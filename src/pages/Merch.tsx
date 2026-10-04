@@ -16,6 +16,8 @@ import { SuccessCheck } from "@/components/ui/spinner";
 import { WaveLoader } from "@/components/ui/wave-loader";
 import ClickSpark from "@/components/ui/click-spark";
 import GroundFog from "@/components/ui/ground-fog";
+import SEO from "@/components/seo/SEO";
+
 const Merch = () => {
   const { toast } = useToast();
   
@@ -106,8 +108,15 @@ const Merch = () => {
     }, 1500);
   };
 
-  return (
-    <div className="min-h-screen bg-rock-gradient">
+return (
+    <>
+      <SEO
+        title="Merch | THE END"
+        description="THE END Merchandise: Band-Shirts, Hoodies, Sticker und weitere Fanartikel. Unser Merch-Bereich ist aktuell noch im Aufbau."
+        canonical="https://www.die-band-the-end.de/merch"
+      />
+
+      <div className="min-h-screen bg-rock-gradient">
       <Navigation />
       
       {/* Hero Section */}
@@ -432,7 +441,8 @@ const Merch = () => {
      
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

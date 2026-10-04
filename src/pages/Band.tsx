@@ -8,6 +8,7 @@ import { useTextSplit, useParallax } from "@/hooks/useGSAP";
 import BandCarousel from "@/components/BandCarousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
+import SEO from "@/components/seo/SEO";
 
 const Band = () => {
   const [isGroupPhotoOpen, setIsGroupPhotoOpen] = useState(false);
@@ -61,8 +62,15 @@ const Band = () => {
     },
   ];
 
-  return (
-    <div className="min-h-screen bg-rock-gradient">
+    return (
+    <>
+      <SEO
+        title="THE END | Punk, Rock & Metal Cover Band"
+        description="Lerne THE END kennen: Sechs Freunde aus der Oberpfalz mit Leidenschaft für Punk, Rock und Metal. Bandgeschichte, Mitglieder und mehr."
+        canonical="https://www.die-band-the-end.de/band"
+      />
+
+      <div className="min-h-screen bg-rock-gradient">
       <Navigation />
 
       {/* Hero Section */}
@@ -209,7 +217,8 @@ thumbnail: `images/band/thumbs/${member.name.split(' ')[0].toLowerCase()}.webp`,
       </Dialog>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

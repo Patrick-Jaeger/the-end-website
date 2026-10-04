@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import EventModal from "@/components/EventModal";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import ClickSpark from "@/components/ui/click-spark";
+import SEO from "@/components/seo/SEO";
 
 type Visibility =
   | "öffentlich"
@@ -196,8 +197,15 @@ const Gigs = () => {
     },
   ];
 
-  return (
-    <div className="min-h-screen bg-rock-gradient relative">
+    return (
+    <>
+      <SEO
+        title="Live Gigs & Auftritte | THE END"
+        description="Kommende Auftritte und vergangene Referenzen von THE END. Erlebt unsere Punk-, Rock- und Metal-Coverband live bei Festivals, Vereinsfesten, privaten Feiern und weiteren Veranstaltungen."
+        canonical="https://www.die-band-the-end.de/gigs"
+      />
+
+      <div className="min-h-screen bg-rock-gradient relative">
       <div className="fixed inset-0 z-0">
         <BeamsBackground />
       </div>
@@ -509,7 +517,8 @@ const Gigs = () => {
           }
         />
       )}
-    </div>
+         </div>
+    </>
   );
 };
 

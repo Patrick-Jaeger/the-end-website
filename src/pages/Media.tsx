@@ -10,6 +10,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import GroundFog from "@/components/ui/ground-fog";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { Play } from "lucide-react";
+import SEO from "@/components/seo/SEO";
 
 const Media = () => {
   const [isTrigger, setIsTrigger] = useState(false);
@@ -227,8 +228,15 @@ const videos = [
   },
 ];
 
-  return (
-    <div className="min-h-screen bg-rock-gradient">
+return (
+    <>
+      <SEO
+        title="Media – Bilder & Videos | THE END"
+        description="Bilder und Live-Videos von THE END. Erlebt unsere Punk-, Rock- und Metal-Coverband auf der Bühne und entdeckt Eindrücke aus vergangenen Auftritten und Backstage-Momenten."
+        canonical="https://www.die-band-the-end.de/media"
+      />
+
+      <div className="min-h-screen bg-rock-gradient">
       <Navigation />
       
       {/* Hero Section */}
@@ -269,6 +277,7 @@ const videos = [
 <DirectionAwareHover
   imageUrl={photo.imageUrl}
   thumbnailUrl={photo.thumbnailUrl}
+  alt={`THE END – ${photo.title}`}
   className="parallax-media card-wiggle"
   onClick={() => handleImageClick(index)}
   disableModal
@@ -438,7 +447,8 @@ const videos = [
           </button>
         </DialogContent>
       </Dialog>
-    </div>
+      </div>
+    </>
   );
 };
 
