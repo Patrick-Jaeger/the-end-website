@@ -47,6 +47,28 @@ interface LightRaysProps {
   className?: string;
 }
 
+type UniformValue = {
+  value: number | number[];
+};
+
+type LightRaysUniforms = {
+  iTime: UniformValue;
+  iResolution: UniformValue;
+  rayPos: UniformValue;
+  rayDir: UniformValue;
+  raysColor: UniformValue;
+  raysSpeed: UniformValue;
+  lightSpread: UniformValue;
+  rayLength: UniformValue;
+  pulsating: UniformValue;
+  fadeDistance: UniformValue;
+  saturation: UniformValue;
+  mousePos: UniformValue;
+  mouseInfluence: UniformValue;
+  noiseAmount: UniformValue;
+  distortion: UniformValue;
+};
+
 const LightRays = ({
   raysOrigin = 'top-center',
   raysColor = DEFAULT_COLOR,
@@ -63,7 +85,7 @@ const LightRays = ({
   className = ''
 }: LightRaysProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const uniformsRef = useRef<any>(null);
+  const uniformsRef = useRef<LightRaysUniforms | null>(null);
   const rendererRef = useRef<Renderer | null>(null);
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
   const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });

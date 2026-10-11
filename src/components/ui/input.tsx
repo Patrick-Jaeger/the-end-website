@@ -51,18 +51,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       return () => document.removeEventListener('pointermove', syncPointer);
     }, []);
 
-    const glowStyles: React.CSSProperties = {
-      ['--base' as any]: 220,
-      ['--spread' as any]: 20,
-      ['--radius' as any]: '8',
-      ['--border' as any]: '2',
-      ['--backdrop' as any]: 'transparent',
-      ['--backup-border' as any]: 'hsl(var(--border))',
-      ['--size' as any]: '200',
-      ['--outer' as any]: '1',
-      ['--border-size' as any]: 'calc(var(--border, 2) * 1px)',
-      ['--spotlight-size' as any]: 'calc(var(--size, 150) * 1px)',
-      ['--hue' as any]: 'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
+    
+    const glowStyles = {
+      "--base": 220,
+      "--spread": 20,
+      "--radius": "8",
+      "--border": "2",
+      "--backdrop": "transparent",
+      "--backup-border": "hsl(var(--border))",
+      "--size": "200",
+      "--outer": "1",
+      "--border-size": "calc(var(--border, 2) * 1px)",
+      "--spotlight-size": "calc(var(--size, 150) * 1px)",
+      "--hue": "calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))",
       backgroundImage: `radial-gradient(
         var(--spotlight-size) var(--spotlight-size) at
         calc(var(--x, 0) * 1px)
@@ -76,7 +77,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       border: 'var(--border-size) solid var(--backup-border)',
       position: 'relative',
       touchAction: 'none',
-    };
+    } as React.CSSProperties;
 
     const beforeAfterStyles = `
       .glow-input::before,

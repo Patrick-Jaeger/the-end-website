@@ -24,6 +24,10 @@ const sizeMap = {
   lg: 'w-80 h-96'
 };
 
+type CSSPropertiesWithVars = React.CSSProperties & {
+  [key: `--${string}`]: string | number | undefined;
+};
+
 const GlowCard: React.FC<GlowCardProps> = ({ 
   children, 
   className = '', 
@@ -62,18 +66,18 @@ const GlowCard: React.FC<GlowCardProps> = ({
   };
 
   const getInlineStyles = () => {
-    const baseStyles: React.CSSProperties = {
-      ['--base' as any]: base,
-      ['--spread' as any]: spread,
-      ['--radius' as any]: '14',
-      ['--border' as any]: '3',
-      ['--backdrop' as any]: 'hsl(0 0% 60% / 0.12)',
-      ['--backup-border' as any]: 'var(--backdrop)',
-      ['--size' as any]: '200',
-      ['--outer' as any]: '1',
-      ['--border-size' as any]: 'calc(var(--border, 2) * 1px)',
-      ['--spotlight-size' as any]: 'calc(var(--size, 150) * 1px)',
-      ['--hue' as any]: 'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
+    const baseStyles: CSSPropertiesWithVars = {
+      '--base': base,
+      '--spread': spread,
+      '--radius': '14',
+      '--border': '3',
+      '--backdrop': 'hsl(0 0% 60% / 0.12)',
+      '--backup-border': 'var(--backdrop)',
+      '--size': '200',
+      '--outer': '1',
+      '--border-size': 'calc(var(--border, 2) * 1px)',
+      '--spotlight-size': 'calc(var(--size, 150) * 1px)',
+      '--hue': 'calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))',
       backgroundImage: `radial-gradient(
         var(--spotlight-size) var(--spotlight-size) at
         calc(var(--x, 0) * 1px)
