@@ -181,43 +181,69 @@ return (
 </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-card border-border shadow-rock">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Lightbulb className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-rock text-xl font-bold mb-3">LED Scheinwerfer einzeln</h3>
-                <p className="text-sm text-muted-foreground">
-                  Perfekt für indirekte Beleuchtung und Akzentlicht.
-                </p>
-              </CardContent>
-            </Card>
+          
+<div className="grid md:grid-cols-3 gap-8">
+  <Card className="bg-card border-border shadow-rock overflow-hidden">
+    <img
+      src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/led-scheinwerfer.webp`}
+      alt="LED-Scheinwerfer für indirekte Beleuchtung und Akzentlicht"
+      loading="lazy"
+      className="w-full h-56 object-cover"
+    />
+    <CardContent className="p-6 text-center">
+      <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+        <Lightbulb className="h-8 w-8 text-primary" />
+      </div>
+      <h3 className="font-rock text-xl font-bold mb-3">
+        LED Scheinwerfer einzeln
+      </h3>
+      <p className="text-sm text-muted-foreground">
+        Perfekt für indirekte Beleuchtung und Akzentlicht.
+      </p>
+    </CardContent>
+  </Card>
 
-            <Card className="bg-card border-border shadow-rock">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Settings className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-rock text-base md:text-lg lg:text-xl font-bold mb-3 leading-tight break-words">LED Scheinwerferleiste auf Ständer</h3>
-                <p className="text-sm text-muted-foreground">
-                  Je 4 Spots pro Leiste für flächige Beleuchtung.
-                </p>
-              </CardContent>
-            </Card>
+  <Card className="bg-card border-border shadow-rock overflow-hidden">
+    <img
+      src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/led-scheinwerferleiste.webp`}
+      alt="LED-Scheinwerferleiste mit vier Spots auf einem Ständer"
+      loading="lazy"
+      className="w-full h-56 object-cover"
+    />
+    <CardContent className="p-6 text-center">
+      <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+        <Settings className="h-8 w-8 text-primary" />
+      </div>
+      <h3 className="font-rock text-base md:text-lg lg:text-xl font-bold mb-3 leading-tight break-words">
+        LED Scheinwerferleiste auf Ständer
+      </h3>
+      <p className="text-sm text-muted-foreground">
+        Je 4 Spots pro Leiste für flächige Beleuchtung.
+      </p>
+    </CardContent>
+  </Card>
 
-            <Card className="bg-card border-border shadow-rock">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Zap className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-rock text-xl font-bold mb-3">LED Moving Heads</h3>
-                <p className="text-sm text-muted-foreground">
-                  Bewegliche Scheinwerfer für dynamische Lichteffekte.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+  <Card className="bg-card border-border shadow-rock overflow-hidden">
+    <img
+      src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/led-moving-heads.webp`}
+      alt="LED Moving Heads für dynamische Lichteffekte"
+      loading="lazy"
+      className="w-full h-56 object-cover"
+    />
+    <CardContent className="p-6 text-center">
+      <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+        <Zap className="h-8 w-8 text-primary" />
+      </div>
+      <h3 className="font-rock text-xl font-bold mb-3">
+        LED Moving Heads
+      </h3>
+      <p className="text-sm text-muted-foreground">
+        Bewegliche Scheinwerfer für dynamische Lichteffekte.
+      </p>
+    </CardContent>
+  </Card>
+</div>
+
         </div>
       </section>
 
