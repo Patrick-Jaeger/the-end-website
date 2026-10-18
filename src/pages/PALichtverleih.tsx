@@ -110,8 +110,15 @@ return (
             </p>
           </motion.div>
 
+
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <Card className="bg-card border-border shadow-rock">
+            <Card className="bg-card border-border shadow-rock overflow-hidden">
+              <img
+                src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/kleine_anlage.webp`}
+                alt="Kompakte Musikanlage für kleine Feste bis 20 Personen"
+                loading="lazy"
+                className="block w-full h-56 object-contain bg-black"
+              />
               <CardContent className="p-6 text-center">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Volume2 className="h-8 w-8 text-primary" />
@@ -124,7 +131,13 @@ return (
               </CardContent>
             </Card>
 
-            <Card className="bg-card border-border shadow-rock">
+            <Card className="bg-card border-border shadow-rock overflow-hidden">
+              <img
+                src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/mittlere_anlage.webp`}
+                alt="Musikanlage für Dorffeste und mittelgroße Veranstaltungen bis 50 Personen"
+                loading="lazy"
+                className="block w-full h-56 object-contain bg-black"
+              />
               <CardContent className="p-6 text-center">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Music className="h-8 w-8 text-primary" />
@@ -137,7 +150,13 @@ return (
               </CardContent>
             </Card>
 
-            <Card className="bg-card border-border shadow-rock">
+            <Card className="bg-card border-border shadow-rock overflow-hidden">
+              <img
+                src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/große_anlage.webp`}
+                alt="Professionelle PA-Anlage für große Veranstaltungen bis 150 Personen"
+                loading="lazy"
+                className="block w-full h-56 object-contain bg-black"
+              />
               <CardContent className="p-6 text-center">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Zap className="h-8 w-8 text-primary" />
@@ -153,15 +172,18 @@ return (
 
           <Card className="bg-card border-border shadow-rock">
             <CardContent className="p-6 text-center">
-              <h3 className="font-rock text-xl font-bold mb-4">Alternative mit Tablet und Spotify Premium</h3>
+              <h3 className="font-rock text-xl font-bold mb-4">
+                Alternative mit Tablet und Spotify Premium
+              </h3>
               <p className="text-muted-foreground">
-                Für Veranstaltungen ohne Live-Musik bieten wir auch Beschallung mit 
+                Für Veranstaltungen ohne Live-Musik bieten wir auch Beschallung mit
                 Tablet und Spotify Premium - perfekt für Hintergrundmusik bei Feiern.
               </p>
             </CardContent>
           </Card>
         </div>
       </section>
+
 
       {/* Lichttechnik */}
       <section className="py-20 bg-background/10">
@@ -184,12 +206,12 @@ return (
           
 <div className="grid md:grid-cols-3 gap-8">
   <Card className="bg-card border-border shadow-rock overflow-hidden">
-    <img
-      src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/led-scheinwerfer.webp`}
-      alt="LED-Scheinwerfer für indirekte Beleuchtung und Akzentlicht"
-      loading="lazy"
-      className="w-full h-56 object-cover"
-    />
+<img
+  src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/led-scheinwerfer.webp`}
+  alt="Kompakte Musikanlage für kleine Feste bis 20 Personen"
+  loading="lazy"
+  className="block w-full h-56 object-contain bg-black"
+/>
     <CardContent className="p-6 text-center">
       <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
         <Lightbulb className="h-8 w-8 text-primary" />
@@ -208,7 +230,7 @@ return (
       src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/led-scheinwerferleiste.webp`}
       alt="LED-Scheinwerferleiste mit vier Spots auf einem Ständer"
       loading="lazy"
-      className="w-full h-56 object-cover"
+      className="block w-full h-56 object-contain bg-black"
     />
     <CardContent className="p-6 text-center">
       <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -228,7 +250,7 @@ return (
       src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/led-moving-heads.webp`}
       alt="LED Moving Heads für dynamische Lichteffekte"
       loading="lazy"
-      className="w-full h-56 object-cover"
+      className="block w-full h-56 object-contain bg-black"
     />
     <CardContent className="p-6 text-center">
       <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
