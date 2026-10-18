@@ -83,7 +83,7 @@ return (
               PA- & Lichtverleih
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Professionelle PA- und Lichttechnik für Events aller Größenordnungen. 
+              Professionelle PA- und Lichttechnik für Events aller Größenordnungen zu vermieten. 
             </p>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
   Von kleinen Geburtstagspartys bis zur stimmungsvollen Beleuchtung eurer Hochzeit.
@@ -115,7 +115,7 @@ return (
             <Card className="bg-card border-border shadow-rock overflow-hidden">
               <img
                 src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/kleine_anlage.webp`}
-                alt="Kompakte Musikanlage für kleine Feste bis 20 Personen"
+                alt="Kompakte Musikanlage für kleine Feste bis 30 Personen"
                 loading="lazy"
                 className="block w-full h-56 object-contain bg-black"
               />
@@ -124,7 +124,7 @@ return (
                   <Volume2 className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">Kleine Feste</h3>
-                <p className="text-2xl font-bold text-primary mb-2">bis 20 Personen</p>
+                <p className="text-2xl font-bold text-primary mb-2">bis 30 Personen</p>
                 <p className="text-sm text-muted-foreground">
                   Kompakte Musikanlage für kuschelige Veranstaltungen und kleine Feiern
                 </p>
@@ -134,7 +134,7 @@ return (
             <Card className="bg-card border-border shadow-rock overflow-hidden">
               <img
                 src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/mittlere_anlage.webp`}
-                alt="Musikanlage für Dorffeste und mittelgroße Veranstaltungen bis 50 Personen"
+                alt="Musikanlage für Dorffeste und mittelgroße Veranstaltungen bis 80 Personen"
                 loading="lazy"
                 className="block w-full h-56 object-contain bg-black"
               />
@@ -143,7 +143,7 @@ return (
                   <Music className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">Mittlere Feste</h3>
-                <p className="text-2xl font-bold text-primary mb-2">bis 50 Personen</p>
+                <p className="text-2xl font-bold text-primary mb-2">bis 80 Personen</p>
                 <p className="text-sm text-muted-foreground">
                   Erweiterte Beschallungsanlage für Dorffeste und mittelgroße Events
                 </p>
@@ -153,7 +153,7 @@ return (
             <Card className="bg-card border-border shadow-rock overflow-hidden">
               <img
                 src={`${import.meta.env.BASE_URL}images/pa-lichtverleih/große_anlage.webp`}
-                alt="Professionelle PA-Anlage für große Veranstaltungen bis 150 Personen"
+                alt="Professionelle PA-Anlage für große Veranstaltungen bis 200 Personen"
                 loading="lazy"
                 className="block w-full h-56 object-contain bg-black"
               />
@@ -162,7 +162,7 @@ return (
                   <Zap className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="font-rock text-xl font-bold mb-3">Große Feste</h3>
-                <p className="text-2xl font-bold text-primary mb-2">bis 150 Personen</p>
+                <p className="text-2xl font-bold text-primary mb-2">bis 200 Personen</p>
                 <p className="text-sm text-muted-foreground">
                   Professionelle PA-Anlage für große Veranstaltungen und Festivals
                 </p>
@@ -173,7 +173,7 @@ return (
           <Card className="bg-card border-border shadow-rock">
             <CardContent className="p-6 text-center">
               <h3 className="font-rock text-xl font-bold mb-4">
-                Alternative mit Tablet und Spotify Premium
+                Optional mit Tablet und Spotify Premium
               </h3>
               <p className="text-muted-foreground">
                 Für Veranstaltungen ohne Live-Musik bieten wir auch Beschallung mit
