@@ -15,11 +15,10 @@ const Footer = () => {
               <span className="font-rock text-2xl font-bold text-glow"></span>
             </div>
             <p className="text-muted-foreground max-w-md">
-              Punk, Rock & Metal Cover Band aus der Region.
+              Punk, Rock & Metal Cover Band aus der Oberpfalz.
             </p>
             <p className="text-muted-foreground max-w-md mb-6">
-              Wir bringen die größten Hits live auf die Bühne – 
-              von Rock bis klassischem Metal.
+              Wir bringen die größten Hits live auf die Bühne – von Rock bis Metal.
             </p>
 
             {/* Social Media */}
